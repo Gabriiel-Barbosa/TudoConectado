@@ -323,6 +323,22 @@ main {
   max-width: 320px;
 }
 
+.botao-tentar-novamente {
+  margin-top: 0.4rem;
+  padding: 0.5rem 1.1rem;
+  border: 1px solid rgba(217, 162, 75, 0.35);
+  border-radius: 999px;
+  background: var(--ouro-fraco);
+  color: var(--ouro);
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.botao-tentar-novamente:hover {
+  background: rgba(217, 162, 75, 0.28);
+}
+
 .painel-flutuante {
   background: var(--bg-glass);
   backdrop-filter: blur(20px);

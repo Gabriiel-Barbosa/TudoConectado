@@ -230,19 +230,40 @@ function aplicarTamanhoPorGrau() {
   });
 }
 
+// Único lugar que decide qual dos quatro estados do mapa aparece. Cada
+// chamada esconde os outros três — não tem como dois ficarem visíveis ao
+// mesmo tempo, não importa em que ordem ou de onde isso for chamado.
+function mostrarEstadoMapa(estado) {
+  const paineis = {
+    carregando: document.querySelector("#mapa-carregando"),
+    vazio: document.querySelector("#mapa-vazio"),
+    erro: document.querySelector("#mapa-erro"),
+    layout: document.querySelector("#mapa-layout"),
+  };
+  for (const [nome, elemento] of Object.entries(paineis)) {
+    if (elemento) elemento.hidden = nome !== estado;
+  }
+}
+
 function iniciarGrafo(grafoData) {
   grafo = grafoData;
-  document.querySelector("#mapa-carregando").hidden = true;
 
   const semDados = !grafo.nos || grafo.nos.length === 0;
-  document.querySelector("#mapa-vazio").hidden = !semDados;
-  document.querySelector("#mapa-layout").hidden = semDados;
-  if (semDados) return;
+  if (semDados) {
+    mostrarEstadoMapa("vazio");
+    return;
+  }
 
   // Se o Cytoscape falhar por qualquer motivo (CDN bloqueado, canvas
   // indisponível, dado inesperado), isso não pode deixar a tela travada
   // em "carregando" — mostra um estado de erro em vez de travar em branco.
   try {
+    if (cy) {
+      // "Tentar novamente" pode chamar isto de novo — não deixa a
+      // instância anterior do Cytoscape presa no mesmo container.
+      cy.destroy();
+      cy = null;
+    }
     cy = cytoscape({
       container: document.querySelector("#grafo-canvas"),
       elements: elementosCytoscape(grafo),
@@ -270,30 +291,32 @@ function iniciarGrafo(grafoData) {
     cy.on("mousemove", (evento) => posicionarTooltip(evento.originalEvent));
   } catch (erro) {
     console.error("Falha ao iniciar o grafo:", erro);
-    document.querySelector("#mapa-layout").hidden = true;
-    mostrarErroGrafo();
+    mostrarEstadoMapa("erro");
     return;
   }
 
-  document.querySelector("#stat-grafo").textContent = `${grafo.nos.length} nó(s) · ${grafo.arestas.length} ligação(ões)`;
+  // O grafo em si já está de pé nesse ponto (Cytoscape criado com sucesso).
+  // Um erro aqui embaixo é só nos controles ao redor — não faz sentido
+  // esconder um grafo que já funciona por causa de um filtro que quebrou.
+  mostrarEstadoMapa("layout");
+  try {
+    document.querySelector("#stat-grafo").textContent = `${grafo.nos.length} nó(s) · ${grafo.arestas.length} ligação(ões)`;
 
-  montarLegenda();
-  montarSeletorRaiz();
-  montarFiltros();
-  configurarBusca();
-  configurarFerramentas();
-  configurarPaineisMoveis();
+    montarLegenda();
+    montarSeletorRaiz();
+    montarFiltros();
+    configurarBusca();
+    configurarFerramentas();
+    configurarPaineisMoveis();
 
-  // A árvore nasce do livro — só cai pra uma passagem se nenhum livro
-  // estiver carregado (ver LIVROS_RAIZ).
-  const raizInicial =
-    grafo.nos.find((n) => LIVROS_RAIZ.includes(n.id)) || grafo.nos.find((n) => n.tipo === "passagem");
-  if (raizInicial) centralizarEm(raizInicial.id);
-}
-
-function mostrarErroGrafo() {
-  const erro = document.querySelector("#mapa-erro");
-  if (erro) erro.hidden = false;
+    // A árvore nasce do livro — só cai pra uma passagem se nenhum livro
+    // estiver carregado (ver LIVROS_RAIZ).
+    const raizInicial =
+      grafo.nos.find((n) => LIVROS_RAIZ.includes(n.id)) || grafo.nos.find((n) => n.tipo === "passagem");
+    if (raizInicial) centralizarEm(raizInicial.id);
+  } catch (erro) {
+    console.error("Falha ao montar os controles do grafo:", erro);
+  }
 }
 
 function mostrarTooltip(no) {
@@ -712,6 +735,7 @@ async function montarTimeline() {
 // --- Início ---------------------------------------------------------------
 
 async function iniciar() {
+  mostrarEstadoMapa("carregando");
   try {
     const grafoData = (await carregarJSON("grafo.json")) || { nos: [], arestas: [] };
     iniciarGrafo(grafoData);
@@ -722,10 +746,10 @@ async function iniciar() {
     // Rede de segurança final: qualquer falha inesperada aqui não pode
     // deixar a tela travada em "carregando" para sempre.
     console.error("Falha ao iniciar a página:", erro);
-    document.querySelector("#mapa-carregando").hidden = true;
-    document.querySelector("#mapa-layout").hidden = true;
-    mostrarErroGrafo();
+    mostrarEstadoMapa("erro");
   }
 }
+
+document.querySelector("#btn-tentar-novamente")?.addEventListener("click", iniciar);
 
 iniciar();
