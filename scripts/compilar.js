@@ -89,6 +89,16 @@ function compilarGrafo(registros, afirmacoes, passagens, ligacoes) {
     }
   }
 
+  // Arestas estruturais: uma afirmação envolve os registros sobre os quais
+  // ela fala. Sem isso, uma afirmação só entra no grafo através de uma
+  // Ligação — se nenhuma ligação a conectar de volta ao registro/livro que
+  // ela descreve, ela fica num componente desconectado, flutuando sozinha.
+  for (const afirmacao of afirmacoes) {
+    for (const ref of afirmacao.registros_envolvidos || []) {
+      arestas.push({ id: `${afirmacao.id}__envolve__${ref}`, origem: afirmacao.id, destino: ref, tipo: "envolve" });
+    }
+  }
+
   return { nos, arestas };
 }
 

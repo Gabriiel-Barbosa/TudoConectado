@@ -7,7 +7,10 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400..700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="assets/estilo.css" />
+  <!-- ?v= muda a cada deploy que toque em estilo.css/app.js — sem isso o
+       navegador/CDN do GitHub Pages pode manter uma cópia antiga em cache
+       e misturar HTML novo com JS/CSS velho. Bump manual por enquanto. -->
+  <link rel="stylesheet" href="assets/estilo.css?v=3" />
   <script defer src="https://cdn.jsdelivr.net/npm/cytoscape@3.34.3/dist/cytoscape.min.js"></script>
 </head>
 <body>
@@ -141,6 +144,6 @@
 
   <div id="tooltip" class="tooltip" hidden></div>
 
-  <script defer src="assets/app.js"></script>
+  <script defer src="assets/app.js?v=3"></script>
 </body>
 </html>

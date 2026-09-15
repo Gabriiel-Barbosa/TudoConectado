@@ -117,6 +117,18 @@
         }
       ],
       "o_que_derrubaria": "Evidência de que essa atribuição no Talmude é uma tradição tardia sem base em registro anterior, ou de que a autoria mosaica nunca foi, de fato, consenso entre os próprios sábios citados na mesma passagem.\n"
+    },
+    {
+      "id": "autoria-mosaica-genesis__envolve__moises",
+      "origem": "autoria-mosaica-genesis",
+      "destino": "moises",
+      "tipo": "envolve"
+    },
+    {
+      "id": "autoria-mosaica-genesis__envolve__genesis",
+      "origem": "autoria-mosaica-genesis",
+      "destino": "genesis",
+      "tipo": "envolve"
     }
   ]
 }

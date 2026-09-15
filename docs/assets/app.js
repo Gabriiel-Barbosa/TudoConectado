@@ -11,6 +11,12 @@ let grafo = { nos: [], arestas: [] };
 let historico = [];
 const cores = lerCores();
 
+// Registros tipo=texto tratados como "livro" — o ponto de partida da
+// árvore, por cima até de Passagem (a base é a Bíblia e seus livros;
+// capítulos e conexões nascem dali). Só Gênesis por enquanto; quando outro
+// livro entrar, soma aqui (ou isso vira um campo próprio no schema).
+const LIVROS_RAIZ = ["genesis"];
+
 const ehMovel = () => window.matchMedia("(max-width: 860px)").matches;
 const animacoesOk = () => !window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
@@ -126,7 +132,7 @@ function estilosCytoscape() {
     { selector: "node[subtipo='objeto']", style: { "border-color": cores.objeto } },
     { selector: "node[tipo='afirmacao']", style: { "border-color": cores.afirmacao } },
 
-    // A Passagem é o ponto de partida da árvore — vira um orbe cheio e
+    // A Passagem é um ponto de partida da árvore — vira um orbe cheio e
     // "aceso", em vez de mais um cartão, pra puxar o olho pro centro.
     {
       selector: "node[tipo='passagem']",
@@ -138,6 +144,24 @@ function estilosCytoscape() {
         "border-opacity": 0.3,
         color: cores.fg,
         "font-weight": 600,
+      },
+    },
+
+    // O Livro (ver LIVROS_RAIZ) é a raiz de tudo — a base é a Bíblia e seus
+    // livros, capítulos e conexões nascem dali. Mesmo tratamento de orbe da
+    // Passagem, mas na cor de "texto" (é um registro tipo=texto) e maior,
+    // porque fica acima até da Passagem na hierarquia.
+    {
+      selector: `node[id = "${LIVROS_RAIZ.join('"], node[id = "')}"]`,
+      style: {
+        shape: "ellipse",
+        "background-color": cores.texto,
+        "border-width": 11,
+        "border-color": cores.texto,
+        "border-opacity": 0.3,
+        color: cores.fg,
+        "font-weight": 700,
+        "font-size": 12,
       },
     },
 
@@ -162,7 +186,7 @@ function estilosCytoscape() {
       },
     },
     {
-      selector: "edge[tipo='cita']",
+      selector: "edge[tipo='cita'], edge[tipo='envolve']",
       style: {
         "line-style": "dashed",
         "line-color": cores.muted,
@@ -260,8 +284,11 @@ function iniciarGrafo(grafoData) {
   configurarFerramentas();
   configurarPaineisMoveis();
 
-  const passagemInicial = grafo.nos.find((n) => n.tipo === "passagem");
-  if (passagemInicial) centralizarEm(passagemInicial.id);
+  // A árvore nasce do livro — só cai pra uma passagem se nenhum livro
+  // estiver carregado (ver LIVROS_RAIZ).
+  const raizInicial =
+    grafo.nos.find((n) => LIVROS_RAIZ.includes(n.id)) || grafo.nos.find((n) => n.tipo === "passagem");
+  if (raizInicial) centralizarEm(raizInicial.id);
 }
 
 function mostrarErroGrafo() {
@@ -426,6 +453,7 @@ function renderizarTrilha() {
 
 function montarLegenda() {
   const itens = [
+    ["Livro", cores.texto, "forma-diamante"],
     ["Passagem", cores.passagem, "forma-diamante"],
     ["Afirmação", cores.afirmacao, ""],
     ["Pessoa", cores.pessoa, "forma-circulo"],
@@ -445,12 +473,14 @@ function montarLegenda() {
 function montarSeletorRaiz() {
   const seletor = document.querySelector("#seletor-raiz");
   const rotulo = document.querySelector("#rotulo-passagem");
-  const passagens = grafo.nos.filter((n) => n.tipo === "passagem").sort((a, b) => a.referencia.localeCompare(b.referencia));
+  const raizes = grafo.nos
+    .filter((n) => n.tipo === "passagem" || LIVROS_RAIZ.includes(n.id))
+    .sort((a, b) => rotuloDoNo(a).localeCompare(rotuloDoNo(b)));
 
-  rotulo.hidden = passagens.length === 0;
-  if (passagens.length === 0) return;
+  rotulo.hidden = raizes.length === 0;
+  if (raizes.length === 0) return;
 
-  seletor.innerHTML = passagens.map((p) => `<option value="${p.id}">${escapar(p.referencia)}</option>`).join("");
+  seletor.innerHTML = raizes.map((n) => `<option value="${n.id}">${escapar(rotuloDoNo(n))}</option>`).join("");
   seletor.addEventListener("change", () => centralizarEm(seletor.value));
 }
 
@@ -600,10 +630,19 @@ function mostrarDetalhesNo(no) {
   }
 }
 
+function rotuloPorId(id) {
+  const no = grafo.nos.find((n) => n.id === id);
+  return no ? rotuloDoNo(no) : id;
+}
+
 function mostrarDetalhesAresta(aresta) {
   const painel = document.querySelector("#detalhes");
   if (aresta.tipo === "cita") {
-    painel.innerHTML = `${eyebrow(cores.muted, "Cita")}<p>${escapar(aresta.origem)} cita ${escapar(aresta.destino)}.</p>`;
+    painel.innerHTML = `${eyebrow(cores.muted, "Cita")}<p>${escapar(rotuloPorId(aresta.origem))} cita ${escapar(rotuloPorId(aresta.destino))}.</p>`;
+    return;
+  }
+  if (aresta.tipo === "envolve") {
+    painel.innerHTML = `${eyebrow(cores.muted, "Envolve")}<p>${escapar(rotuloPorId(aresta.origem))} é uma afirmação sobre ${escapar(rotuloPorId(aresta.destino))}.</p>`;
     return;
   }
   const fontes = (aresta.fontes || []).map((f) => `<li>nível ${f.nivel} — ${escapar(f.descricao)}</li>`).join("");

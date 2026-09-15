@@ -71,6 +71,15 @@ describe("compilarGrafo", () => {
     assert.ok(citas.some((a) => a.origem === "gen-01" && a.destino === "moises"));
     assert.ok(citas.some((a) => a.origem === "gen-01" && a.destino === "af-1"));
   });
+
+  test("afirmação gera arestas 'envolve' para registros_envolvidos, mesmo sem nenhuma ligação as conectar", () => {
+    const afirmacoesComEnvolvidos = [{ id: "af-1", texto: "t", datacao: [], registros_envolvidos: ["moises"] }];
+    const { arestas } = compilarGrafo(registros, afirmacoesComEnvolvidos, [], []);
+    const envolve = arestas.filter((a) => a.tipo === "envolve");
+    assert.equal(envolve.length, 1);
+    assert.equal(envolve[0].origem, "af-1");
+    assert.equal(envolve[0].destino, "moises");
+  });
 });
 
 describe("compilarTimeline", () => {
