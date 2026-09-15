@@ -62,12 +62,16 @@ function truncar(texto, max) {
 }
 
 async function carregarJSON(caminho) {
+  const controle = new AbortController();
+  const tempoLimite = setTimeout(() => controle.abort(), 10000);
   try {
-    const resposta = await fetch(caminho);
+    const resposta = await fetch(caminho, { signal: controle.signal });
     if (!resposta.ok) return null;
     return await resposta.json();
   } catch {
     return null;
+  } finally {
+    clearTimeout(tempoLimite);
   }
 }
 
@@ -211,31 +215,41 @@ function iniciarGrafo(grafoData) {
   document.querySelector("#mapa-layout").hidden = semDados;
   if (semDados) return;
 
-  cy = cytoscape({
-    container: document.querySelector("#grafo-canvas"),
-    elements: elementosCytoscape(grafo),
-    style: estilosCytoscape(),
-    layout: { name: "breadthfirst", circle: true, spacingFactor: 1.4, animate: animacoesOk() },
-    wheelSensitivity: 0.3,
-  });
+  // Se o Cytoscape falhar por qualquer motivo (CDN bloqueado, canvas
+  // indisponível, dado inesperado), isso não pode deixar a tela travada
+  // em "carregando" — mostra um estado de erro em vez de travar em branco.
+  try {
+    cy = cytoscape({
+      container: document.querySelector("#grafo-canvas"),
+      elements: elementosCytoscape(grafo),
+      style: estilosCytoscape(),
+      layout: { name: "breadthfirst", circle: true, spacingFactor: 1.4, animate: animacoesOk() },
+      wheelSensitivity: 0.3,
+    });
 
-  aplicarTamanhoPorGrau();
+    aplicarTamanhoPorGrau();
 
-  cy.on("tap", "node", (evento) => centralizarEm(evento.target.id()));
-  cy.on("tap", "edge", (evento) => {
-    mostrarDetalhesAresta(evento.target.data());
-    abrirDetalhesSeMovel();
-  });
-  cy.on("tap", (evento) => {
-    if (evento.target === cy) {
-      limparDetalhes();
-      limparFoco();
-    }
-  });
+    cy.on("tap", "node", (evento) => centralizarEm(evento.target.id()));
+    cy.on("tap", "edge", (evento) => {
+      mostrarDetalhesAresta(evento.target.data());
+      abrirDetalhesSeMovel();
+    });
+    cy.on("tap", (evento) => {
+      if (evento.target === cy) {
+        limparDetalhes();
+        limparFoco();
+      }
+    });
 
-  cy.on("mouseover", "node", (evento) => mostrarTooltip(evento.target.data()));
-  cy.on("mouseout", "node", () => (tooltip.hidden = true));
-  cy.on("mousemove", (evento) => posicionarTooltip(evento.originalEvent));
+    cy.on("mouseover", "node", (evento) => mostrarTooltip(evento.target.data()));
+    cy.on("mouseout", "node", () => (tooltip.hidden = true));
+    cy.on("mousemove", (evento) => posicionarTooltip(evento.originalEvent));
+  } catch (erro) {
+    console.error("Falha ao iniciar o grafo:", erro);
+    document.querySelector("#mapa-layout").hidden = true;
+    mostrarErroGrafo();
+    return;
+  }
 
   document.querySelector("#stat-grafo").textContent = `${grafo.nos.length} nó(s) · ${grafo.arestas.length} ligação(ões)`;
 
@@ -248,6 +262,11 @@ function iniciarGrafo(grafoData) {
 
   const passagemInicial = grafo.nos.find((n) => n.tipo === "passagem");
   if (passagemInicial) centralizarEm(passagemInicial.id);
+}
+
+function mostrarErroGrafo() {
+  const erro = document.querySelector("#mapa-erro");
+  if (erro) erro.hidden = false;
 }
 
 function mostrarTooltip(no) {
@@ -654,11 +673,20 @@ async function montarTimeline() {
 // --- Início ---------------------------------------------------------------
 
 async function iniciar() {
-  const grafoData = (await carregarJSON("grafo.json")) || { nos: [], arestas: [] };
-  iniciarGrafo(grafoData);
-  montarPassagens();
-  await montarTimeline();
-  window.addEventListener("resize", () => cy && cy.resize());
+  try {
+    const grafoData = (await carregarJSON("grafo.json")) || { nos: [], arestas: [] };
+    iniciarGrafo(grafoData);
+    montarPassagens();
+    await montarTimeline();
+    window.addEventListener("resize", () => cy && cy.resize());
+  } catch (erro) {
+    // Rede de segurança final: qualquer falha inesperada aqui não pode
+    // deixar a tela travada em "carregando" para sempre.
+    console.error("Falha ao iniciar a página:", erro);
+    document.querySelector("#mapa-carregando").hidden = true;
+    document.querySelector("#mapa-layout").hidden = true;
+    mostrarErroGrafo();
+  }
 }
 
 iniciar();

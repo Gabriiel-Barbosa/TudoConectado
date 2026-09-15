@@ -318,6 +318,11 @@ main {
   color: var(--muted-fraco);
 }
 
+.estado-vazio .etiqueta {
+  font-size: 0.78rem;
+  max-width: 320px;
+}
+
 .painel-flutuante {
   background: var(--bg-glass);
   backdrop-filter: blur(20px);
