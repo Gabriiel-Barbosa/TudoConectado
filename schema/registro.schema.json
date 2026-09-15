@@ -1,0 +1,32 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "registro.schema.json",
+  "title": "Registro",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["id", "tipo", "nome", "descricao"],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$",
+      "description": "snake_case/kebab-case, em português, sem acento e sem espaço. Nunca reaproveitado nem editado depois de criado."
+    },
+    "tipo": {
+      "type": "string",
+      "enum": ["pessoa", "lugar", "acontecimento", "texto", "objeto"]
+    },
+    "nome": {
+      "type": "string",
+      "minLength": 1
+    },
+    "alias": {
+      "type": "array",
+      "items": { "type": "string", "minLength": 1 },
+      "default": []
+    },
+    "descricao": {
+      "type": "string",
+      "minLength": 1
+    }
+  }
+}

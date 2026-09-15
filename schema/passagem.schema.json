@@ -1,0 +1,51 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "passagem.schema.json",
+  "title": "Passagem",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["id", "referencia", "afirma", "registros_citados"],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(-[a-z0-9_]+)*$"
+    },
+    "referencia": {
+      "type": "string",
+      "minLength": 1
+    },
+    "afirma": {
+      "type": "array",
+      "items": { "type": "string", "minLength": 1 },
+      "minItems": 1
+    },
+    "registros_citados": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "afirmacoes_citadas": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "IDs de dados/afirmacoes/ que esta passagem sustenta — é o que liga o capítulo às Afirmações formais (com datação e ligações), não só à prosa livre de 'afirma'."
+    },
+    "paralelos_externos": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["ligacao"],
+        "properties": {
+          "ligacao": { "type": "string" }
+        }
+      }
+    },
+    "nenhum_paralelo_conhecido": {
+      "type": "boolean",
+      "const": true
+    }
+  },
+  "oneOf": [
+    { "required": ["paralelos_externos"] },
+    { "required": ["nenhum_paralelo_conhecido"] }
+  ]
+}

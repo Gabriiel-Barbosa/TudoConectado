@@ -1,0 +1,45 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "afirmacao.schema.json",
+  "title": "Afirmação",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["id", "texto", "registros_envolvidos", "datacao"],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$"
+    },
+    "texto": {
+      "type": "string",
+      "minLength": 1
+    },
+    "registros_envolvidos": {
+      "type": "array",
+      "items": { "type": "string" },
+      "minItems": 1
+    },
+    "datacao": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["periodo", "segundo_quem"],
+        "properties": {
+          "periodo": {
+            "type": "array",
+            "description": "Margem [início, fim] em anos; negativo = a.C. Nunca um ponto único no tempo.",
+            "minItems": 2,
+            "maxItems": 2,
+            "items": { "type": "integer" }
+          },
+          "segundo_quem": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,25 @@
+name: Publicar
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  publicar:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+      - run: npm install
+      - run: npm run validar
+      - run: npm run compilar
+      - run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add docs/grafo.json docs/timeline.json
+          git diff --cached --quiet || git commit -m "chore: recompilar grafo e timeline"
+          git push

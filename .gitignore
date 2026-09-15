@@ -1,0 +1,24 @@
+# Dependências (instaladas via `npm install`, não versionadas — package-lock.json sim)
+node_modules/
+npm-debug.log*
+
+# Checklist de citações é gerado sob demanda por conferir_citacoes.js e não
+# faz parte do pipeline de publicação (validar.yml/publicar.yml só tratam
+# grafo.json e timeline.json) — fica de fora até isso virar decisão fechada
+# (ver seção 10 de arquitetura-tudo-conectado.md).
+docs/checklist_citacoes.md
+
+# Ambiente / segredos
+.env
+.env.*
+!.env.example
+
+# Editores
+.vscode/
+.idea/
+*.swp
+
+# Sistema operacional
+.DS_Store
+Thumbs.db
+desktop.ini
