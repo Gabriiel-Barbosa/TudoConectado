@@ -7,13 +7,13 @@ A metodologia completa está em [`METODOLOGIA.md`](METODOLOGIA.md); a arquitetur
 ## Pipeline
 
 ```
-dados/*.yaml  →  scripts/validar.py  →  scripts/compilar.py  →  docs/ (grafo.json, timeline.json)  →  GitHub Pages
+dados/*.yaml  →  scripts/validar.js  →  scripts/compilar.js  →  docs/ (grafo.json, timeline.json)  →  GitHub Pages
 ```
 
 1. **Captura** — cada Registro, Afirmação e Ligação é um arquivo YAML em `dados/`.
-2. **Validação** — `scripts/validar.py` recusa qualquer arquivo que não cumpra as regras da metodologia.
-3. **Compilação** — `scripts/compilar.py` combina os YAML válidos em `docs/grafo.json` e `docs/timeline.json`.
-4. **Publicação** — `docs/index.html` lê os JSON gerados e mostra o mapa, a timeline e o percurso por passagem.
+2. **Validação** — `scripts/validar.js` recusa qualquer arquivo que não cumpra as regras da metodologia.
+3. **Compilação** — `scripts/compilar.js` combina os YAML válidos em `docs/grafo.json` e `docs/timeline.json`.
+4. **Publicação** — `docs/index.html` lê os JSON gerados e mostra o grafo navegável (Cytoscape.js), a timeline e o percurso por passagem. Site estático puro, sem backend.
 
 ## Estrutura
 
@@ -24,18 +24,21 @@ dados/*.yaml  →  scripts/validar.py  →  scripts/compilar.py  →  docs/ (gra
 | `dados/ligacoes/` | Ligações entre afirmações e registros, com evidência e fontes |
 | `dados/passagens/genesis/` | Passagens de Gênesis e seus paralelos externos (ou a ausência declarada deles) |
 | `schema/` | JSON Schema de cada tipo de arquivo em `dados/` |
-| `scripts/` | Validação, compilação do grafo e checklist de citações |
+| `scripts/` | Validação, compilação do grafo, checklist de citações e seus testes (Node.js) |
 | `docs/` | Site estático publicado (gerado; `grafo.json`/`timeline.json` não são editados à mão) |
 
 ## Uso local
 
 ```bash
-pip install -r requirements.txt
-python scripts/validar.py        # valida tudo em dados/
-python scripts/compilar.py       # gera docs/grafo.json e docs/timeline.json
-python scripts/conferir_citacoes.py   # gera checklist de citações a conferir
+npm install
+npm run validar          # valida tudo em dados/
+npm run compilar         # gera docs/grafo.json e docs/timeline.json
+npm test                 # roda os testes unitários de scripts/
+npm run conferir-citacoes   # gera checklist de citações a conferir
 ```
+
+Pra ver o site localmente: `cd docs && python -m http.server 8000` (ou qualquer servidor estático) e abra `http://localhost:8000`.
 
 ## Estado atual
 
-Estrutura inicial do projeto. Nenhum dado real de Gênesis foi carregado ainda — ver seção 11 de `arquitetura-tudo-conectado.md` para os próximos passos.
+Primeiro conteúdo real carregado: autoria de Gênesis (tradição mosaica vs. Hipótese Documentária) e o manuscrito mais antigo conhecido do livro (6QpaleoGen, Rolos do Mar Morto). Ver seção 11 de `arquitetura-tudo-conectado.md` para os próximos passos — a metodologia completa (`METODOLOGIA.md`) ainda está pendente de preenchimento.

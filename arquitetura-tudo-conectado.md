@@ -2,7 +2,7 @@
 
 Este documento traduz a metodologia (`metodologia.md`) em uma estrutura técnica concreta: como os dados são guardados, como são validados, como viram um mapa navegável, e como isso chega ao GitHub Pages. Ele não substitui a metodologia — toda regra de conteúdo continua valendo como está lá. Aqui só se decide *onde* e *como* cada regra é aplicada em código.
 
-Nada neste documento foi implementado ainda. É a proposta de arquitetura para revisão antes da primeira linha de código.
+Este documento já foi implementado — schema, `validar.js`/`compilar.js`, a interface (grafo navegável em Cytoscape.js) e o CI estão rodando contra dados reais de Gênesis. O texto abaixo ainda descreve a arquitetura como decisão de projeto (é a referência de "como isso deve funcionar"), não como um plano futuro.
 
 ---
 
@@ -13,8 +13,8 @@ O sistema tem quatro etapas, cada uma alimentando a próxima:
 | Etapa | O que faz | Onde vive |
 |---|---|---|
 | **1. Captura** | Uma pessoa registra um Registro, uma Afirmação ou uma Ligação em um arquivo YAML | Pasta `dados/`, editada à mão |
-| **2. Validação** | Um script Python recusa qualquer arquivo que não cumpra as regras da metodologia | `scripts/validar.py`, roda no PR |
-| **3. Compilação** | Os YAML válidos são combinados em um único grafo (`grafo.json`) e numa timeline | `scripts/compilar.py`, roda no merge |
+| **2. Validação** | Um script Node.js recusa qualquer arquivo que não cumpra as regras da metodologia | `scripts/validar.js`, roda no PR |
+| **3. Compilação** | Os YAML válidos são combinados em um único grafo (`grafo.json`) e numa timeline | `scripts/compilar.js`, roda no merge |
 | **4. Publicação** | Uma página estática lê `grafo.json` e mostra o mapa e as passagens | `docs/`, servido pelo GitHub Pages |
 
 Nenhuma etapa depende de banco de dados externo. Tudo é arquivo de texto no Git, como já decidido na seção 10 da metodologia.
@@ -48,9 +48,9 @@ tudo-conectado/
 │   ├── ligacao.schema.json
 │   └── passagem.schema.json
 ├── scripts/
-│   ├── validar.py
-│   ├── compilar.py
-│   └── conferir_citacoes.py
+│   ├── validar.js
+│   ├── compilar.js
+│   └── conferir_citacoes.js
 ├── docs/                           # site publicado pelo GitHub Pages
 │   ├── index.html
 │   ├── grafo.json                  # gerado, não editado à mão
@@ -146,7 +146,7 @@ O campo `nenhum_paralelo_conhecido` existe para tornar a ausência visível, com
 
 ---
 
-## 5. Validação automática (`scripts/validar.py`)
+## 5. Validação automática (`scripts/validar.js`)
 
 O script roda em todo Pull Request e recusa o merge se qualquer regra abaixo for violada. Cada linha da tabela aponta para a seção correspondente da metodologia:
 
@@ -162,13 +162,13 @@ O script roda em todo Pull Request e recusa o merge se qualquer regra abaixo for
 | Toda passagem tem `paralelos_externos` OU `nenhum_paralelo_conhecido: true` — nunca os dois ausentes | Seção 11 |
 | IDs referenciados (`registros_envolvidos`, `entre`, etc.) existem de fato como arquivos | integridade referencial |
 
-O que o script **não** consegue verificar — e por isso continua exigindo revisão humana — é se a citação realmente diz o que se afirma que ela diz. Isso é o objeto da seção 7 da metodologia e fica com `scripts/conferir_citacoes.py`, que por enquanto é uma lista de checklist gerada automaticamente (uma linha por fonte citada, para marcar manualmente "conferido: sim/não"), não uma verificação automática de conteúdo.
+O que o script **não** consegue verificar — e por isso continua exigindo revisão humana — é se a citação realmente diz o que se afirma que ela diz. Isso é o objeto da seção 7 da metodologia e fica com `scripts/conferir_citacoes.js`, que por enquanto é uma lista de checklist gerada automaticamente (uma linha por fonte citada, para marcar manualmente "conferido: sim/não"), não uma verificação automática de conteúdo.
 
-O schema JSON (`schema/*.schema.json`) implementa a parte estrutural (campos obrigatórios, tipos, enums); `validar.py` implementa as regras que cruzam campos ou arquivos, que um JSON Schema sozinho não expressa.
+O schema JSON (`schema/*.schema.json`) implementa a parte estrutural (campos obrigatórios, tipos, enums); `validar.js` implementa as regras que cruzam campos ou arquivos, que um JSON Schema sozinho não expressa.
 
 ---
 
-## 6. Compilação do grafo (`scripts/compilar.py`)
+## 6. Compilação do grafo (`scripts/compilar.js`)
 
 Depois que os dados passam na validação, este script lê todos os YAML de `dados/` e gera dois arquivos em `docs/`:
 
@@ -189,7 +189,7 @@ A página (seção 10 da metodologia já antecipa isso como "fica para depois, p
 2. **Linha do tempo** — Afirmações plotadas com sua margem de datação, agrupadas por `segundo_quem` quando há datações concorrentes.
 3. **Percurso por passagem** — lista de passagens de Gênesis na ordem do texto, cada uma mostrando o que foi encontrado e, quando for o caso, "nenhum paralelo externo conhecido" — a visão que mais importa para a seção 11 da metodologia (tornar o vazio visível).
 
-Biblioteca de visualização ainda em aberto (candidatos simples: vis-network ou d3 para o grafo; uma timeline SVG feita à mão para a linha do tempo, dado que o volume de dados é pequeno no início). Isso pode ser decidido só quando houver dados reais de Gênesis 1–10 para testar contra, seguindo o mesmo princípio da seção 10 da metodologia ("estruturas desenhadas antes de existir conteúdo quase sempre precisam ser refeitas").
+Biblioteca de visualização: **Cytoscape.js** (via CDN, sem bundler) para o grafo — nós dimensionados pelo grau de conexão, layout `breadthfirst` radial centralizado no nó clicado, spotlight na vizinhança. A timeline é uma lista vertical em HTML/CSS puro (sem lib), suficiente para o volume atual de dados.
 
 ---
 
@@ -197,8 +197,8 @@ Biblioteca de visualização ainda em aberto (candidatos simples: vis-network ou
 
 Dois workflows do GitHub Actions:
 
-- **`validar.yml`** — roda em todo Pull Request. Executa `scripts/validar.py` contra os arquivos alterados. PR não pode ser mesclado se falhar.
-- **`publicar.yml`** — roda em todo push para `main`. Executa `scripts/validar.py` (rede de segurança) e depois `scripts/compilar.py`, commitando `grafo.json`/`timeline.json` atualizados de volta em `docs/`. O GitHub Pages publica automaticamente a partir daí.
+- **`validar.yml`** — roda em todo Pull Request. Executa `scripts/validar.js` contra os arquivos alterados. PR não pode ser mesclado se falhar.
+- **`publicar.yml`** — roda em todo push para `main`. Executa `scripts/validar.js` (rede de segurança) e depois `scripts/compilar.js`, commitando `grafo.json`/`timeline.json` atualizados de volta em `docs/`. O GitHub Pages publica automaticamente a partir daí.
 
 ---
 
@@ -214,7 +214,7 @@ A arquitetura resolve isso com dois arquivos na raiz do repositório:
 
 - **`METODOLOGIA.md`** — cópia espelhada de `claude/metodologia.md`. Continua sendo o texto completo, sem resumir nada. Sempre que a metodologia mudar no Project, esta cópia precisa ser atualizada junto (é uma cópia, não um link — GitHub Pages e Claude Code não leem o Project do claude.ai).
 - **`CLAUDE.md`** — arquivo que o Claude Code carrega automaticamente ao abrir o repositório (é a convenção do próprio Claude Code para instruções de projeto). Não repete a metodologia inteira; aponta pra ela e lista as regras operacionais que importam na hora de escrever código ou dados:
-  - antes de criar qualquer Ligação, rodar `scripts/validar.py` e não commitar se falhar;
+  - antes de criar qualquer Ligação, rodar `scripts/validar.js` e não commitar se falhar;
   - nunca inventar uma fonte ou uma localização de citação — se não for possível confirmar que a fonte existe e diz o que se afirma, marcar como pendente de conferência em vez de preencher;
   - respeitar a convenção de IDs da seção 4 deste documento;
   - qualquer ligação do tipo `foi_copiado_de` exige as três condições da seção 3 da metodologia, justificadas explicitamente — nunca aplicar esse tipo "porque parece óbvio";
@@ -226,15 +226,12 @@ Na prática isso significa: o repositório é autossuficiente. Alguém pode clon
 
 ## 10. Decisões em aberto
 
-Ficam para quando houver dados reais para testar, e não devem ser decididas antes disso (mesmo princípio da seção 10 da metodologia):
-
-- Biblioteca de visualização do grafo e da timeline.
 - Se `dados/passagens/` cobre só Gênesis por enquanto ou já prevê outros livros na estrutura de pastas (proposta atual: só criar `genesis/` agora; outras pastas nascem quando o percurso chegar lá, para não desenhar estrutura sem conteúdo).
-- Formato exato de `conferir_citacoes.py` — se vira um checklist em Markdown gerado, uma issue do GitHub por citação, ou uma planilha à parte.
+- Formato exato de `conferir_citacoes.js` — se vira um checklist em Markdown gerado, uma issue do GitHub por citação, ou uma planilha à parte.
+- Se a entrada de dados continua só por arquivo (edição direta/Claude Code) ou se em algum momento ganha um formulário no próprio site escrevendo via API do GitHub — decidido por ora como "só arquivo" (mais simples, sem autenticação).
 
 ## 11. Próximos passos sugeridos
 
-1. Revisar este documento e ajustar o que não fizer sentido.
-2. Criar o repositório no GitHub.
-3. Implementar o schema e `validar.py` primeiro, testando contra 2-3 ligações reais de Gênesis 10 (o trecho com mais apoio externo, segundo a seção 12 da metodologia) antes de generalizar.
-4. Só depois montar `compilar.py` e a página do GitHub Pages.
+1. Preencher `METODOLOGIA.md` (ainda é só um placeholder) — sem o texto completo da metodologia, `validar.js` não pode ser conferido contra as regras reais de força de evidência, tipos de ligação e datação.
+2. Expandir os dados reais de Gênesis além da autoria (seguir pela seção 12 da metodologia — Gênesis 10 é o trecho com mais apoio externo, segundo a arquitetura original).
+3. Cada Registro/Afirmação/Ligação nova passa por `npm run validar` e `npm test` antes de commitar (ver `CLAUDE.md`).
