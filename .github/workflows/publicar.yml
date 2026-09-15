@@ -15,6 +15,7 @@ jobs:
         with:
           node-version: "20"
       - run: npm install
+      - run: npm test
       - run: npm run validar
       - run: npm run compilar
       - run: |

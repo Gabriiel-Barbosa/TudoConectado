@@ -5,7 +5,7 @@
 
 import { existsSync, readFileSync, readdirSync } from "node:fs";
 import path from "node:path";
-import { fileURLToPath } from "node:url";
+import { fileURLToPath, pathToFileURL } from "node:url";
 import yaml from "js-yaml";
 import Ajv from "ajv";
 
@@ -195,4 +195,8 @@ function main() {
   console.log(`OK — ${total} arquivo(s) validado(s) em dados/.`);
 }
 
-main();
+export { validarRegrasDeLigacao, validarIdsUnicos, validarIntegridadeReferencial };
+
+if (import.meta.url === pathToFileURL(process.argv[1] || "").href) {
+  main();
+}

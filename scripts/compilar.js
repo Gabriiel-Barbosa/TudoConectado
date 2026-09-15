@@ -5,7 +5,7 @@
 
 import { existsSync, mkdirSync, readFileSync, readdirSync, writeFileSync } from "node:fs";
 import path from "node:path";
-import { fileURLToPath } from "node:url";
+import { fileURLToPath, pathToFileURL } from "node:url";
 import yaml from "js-yaml";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
@@ -130,4 +130,8 @@ function main() {
   );
 }
 
-main();
+export { compilarGrafo, compilarTimeline };
+
+if (import.meta.url === pathToFileURL(process.argv[1] || "").href) {
+  main();
+}

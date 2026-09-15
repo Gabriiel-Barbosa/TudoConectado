@@ -5,7 +5,8 @@
   "scripts": {
     "validar": "node scripts/validar.js",
     "compilar": "node scripts/compilar.js",
-    "conferir-citacoes": "node scripts/conferir_citacoes.js"
+    "conferir-citacoes": "node scripts/conferir_citacoes.js",
+    "test": "node --test \"scripts/**/*.test.js\""
   },
   "dependencies": {
     "ajv": "^8.17.1",
