@@ -17,8 +17,56 @@ const cores = lerCores();
 // livro entrar, soma aqui (ou isso vira um campo próprio no schema).
 const LIVROS_RAIZ = ["genesis"];
 
-const ICONE_LIVRO =
-  '<svg viewBox="0 0 24 24" class="icone"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H19a1 1 0 0 1 1 1v18a1 1 0 0 1-1 1H6.5a1 1 0 0 1 0-5H20" /></svg>';
+// Ícones da Lucide (MIT, github.com/lucide-icons/lucide), grade 24x24 —
+// só o miolo do SVG, pra servir tanto inline no HTML (cor via CSS) quanto
+// como imagem dentro dos nós do Cytoscape (cor fixa via uriIcone).
+const ICONES = {
+  livro: '<path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H19a1 1 0 0 1 1 1v18a1 1 0 0 1-1 1H6.5a1 1 0 0 1 0-5H20"/>',
+  passagem:
+    '<path d="M17 3a2 2 0 0 1 2 2v15a1 1 0 0 1-1.496.868l-4.512-2.578a2 2 0 0 0-1.984 0l-4.512 2.578A1 1 0 0 1 5 20V5a2 2 0 0 1 2-2z"/>',
+  afirmacao:
+    '<path d="M16 3a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2 1 1 0 0 1 1 1v1a2 2 0 0 1-2 2 1 1 0 0 0-1 1v2a1 1 0 0 0 1 1 6 6 0 0 0 6-6V5a2 2 0 0 0-2-2z"/><path d="M5 3a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2 1 1 0 0 1 1 1v1a2 2 0 0 1-2 2 1 1 0 0 0-1 1v2a1 1 0 0 0 1 1 6 6 0 0 0 6-6V5a2 2 0 0 0-2-2z"/>',
+  pessoa: '<path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/>',
+  lugar:
+    '<path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/>',
+  acontecimento: '<path d="M8 2v3"/><path d="M16 2v3"/><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/>',
+  texto:
+    '<path d="M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z"/><path d="M14 2v5a1 1 0 0 0 1 1h5"/><path d="M10 9H8"/><path d="M16 13H8"/><path d="M16 17H8"/>',
+  objeto:
+    '<path d="M10 2v5.632c0 .424-.272.795-.653.982A6 6 0 0 0 6 14c.006 4 3 7 5 8"/><path d="M10 5H8a2 2 0 0 0 0 4h.68"/><path d="M14 2v5.632c0 .424.272.795.652.982A6 6 0 0 1 18 14c0 4-3 7-5 8"/><path d="M14 5h2a2 2 0 0 1 0 4h-.68"/><path d="M18 22H6"/><path d="M9 2h6"/>',
+};
+
+const ROTULO_CATEGORIA = {
+  livro: "Livro",
+  passagem: "Passagem",
+  afirmacao: "Afirmação",
+  pessoa: "Pessoa",
+  lugar: "Lugar",
+  acontecimento: "Acontecimento",
+  texto: "Texto",
+  objeto: "Objeto",
+};
+
+function categoriaDoNo(no) {
+  if (LIVROS_RAIZ.includes(no.id)) return "livro";
+  if (no.tipo === "passagem" || no.tipo === "afirmacao") return no.tipo;
+  return no.subtipo;
+}
+
+function corDaCategoria(categoria) {
+  return categoria === "livro" ? cores.texto : cores[categoria] || cores.muted;
+}
+
+function iconeInline(categoria, cor) {
+  const estiloCor = cor ? ` style="color:${cor}"` : "";
+  return `<svg viewBox="0 0 24 24" class="icone" aria-hidden="true"${estiloCor}>${ICONES[categoria] || ""}</svg>`;
+}
+
+// Dentro do canvas não existe currentColor — a cor vai fixa no próprio SVG.
+function uriIcone(categoria, cor) {
+  const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="48" height="48" fill="none" stroke="${cor}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">${ICONES[categoria] || ""}</svg>`;
+  return `data:image/svg+xml;charset=utf-8,${encodeURIComponent(svg)}`;
+}
 
 const ehMovel = () => window.matchMedia("(max-width: 860px)").matches;
 const animacoesOk = () => !window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -94,9 +142,14 @@ function rotuloDoNo(no) {
 }
 
 function elementosCytoscape(g) {
-  const nos = g.nos.map((no) => ({
-    data: { ...no, rotulo: rotuloDoNo(no) },
-  }));
+  const nos = g.nos.map((no) => {
+    const categoria = categoriaDoNo(no);
+    // Livro e Passagem são orbes cheios (fundo colorido) — ícone escuro por
+    // cima; o resto é cartão escuro — ícone na cor da categoria.
+    const ehOrbe = categoria === "livro" || categoria === "passagem";
+    const corIcone = ehOrbe ? cores.bg : corDaCategoria(categoria);
+    return { data: { ...no, rotulo: rotuloDoNo(no), icone: uriIcone(categoria, corIcone) } };
+  });
   const arestas = g.arestas.map((aresta) => ({
     data: { ...aresta, source: aresta.origem, target: aresta.destino },
   }));
@@ -122,6 +175,11 @@ function estilosCytoscape() {
         width: "data(tamanho)",
         height: "data(tamanho)",
         "background-color": cores.cartaoNo,
+        "background-image": "data(icone)",
+        "background-fit": "none",
+        "background-width": "52%",
+        "background-height": "52%",
+        "background-clip": "node",
         "border-width": 2,
         "border-color": cores.muted,
         "transition-property": "opacity, text-opacity, border-width",
@@ -229,7 +287,8 @@ function aplicarTamanhoPorGrau() {
   const maxGrau = Math.max(1, ...graus);
   cy.nodes().forEach((n) => {
     const proporcao = n.degree() / maxGrau;
-    n.data("tamanho", 22 + proporcao * 26);
+    // Mínimo de 32px pra o ícone dentro do nó continuar legível.
+    n.data("tamanho", 32 + proporcao * 22);
   });
 }
 
@@ -257,6 +316,11 @@ function iniciarGrafo(grafoData) {
     return;
   }
 
+  // O container precisa estar visível ANTES do Cytoscape nascer: ele mede o
+  // tamanho do container na criação, e um container hidden mede 0x0 — zoom,
+  // centralização e até a posição dos cliques saem errados.
+  mostrarEstadoMapa("layout");
+
   // Se o Cytoscape falhar por qualquer motivo (CDN bloqueado, canvas
   // indisponível, dado inesperado), isso não pode deixar a tela travada
   // em "carregando" — mostra um estado de erro em vez de travar em branco.
@@ -271,9 +335,14 @@ function iniciarGrafo(grafoData) {
       container: document.querySelector("#grafo-canvas"),
       elements: elementosCytoscape(grafo),
       style: estilosCytoscape(),
-      layout: { name: "breadthfirst", circle: true, spacingFactor: 1.4, animate: animacoesOk() },
+      // Sem layout na criação: um layout animado aqui continuava rodando
+      // em paralelo com o de centralizarEm() e sobrescrevia as posições.
+      layout: { name: "preset" },
+      minZoom: 0.3,
+      maxZoom: 2.5,
       wheelSensitivity: 0.3,
     });
+    cy.resize();
 
     aplicarTamanhoPorGrau();
 
@@ -301,7 +370,6 @@ function iniciarGrafo(grafoData) {
   // O grafo em si já está de pé nesse ponto (Cytoscape criado com sucesso).
   // Um erro aqui embaixo é só nos controles ao redor — não faz sentido
   // esconder um grafo que já funciona por causa de um filtro que quebrou.
-  mostrarEstadoMapa("layout");
   try {
     document.querySelector("#stat-grafo").textContent = `${grafo.nos.length} nó(s) · ${grafo.arestas.length} ligação(ões)`;
 
@@ -316,14 +384,18 @@ function iniciarGrafo(grafoData) {
     // estiver carregado (ver LIVROS_RAIZ).
     const raizInicial =
       grafo.nos.find((n) => LIVROS_RAIZ.includes(n.id)) || grafo.nos.find((n) => n.tipo === "passagem");
-    if (raizInicial) centralizarEm(raizInicial.id);
+    if (raizInicial) {
+      centralizarEm(raizInicial.id);
+    } else {
+      cy.layout({ name: "breadthfirst", circle: true, spacingFactor: 1.4, padding: 60 }).run();
+    }
   } catch (erro) {
     console.error("Falha ao montar os controles do grafo:", erro);
   }
 }
 
 function mostrarTooltip(no) {
-  const categoria = LIVROS_RAIZ.includes(no.id) ? "livro" : no.subtipo || no.tipo;
+  const categoria = ROTULO_CATEGORIA[categoriaDoNo(no)] || no.tipo;
   tooltip.innerHTML = `<strong>${escapar(rotuloDoNo(no))}</strong><span>${escapar(categoria)}</span>`;
   tooltip.hidden = false;
 }
@@ -343,6 +415,7 @@ function centralizarEm(id, { registrarHistorico = true } = {}) {
     roots: alvo,
     circle: true,
     spacingFactor: 1.4,
+    padding: 60,
     animate: animacoesOk(),
     animationDuration: 400,
   }).run();
@@ -479,20 +552,10 @@ function renderizarTrilha() {
 }
 
 function montarLegenda() {
-  const itens = [
-    ["Livro", cores.texto, "forma-diamante"],
-    ["Passagem", cores.passagem, "forma-diamante"],
-    ["Afirmação", cores.afirmacao, ""],
-    ["Pessoa", cores.pessoa, "forma-circulo"],
-    ["Lugar", cores.lugar, "forma-circulo"],
-    ["Acontecimento", cores.acontecimento, "forma-circulo"],
-    ["Texto", cores.texto, "forma-circulo"],
-    ["Objeto", cores.objeto, "forma-circulo"],
-  ];
-  document.querySelector("#legenda").innerHTML = itens
+  document.querySelector("#legenda").innerHTML = Object.entries(ROTULO_CATEGORIA)
     .map(
-      ([rotulo, cor, forma]) =>
-        `<span class="item-legenda"><i class="forma ${forma}" style="background:${cor};color:${cor}"></i>${rotulo}</span>`
+      ([categoria, rotulo]) =>
+        `<span class="item-legenda">${iconeInline(categoria, corDaCategoria(categoria))}${rotulo}</span>`
     )
     .join("");
 }
@@ -586,9 +649,9 @@ function configurarBusca() {
               (no) => `
               <li>
                 <button data-id="${no.id}">
-                  <span class="ponto" style="background:${corDoNo(no)}"></span>
+                  ${iconeInline(categoriaDoNo(no), corDoNo(no))}
                   ${escapar(rotuloDoNo(no))}
-                  <span class="etiqueta">${escapar(LIVROS_RAIZ.includes(no.id) ? "livro" : no.subtipo || no.tipo)}</span>
+                  <span class="etiqueta">${escapar(ROTULO_CATEGORIA[categoriaDoNo(no)] || no.tipo)}</span>
                 </button>
               </li>`
             )
@@ -611,9 +674,7 @@ function configurarBusca() {
 }
 
 function corDoNo(no) {
-  if (no.tipo === "passagem") return cores.passagem;
-  if (no.tipo === "afirmacao") return cores.afirmacao;
-  return cores[no.subtipo] || cores.muted;
+  return corDaCategoria(categoriaDoNo(no));
 }
 
 // --- Painel de detalhes ------------------------------------------------------
@@ -628,16 +689,18 @@ function eyebrow(cor, rotulo) {
   return `<p class="eyebrow"><span class="ponto" style="background:${cor};color:${cor}"></span>${escapar(rotulo)}</p>`;
 }
 
-function eyebrowIcone(cor, iconeSvg, rotulo) {
-  return `<p class="eyebrow eyebrow-icone" style="color:${cor}">${iconeSvg}${escapar(rotulo)}</p>`;
+function eyebrowNo(no) {
+  const categoria = categoriaDoNo(no);
+  return `<p class="eyebrow eyebrow-icone" style="color:${corDoNo(no)}">${iconeInline(categoria)}${escapar(
+    ROTULO_CATEGORIA[categoria] || no.tipo
+  )}</p>`;
 }
 
 function mostrarDetalhesNo(no) {
   const painel = document.querySelector("#detalhes");
   if (no.tipo === "registro") {
-    const ehLivro = LIVROS_RAIZ.includes(no.id);
     painel.innerHTML = `
-      ${ehLivro ? eyebrowIcone(corDoNo(no), ICONE_LIVRO, "Livro") : eyebrow(corDoNo(no), no.subtipo)}
+      ${eyebrowNo(no)}
       <h2>${escapar(no.nome)}</h2>
       ${no.alias?.length ? `<p class="etiqueta">${no.alias.map(escapar).join(" · ")}</p>` : ""}
       <p>${escapar(no.descricao || "")}</p>
@@ -647,14 +710,14 @@ function mostrarDetalhesNo(no) {
       .map((d) => `<li>[${d.periodo[0]}, ${d.periodo[1]}] — ${escapar(d.segundo_quem)}</li>`)
       .join("");
     painel.innerHTML = `
-      ${eyebrow(corDoNo(no), "Afirmação")}
+      ${eyebrowNo(no)}
       <p>${escapar(no.texto)}</p>
       ${datacoes ? `<h3>Datação</h3><ul>${datacoes}</ul>` : ""}
     `;
   } else if (no.tipo === "passagem") {
     const afirma = (no.afirma || []).map((a) => `<li>${escapar(a)}</li>`).join("");
     painel.innerHTML = `
-      ${eyebrow(corDoNo(no), "Passagem")}
+      ${eyebrowNo(no)}
       <h2>${escapar(no.referencia)}</h2>
       ${afirma ? `<ul>${afirma}</ul>` : ""}
       ${no.nenhum_paralelo_conhecido ? '<p class="cartao-aviso">Nenhum paralelo externo conhecido.</p>' : ""}

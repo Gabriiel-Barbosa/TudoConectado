@@ -288,6 +288,11 @@ input {
   text-transform: capitalize;
 }
 
+#busca-resultados .icone {
+  width: 14px;
+  height: 14px;
+}
+
 .ponto {
   display: inline-block;
   width: 8px;
@@ -508,22 +513,10 @@ legend {
   font-size: 0.8rem;
 }
 
-.forma {
-  display: inline-block;
-  width: 10px;
-  height: 10px;
-  flex: none;
-  border-radius: 3px;
-  box-shadow: 0 0 8px -1px currentColor;
-}
-
-.forma-circulo {
-  border-radius: 50%;
-}
-
-.forma-diamante {
-  border-radius: 2px;
-  transform: rotate(45deg);
+.item-legenda .icone {
+  width: 15px;
+  height: 15px;
+  filter: drop-shadow(0 0 4px currentColor);
 }
 
 .amostra-linha {
@@ -534,6 +527,7 @@ legend {
   border-top-color: var(--ouro);
   border-top-style: solid;
   flex: none;
+  margin-right: 0.15rem;
 }
 
 .trilha {
