@@ -11,12 +11,19 @@ let grafo = { nos: [], arestas: [] };
 let historico = [];
 const cores = lerCores();
 
+const ehMovel = () => window.matchMedia("(max-width: 860px)").matches;
+const animacoesOk = () => !window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
 botoesNav.forEach((botao) => {
   botao.addEventListener("click", () => mudarView(botao.dataset.view));
 });
 
 function mudarView(nome) {
-  botoesNav.forEach((b) => b.classList.toggle("ativo", b.dataset.view === nome));
+  botoesNav.forEach((b) => {
+    const ativo = b.dataset.view === nome;
+    b.classList.toggle("ativo", ativo);
+    b.setAttribute("aria-selected", String(ativo));
+  });
   paineis.forEach((p) => {
     p.hidden = p.id !== `view-${nome}`;
   });
@@ -197,6 +204,8 @@ function aplicarTamanhoPorGrau() {
 
 function iniciarGrafo(grafoData) {
   grafo = grafoData;
+  document.querySelector("#mapa-carregando").hidden = true;
+
   const semDados = !grafo.nos || grafo.nos.length === 0;
   document.querySelector("#mapa-vazio").hidden = !semDados;
   document.querySelector("#mapa-layout").hidden = semDados;
@@ -206,14 +215,17 @@ function iniciarGrafo(grafoData) {
     container: document.querySelector("#grafo-canvas"),
     elements: elementosCytoscape(grafo),
     style: estilosCytoscape(),
-    layout: { name: "breadthfirst", circle: true, spacingFactor: 1.4 },
+    layout: { name: "breadthfirst", circle: true, spacingFactor: 1.4, animate: animacoesOk() },
     wheelSensitivity: 0.3,
   });
 
   aplicarTamanhoPorGrau();
 
   cy.on("tap", "node", (evento) => centralizarEm(evento.target.id()));
-  cy.on("tap", "edge", (evento) => mostrarDetalhesAresta(evento.target.data()));
+  cy.on("tap", "edge", (evento) => {
+    mostrarDetalhesAresta(evento.target.data());
+    abrirDetalhesSeMovel();
+  });
   cy.on("tap", (evento) => {
     if (evento.target === cy) {
       limparDetalhes();
@@ -232,6 +244,7 @@ function iniciarGrafo(grafoData) {
   montarFiltros();
   configurarBusca();
   configurarFerramentas();
+  configurarPaineisMoveis();
 
   const passagemInicial = grafo.nos.find((n) => n.tipo === "passagem");
   if (passagemInicial) centralizarEm(passagemInicial.id);
@@ -257,7 +270,7 @@ function centralizarEm(id, { registrarHistorico = true } = {}) {
     roots: alvo,
     circle: true,
     spacingFactor: 1.4,
-    animate: true,
+    animate: animacoesOk(),
     animationDuration: 400,
   }).run();
 
@@ -276,7 +289,69 @@ function centralizarEm(id, { registrarHistorico = true } = {}) {
   renderizarTrilha();
 
   const no = grafo.nos.find((n) => n.id === id);
-  if (no) mostrarDetalhesNo(no);
+  if (no) {
+    mostrarDetalhesNo(no);
+    abrirDetalhesSeMovel();
+  }
+}
+
+// No celular, os painéis de filtros e detalhes viram "bottom sheets"
+// abertos sob demanda (não cabem os dois flutuando ao mesmo tempo como no
+// desktop) — só um fica visível por vez.
+function configurarPaineisMoveis() {
+  const controles = document.querySelector("#mapa-controles");
+  const detalhes = document.querySelector("#detalhes");
+  const btnFiltros = document.querySelector("#btn-filtros");
+  const btnDetalhes = document.querySelector("#btn-abrir-detalhes");
+
+  const aplicarEstadoInicial = () => {
+    if (ehMovel()) {
+      controles.classList.add("oculto");
+      detalhes.classList.add("oculto");
+    } else {
+      controles.classList.remove("oculto");
+      detalhes.classList.remove("oculto");
+    }
+    atualizarPressionado();
+  };
+
+  const atualizarPressionado = () => {
+    btnFiltros.setAttribute("aria-pressed", String(!controles.classList.contains("oculto")));
+    btnDetalhes.setAttribute("aria-pressed", String(!detalhes.classList.contains("oculto")));
+  };
+
+  btnFiltros.addEventListener("click", () => {
+    if (ehMovel()) detalhes.classList.add("oculto");
+    controles.classList.toggle("oculto");
+    atualizarPressionado();
+  });
+
+  btnDetalhes.addEventListener("click", () => {
+    if (ehMovel()) controles.classList.add("oculto");
+    detalhes.classList.toggle("oculto");
+    atualizarPressionado();
+  });
+
+  document.querySelectorAll(".fechar-painel").forEach((botao) => {
+    botao.addEventListener("click", () => {
+      document.querySelector(`#${botao.dataset.fechar}`).classList.add("oculto");
+      atualizarPressionado();
+    });
+  });
+
+  aplicarEstadoInicial();
+  // Só reaplica o padrão ao cruzar o breakpoint (não a cada resize —
+  // no celular a barra de endereço aparecendo/sumindo dispara "resize" o
+  // tempo todo e fecharia um painel que o usuário acabou de abrir).
+  window.matchMedia("(max-width: 860px)").addEventListener("change", aplicarEstadoInicial);
+}
+
+function abrirDetalhesSeMovel() {
+  if (!ehMovel()) return;
+  document.querySelector("#mapa-controles").classList.add("oculto");
+  document.querySelector("#detalhes").classList.remove("oculto");
+  document.querySelector("#btn-filtros").setAttribute("aria-pressed", "false");
+  document.querySelector("#btn-abrir-detalhes").setAttribute("aria-pressed", "true");
 }
 
 function configurarFerramentas() {

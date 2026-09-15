@@ -20,16 +20,16 @@
       </div>
     </div>
 
-    <nav class="abas">
-      <button data-view="mapa" class="ativo">
+    <nav class="abas" role="tablist" aria-label="Visões do projeto">
+      <button id="tab-mapa" data-view="mapa" class="ativo" role="tab" aria-selected="true" aria-controls="view-mapa">
         <svg viewBox="0 0 16 16" class="icone"><circle cx="8" cy="3" r="1.6" /><circle cx="3" cy="12" r="1.6" /><circle cx="13" cy="12" r="1.6" /><path d="M8 4.6 4 10.4M8 4.6l4 5.8M4.6 12h6.8" /></svg>
         Mapa
       </button>
-      <button data-view="timeline">
+      <button id="tab-timeline" data-view="timeline" role="tab" aria-selected="false" aria-controls="view-timeline">
         <svg viewBox="0 0 16 16" class="icone"><circle cx="8" cy="8" r="6" /><path d="M8 4.5V8l2.6 1.6" /></svg>
         Linha do tempo
       </button>
-      <button data-view="passagens">
+      <button id="tab-passagens" data-view="passagens" role="tab" aria-selected="false" aria-controls="view-passagens">
         <svg viewBox="0 0 16 16" class="icone"><path d="M2.5 3.5h11M2.5 8h7M2.5 12.5h9" /></svg>
         Passagens
       </button>
@@ -43,7 +43,12 @@
   </header>
 
   <main>
-    <section id="view-mapa" data-view-panel>
+    <section id="view-mapa" data-view-panel role="tabpanel" aria-labelledby="tab-mapa">
+      <div id="mapa-carregando" class="estado-vazio">
+        <span class="estado-vazio-icone" aria-hidden="true">◇</span>
+        <p>Carregando grafo…</p>
+      </div>
+
       <div id="mapa-vazio" class="estado-vazio" hidden>
         <span class="estado-vazio-icone" aria-hidden="true">◇</span>
         <p>Grafo ainda não gerado.</p>
@@ -54,6 +59,10 @@
         <div id="grafo-canvas"></div>
 
         <div id="mapa-controles" class="painel-flutuante">
+          <button class="fechar-painel" data-fechar="mapa-controles" aria-label="Fechar filtros">
+            <svg viewBox="0 0 16 16" class="icone"><path d="M4 4l8 8M12 4l-8 8" /></svg>
+          </button>
+
           <p id="stat-grafo" class="stat"></p>
 
           <label id="rotulo-passagem">
@@ -77,11 +86,21 @@
 
         <div id="trilha" class="trilha painel-flutuante" hidden></div>
 
-        <aside id="detalhes" class="painel-flutuante">
+        <aside id="detalhes" class="painel-flutuante" aria-live="polite">
+          <button class="fechar-painel" data-fechar="detalhes" aria-label="Fechar detalhes">
+            <svg viewBox="0 0 16 16" class="icone"><path d="M4 4l8 8M12 4l-8 8" /></svg>
+          </button>
           <p class="vazio">Clique em um nó ou em uma ligação para ver os detalhes.</p>
         </aside>
 
         <div class="ferramentas painel-flutuante">
+          <button id="btn-filtros" class="so-movel" title="Filtros" aria-label="Mostrar filtros" aria-pressed="false">
+            <svg viewBox="0 0 16 16" class="icone"><path d="M2 3h12M4.5 8h7M7 13h2" /></svg>
+          </button>
+          <button id="btn-abrir-detalhes" class="so-movel" title="Detalhes" aria-label="Mostrar detalhes" aria-pressed="false">
+            <svg viewBox="0 0 16 16" class="icone"><circle cx="8" cy="8" r="6" /><path d="M8 7.5v3.2M8 5.3v.1" /></svg>
+          </button>
+          <span class="separador-ferramentas" aria-hidden="true"></span>
           <button id="btn-zoom-in" title="Aumentar zoom" aria-label="Aumentar zoom">
             <svg viewBox="0 0 16 16" class="icone"><circle cx="7" cy="7" r="5" /><path d="M7 4.5v5M4.5 7h5M11 11l3.5 3.5" /></svg>
           </button>
@@ -98,7 +117,7 @@
       </div>
     </section>
 
-    <section id="view-timeline" data-view-panel hidden>
+    <section id="view-timeline" data-view-panel hidden role="tabpanel" aria-labelledby="tab-timeline">
       <div id="timeline-vazio" class="estado-vazio">
         <span class="estado-vazio-icone" aria-hidden="true">◇</span>
         <p>Timeline ainda não gerada.</p>
@@ -106,7 +125,7 @@
       </div>
     </section>
 
-    <section id="view-passagens" data-view-panel hidden>
+    <section id="view-passagens" data-view-panel hidden role="tabpanel" aria-labelledby="tab-passagens">
       <div class="estado-vazio">
         <span class="estado-vazio-icone" aria-hidden="true">◇</span>
         <p>Nenhuma passagem carregada ainda.</p>
