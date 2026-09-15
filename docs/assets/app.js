@@ -17,6 +17,9 @@ const cores = lerCores();
 // livro entrar, soma aqui (ou isso vira um campo próprio no schema).
 const LIVROS_RAIZ = ["genesis"];
 
+const ICONE_LIVRO =
+  '<svg viewBox="0 0 24 24" class="icone"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H19a1 1 0 0 1 1 1v18a1 1 0 0 1-1 1H6.5a1 1 0 0 1 0-5H20" /></svg>';
+
 const ehMovel = () => window.matchMedia("(max-width: 860px)").matches;
 const animacoesOk = () => !window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
@@ -320,7 +323,8 @@ function iniciarGrafo(grafoData) {
 }
 
 function mostrarTooltip(no) {
-  tooltip.innerHTML = `<strong>${escapar(rotuloDoNo(no))}</strong><span>${escapar(no.subtipo || no.tipo)}</span>`;
+  const categoria = LIVROS_RAIZ.includes(no.id) ? "livro" : no.subtipo || no.tipo;
+  tooltip.innerHTML = `<strong>${escapar(rotuloDoNo(no))}</strong><span>${escapar(categoria)}</span>`;
   tooltip.hidden = false;
 }
 
@@ -584,7 +588,7 @@ function configurarBusca() {
                 <button data-id="${no.id}">
                   <span class="ponto" style="background:${corDoNo(no)}"></span>
                   ${escapar(rotuloDoNo(no))}
-                  <span class="etiqueta">${escapar(no.subtipo || no.tipo)}</span>
+                  <span class="etiqueta">${escapar(LIVROS_RAIZ.includes(no.id) ? "livro" : no.subtipo || no.tipo)}</span>
                 </button>
               </li>`
             )
@@ -624,11 +628,16 @@ function eyebrow(cor, rotulo) {
   return `<p class="eyebrow"><span class="ponto" style="background:${cor};color:${cor}"></span>${escapar(rotulo)}</p>`;
 }
 
+function eyebrowIcone(cor, iconeSvg, rotulo) {
+  return `<p class="eyebrow eyebrow-icone" style="color:${cor}">${iconeSvg}${escapar(rotulo)}</p>`;
+}
+
 function mostrarDetalhesNo(no) {
   const painel = document.querySelector("#detalhes");
   if (no.tipo === "registro") {
+    const ehLivro = LIVROS_RAIZ.includes(no.id);
     painel.innerHTML = `
-      ${eyebrow(corDoNo(no), no.subtipo)}
+      ${ehLivro ? eyebrowIcone(corDoNo(no), ICONE_LIVRO, "Livro") : eyebrow(corDoNo(no), no.subtipo)}
       <h2>${escapar(no.nome)}</h2>
       ${no.alias?.length ? `<p class="etiqueta">${no.alias.map(escapar).join(" · ")}</p>` : ""}
       <p>${escapar(no.descricao || "")}</p>
