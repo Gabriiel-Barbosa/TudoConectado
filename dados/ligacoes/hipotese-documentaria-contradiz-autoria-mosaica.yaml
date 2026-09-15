@@ -1,0 +1,26 @@
+id: hipotese-documentaria-contradiz-autoria-mosaica
+tipo: contradiz
+entre:
+  - registro: hipotese-documentaria
+  - afirmacao: autoria-mosaica-genesis
+evidencia:
+  tipo_de_apoio: analise_linguistica
+  forca: aceito_maioria
+  quem_sustenta:
+    - nome: "Julius Wellhausen"
+      ano: 1883
+    - nome: "Joel S. Baden"
+      ano: 2012
+fontes:
+  - nivel: 2
+    descricao: "Wellhausen, J. (1883), Prolegomena to the History of Israel (trad. inglesa; original alemão Geschichte Israels, 1878)"
+  - nivel: 2
+    descricao: "Baden, J. S. (2012), The Composition of the Pentateuch: Renewing the Documentary Hypothesis, Yale University Press"
+o_que_derrubaria: >
+  Evidência linguística ou estilística de unidade de autoria em todo o
+  Pentateuco, incompatível com a divisão do texto em fontes J/E/P/D — ou
+  um consenso acadêmico que reverta ou abandone a hipótese documentária.
+notas: >
+  "forca: aceito_maioria" descreve o consenso dentro da crítica bíblica
+  histórico-acadêmica — não implica consenso dentro de comunidades
+  religiosas que sustentam a autoria mosaica tradicional.

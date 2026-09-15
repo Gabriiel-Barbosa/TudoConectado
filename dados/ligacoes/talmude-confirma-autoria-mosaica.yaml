@@ -1,0 +1,21 @@
+id: talmude-confirma-autoria-mosaica
+tipo: confirma
+entre:
+  - afirmacao: autoria-mosaica-genesis
+  - registro: talmude-babilonico
+evidencia:
+  tipo_de_apoio: texto
+  forca: aceito_maioria
+  quem_sustenta: []
+fontes:
+  - nivel: 1
+    descricao: "Talmude Babilônico, tratado Bava Batra, fólios 14b–15a"
+o_que_derrubaria: >
+  Evidência de que essa atribuição no Talmude é uma tradição tardia sem
+  base em registro anterior, ou de que a autoria mosaica nunca foi, de
+  fato, consenso entre os próprios sábios citados na mesma passagem.
+notas: >
+  "forca: aceito_maioria" descreve o quanto essa atribuição é aceita DENTRO
+  da tradição rabínica — não é uma avaliação da força histórica da autoria
+  mosaica em si (ver a ligação
+  hipotese-documentaria-contradiz-autoria-mosaica, que trata dessa força).

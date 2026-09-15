@@ -1,4 +1,122 @@
 {
-  "nos": [],
-  "arestas": []
+  "nos": [
+    {
+      "id": "moises",
+      "tipo": "registro",
+      "subtipo": "pessoa",
+      "nome": "Moisés",
+      "alias": [],
+      "descricao": "Segundo a tradição judaico-cristã, autor do Pentateuco (incluindo Gênesis). Figura central do livro de Êxodo. Sua existência histórica e a autoria mosaica do Pentateuco são disputadas pela crítica bíblica acadêmica moderna (ver hipotese-documentaria).\n"
+    },
+    {
+      "id": "genesis",
+      "tipo": "registro",
+      "subtipo": "texto",
+      "nome": "Gênesis",
+      "alias": [
+        "Bereshit",
+        "Bereshith"
+      ],
+      "descricao": "Primeiro livro da Torá/Pentateuco e da Bíblia hebraica e cristã, com 50 capítulos, cobrindo da criação do mundo até a morte de José no Egito. O nome hebraico \"Bereshit\" (\"No princípio\") vem da primeira palavra do texto.\n"
+    },
+    {
+      "id": "hipotese-documentaria",
+      "tipo": "registro",
+      "subtipo": "texto",
+      "nome": "Hipótese Documentária (JEDP)",
+      "alias": [
+        "Documentary Hypothesis"
+      ],
+      "descricao": "Teoria de crítica bíblica segundo a qual o Pentateuco resulta da combinação de quatro fontes distintas — Javista (J), Eloísta (E), Sacerdotal (P) e Deuteronomista (D) — compiladas e editadas ao longo de séculos, em vez de escritas por um único autor. Formalizada por Julius Wellhausen em 1878/1883 e revisada por estudiosos posteriores, como Joel S. Baden.\n"
+    },
+    {
+      "id": "talmude-babilonico",
+      "tipo": "registro",
+      "subtipo": "texto",
+      "nome": "Talmude Babilônico",
+      "alias": [
+        "Bavli"
+      ],
+      "descricao": "Compilação de discussões rabínicas sobre a Mishná e a tradição legal judaica, redigida ao longo de séculos e finalizada por volta do século VI–VII d.C. na Babilônia. O tratado Bava Batra discute, entre outros temas, a autoria tradicional dos livros bíblicos.\n"
+    },
+    {
+      "id": "manuscrito-6qpaleogen",
+      "tipo": "registro",
+      "subtipo": "objeto",
+      "nome": "6QpaleoGen",
+      "alias": [
+        "6Q1"
+      ],
+      "descricao": "Fragmento de Gênesis 6:13–21 em escrita paleo-hebraica, encontrado na Gruta 6 de Qumran e datado paleograficamente entre o século III e o início do século II a.C. (~250–150 a.C.). Segundo Crawford (2012), é a cópia mais antiga de Gênesis entre os manuscritos do Mar Morto.\n"
+    },
+    {
+      "id": "autoria-mosaica-genesis",
+      "tipo": "afirmacao",
+      "texto": "Gênesis foi escrito por Moisés.",
+      "datacao": [
+        {
+          "periodo": [
+            -1446,
+            -1200
+          ],
+          "segundo_quem": "Cronologia tradicional — faixa ampla porque a própria tradição diverge internamente entre uma datação \"alta\" (~séc. XV a.C., leitura literal de 1 Reis 6:1) e uma \"baixa\" (~séc. XIII a.C., associada ao Êxodo sob Ramessés II).\n"
+        }
+      ]
+    }
+  ],
+  "arestas": [
+    {
+      "id": "6qpaleogen-confirma-genesis__0",
+      "ligacao": "6qpaleogen-confirma-genesis",
+      "origem": "genesis",
+      "destino": "manuscrito-6qpaleogen",
+      "tipo": "confirma",
+      "forca": "bem_estabelecido",
+      "fontes": [
+        {
+          "nivel": 1,
+          "descricao": "Dead Sea Scrolls Digital Library (Israel Antiquities Authority), manuscrito 6Q1 (6QpaleoGen)"
+        },
+        {
+          "nivel": 2,
+          "descricao": "Crawford, S. W. (2012), 'Genesis in the Dead Sea Scrolls', Brill"
+        }
+      ],
+      "o_que_derrubaria": "Nova análise paleográfica que revise a datação do fragmento para um período significativamente posterior, ou evidência de que o texto de 6QpaleoGen diverge do texto de Gênesis 6 a ponto de não poder ser considerado o mesmo livro.\n"
+    },
+    {
+      "id": "hipotese-documentaria-contradiz-autoria-mosaica__0",
+      "ligacao": "hipotese-documentaria-contradiz-autoria-mosaica",
+      "origem": "hipotese-documentaria",
+      "destino": "autoria-mosaica-genesis",
+      "tipo": "contradiz",
+      "forca": "aceito_maioria",
+      "fontes": [
+        {
+          "nivel": 2,
+          "descricao": "Wellhausen, J. (1883), Prolegomena to the History of Israel (trad. inglesa; original alemão Geschichte Israels, 1878)"
+        },
+        {
+          "nivel": 2,
+          "descricao": "Baden, J. S. (2012), The Composition of the Pentateuch: Renewing the Documentary Hypothesis, Yale University Press"
+        }
+      ],
+      "o_que_derrubaria": "Evidência linguística ou estilística de unidade de autoria em todo o Pentateuco, incompatível com a divisão do texto em fontes J/E/P/D — ou um consenso acadêmico que reverta ou abandone a hipótese documentária.\n"
+    },
+    {
+      "id": "talmude-confirma-autoria-mosaica__0",
+      "ligacao": "talmude-confirma-autoria-mosaica",
+      "origem": "autoria-mosaica-genesis",
+      "destino": "talmude-babilonico",
+      "tipo": "confirma",
+      "forca": "aceito_maioria",
+      "fontes": [
+        {
+          "nivel": 1,
+          "descricao": "Talmude Babilônico, tratado Bava Batra, fólios 14b–15a"
+        }
+      ],
+      "o_que_derrubaria": "Evidência de que essa atribuição no Talmude é uma tradição tardia sem base em registro anterior, ou de que a autoria mosaica nunca foi, de fato, consenso entre os próprios sábios citados na mesma passagem.\n"
+    }
+  ]
 }
