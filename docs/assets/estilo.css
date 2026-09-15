@@ -42,6 +42,16 @@
   box-sizing: border-box;
 }
 
+/* CSS que define `display` direto numa classe (ex.: .estado-vazio abaixo)
+   tem prioridade de cascata sobre o `display: none` que o navegador aplica
+   por padrão ao atributo `hidden` — então um elemento com hidden="true" e
+   uma dessas classes fica visível mesmo assim. Essa regra garante que
+   `hidden` sempre vence, não importa a classe. (Foi exatamente esse bug
+   que deixava "Carregando"/"vazio"/"erro" aparecendo ao mesmo tempo.) */
+[hidden] {
+  display: none !important;
+}
+
 html,
 body {
   height: 100%;
