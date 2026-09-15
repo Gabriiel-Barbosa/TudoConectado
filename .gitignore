@@ -18,6 +18,10 @@ docs/checklist_citacoes.md
 .idea/
 *.swp
 
+# Estado interno de ferramentas de agente (Claude Code, etc.) — nunca
+# pertence ao repositório.
+.claude/
+
 # Sistema operacional
 .DS_Store
 Thumbs.db
