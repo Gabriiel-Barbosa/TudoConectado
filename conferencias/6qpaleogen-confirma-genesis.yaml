@@ -3,38 +3,46 @@
 # (pendente -> feita) depois de conferir você mesmo.
 ligacao: 6qpaleogen-confirma-genesis
 fontes:
-  - hash: ef5500812b4a
+  - hash: e13b463e15c9
     nivel: 1
     descricao: Dead Sea Scrolls Digital Library (Israel Antiquities Authority), manuscrito 6Q1 (6QpaleoGen)
     alegacao: >-
-      A Dead Sea Scrolls Digital Library registra que o manuscrito 6Q1 (6QpaleoGen) contém texto de
-      Gênesis.
+      A Dead Sea Scrolls Digital Library (Israel Antiquities Authority) registra que o manuscrito
+      6Q1 (6QpaleoGen) contém texto do livro de Gênesis.
     veredito: confirmada
     parou_em: null
     conferido_em: https://www.deadseascrolls.org.il/explore-the-archive/manuscript/6Q1-1
     observacao: >-
-      Confirmação apoiada apenas na designação 6Q1 e no título de catálogo '6Q paleoGenesis'; campos
-      descritivos (versículos, escrita, datação) não foram obtidos.
-    data: '2026-09-17'
+      A página do acervo da IAA, no registro "6Q1-1", traz o título "6Q paleoGenesis". Isso confirma
+      a designação e a identificação do texto como Gênesis. A página, porém, só apareceu com o
+      título, sem metadados (placas, fragmentos, versículos). Por isso a confirmação vale só para a
+      identificação como Gênesis, não para trechos específicos.
+    data: '2026-09-18'
     conferido_por: contraprova
     revisao_humana: pendente
-  - hash: ed581a31d4d4
+  - hash: 84699ff45cb0
     nivel: 2
     descricao: >-
       Crawford, Sidnie White (2012), 'Genesis in the Dead Sea Scrolls', em Craig A. Evans, Joel N.
       Lohr e David L. Petersen (orgs.), The Book of Genesis: Composition, Reception, and
       Interpretation (Supplements to Vetus Testamentum 152), Brill, pp. 353–373 (6QpaleoGen na p.
       353), doi:10.1163/9789004226579_016
-    alegacao: Crawford (2012) atesta que o manuscrito 6QpaleoGen (6Q1) é uma cópia de texto de Gênesis.
+    alegacao: >-
+      Crawford (2012), na p. 353, atesta que o manuscrito 6QpaleoGen contém texto do livro de
+      Gênesis.
     veredito: nao_confirmavel
     parou_em: conteudo
     conferido_em: >-
-      https://api.crossref.org/works/10.1163/9789004226579_016;
-      https://api.crossref.org/works/10.1163/9789004226579;
-      https://scholarlycommons.pacific.edu/ed-facbooks/12/
+      https://api.crossref.org/works/10.1163/9789004226579_016 (metadados do DOI);
+      https://brill.com/view/book/edcoll/9789004226579/B9789004226579_016.xml e
+      https://brill.com/previewpdf/book/edcoll/9789004226579/B9789004226579_016.xml (ambas
+      retornaram HTTP 403)
     observacao: >-
-      Obra, organizadores, série e pp. 353–373 confirmados. O texto do capítulo não abriu (brill.com
-      403), então a p. 353 não foi lida.
-    data: '2026-09-17'
+      O Crossref confirma que a obra existe (autora, título, livro "The Book of Genesis", Brill,
+      2012) e o intervalo pp. 353–373, então a p. 353 existe. Mas não consegui ler o texto da p. 353
+      em fonte admissível: a prévia em PDF da Brill está bloqueada e as cópias em academia.edu e
+      pdfcoffee são inadmissíveis. O Crossref não trouxe os organizadores nem o número da série (SVT
+      152), então esses dados ficaram sem conferência.
+    data: '2026-09-18'
     conferido_por: contraprova
     revisao_humana: pendente

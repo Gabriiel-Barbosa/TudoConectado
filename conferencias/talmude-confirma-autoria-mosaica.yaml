@@ -3,20 +3,29 @@
 # (pendente -> feita) depois de conferir você mesmo.
 ligacao: talmude-confirma-autoria-mosaica
 fontes:
-  - hash: 3fd3df099b2f
+  - hash: 23234cb3d6fd
     nivel: 1
     descricao: Talmude Babilônico, tratado Bava Batra, fólios 14b–15a
     alegacao: >-
       O Talmude Babilônico, tratado Bava Batra, fólios 14b–15a, registra que Gênesis foi escrito por
       Moisés.
-    veredito: confirmada
-    parou_em: null
+    veredito: nao_confirmavel
+    parou_em: localizacao
     conferido_em: >-
-      https://www.lib.cam.ac.uk/collections/departments/taylor-schechter-genizah-research-unit/fragment-month/fragment-month-4
+      https://www.sefaria.org/api/texts/Bava_Batra.14b (texto padrão de Vilna com a tradução William
+      Davidson/Koren-Steinsaltz). Sefaria é uma biblioteca digital sem fins lucrativos, não uma
+      edição crítica nem uma editora universitária, então fica fora da lista de fontes admissíveis.
+      Não consultei nenhuma edição crítica ou acadêmica.
     observacao: >-
-      A baraita diz 'Moses wrote his book' (a Torá, que inclui Gênesis), e não nomeia Gênesis. Os
-      oito últimos versículos da Torá são atribuídos a Josué. A fonte consultada é secundária
-      (página da Cambridge UL sobre o fragmento da Genizá T-S D1.37).
-    data: '2026-09-17'
+      A obra existe, sem dúvida. O Sefaria mostra em 14b: "מֹשֶׁה כָּתַב סִפְרוֹ וּפָרָשַׁת בִּלְעָם
+      וְאִיּוֹב. יְהוֹשֻׁעַ כָּתַב סִפְרוֹ וּשְׁמוֹנָה פְּסוּקִים שֶׁבַּתּוֹרָה" ("Moisés escreveu o
+      seu livro, a porção de Balaão e Jó; Josué escreveu o seu livro e oito versículos da Torá").
+      Mesmo que uma edição admissível confirme esse texto, o conteúdo não bate literalmente com a
+      alegação. O trecho diz que Moisés escreveu "o seu livro", que pelo contexto é a Torá. Gênesis
+      não aparece pelo nome, e o texto atribui os oito versículos finais da Torá (a morte de Moisés)
+      a Josué. Uma redação fiel seria "atribui a Moisés a escrita do 'seu livro' (a Torá, na qual
+      Gênesis se inclui), exceto os oito versículos finais, atribuídos a Josué". Consultei só o
+      fólio 14b; o conteúdo de 15a não foi verificado.
+    data: '2026-09-18'
     conferido_por: contraprova
     revisao_humana: pendente
