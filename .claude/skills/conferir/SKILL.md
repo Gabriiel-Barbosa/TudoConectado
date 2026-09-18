@@ -66,7 +66,16 @@ receber a alegação mais seca possível.
 
 Use a ferramenta Agent com `subagent_type: contraprova`, **um agente por
 ligação**, todos na **mesma mensagem** para rodarem em paralelo. Com mais
-de 6 ligações, faça lotes de 6.
+de 6 ligações, faça lotes de 6. Ligações pequenas que usam a mesma obra
+(por exemplo, várias notas textuais citando o mesmo comentário) podem ir
+juntas num agente só: ler o livro uma vez custa menos que ler seis vezes.
+
+**Modelo:** a Contraprova roda em Sonnet por padrão (ver o arquivo do
+agente). Antes de relatar um veredito `contradiz`, ou um `nao_confirmavel`
+com `parou_em: conteudo`, confira aquela fonte de novo com
+`model: "opus"` na chamada do Agent, com o mesmo prompt. Esses são os
+vereditos que mudam os dados, e é neles que vale o modelo mais forte. Se as
+duas rodadas discordarem, grave o veredito do Opus e relate a divergência.
 
 O prompt de cada agente contém só isto:
 

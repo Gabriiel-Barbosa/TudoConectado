@@ -92,6 +92,12 @@ diz **quem pode fornecê-lo**: o usuário, você (redação e estrutura) ou uma
 fonte conferida. Colete o que faltar em **uma** pergunta agrupada, não uma
 pergunta por campo.
 
+Se o que falta é a **fonte** de um fato (obra, página, citação), dispare o
+agente `pesquisador` (Agent, `subagent_type: pesquisador`) em vez de um
+agente genérico: ele roda em Sonnet e já traz as regras de "página só se
+leu". Várias perguntas independentes podem ir para pesquisadores em
+paralelo.
+
 Para ligações, leia agora [guia-ligacao.md](guia-ligacao.md). Ele cobre
 tipo, força, nível das fontes, `o_que_derrubaria` e as três condições de
 `foi_copiado_de`.
