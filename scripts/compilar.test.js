@@ -1,6 +1,6 @@
 import { test, describe } from "node:test";
 import assert from "node:assert/strict";
-import { compilarGrafo, compilarTimeline } from "./compilar.js";
+import { compilarGrafo, compilarTimeline, compilarCapitulos } from "./compilar.js";
 
 describe("compilarGrafo", () => {
   const registros = [{ id: "moises", tipo: "pessoa", nome: "Moisés", descricao: "d" }];
@@ -160,5 +160,38 @@ describe("compilarTimeline", () => {
       },
     ];
     assert.equal(compilarTimeline(afirmacoes).length, 2);
+  });
+});
+
+describe("compilarCapitulos", () => {
+  const texto = { id: "genesis-01", livro: "Gênesis", capitulo: 1, traducao: { sigla: "X" }, versiculos: [{ n: 1, texto: "a" }] };
+  const passagem = {
+    id: "gen-01",
+    referencia: "Gênesis 1:1",
+    titulo: "Criação",
+    afirma: ["x"],
+    texto: "genesis-01",
+    conexoes: [
+      { ligacao: "b", versiculos: [5, 5], tema: "ciencia" },
+      { ligacao: "a", versiculos: [1, 2], tema: "paralelo" },
+    ],
+  };
+
+  test("gera um capítulo por passagem com texto, com notas da passagem e conexões em ordem de versículo", () => {
+    const notas = [
+      { id: "n2", passagem: "gen-01", versiculos: [3, 3] },
+      { id: "n1", passagem: "gen-01", versiculos: [1, 1] },
+      { id: "outra", passagem: "gen-02", versiculos: [1, 1] },
+    ];
+    const { capitulos, indice } = compilarCapitulos([passagem], [texto], notas);
+    assert.equal(capitulos.length, 1);
+    assert.deepEqual(capitulos[0].notas.map((n) => n.id), ["n1", "n2"]);
+    assert.deepEqual(capitulos[0].conexoes.map((c) => c.ligacao), ["a", "b"]);
+    assert.deepEqual(indice, [{ id: "genesis-01", livro: "Gênesis", capitulo: 1, passagem: "gen-01", titulo: "Criação" }]);
+  });
+
+  test("ignora passagem sem texto de leitura", () => {
+    const { capitulos } = compilarCapitulos([{ ...passagem, texto: undefined }], [texto], []);
+    assert.equal(capitulos.length, 0);
   });
 });

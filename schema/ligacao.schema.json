@@ -4,7 +4,15 @@
   "title": "Ligação",
   "type": "object",
   "additionalProperties": false,
-  "required": ["id", "tipo", "entre", "evidencia", "fontes", "o_que_derrubaria", "notas"],
+  "required": [
+    "id",
+    "tipo",
+    "entre",
+    "evidencia",
+    "fontes",
+    "o_que_derrubaria",
+    "notas"
+  ],
   "properties": {
     "id": {
       "type": "string",
@@ -25,33 +33,64 @@
         "minProperties": 1,
         "maxProperties": 1,
         "properties": {
-          "afirmacao": { "type": "string" },
-          "registro": { "type": "string" }
+          "afirmacao": {
+            "type": "string"
+          },
+          "registro": {
+            "type": "string"
+          }
         }
       }
     },
     "evidencia": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["tipo_de_apoio", "forca", "quem_sustenta"],
+      "required": [
+        "tipo_de_apoio",
+        "forca",
+        "quem_sustenta"
+      ],
       "properties": {
         "tipo_de_apoio": {
           "type": "string",
-          "enum": ["texto", "inscricao", "achado_arqueologico", "moedas", "analise_linguistica", "nenhum"]
+          "enum": [
+            "texto",
+            "inscricao",
+            "achado_arqueologico",
+            "moedas",
+            "analise_linguistica",
+            "nenhum",
+            "medicao_cientifica"
+          ],
+          "description": "medicao_cientifica: medição em ciência natural (ex.: datação radiométrica, observação astronômica)."
         },
         "forca": {
           "type": "string",
-          "enum": ["bem_estabelecido", "aceito_maioria", "disputado", "poucos", "especulacao"]
+          "enum": [
+            "bem_estabelecido",
+            "aceito_maioria",
+            "disputado",
+            "poucos",
+            "especulacao"
+          ]
         },
         "quem_sustenta": {
           "type": "array",
           "items": {
             "type": "object",
             "additionalProperties": false,
-            "required": ["nome", "ano"],
+            "required": [
+              "nome",
+              "ano"
+            ],
             "properties": {
-              "nome": { "type": "string", "minLength": 1 },
-              "ano": { "type": "integer" }
+              "nome": {
+                "type": "string",
+                "minLength": 1
+              },
+              "ano": {
+                "type": "integer"
+              }
             }
           }
         }
@@ -63,9 +102,16 @@
       "items": {
         "type": "object",
         "additionalProperties": false,
-        "required": ["nivel", "descricao"],
+        "required": [
+          "nivel",
+          "descricao"
+        ],
         "properties": {
-          "nivel": { "type": "integer", "minimum": 1, "maximum": 4 },
+          "nivel": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 4
+          },
           "descricao": {
             "type": "string",
             "minLength": 1,
@@ -86,21 +132,43 @@
     "justificativa_copia": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["semelhanca_especifica", "anterioridade_comprovada", "caminho_plausivel"],
+      "required": [
+        "semelhanca_especifica",
+        "anterioridade_comprovada",
+        "caminho_plausivel"
+      ],
       "properties": {
-        "semelhanca_especifica": { "type": "string", "minLength": 1 },
-        "anterioridade_comprovada": { "type": "string", "minLength": 1 },
-        "caminho_plausivel": { "type": "string", "minLength": 1 }
+        "semelhanca_especifica": {
+          "type": "string",
+          "minLength": 1
+        },
+        "anterioridade_comprovada": {
+          "type": "string",
+          "minLength": 1
+        },
+        "caminho_plausivel": {
+          "type": "string",
+          "minLength": 1
+        }
       }
     },
     "notas": {
-      "type": ["string", "null"]
+      "type": [
+        "string",
+        "null"
+      ]
     }
   },
   "if": {
-    "properties": { "tipo": { "const": "foi_copiado_de" } }
+    "properties": {
+      "tipo": {
+        "const": "foi_copiado_de"
+      }
+    }
   },
   "then": {
-    "required": ["justificativa_copia"]
+    "required": [
+      "justificativa_copia"
+    ]
   }
 }

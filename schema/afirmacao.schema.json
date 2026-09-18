@@ -4,7 +4,11 @@
   "title": "Afirmação",
   "type": "object",
   "additionalProperties": false,
-  "required": ["id", "texto", "registros_envolvidos", "datacao"],
+  "required": [
+    "id",
+    "texto",
+    "registros_envolvidos"
+  ],
   "properties": {
     "id": {
       "type": "string",
@@ -16,7 +20,9 @@
     },
     "registros_envolvidos": {
       "type": "array",
-      "items": { "type": "string" },
+      "items": {
+        "type": "string"
+      },
       "minItems": 1
     },
     "datacao": {
@@ -25,14 +31,19 @@
       "items": {
         "type": "object",
         "additionalProperties": false,
-        "required": ["periodo", "segundo_quem"],
+        "required": [
+          "periodo",
+          "segundo_quem"
+        ],
         "properties": {
           "periodo": {
             "type": "array",
             "description": "Margem [início, fim] em anos; negativo = a.C. Nunca um ponto único no tempo.",
             "minItems": 2,
             "maxItems": 2,
-            "items": { "type": "integer" }
+            "items": {
+              "type": "integer"
+            }
           },
           "segundo_quem": {
             "type": "string",
@@ -40,6 +51,23 @@
           }
         }
       }
+    },
+    "atemporal": {
+      "type": "boolean",
+      "const": true,
+      "description": "Declara que a afirmação é uma interpretação ou tese sem data própria (ex.: \"os dias de Gênesis 1 não precisam ser de 24 horas\"). Uma afirmação ou tem datacao ou declara atemporal: true — nunca fica sem data por esquecimento (mesmo princípio de nenhum_paralelo_conhecido)."
     }
-  }
+  },
+  "oneOf": [
+    {
+      "required": [
+        "datacao"
+      ]
+    },
+    {
+      "required": [
+        "atemporal"
+      ]
+    }
+  ]
 }

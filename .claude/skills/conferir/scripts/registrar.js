@@ -16,7 +16,8 @@
 import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import path from "node:path";
 import yaml from "js-yaml";
-import { CONFERENCIAS, VEREDITOS, carregarConferencia, carregarDados, hashFonte, hoje, toRel } from "./lib-dados.js";
+import { CONFERENCIAS, VEREDITOS, carregarConferencia, carregarDados,
+  conferiveis, hashFonte, hoje, toRel } from "./lib-dados.js";
 
 const PAROU_EM = [null, "existencia_da_obra", "localizacao", "conteudo"];
 
@@ -45,7 +46,7 @@ try {
   console.error(erro.message);
   process.exit(2);
 }
-const ligacoes = new Map(dados.ligacoes.map((l) => [l.dado?.id, l.dado]));
+const ligacoes = new Map(conferiveis(dados).map((l) => [l.dado?.id, l.dado]));
 
 const erros = [];
 const gravacoes = [];
@@ -53,7 +54,7 @@ const gravacoes = [];
 for (const item of entrada) {
   const ligacao = ligacoes.get(item.ligacao);
   if (!ligacao) {
-    erros.push(`ligação '${item.ligacao}' não existe em dados/ligacoes/`);
+    erros.push(`ligação ou nota '${item.ligacao}' não existe em dados/ligacoes/ nem em dados/notas/`);
     continue;
   }
   const atuais = new Map((ligacao.fontes || []).map((f) => [hashFonte(ligacao, f), f]));

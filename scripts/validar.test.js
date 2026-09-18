@@ -1,6 +1,57 @@
 import { test, describe } from "node:test";
 import assert from "node:assert/strict";
-import { validarRegrasDeLigacao, validarDirecaoDeLigacao, validarIdsUnicos, validarIntegridadeReferencial } from "./validar.js";
+import {
+  validarRegrasDeLigacao,
+  validarDirecaoDeLigacao,
+  validarIdsUnicos,
+  validarIntegridadeReferencial,
+  validarCapitulos,
+} from "./validar.js";
+
+describe("validarCapitulos", () => {
+  const texto = (versiculos) => ["t.yaml", { id: "genesis-01", versiculos: versiculos.map((n) => ({ n, texto: "x" })) }];
+  const passagem = (extra = {}) => ["p.yaml", { id: "gen-01", texto: "genesis-01", ...extra }];
+  const base = (extra = {}) => ({
+    texto_biblico: [texto([1, 2, 3])],
+    passagem: [passagem(extra.passagem)],
+    ligacao: [["l.yaml", { id: "lig" }]],
+    nota_textual: extra.notas || [],
+  });
+
+  test("passa com texto contínuo, âncoras dentro do capítulo e referências existentes", () => {
+    const dados = base({
+      passagem: { conexoes: [{ ligacao: "lig", versiculos: [1, 3], tema: "paralelo" }] },
+      notas: [["n.yaml", { id: "n", passagem: "gen-01", versiculos: [2, 2] }]],
+    });
+    assert.deepEqual(validarCapitulos(dados), []);
+  });
+
+  test("recusa versículo pulado na numeração", () => {
+    const dados = { ...base(), texto_biblico: [texto([1, 3])] };
+    assert.ok(validarCapitulos(dados).some((e) => /sem buraco/.test(e)));
+  });
+
+  test("recusa âncora além do fim do capítulo e âncora invertida", () => {
+    const dados = base({
+      passagem: { conexoes: [{ ligacao: "lig", versiculos: [2, 9], tema: "ciencia" }] },
+      notas: [["n.yaml", { id: "n", passagem: "gen-01", versiculos: [3, 1] }]],
+    });
+    const erros = validarCapitulos(dados);
+    assert.ok(erros.some((e) => /capítulo tem 3/.test(e)));
+    assert.ok(erros.some((e) => /maior que o último/.test(e)));
+  });
+
+  test("recusa texto, ligação e passagem inexistentes", () => {
+    const dados = base({
+      passagem: { texto: "fantasma", conexoes: [{ ligacao: "nao-existe", versiculos: [1, 1], tema: "paralelo" }] },
+      notas: [["n.yaml", { id: "n", passagem: "outra", versiculos: [1, 1] }]],
+    });
+    const erros = validarCapitulos(dados);
+    assert.ok(erros.some((e) => /texto 'fantasma' não existe/.test(e)));
+    assert.ok(erros.some((e) => /ligação 'nao-existe'/.test(e)));
+    assert.ok(erros.some((e) => /passagem 'outra' não existe/.test(e)));
+  });
+});
 
 describe("validarRegrasDeLigacao", () => {
   test("passa quando há fonte de nível 1", () => {

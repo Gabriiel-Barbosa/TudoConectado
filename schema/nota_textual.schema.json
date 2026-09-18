@@ -1,0 +1,62 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "nota_textual.schema.json",
+  "title": "Nota textual",
+  "description": "Uma observação sobre o próprio texto de um trecho bíblico: onde a tradução é discutida (o hebraico admite leituras diferentes) ou onde os testemunhos antigos diferem (variante textual). Ancorada em versículos de uma Passagem, com fontes que passam pela Contraprova como as de uma ligação.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["id", "tipo", "passagem", "versiculos", "titulo", "descricao", "fontes"],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$"
+    },
+    "tipo": {
+      "type": "string",
+      "enum": ["traducao", "variante"],
+      "description": "traducao: o original admite leituras diferentes, e traduções divergem. variante: manuscritos ou versões antigas trazem textos diferentes."
+    },
+    "passagem": { "type": "string", "minLength": 1 },
+    "versiculos": {
+      "type": "array",
+      "description": "[primeiro, último] versículo do capítulo a que a nota se refere.",
+      "minItems": 2,
+      "maxItems": 2,
+      "items": { "type": "integer", "minimum": 1 }
+    },
+    "titulo": { "type": "string", "minLength": 1 },
+    "descricao": { "type": "string", "minLength": 1 },
+    "leituras": {
+      "type": "array",
+      "description": "Opcional: as leituras em disputa e quem adota cada uma, como as fontes registram.",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["leitura", "quem"],
+        "properties": {
+          "leitura": { "type": "string", "minLength": 1 },
+          "quem": { "type": "string", "minLength": 1 }
+        }
+      }
+    },
+    "fontes": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["nivel", "descricao"],
+        "properties": {
+          "nivel": { "type": "integer", "minimum": 1, "maximum": 4 },
+          "descricao": {
+            "type": "string",
+            "minLength": 1,
+            "description": "Localização exata: página, capítulo/versículo, coluna/linha — nunca só o título."
+          },
+          "url": { "type": "string", "pattern": "^https://[^\\s]+$" }
+        }
+      }
+    },
+    "notas": { "type": ["string", "null"] }
+  }
+}

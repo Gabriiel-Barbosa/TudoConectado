@@ -14,6 +14,37 @@
       "type": "string",
       "minLength": 1
     },
+    "titulo": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Título redigido pelo projeto (não o subtítulo de uma tradução, que pode ter direitos próprios)."
+    },
+    "texto": {
+      "type": "string",
+      "description": "Id em dados/textos/ do capítulo lido na tela de leitura (ex.: genesis-01)."
+    },
+    "conexoes": {
+      "type": "array",
+      "description": "Ligações que aparecem como card junto a versículos na tela de leitura.",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["ligacao", "versiculos", "tema"],
+        "properties": {
+          "ligacao": { "type": "string" },
+          "versiculos": {
+            "type": "array",
+            "minItems": 2,
+            "maxItems": 2,
+            "items": { "type": "integer", "minimum": 1 }
+          },
+          "tema": {
+            "type": "string",
+            "enum": ["paralelo", "ciencia", "leitura_literal", "leitura_nao_literal", "contexto"]
+          }
+        }
+      }
+    },
     "afirma": {
       "type": "array",
       "items": { "type": "string", "minLength": 1 },

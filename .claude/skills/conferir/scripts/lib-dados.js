@@ -49,16 +49,24 @@ export function carregarDados() {
     afirmacoes: carregarPasta(path.join(DADOS, "afirmacoes")),
     ligacoes: carregarPasta(path.join(DADOS, "ligacoes")),
     passagens: carregarPasta(path.join(DADOS, "passagens")),
+    notas: carregarPasta(path.join(DADOS, "notas")),
   };
+}
+
+// Tudo o que tem fontes a conferir: ligações e notas textuais (tradução
+// discutida, variante). As duas categorias compartilham o espaço de ids.
+export function conferiveis(dados) {
+  return [...dados.ligacoes, ...dados.notas];
 }
 
 // O hash identifica "esta fonte, sustentando esta ligação". Se a descrição
 // da fonte, o nível, o tipo da ligação ou as pontas mudarem, o hash muda e o
-// veredito antigo deixa de valer — ele conferiu outra coisa.
+// veredito antigo deixa de valer — ele conferiu outra coisa. Numa nota
+// textual, o papel das pontas é da passagem e dos versículos.
 export function hashFonte(ligacao, fonte) {
   const base = JSON.stringify({
     tipo: ligacao.tipo,
-    entre: ligacao.entre,
+    entre: ligacao.entre ?? { passagem: ligacao.passagem, versiculos: ligacao.versiculos },
     nivel: fonte.nivel,
     descricao: fonte.descricao,
   });

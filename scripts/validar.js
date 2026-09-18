@@ -24,6 +24,8 @@ const CATEGORIAS = {
   afirmacao: { schema: "afirmacao.schema.json", pastas: [path.join(DADOS, "afirmacoes")] },
   ligacao: { schema: "ligacao.schema.json", pastas: [path.join(DADOS, "ligacoes")] },
   passagem: { schema: "passagem.schema.json", pastas: [path.join(DADOS, "passagens")] },
+  texto_biblico: { schema: "texto_biblico.schema.json", pastas: [path.join(DADOS, "textos")] },
+  nota_textual: { schema: "nota_textual.schema.json", pastas: [path.join(DADOS, "notas")] },
 };
 
 const ajv = new Ajv({ allErrors: true, strict: false });
@@ -161,6 +163,52 @@ function validarIntegridadeReferencial(dadosPorCategoria, idsPorCategoria) {
   return erros;
 }
 
+// Tela de leitura: texto bíblico, passagens e notas textuais precisam se
+// encaixar. Versículos numerados 1..N sem buraco (um versículo pulado na
+// transcrição passaria despercebido na leitura); toda âncora [a, b] cai
+// dentro do capítulo; toda referência cruzada existe.
+function validarCapitulos(dadosPorCategoria) {
+  const erros = [];
+  const textos = new Map((dadosPorCategoria.texto_biblico || []).map(([rel, t]) => [t.id, { rel, t }]));
+  const passagens = new Map((dadosPorCategoria.passagem || []).map(([rel, p]) => [p.id, { rel, p }]));
+  const ligacoes = new Set((dadosPorCategoria.ligacao || []).map(([, l]) => l.id));
+
+  for (const [rel, texto] of dadosPorCategoria.texto_biblico || []) {
+    (texto.versiculos || []).forEach((v, i) => {
+      if (v.n !== i + 1) {
+        erros.push(`${rel}: versículo na posição ${i + 1} tem n=${v.n}; a numeração precisa ser 1, 2, 3… sem buraco`);
+      }
+    });
+  }
+
+  const totalDeVersiculos = (passagem) => textos.get(passagem?.texto)?.t.versiculos?.length ?? null;
+  const conferirAncora = (rel, onde, [inicio, fim], passagem) => {
+    if (inicio > fim) erros.push(`${rel}: ${onde} tem versículos [${inicio}, ${fim}]; o primeiro é maior que o último`);
+    const total = totalDeVersiculos(passagem);
+    if (total !== null && fim > total) erros.push(`${rel}: ${onde} vai até o versículo ${fim}, mas o capítulo tem ${total}`);
+  };
+
+  for (const [rel, passagem] of dadosPorCategoria.passagem || []) {
+    if (passagem.texto && !textos.has(passagem.texto)) {
+      erros.push(`${rel}: texto '${passagem.texto}' não existe em dados/textos/`);
+    }
+    for (const conexao of passagem.conexoes || []) {
+      if (!ligacoes.has(conexao.ligacao)) erros.push(`${rel}: conexão com a ligação '${conexao.ligacao}', que não existe`);
+      conferirAncora(rel, `a conexão '${conexao.ligacao}'`, conexao.versiculos, passagem);
+    }
+  }
+
+  for (const [rel, nota] of dadosPorCategoria.nota_textual || []) {
+    const passagem = passagens.get(nota.passagem)?.p;
+    if (!passagem) {
+      erros.push(`${rel}: passagem '${nota.passagem}' não existe`);
+      continue;
+    }
+    conferirAncora(rel, "a nota", nota.versiculos, passagem);
+  }
+  return erros;
+}
+
 function main() {
   const erros = [];
   const dadosPorCategoria = {};
@@ -169,6 +217,8 @@ function main() {
     afirmacao: new Map(),
     ligacao: new Map(),
     passagem: new Map(),
+    texto_biblico: new Map(),
+    nota_textual: new Map(),
   };
 
   for (const [categoria, cfg] of Object.entries(CATEGORIAS)) {
@@ -213,6 +263,8 @@ function main() {
   erros.push(...validarRegrasDeLigacao(dadosPorCategoria.ligacao));
   erros.push(...validarDirecaoDeLigacao(dadosPorCategoria.ligacao));
   erros.push(...validarIntegridadeReferencial(dadosPorCategoria, idsPorCategoria));
+  erros.push(...validarRegrasDeLigacao(dadosPorCategoria.nota_textual));
+  erros.push(...validarCapitulos(dadosPorCategoria));
 
   if (erros.length > 0) {
     console.log(`${erros.length} problema(s) encontrado(s):\n`);
@@ -225,7 +277,13 @@ function main() {
   console.log(`OK — ${total} arquivo(s) validado(s) em dados/.`);
 }
 
-export { validarRegrasDeLigacao, validarDirecaoDeLigacao, validarIdsUnicos, validarIntegridadeReferencial };
+export {
+  validarRegrasDeLigacao,
+  validarDirecaoDeLigacao,
+  validarIdsUnicos,
+  validarIntegridadeReferencial,
+  validarCapitulos,
+};
 
 if (import.meta.url === pathToFileURL(process.argv[1] || "").href) {
   main();
