@@ -102,12 +102,19 @@ const ehMovel = () => window.matchMedia("(max-width: 860px)").matches;
 const animacoesOk = () => !window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
 botoesNav.forEach((botao) => {
-  botao.addEventListener("click", () => mudarView(botao.dataset.view));
+  botao.addEventListener("click", () => {
+    if (lerCapituloDoHash()) history.pushState(null, "", location.pathname);
+    mudarView(botao.dataset.view);
+  });
 });
 
 function mudarView(nome) {
+  // A leitura de um capítulo não tem aba própria: ela é a aba Passagens
+  // aprofundada, e é essa aba que fica marcada.
+  const aba = nome === "leitura" ? "passagens" : nome;
+  if (nome !== "leitura") fecharFolha();
   botoesNav.forEach((b) => {
-    const ativo = b.dataset.view === nome;
+    const ativo = b.dataset.view === aba;
     b.classList.toggle("ativo", ativo);
     b.setAttribute("aria-selected", String(ativo));
   });
@@ -126,6 +133,7 @@ function lerCores() {
     cartaoNo: pega("--bg-cartao-no", "rgba(22,25,33,0.95)"),
     muted: pega("--muted", "#8b8fa0"),
     ouro: pega("--ouro", "#d9a24b"),
+    violeta: pega("--violeta", "#8b6bf0"),
     accent: pega("--accent", "#34d3c9"),
     pessoa: pega("--cor-pessoa", "#e08a4b"),
     lugar: pega("--cor-lugar", "#4bc98a"),
@@ -327,7 +335,7 @@ function estilosCytoscape() {
       },
     },
     {
-      selector: "edge[tipo='cita'], edge[tipo='envolve']",
+      selector: "edge[tipo='cita'], edge[tipo='envolve'], edge[tipo='parte_de']",
       style: {
         "line-style": "dashed",
         "line-color": cores.muted,
@@ -335,6 +343,12 @@ function estilosCytoscape() {
         width: 1,
         opacity: 0.35,
       },
+    },
+    // Paralelo afirma semelhança, não dependência: sem seta (ninguém "vem"
+    // de ninguém) e numa cor própria, para não parecer uma confirmação.
+    {
+      selector: "edge[tipo='paralelo']",
+      style: { "line-color": cores.violeta, "target-arrow-shape": "none" },
     },
     { selector: "edge[forca='bem_estabelecido']", style: { width: 3, opacity: 1 } },
     { selector: "edge[forca='aceito_maioria']", style: { width: 2.5, opacity: 0.85 } },
@@ -1322,6 +1336,7 @@ const ROTULO_APOIO = {
   achado_arqueologico: "Achado arqueológico",
   moedas: "Moedas",
   analise_linguistica: "Análise linguística",
+  medicao_cientifica: "Medição científica",
   nenhum: "Sem apoio material",
 };
 
@@ -1336,6 +1351,19 @@ const ICONES_UI = {
   evidencia: '<path d="m21 21-4.34-4.34"/><circle cx="11" cy="11" r="8"/>',
   caminho:
     '<circle cx="6" cy="19" r="3"/><path d="M9 19h8.5a3.5 3.5 0 0 0 0-7h-11a3.5 3.5 0 0 1 0-7H15"/><circle cx="18" cy="5" r="3"/>',
+  // Tela de leitura (Lucide, MIT): languages, git-compare, globe, atom,
+  // book-open, arrow-left.
+  traducao:
+    '<path d="m5 8 6 6"/><path d="m4 14 6-6 2-3"/><path d="M2 5h12"/><path d="M7 2h1"/><path d="m22 22-5-10-5 10"/><path d="M14 18h6"/>',
+  variante:
+    '<circle cx="18" cy="18" r="3"/><circle cx="6" cy="6" r="3"/><path d="M13 6h3a2 2 0 0 1 2 2v7"/><path d="M11 18H8a2 2 0 0 1-2-2V9"/>',
+  paralelo:
+    '<circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/>',
+  ciencia:
+    '<circle cx="12" cy="12" r="1"/><path d="M20.2 20.2c2.04-2.03.02-7.36-4.5-11.9-4.54-4.52-9.87-6.54-11.9-4.5-2.04 2.03-.02 7.36 4.5 11.9 4.54 4.52 9.87 6.54 11.9 4.5Z"/><path d="M15.7 15.7c4.52-4.54 6.54-9.87 4.5-11.9-2.03-2.04-7.36-.02-11.9 4.5-4.52 4.54-6.54 9.87-4.5 11.9 2.03 2.04 7.36.02 11.9-4.5Z"/>',
+  leitura:
+    '<path d="M12 7v14"/><path d="M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z"/>',
+  voltar: '<path d="m12 19-7-7 7-7"/><path d="M19 12H5"/>',
   limites:
     '<path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3"/><path d="M12 9v4"/><path d="M12 17h.01"/>',
 };
@@ -1421,7 +1449,7 @@ function rotuloTipoLigacao(tipo) {
   return (tipo || "").replace(/_/g, " ");
 }
 
-const ehEstrutural = (tipo) => tipo === "cita" || tipo === "envolve";
+const ehEstrutural = (tipo) => tipo === "cita" || tipo === "envolve" || tipo === "parte_de";
 
 // No filtro, a primeira letra maiúscula vem daqui (e não de um
 // text-transform: capitalize, que também capitalizava "de" em "Foi Copiado
@@ -1447,11 +1475,20 @@ function rotuloLigacao(aresta) {
 function relacaoEstrutural(aresta, saindo) {
   if (aresta.tipo === "envolve") return saindo ? "tema desta afirmação" : "afirmação sobre este item";
   if (aresta.tipo === "cita") return saindo ? "citado nesta passagem" : "passagem que cita este item";
+  if (aresta.tipo === "parte_de") return saindo ? "livro de que esta passagem faz parte" : "passagem deste livro";
   return rotuloTipoLigacao(aresta.tipo);
 }
 
+// Datas de escala geológica ou cósmica (a idade da Terra, do universo) não
+// se leem em "4580000000 a.C.": viram "há 4,58 bilhões de anos".
 function formatarAno(ano) {
-  return ano < 0 ? `${Math.abs(ano)} a.C.` : `${ano} d.C.`;
+  const distancia = Math.abs(ano);
+  if (ano < 0 && distancia >= 1e6) {
+    const [valor, unidade] = distancia >= 1e9 ? [distancia / 1e9, "bilhões"] : [distancia / 1e6, "milhões"];
+    const numero = valor.toLocaleString("pt-BR", { maximumFractionDigits: 3 });
+    return `há ${numero} ${unidade} de anos`;
+  }
+  return ano < 0 ? `${distancia} a.C.` : `${ano} d.C.`;
 }
 
 function formatarPeriodo(periodo) {
@@ -1467,11 +1504,15 @@ const VOZ_PASSIVA = {
   confirma: "confirmado por",
   contradiz: "contradito por",
   foi_copiado_de: "copiado por",
+  paralelo: "tem paralelo em",
 };
+
+// "X paralelo Y" não é português; o verbo lido da origem precisa de ajuste.
+const VOZ_ATIVA = { paralelo: "tem paralelo com" };
 
 function verboDaLigacao(tipo, lidoDaOrigem = true) {
   if (!lidoDaOrigem && VOZ_PASSIVA[tipo]) return VOZ_PASSIVA[tipo];
-  return rotuloTipoLigacao(tipo);
+  return VOZ_ATIVA[tipo] || rotuloTipoLigacao(tipo);
 }
 
 // Natureza da relação, sempre a partir dos dados: tipo da ligação + tipo de
@@ -1773,7 +1814,11 @@ function blocoCaminho(no) {
 }
 
 function blocoAcoes(no) {
-  return `<div class="acoes-card"><button class="abrir-dossie" data-id="${no.id}">Ver ficha completa</button></div>`;
+  // Uma passagem com texto cadastrado ganha a ação principal de ler o capítulo.
+  const ler = no.texto
+    ? `<button class="abrir-leitura" data-texto="${escapar(no.texto)}">${iconeUI("leitura")}Ler o capítulo</button>`
+    : "";
+  return `<div class="acoes-card">${ler}<button class="abrir-dossie" data-id="${no.id}">Ver ficha completa</button></div>`;
 }
 
 // A seção que impede uma conexão de ser lida como afirmação mais forte do que
@@ -1885,13 +1930,16 @@ function mostrarDetalhesAresta(aresta) {
 
   // Arestas estruturais não têm força nem fonte — aparecem como contexto e
   // jamais com badge de evidência.
-  if (aresta.tipo === "cita" || aresta.tipo === "envolve") {
-    const frase =
-      aresta.tipo === "cita"
-        ? `${escapar(rotuloPorId(aresta.origem))} cita ${escapar(rotuloPorId(aresta.destino))}.`
-        : `${escapar(rotuloPorId(aresta.origem))} é uma afirmação sobre ${escapar(rotuloPorId(aresta.destino))}.`;
+  if (ehEstrutural(aresta.tipo)) {
+    const origem = escapar(rotuloPorId(aresta.origem));
+    const destino = escapar(rotuloPorId(aresta.destino));
+    const frase = {
+      cita: `${origem} cita ${destino}.`,
+      envolve: `${origem} é uma afirmação sobre ${destino}.`,
+      parte_de: `${origem} é uma passagem de ${destino}.`,
+    }[aresta.tipo];
     corpo.innerHTML = `
-      ${eyebrow(cores.muted, aresta.tipo === "cita" ? "Cita" : "Envolve")}
+      ${eyebrow(cores.muted, { cita: "Cita", envolve: "Envolve", parte_de: "Parte de" }[aresta.tipo])}
       <p class="pills"><span class="pill pill-contexto">Estrutural — sem força de evidência</span></p>
       <p class="descricao">${frase}</p>
       ${pontas}`;
@@ -1933,6 +1981,12 @@ function ligarAcoesDoPainel(raiz) {
   });
   raiz.querySelectorAll(".abrir-dossie").forEach((botao) => {
     botao.addEventListener("click", () => abrirDossie(botao.dataset.id));
+  });
+  raiz.querySelectorAll(".abrir-leitura").forEach((botao) => {
+    botao.addEventListener("click", () => {
+      fecharDossie();
+      abrirCapitulo(botao.dataset.texto);
+    });
   });
   // Citação sem url própria: leva às fontes da ligação no mesmo painel —
   // abre o <details> se estiver fechado e pisca os itens por um instante.
@@ -2114,21 +2168,433 @@ function montarPassagens() {
       return `
         <li>
           <button class="ver-no-grafo" data-id="${p.id}">
-            <strong>${escapar(p.referencia)}</strong>
+            <strong>${escapar(p.titulo ? `${p.referencia} · ${p.titulo}` : p.referencia)}</strong>
             <span class="etiqueta">${plural(citacoes, "citação", "citações")}${p.nenhum_paralelo_conhecido ? " · nenhum paralelo externo conhecido" : ""}</span>
           </button>
+          ${p.texto ? `<button class="abrir-leitura" data-texto="${escapar(p.texto)}">${iconeUI("leitura")}Ler o capítulo</button>` : ""}
         </li>
       `;
     })
     .join("");
 
   painel.innerHTML = `<ul class="lista-passagens">${itens}</ul>`;
+  painel.querySelectorAll(".abrir-leitura").forEach((botao) => {
+    botao.addEventListener("click", () => abrirCapitulo(botao.dataset.texto));
+  });
   painel.querySelectorAll(".ver-no-grafo").forEach((botao) => {
     botao.addEventListener("click", () => {
       mudarView("mapa");
       centralizarEm(botao.dataset.id);
     });
   });
+}
+
+// --- Leitura de capítulo -------------------------------------------------------
+// O capítulo lido como livro, com o que se ancora em cada versículo: notas
+// textuais (tradução discutida, variante) e conexões com o grafo (paralelo,
+// ciência, leituras). Tudo vem de docs/capitulos/<id>.json e do grafo.json;
+// a tela não cria conteúdo, só organiza o que os dados trazem.
+
+const TEMAS_LEITURA = {
+  traducao: { rotulo: "Tradução discutida", icone: "traducao", cor: "var(--teal)" },
+  variante: { rotulo: "Variante textual", icone: "variante", cor: "var(--violeta)" },
+  paralelo: { rotulo: "Paralelo em outra cultura", icone: "paralelo", cor: "var(--ouro)" },
+  ciencia: { rotulo: "O que a ciência diz", icone: "ciencia", cor: "var(--cor-lugar)" },
+  leitura_literal: { rotulo: "Leitura literal", icone: "leitura", cor: "var(--cor-pessoa)" },
+  leitura_nao_literal: { rotulo: "Leitura não literal", icone: "leitura", cor: "var(--rosa)" },
+  contexto: { rotulo: "Contexto", icone: "conexoes", cor: "var(--muted)" },
+};
+
+let indiceCapitulos = [];
+let capituloAberto = null; // { dados, itens }
+const ehLeituraLarga = () => window.matchMedia("(min-width: 1100px)").matches;
+
+async function carregarIndiceCapitulos() {
+  indiceCapitulos = (await carregarJSON("capitulos/indice.json")) || [];
+}
+
+function lerCapituloDoHash() {
+  const achado = /^#capitulo=(.+)$/.exec(location.hash);
+  return achado ? decodeURIComponent(achado[1]) : null;
+}
+
+function referenciaVersiculos(capitulo, [inicio, fim]) {
+  const trecho = inicio === fim ? `${inicio}` : `${inicio}–${fim}`;
+  return `${capitulo.livro} ${capitulo.capitulo}:${trecho}`;
+}
+
+// Notas e conexões num formato só, na ordem do texto. Uma conexão cuja
+// ligação não está no grafo (dado inconsistente) é descartada, não inventada.
+function itensDoCapitulo(capitulo) {
+  const notas = capitulo.notas.map((nota) => ({
+    id: nota.id,
+    tema: nota.tipo,
+    versiculos: nota.versiculos,
+    titulo: nota.titulo,
+    corpo: nota.descricao,
+    leituras: nota.leituras || [],
+    fontes: nota.fontes || [],
+    notas: nota.notas || null,
+    aresta: null,
+  }));
+  const conexoes = capitulo.conexoes
+    .map((conexao) => {
+      const aresta = grafo.arestas.find((a) => a.ligacao === conexao.ligacao);
+      if (!aresta) return null;
+      const sujeito = noPorId(aresta.origem);
+      const alvo = noPorId(aresta.destino);
+      // No card, o título vai inteiro: "13,8 bil…" cortado não serve para ler.
+      const nomeInteiro = (no) =>
+        no?.tipo === "afirmacao" ? `“${no.texto.trim().replace(/.$/, "")}”` : no ? rotuloDoNo(no) : "";
+      return {
+        id: conexao.ligacao,
+        tema: conexao.tema,
+        versiculos: conexao.versiculos,
+        titulo: `${nomeInteiro(sujeito)} ${verboDaLigacao(aresta.tipo)} ${nomeInteiro(alvo)}`,
+        // A explicação da ligação diz por que ela importa para o capítulo;
+        // a descrição do registro entra à parte, como "Sobre".
+        corpo: aresta.notas || sujeito?.descricao || "",
+        sobre: sujeito?.tipo === "registro" && aresta.notas ? { nome: sujeito.nome, descricao: sujeito.descricao } : null,
+        leituras: [],
+        fontes: aresta.fontes || [],
+        notas: null,
+        aresta,
+      };
+    })
+    .filter(Boolean);
+  return [...notas, ...conexoes].sort((a, b) => a.versiculos[0] - b.versiculos[0] || a.versiculos[1] - b.versiculos[1]);
+}
+
+// Datações do livro (tradição × pesquisa): as afirmações que envolvem o
+// registro do livro, as mesmas que o card do livro mostra no mapa.
+function datacoesDoLivro(nomeDoLivro) {
+  const livro = grafo.nos.find((n) => n.tipo === "registro" && n.nome === nomeDoLivro);
+  if (!livro) return [];
+  return grafo.arestas
+    .filter((a) => a.tipo === "envolve" && a.destino === livro.id)
+    .map((a) => noPorId(a.origem))
+    .filter(Boolean)
+    .flatMap((afirmacao) => (afirmacao.datacao || []).map((d) => ({ ...d, afirmacao })))
+    .sort((a, b) => a.periodo[0] - b.periodo[0]);
+}
+
+function faixaDeContexto(titulo, icone, corpo, aberta = false) {
+  if (!corpo) return "";
+  return `<details class="leitura-faixa"${aberta ? " open" : ""}><summary>${iconeUI(icone)}${escapar(titulo)}</summary>${corpo}</details>`;
+}
+
+function listaDeItens(itens) {
+  if (itens.length === 0) return "";
+  return `<ul class="leitura-faixa-lista">${itens
+    .map(
+      (item) =>
+        `<li><button class="ir-para-item" data-item="${escapar(item.id)}"><strong>${escapar(
+          item.titulo
+        )}</strong><span class="etiqueta">${escapar(
+          referenciaVersiculos(capituloAberto.dados, item.versiculos)
+        )}</span></button></li>`
+    )
+    .join("")}</ul>`;
+}
+
+function htmlTopoDoCapitulo(capitulo, itens) {
+  const { passagem } = capitulo;
+  const resumo = passagem.afirma.map((frase) => `<p>${comCitacoes(frase)}</p>`).join("");
+
+  const datacoes = datacoesDoLivro(capitulo.livro);
+  const quando = datacoes.length
+    ? `<ul class="leitura-datacoes">${datacoes
+        .map((d) => {
+          const [inicio] = primeiraFrase(d.segundo_quem.trim());
+          return `<li><strong>${escapar(formatarPeriodo(d.periodo))}</strong><span>${comCitacoes(inicio)}</span></li>`;
+        })
+        .join("")}</ul>`
+    : "";
+  const leituras = ["leitura_literal", "leitura_nao_literal"]
+    .map((tema) => {
+      const doTema = itens.filter((i) => i.tema === tema);
+      return doTema.length ? `<h4>${escapar(TEMAS_LEITURA[tema].rotulo)}</h4>${listaDeItens(doTema)}` : "";
+    })
+    .join("");
+  const ciencia = listaDeItens(itens.filter((i) => i.tema === "ciencia"));
+
+  const temasPresentes = Object.keys(TEMAS_LEITURA).filter((tema) => itens.some((i) => i.tema === tema));
+  const legenda = temasPresentes.length
+    ? `<ul class="leitura-legenda" aria-label="Tipos de nota no texto">${temasPresentes
+        .map(
+          (tema) =>
+            `<li style="--cor-tema: ${TEMAS_LEITURA[tema].cor}">${iconeUI(TEMAS_LEITURA[tema].icone)}${escapar(
+              TEMAS_LEITURA[tema].rotulo
+            )} <span class="etiqueta">${itens.filter((i) => i.tema === tema).length}</span></li>`
+        )
+        .join("")}</ul>`
+    : "";
+
+  return `
+    <header class="leitura-topo">
+      <button class="leitura-voltar">${iconeUI("voltar")}Passagens</button>
+      <p class="leitura-eyebrow">${escapar(passagem.referencia)}</p>
+      <h2 class="leitura-titulo">${escapar(passagem.titulo || passagem.referencia)}</h2>
+      <div class="leitura-resumo">${resumo}</div>
+      <div class="leitura-faixas">
+        ${faixaDeContexto("Quando foi escrito", "datacao", quando, true)}
+        ${faixaDeContexto("Leituras do texto", "leitura", leituras)}
+        ${faixaDeContexto("O que a ciência diz", "ciencia", ciencia)}
+      </div>
+      ${legenda}
+    </header>`;
+}
+
+function htmlTextoDoCapitulo(capitulo, itens) {
+  const porInicio = new Map();
+  const comNota = new Set();
+  itens.forEach((item) => {
+    const [inicio, fim] = item.versiculos;
+    if (!porInicio.has(inicio)) porInicio.set(inicio, []);
+    porInicio.get(inicio).push(item);
+    for (let v = inicio; v <= fim; v++) comNota.add(v);
+  });
+  const versiculos = capitulo.versiculos
+    .map((v) => {
+      // Uma marca por tipo de nota no versículo, com contador: seis leituras
+      // no mesmo versículo viravam seis ícones iguais em fila.
+      const porTema = new Map();
+      for (const item of porInicio.get(v.n) || []) {
+        if (!porTema.has(item.tema)) porTema.set(item.tema, []);
+        porTema.get(item.tema).push(item);
+      }
+      const marcas = [...porTema.entries()]
+        .map(([nomeTema, doTema]) => {
+          const tema = TEMAS_LEITURA[nomeTema] || TEMAS_LEITURA.contexto;
+          const rotulo =
+            doTema.length === 1
+              ? `${tema.rotulo}: ${doTema[0].titulo}`
+              : `${tema.rotulo}: ${plural(doTema.length, "nota", "notas")} neste versículo`;
+          return `<button class="marca-nota" data-item="${escapar(doTema.map((i) => i.id).join(" "))}" style="--cor-tema: ${tema.cor}" aria-label="${escapar(
+            rotulo
+          )}" title="${escapar(rotulo)}">${iconeUI(tema.icone)}${doTema.length > 1 ? `<span class="marca-contagem">${doTema.length}</span>` : ""}</button>`;
+        })
+        .join("");
+      return `<span class="versiculo${comNota.has(v.n) ? " tem-nota" : ""}" id="v-${v.n}" data-v="${v.n}"><sup class="num-versiculo">${
+        v.n
+      }</sup>${escapar(v.texto)}${marcas ? `<span class="marcas">${marcas}</span>` : ""}</span> `;
+    })
+    .join("");
+  return `<div class="leitura-texto" lang="pt-BR"><p>${versiculos}</p></div>`;
+}
+
+function htmlCardDeItem(item, { compacto = false } = {}) {
+  const tema = TEMAS_LEITURA[item.tema] || TEMAS_LEITURA.contexto;
+  const referencia = referenciaVersiculos(capituloAberto.dados, item.versiculos);
+  const forca =
+    !compacto && item.aresta?.forca
+      ? `<span class="pill ${classePill(item.aresta.forca)}" title="Força do apoio">${escapar(rotuloForca(item.aresta.forca))}</span>`
+      : "";
+  // Compacto, o card é só um índice na margem (tipo, trecho e título): o
+  // texto inteiro abre no lugar, ao clicar. Com 20+ notas num capítulo,
+  // cards altos escorregavam para longe do versículo a que pertencem.
+  const corpo = compacto ? "" : `<p class="card-leitura-corpo">${comCitacoes(item.corpo || "", item.aresta)}</p>`;
+  const detalhes = compacto
+    ? ""
+    : `
+      ${item.sobre ? `<p class="card-leitura-notas"><strong>Sobre ${escapar(item.sobre.nome)}:</strong> ${escapar(item.sobre.descricao)}</p>` : ""}
+      ${
+        item.leituras.length
+          ? `<ul class="card-leitura-leituras">${item.leituras
+              .map((l) => `<li><strong>${escapar(l.leitura)}</strong><span>${escapar(l.quem)}</span></li>`)
+              .join("")}</ul>`
+          : ""
+      }
+      ${item.notas ? `<p class="card-leitura-notas">${comCitacoes(item.notas.trim(), item.aresta)}</p>` : ""}
+      ${
+        item.fontes.length
+          ? `<details class="mais"><summary>${plural(item.fontes.length, "fonte", "fontes")}</summary><ul class="card-leitura-fontes">${item.fontes
+              .map((f) => `<li><span class="nivel-fonte">nível ${f.nivel}</span>${htmlFonte(f)}</li>`)
+              .join("")}</ul></details>`
+          : ""
+      }
+      ${
+        item.aresta
+          ? `<button class="card-leitura-mapa" data-id="${escapar(item.aresta.origem)}">${iconeUI("conexoes")}Ver no mapa</button>`
+          : ""
+      }`;
+  const continuar = compacto
+    ? `<button class="card-leitura-abrir" data-item="${escapar(item.id)}" aria-label="Abrir: ${escapar(item.titulo)}">Abrir</button>`
+    : "";
+  return `
+    <article class="card-leitura${compacto ? " compacto" : ""}" data-item="${escapar(item.id)}" style="--cor-tema: ${tema.cor}">
+      <p class="card-leitura-tipo">${iconeUI(tema.icone)}${escapar(tema.rotulo)}<span class="etiqueta">${escapar(referencia)}</span></p>
+      <h3>${escapar(item.titulo)}</h3>
+      ${forca}
+      ${corpo}
+      ${detalhes}
+      ${continuar}
+    </article>`;
+}
+
+function htmlCreditosDoCapitulo(capitulo) {
+  const t = capitulo.traducao;
+  const licenca = urlSegura(t.licenca_url);
+  const fonte = urlSegura(t.fonte);
+  return `
+    <footer class="leitura-creditos">
+      <p><strong>Texto bíblico:</strong> ${escapar(t.nome)} (${escapar(t.sigla)}). ${escapar(t.atribuicao)}</p>
+      <p>${fonte ? `<a href="${escapar(fonte)}" target="_blank" rel="noopener noreferrer">Arquivo de origem${ICONE_EXTERNO}</a>` : ""}${
+        licenca ? ` · <a href="${escapar(licenca)}" target="_blank" rel="noopener noreferrer">Licença (${escapar(t.licenca)})${ICONE_EXTERNO}</a>` : ""
+      }</p>
+      <p class="etiqueta">O texto aparece como na fonte, dividido em versículos. Títulos, resumos e notas são do Tudo Conectado, não da tradução.</p>
+    </footer>`;
+}
+
+async function abrirCapitulo(id, { atualizarHash = true } = {}) {
+  const painel = document.querySelector("#view-leitura");
+  if (!painel) return;
+  const dados = await carregarJSON(`capitulos/${encodeURIComponent(id)}.json`);
+  if (!dados) {
+    painel.innerHTML = `<div class="estado-vazio"><p>Capítulo não encontrado.</p></div>`;
+    mudarView("leitura");
+    return;
+  }
+  capituloAberto = { dados, itens: [] };
+  capituloAberto.itens = itensDoCapitulo(dados);
+  const { itens } = capituloAberto;
+
+  painel.innerHTML = `
+    <article class="leitura">
+      ${htmlTopoDoCapitulo(dados, itens)}
+      <div class="leitura-corpo">
+        ${htmlTextoDoCapitulo(dados, itens)}
+        <aside class="leitura-margem" aria-label="Notas e conexões do capítulo">
+          ${itens.map((item) => htmlCardDeItem(item, { compacto: true })).join("")}
+        </aside>
+      </div>
+      ${htmlCreditosDoCapitulo(dados)}
+    </article>
+    <div class="leitura-folha" hidden role="dialog" aria-modal="false" aria-label="Nota do versículo">
+      <button class="fechar-painel fechar-folha" aria-label="Fechar nota">
+        <svg viewBox="0 0 24 24" class="icone"><path d="M18 6 6 18" /><path d="m6 6 12 12" /></svg>
+      </button>
+      <div class="leitura-folha-corpo"></div>
+    </div>`;
+
+  ligarLeitura(painel);
+  mudarView("leitura");
+  if (atualizarHash && lerCapituloDoHash() !== id) {
+    history.pushState(null, "", `#capitulo=${encodeURIComponent(id)}`);
+  }
+  window.scrollTo({ top: 0 });
+  requestAnimationFrame(posicionarCardsNaMargem);
+  document.fonts?.ready.then(posicionarCardsNaMargem);
+}
+
+// Cards de margem alinhados ao versículo onde a nota começa; se dois se
+// encontram, o de baixo desce. Abaixo de 1100px não há margem: o CSS a
+// esconde e as marcas abrem a folha inferior.
+function posicionarCardsNaMargem() {
+  const margem = document.querySelector(".leitura-margem");
+  if (!margem || !ehLeituraLarga()) return;
+  const topoMargem = margem.getBoundingClientRect().top;
+  let fundoAnterior = 0;
+  margem.querySelectorAll(".card-leitura").forEach((card) => {
+    const item = capituloAberto.itens.find((i) => i.id === card.dataset.item);
+    const versiculo = document.querySelector(`#v-${item?.versiculos[0]}`);
+    const alvo = versiculo ? versiculo.getBoundingClientRect().top - topoMargem : fundoAnterior;
+    const topo = Math.max(alvo, fundoAnterior);
+    card.style.top = `${topo}px`;
+    fundoAnterior = topo + card.offsetHeight + 10;
+  });
+  margem.style.minHeight = `${fundoAnterior}px`;
+}
+
+function realcarVersiculos(item, ligado) {
+  if (!item) return;
+  for (let v = item.versiculos[0]; v <= item.versiculos[1]; v++) {
+    document.querySelector(`#v-${v}`)?.classList.toggle("realcado", ligado);
+  }
+}
+
+function abrirItem(ids) {
+  const lista = String(ids).split(" ").filter(Boolean);
+  const id = lista[0];
+  const item = capituloAberto?.itens.find((i) => i.id === id);
+  if (!item) return;
+  if (ehLeituraLarga()) {
+    // Na margem, o card compacto vira o card completo no próprio lugar.
+    const card = document.querySelector(`.leitura-margem .card-leitura[data-item="${CSS.escape(id)}"]`);
+    if (!card) return;
+    document.querySelectorAll(".leitura-margem .card-leitura.ativo").forEach((c) => {
+      const outro = capituloAberto.itens.find((i) => i.id === c.dataset.item);
+      c.outerHTML = htmlCardDeItem(outro, { compacto: true });
+    });
+    const atual = document.querySelector(`.leitura-margem .card-leitura[data-item="${CSS.escape(id)}"]`);
+    atual.outerHTML = htmlCardDeItem(item);
+    const novo = document.querySelector(`.leitura-margem .card-leitura[data-item="${CSS.escape(id)}"]`);
+    novo.classList.add("ativo");
+    ligarLeitura(document.querySelector("#view-leitura"), { soMargem: true });
+    posicionarCardsNaMargem();
+    novo.scrollIntoView({ block: "nearest", behavior: animacoesOk() ? "smooth" : "auto" });
+    return;
+  }
+  const folha = document.querySelector(".leitura-folha");
+  folha.querySelector(".leitura-folha-corpo").innerHTML = lista
+    .map((i) => capituloAberto.itens.find((x) => x.id === i))
+    .filter(Boolean)
+    .map((i) => htmlCardDeItem(i))
+    .join("");
+  folha.hidden = false;
+  ligarLeitura(folha, { soFolha: true });
+  folha.querySelector(".fechar-folha").focus();
+}
+
+function fecharFolha() {
+  const folha = document.querySelector(".leitura-folha");
+  if (folha) folha.hidden = true;
+}
+
+function ligarLeitura(raiz, { soMargem = false, soFolha = false } = {}) {
+  const itemDe = (el) => capituloAberto.itens.find((i) => i.id === el.dataset.item.split(" ")[0]);
+  const itensDe = (el) => el.dataset.item.split(" ").map((id) => capituloAberto.itens.find((i) => i.id === id)).filter(Boolean);
+  if (!soMargem && !soFolha) {
+    raiz.querySelector(".leitura-voltar")?.addEventListener("click", () => {
+      history.pushState(null, "", location.pathname);
+      mudarView("passagens");
+    });
+    raiz.querySelectorAll(".marca-nota, .ir-para-item").forEach((botao) => {
+      botao.addEventListener("click", () => {
+        if (botao.classList.contains("ir-para-item")) {
+          const item = itemDe(botao);
+          document.querySelector(`#v-${item.versiculos[0]}`)?.scrollIntoView({ block: "center", behavior: animacoesOk() ? "smooth" : "auto" });
+        }
+        abrirItem(botao.dataset.item);
+      });
+      botao.addEventListener("mouseenter", () => itensDe(botao).forEach((i) => realcarVersiculos(i, true)));
+      botao.addEventListener("mouseleave", () => itensDe(botao).forEach((i) => realcarVersiculos(i, false)));
+    });
+    raiz.querySelector(".fechar-folha")?.addEventListener("click", fecharFolha);
+    raiz.querySelectorAll(".leitura-faixa").forEach((d) => d.addEventListener("toggle", posicionarCardsNaMargem));
+  }
+  const alvoCards = soFolha ? raiz : raiz.querySelector(".leitura-margem") || raiz;
+  alvoCards.querySelectorAll(".card-leitura").forEach((card) => {
+    card.addEventListener("mouseenter", () => realcarVersiculos(itemDe(card), true));
+    card.addEventListener("mouseleave", () => realcarVersiculos(itemDe(card), false));
+  });
+  alvoCards.querySelectorAll(".card-leitura-abrir").forEach((botao) => botao.addEventListener("click", () => abrirItem(botao.dataset.item)));
+  alvoCards.querySelectorAll(".card-leitura-mapa").forEach((botao) =>
+    botao.addEventListener("click", () => {
+      fecharFolha();
+      history.pushState(null, "", location.pathname);
+      mudarView("mapa");
+      centralizarEm(botao.dataset.id);
+    })
+  );
+  alvoCards.querySelectorAll("details.mais").forEach((d) => d.addEventListener("toggle", posicionarCardsNaMargem));
+}
+
+function sincronizarLeituraComHash() {
+  const id = lerCapituloDoHash();
+  if (id && id !== capituloAberto?.dados.id) abrirCapitulo(id, { atualizarHash: false });
+  else if (id) mudarView("leitura");
+  else if (document.querySelector("#view-leitura") && !document.querySelector("#view-leitura").hidden) mudarView("passagens");
 }
 
 // --- Timeline -----------------------------------------------------------------
@@ -2159,13 +2625,22 @@ async function iniciar() {
     iniciarGrafo(grafoData);
     montarPassagens();
     await montarTimeline();
+    await carregarIndiceCapitulos();
+    window.addEventListener("hashchange", sincronizarLeituraComHash);
+    window.addEventListener("popstate", sincronizarLeituraComHash);
+    window.addEventListener("resize", posicionarCardsNaMargem);
+    document.addEventListener("keydown", (evento) => {
+      if (evento.key === "Escape") fecharFolha();
+    });
     window.addEventListener("resize", () => {
       if (!cy) return;
       cy.resize();
       atualizarAlca(); // girar o celular muda a altura, e a alça pode deixar de caber
     });
-    // Depois do grafo de pe: um link com #dossie=<id> abre direto na ficha.
+    // Depois do grafo de pe: um link com #dossie=<id> abre direto na ficha,
+    // e um com #capitulo=<id> abre direto a leitura.
     sincronizarDossieComHash();
+    sincronizarLeituraComHash();
   } catch (erro) {
     // Rede de segurança final: qualquer falha inesperada aqui não pode
     // deixar a tela travada em "carregando" para sempre.
