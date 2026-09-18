@@ -179,7 +179,8 @@
         }
       ],
       "passagem": "gen-01-01_01-31",
-      "notas": null
+      "notas": null,
+      "trecho": "No princípio criou Deus"
     },
     {
       "id": "gn01-espirito-ou-vento",
@@ -213,7 +214,8 @@
         }
       ],
       "passagem": "gen-01-01_01-31",
-      "notas": null
+      "notas": null,
+      "trecho": "o Espírito de Deus se movia"
     },
     {
       "id": "gn01-tehom",
@@ -232,7 +234,8 @@
         }
       ],
       "passagem": "gen-01-01_01-31",
-      "notas": null
+      "notas": null,
+      "trecho": "abismo"
     },
     {
       "id": "gn01-tohu-wabohu",
@@ -256,7 +259,8 @@
         }
       ],
       "passagem": "gen-01-01_01-31",
-      "notas": null
+      "notas": null,
+      "trecho": "desordenada e vazia"
     },
     {
       "id": "gn01-e-assim-foi",
@@ -318,7 +322,8 @@
         }
       ],
       "passagem": "gen-01-01_01-31",
-      "notas": null
+      "notas": null,
+      "trecho": "Haja expansão"
     },
     {
       "id": "gn01-quem-separou",
@@ -341,7 +346,8 @@
         }
       ],
       "passagem": "gen-01-01_01-31",
-      "notas": null
+      "notas": null,
+      "trecho": "e separou as águas"
     },
     {
       "id": "gn01-segundo-dia-sem-aprovacao",
@@ -379,7 +385,8 @@
         }
       ],
       "passagem": "gen-01-01_01-31",
-      "notas": null
+      "notas": null,
+      "trecho": "o dia segundo"
     },
     {
       "id": "gn01-aguas-frase-a-mais",
@@ -407,7 +414,8 @@
         }
       ],
       "passagem": "gen-01-01_01-31",
-      "notas": null
+      "notas": null,
+      "trecho": "e descubra-se a porção seca"
     },
     {
       "id": "gn01-lugar-ou-ajuntamento",
@@ -440,7 +448,8 @@
         }
       ],
       "passagem": "gen-01-01_01-31",
-      "notas": null
+      "notas": null,
+      "trecho": "em um lugar"
     },
     {
       "id": "gn01-tanninim",
@@ -464,7 +473,8 @@
         }
       ],
       "passagem": "gen-01-01_01-31",
-      "notas": null
+      "notas": null,
+      "trecho": "as grandes criaturas marinhas"
     },
     {
       "id": "gn01-facamos",
@@ -483,7 +493,8 @@
         }
       ],
       "passagem": "gen-01-01_01-31",
-      "notas": null
+      "notas": null,
+      "trecho": "Façamos ao ser humano"
     },
     {
       "id": "gn01-toda-a-terra",
@@ -511,7 +522,8 @@
         }
       ],
       "passagem": "gen-01-01_01-31",
-      "notas": null
+      "notas": null,
+      "trecho": "e toda a terra"
     }
   ],
   "conexoes": [
@@ -521,7 +533,62 @@
         1,
         1
       ],
-      "tema": "ciencia"
+      "tema": "ciencia",
+      "trecho": "os céus e a terra"
+    },
+    {
+      "ligacao": "declaracao-breve-sinodo-missouri-contradiz-dias-de-genesis-nao-literais",
+      "versiculos": [
+        5,
+        5
+      ],
+      "tema": "leitura_literal",
+      "trecho": "e foi a tarde e a manhã o primeiro dia"
+    },
+    {
+      "ligacao": "catecismo-da-igreja-catolica-confirma-dias-de-genesis-nao-literais",
+      "versiculos": [
+        5,
+        5
+      ],
+      "tema": "leitura_nao_literal",
+      "trecho": "e foi a tarde e a manhã o primeiro dia"
+    },
+    {
+      "ligacao": "decreto-comissao-biblica-1909-confirma-dias-de-genesis-nao-literais",
+      "versiculos": [
+        5,
+        5
+      ],
+      "tema": "leitura_nao_literal",
+      "trecho": "e foi a tarde e a manhã o primeiro dia"
+    },
+    {
+      "ligacao": "relatorio-criacao-pca-2000-confirma-dias-de-genesis-nao-literais",
+      "versiculos": [
+        5,
+        5
+      ],
+      "tema": "leitura_nao_literal",
+      "trecho": "e foi a tarde e a manhã o primeiro dia"
+    },
+    {
+      "ligacao": "guia-dos-perplexos-confirma-dias-de-genesis-nao-literais",
+      "versiculos": [
+        5,
+        5
+      ],
+      "tema": "leitura_nao_literal",
+      "trecho": "e foi a tarde e a manhã o primeiro dia"
+    },
+    {
+      "ligacao": "cidade-de-deus-confirma-dias-de-genesis-nao-literais",
+      "versiculos": [
+        5,
+        5
+      ],
+      "tema": "leitura_nao_literal",
+      "trecho": "e foi a tarde e a manhã o primeiro dia"
     },
     {
       "ligacao": "textos-das-piramides-e-dos-sarcofagos-paralelo-genesis",
@@ -529,7 +596,8 @@
         6,
         7
       ],
-      "tema": "paralelo"
+      "tema": "paralelo",
+      "trecho": "separe as águas das águas"
     },
     {
       "ligacao": "enuma-elish-paralelo-genesis",
@@ -537,63 +605,17 @@
         6,
         8
       ],
-      "tema": "paralelo"
+      "tema": "paralelo",
+      "trecho": "em meio das águas"
     },
     {
       "ligacao": "meteorito-canyon-diablo-confirma-formacao-da-terra",
       "versiculos": [
-        9,
+        10,
         10
       ],
-      "tema": "ciencia"
-    },
-    {
-      "ligacao": "declaracao-breve-sinodo-missouri-contradiz-dias-de-genesis-nao-literais",
-      "versiculos": [
-        31,
-        31
-      ],
-      "tema": "leitura_literal"
-    },
-    {
-      "ligacao": "catecismo-da-igreja-catolica-confirma-dias-de-genesis-nao-literais",
-      "versiculos": [
-        31,
-        31
-      ],
-      "tema": "leitura_nao_literal"
-    },
-    {
-      "ligacao": "decreto-comissao-biblica-1909-confirma-dias-de-genesis-nao-literais",
-      "versiculos": [
-        31,
-        31
-      ],
-      "tema": "leitura_nao_literal"
-    },
-    {
-      "ligacao": "relatorio-criacao-pca-2000-confirma-dias-de-genesis-nao-literais",
-      "versiculos": [
-        31,
-        31
-      ],
-      "tema": "leitura_nao_literal"
-    },
-    {
-      "ligacao": "guia-dos-perplexos-confirma-dias-de-genesis-nao-literais",
-      "versiculos": [
-        31,
-        31
-      ],
-      "tema": "leitura_nao_literal"
-    },
-    {
-      "ligacao": "cidade-de-deus-confirma-dias-de-genesis-nao-literais",
-      "versiculos": [
-        31,
-        31
-      ],
-      "tema": "leitura_nao_literal"
+      "tema": "ciencia",
+      "trecho": "à porção seca Terra"
     }
   ]
 }

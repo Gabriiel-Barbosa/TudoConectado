@@ -26,49 +26,59 @@ conexoes:
       - 1
       - 1
     tema: ciencia
+    trecho: os céus e a terra
+  - ligacao: >-
+      declaracao-breve-sinodo-missouri-contradiz-dias-de-genesis-nao-literais
+    versiculos:
+      - 5
+      - 5
+    tema: leitura_literal
+    trecho: e foi a tarde e a manhã o primeiro dia
+  - ligacao: catecismo-da-igreja-catolica-confirma-dias-de-genesis-nao-literais
+    versiculos:
+      - 5
+      - 5
+    tema: leitura_nao_literal
+    trecho: e foi a tarde e a manhã o primeiro dia
+  - ligacao: decreto-comissao-biblica-1909-confirma-dias-de-genesis-nao-literais
+    versiculos:
+      - 5
+      - 5
+    tema: leitura_nao_literal
+    trecho: e foi a tarde e a manhã o primeiro dia
+  - ligacao: relatorio-criacao-pca-2000-confirma-dias-de-genesis-nao-literais
+    versiculos:
+      - 5
+      - 5
+    tema: leitura_nao_literal
+    trecho: e foi a tarde e a manhã o primeiro dia
+  - ligacao: guia-dos-perplexos-confirma-dias-de-genesis-nao-literais
+    versiculos:
+      - 5
+      - 5
+    tema: leitura_nao_literal
+    trecho: e foi a tarde e a manhã o primeiro dia
+  - ligacao: cidade-de-deus-confirma-dias-de-genesis-nao-literais
+    versiculos:
+      - 5
+      - 5
+    tema: leitura_nao_literal
+    trecho: e foi a tarde e a manhã o primeiro dia
   - ligacao: textos-das-piramides-e-dos-sarcofagos-paralelo-genesis
     versiculos:
       - 6
       - 7
     tema: paralelo
+    trecho: separe as águas das águas
   - ligacao: enuma-elish-paralelo-genesis
     versiculos:
       - 6
       - 8
     tema: paralelo
+    trecho: em meio das águas
   - ligacao: meteorito-canyon-diablo-confirma-formacao-da-terra
     versiculos:
-      - 9
+      - 10
       - 10
     tema: ciencia
-  - ligacao: >-
-      declaracao-breve-sinodo-missouri-contradiz-dias-de-genesis-nao-literais
-    versiculos:
-      - 31
-      - 31
-    tema: leitura_literal
-  - ligacao: catecismo-da-igreja-catolica-confirma-dias-de-genesis-nao-literais
-    versiculos:
-      - 31
-      - 31
-    tema: leitura_nao_literal
-  - ligacao: decreto-comissao-biblica-1909-confirma-dias-de-genesis-nao-literais
-    versiculos:
-      - 31
-      - 31
-    tema: leitura_nao_literal
-  - ligacao: relatorio-criacao-pca-2000-confirma-dias-de-genesis-nao-literais
-    versiculos:
-      - 31
-      - 31
-    tema: leitura_nao_literal
-  - ligacao: guia-dos-perplexos-confirma-dias-de-genesis-nao-literais
-    versiculos:
-      - 31
-      - 31
-    tema: leitura_nao_literal
-  - ligacao: cidade-de-deus-confirma-dias-de-genesis-nao-literais
-    versiculos:
-      - 31
-      - 31
-    tema: leitura_nao_literal
+    trecho: à porção seca Terra

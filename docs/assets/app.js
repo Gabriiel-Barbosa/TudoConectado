@@ -103,6 +103,11 @@ const animacoesOk = () => !window.matchMedia("(prefers-reduced-motion: reduce)")
 
 botoesNav.forEach((botao) => {
   botao.addEventListener("click", () => {
+    // Passagens é a Bíblia: abre direto o capítulo em leitura.
+    if (botao.dataset.view === "passagens") {
+      abrirBiblia();
+      return;
+    }
     if (lerCapituloDoHash()) history.pushState(null, "", location.pathname);
     mudarView(botao.dataset.view);
   });
@@ -112,7 +117,7 @@ function mudarView(nome) {
   // A leitura de um capítulo não tem aba própria: ela é a aba Passagens
   // aprofundada, e é essa aba que fica marcada.
   const aba = nome === "leitura" ? "passagens" : nome;
-  if (nome !== "leitura") fecharFolha();
+  if (nome !== "leitura") fecharNota({ devolverFoco: false });
   botoesNav.forEach((b) => {
     const ativo = b.dataset.view === aba;
     b.classList.toggle("ativo", ativo);
@@ -2189,25 +2194,64 @@ function montarPassagens() {
   });
 }
 
-// --- Leitura de capítulo -------------------------------------------------------
-// O capítulo lido como livro, com o que se ancora em cada versículo: notas
-// textuais (tradução discutida, variante) e conexões com o grafo (paralelo,
-// ciência, leituras). Tudo vem de docs/capitulos/<id>.json e do grafo.json;
-// a tela não cria conteúdo, só organiza o que os dados trazem.
+// --- Bíblia interativa ---------------------------------------------------------
+// O capítulo lido como livro. As palavras que alguma nota comenta viram
+// link (campo `trecho` nos dados); clicar abre um card flutuante junto da
+// palavra. Tudo vem de docs/capitulos/<id>.json e do grafo.json: a tela não
+// cria conteúdo, só organiza o que os dados trazem.
 
 const TEMAS_LEITURA = {
-  traducao: { rotulo: "Tradução discutida", icone: "traducao", cor: "var(--teal)" },
-  variante: { rotulo: "Variante textual", icone: "variante", cor: "var(--violeta)" },
-  paralelo: { rotulo: "Paralelo em outra cultura", icone: "paralelo", cor: "var(--ouro)" },
-  ciencia: { rotulo: "O que a ciência diz", icone: "ciencia", cor: "var(--cor-lugar)" },
-  leitura_literal: { rotulo: "Leitura literal", icone: "leitura", cor: "var(--cor-pessoa)" },
-  leitura_nao_literal: { rotulo: "Leitura não literal", icone: "leitura", cor: "var(--rosa)" },
-  contexto: { rotulo: "Contexto", icone: "conexoes", cor: "var(--muted)" },
+  traducao: {
+    rotulo: "Tradução discutida",
+    icone: "traducao",
+    cor: "var(--teal)",
+    explica: "O hebraico admite mais de uma tradução.",
+  },
+  variante: {
+    rotulo: "Variante textual",
+    icone: "variante",
+    cor: "var(--violeta)",
+    explica: "Manuscritos e versões antigas trazem um texto diferente.",
+  },
+  paralelo: {
+    rotulo: "Paralelo em outra cultura",
+    icone: "paralelo",
+    cor: "var(--ouro)",
+    explica: "Relato de outro povo com uma imagem parecida.",
+  },
+  ciencia: {
+    rotulo: "O que a ciência diz",
+    icone: "ciencia",
+    cor: "var(--cor-lugar)",
+    explica: "Medições científicas sobre o tema do versículo.",
+  },
+  leitura_literal: {
+    rotulo: "Leitura literal",
+    icone: "leitura",
+    cor: "var(--cor-pessoa)",
+    explica: "Tradições que leem o texto ao pé da letra.",
+  },
+  leitura_nao_literal: {
+    rotulo: "Leitura não literal",
+    icone: "leitura",
+    cor: "var(--rosa)",
+    explica: "Tradições que leem o texto como simbólico ou teológico.",
+  },
+  contexto: { rotulo: "Contexto", icone: "conexoes", cor: "var(--muted)", explica: "Informação de contexto." },
 };
+
+// Quantos capítulos cada livro tem, para a grade de navegação. O de Gênesis
+// está na descrição do próprio registro ("Em 50 capítulos…"); os capítulos
+// sem texto cadastrado aparecem, mas desabilitados.
+const CAPITULOS_POR_LIVRO = { Gênesis: 50 };
 
 let indiceCapitulos = [];
 let capituloAberto = null; // { dados, itens }
-const ehLeituraLarga = () => window.matchMedia("(min-width: 1100px)").matches;
+const temasOcultosLeitura = new Set();
+let notaAberta = null; // { ids, indice, ancora }
+
+const ehLeituraMovel = () => window.matchMedia("(max-width: 860px)").matches;
+const temaDe = (item) => TEMAS_LEITURA[item.tema] || TEMAS_LEITURA.contexto;
 
 async function carregarIndiceCapitulos() {
   indiceCapitulos = (await carregarJSON("capitulos/indice.json")) || [];
@@ -2230,11 +2274,12 @@ function itensDoCapitulo(capitulo) {
     id: nota.id,
     tema: nota.tipo,
     versiculos: nota.versiculos,
+    trecho: nota.trecho || null,
     titulo: nota.titulo,
     corpo: nota.descricao,
+    sobre: null,
     leituras: nota.leituras || [],
     fontes: nota.fontes || [],
-    notas: nota.notas || null,
     aresta: null,
   }));
   const conexoes = capitulo.conexoes
@@ -2245,11 +2290,12 @@ function itensDoCapitulo(capitulo) {
       const alvo = noPorId(aresta.destino);
       // No card, o título vai inteiro: "13,8 bil…" cortado não serve para ler.
       const nomeInteiro = (no) =>
-        no?.tipo === "afirmacao" ? `“${no.texto.trim().replace(/.$/, "")}”` : no ? rotuloDoNo(no) : "";
+        no?.tipo === "afirmacao" ? `“${no.texto.trim().replace(/\.$/, "")}”` : no ? rotuloDoNo(no) : "";
       return {
         id: conexao.ligacao,
         tema: conexao.tema,
         versiculos: conexao.versiculos,
+        trecho: conexao.trecho || null,
         titulo: `${nomeInteiro(sujeito)} ${verboDaLigacao(aresta.tipo)} ${nomeInteiro(alvo)}`,
         // A explicação da ligação diz por que ela importa para o capítulo;
         // a descrição do registro entra à parte, como "Sobre".
@@ -2257,13 +2303,24 @@ function itensDoCapitulo(capitulo) {
         sobre: sujeito?.tipo === "registro" && aresta.notas ? { nome: sujeito.nome, descricao: sujeito.descricao } : null,
         leituras: [],
         fontes: aresta.fontes || [],
-        notas: null,
         aresta,
       };
     })
     .filter(Boolean);
-  return [...notas, ...conexoes].sort((a, b) => a.versiculos[0] - b.versiculos[0] || a.versiculos[1] - b.versiculos[1]);
+  // Ordem de leitura: versículo, depois a posição do trecho dentro dele
+  // (notas sem trecho, que viram ícone no fim do versículo, vêm por último).
+  const posicao = (item) => {
+    const texto = capitulo.versiculos.find((v) => v.n === item.versiculos[0])?.texto || "";
+    const i = item.trecho ? texto.indexOf(item.trecho) : -1;
+    return i < 0 ? Infinity : i;
+  };
+  return [...notas, ...conexoes].sort(
+    (a, b) => a.versiculos[0] - b.versiculos[0] || posicao(a) - posicao(b) || a.versiculos[1] - b.versiculos[1]
+  );
 }
+
+// Quem rola a página é o <main> (overflow: auto), não a janela.
+const areaDeRolagem = () => document.querySelector("main") || document.scrollingElement;
 
 // Datações do livro (tradição × pesquisa): as afirmações que envolvem o
 // registro do livro, as mesmas que o card do livro mostra no mapa.
@@ -2278,125 +2335,193 @@ function datacoesDoLivro(nomeDoLivro) {
     .sort((a, b) => a.periodo[0] - b.periodo[0]);
 }
 
-function faixaDeContexto(titulo, icone, corpo, aberta = false) {
-  if (!corpo) return "";
-  return `<details class="leitura-faixa"${aberta ? " open" : ""}><summary>${iconeUI(icone)}${escapar(titulo)}</summary>${corpo}</details>`;
-}
+// --- Montagem da página ------------------------------------------------------
 
-function listaDeItens(itens) {
-  if (itens.length === 0) return "";
-  return `<ul class="leitura-faixa-lista">${itens
-    .map(
-      (item) =>
-        `<li><button class="ir-para-item" data-item="${escapar(item.id)}"><strong>${escapar(
-          item.titulo
-        )}</strong><span class="etiqueta">${escapar(
-          referenciaVersiculos(capituloAberto.dados, item.versiculos)
-        )}</span></button></li>`
-    )
-    .join("")}</ul>`;
-}
+function htmlLateral(capitulo, itens) {
+  const total = CAPITULOS_POR_LIVRO[capitulo.livro] || capitulo.capitulo;
+  const disponiveis = new Map(
+    indiceCapitulos.filter((c) => c.livro === capitulo.livro).map((c) => [c.capitulo, c.id])
+  );
+  const grade = Array.from({ length: total }, (_, i) => {
+    const n = i + 1;
+    const id = disponiveis.get(n);
+    const atual = n === capitulo.capitulo;
+    return id
+      ? `<button class="cap${atual ? " atual" : ""}" data-capitulo="${escapar(id)}"${atual ? ' aria-current="page"' : ""} title="${escapar(
+          `${capitulo.livro} ${n}`
+        )}">${n}</button>`
+      : `<button class="cap" disabled title="${escapar(`${capitulo.livro} ${n}: ainda não cadastrado`)}">${n}</button>`;
+  }).join("");
 
-function htmlTopoDoCapitulo(capitulo, itens) {
-  const { passagem } = capitulo;
-  const resumo = passagem.afirma.map((frase) => `<p>${comCitacoes(frase)}</p>`).join("");
+  const temas = Object.keys(TEMAS_LEITURA).filter((tema) => itens.some((i) => i.tema === tema));
+  const legenda = temas
+    .map((tema) => {
+      const t = TEMAS_LEITURA[tema];
+      const quantos = itens.filter((i) => i.tema === tema).length;
+      const visivel = !temasOcultosLeitura.has(tema);
+      return `
+        <li style="--cor-tema: ${t.cor}">
+          <button class="legenda-tema${visivel ? "" : " apagado"}" data-tema="${tema}" aria-pressed="${visivel}" title="${
+            visivel ? "Esconder" : "Mostrar"
+          } as notas deste tipo">
+            <span class="legenda-icone">${iconeUI(t.icone)}</span>
+            <span class="legenda-texto"><strong>${escapar(t.rotulo)}</strong><span>${escapar(t.explica)}</span></span>
+            <span class="legenda-contagem">${quantos}</span>
+          </button>
+        </li>`;
+    })
+    .join("");
 
   const datacoes = datacoesDoLivro(capitulo.livro);
   const quando = datacoes.length
-    ? `<ul class="leitura-datacoes">${datacoes
-        .map((d) => {
-          const [inicio] = primeiraFrase(d.segundo_quem.trim());
-          return `<li><strong>${escapar(formatarPeriodo(d.periodo))}</strong><span>${comCitacoes(inicio)}</span></li>`;
-        })
-        .join("")}</ul>`
-    : "";
-  const leituras = ["leitura_literal", "leitura_nao_literal"]
-    .map((tema) => {
-      const doTema = itens.filter((i) => i.tema === tema);
-      return doTema.length ? `<h4>${escapar(TEMAS_LEITURA[tema].rotulo)}</h4>${listaDeItens(doTema)}` : "";
-    })
-    .join("");
-  const ciencia = listaDeItens(itens.filter((i) => i.tema === "ciencia"));
-
-  const temasPresentes = Object.keys(TEMAS_LEITURA).filter((tema) => itens.some((i) => i.tema === tema));
-  const legenda = temasPresentes.length
-    ? `<ul class="leitura-legenda" aria-label="Tipos de nota no texto">${temasPresentes
-        .map(
-          (tema) =>
-            `<li style="--cor-tema: ${TEMAS_LEITURA[tema].cor}">${iconeUI(TEMAS_LEITURA[tema].icone)}${escapar(
-              TEMAS_LEITURA[tema].rotulo
-            )} <span class="etiqueta">${itens.filter((i) => i.tema === tema).length}</span></li>`
-        )
-        .join("")}</ul>`
+    ? `<section class="lateral-bloco">
+        <h3>${iconeUI("datacao")}Quando foi escrito</h3>
+        <ul class="lateral-datacoes">${datacoes
+          .map((d) => {
+            const [inicio, resto] = primeiraFrase(d.segundo_quem.trim());
+            return `<li><strong>${escapar(formatarPeriodo(d.periodo))}</strong><span>${comCitacoes(inicio)}</span>${
+              resto ? `<details class="mais"><summary>Continuar lendo</summary><p>${comCitacoes(resto)}</p></details>` : ""
+            }</li>`;
+          })
+          .join("")}</ul>
+      </section>`
     : "";
 
   return `
-    <header class="leitura-topo">
-      <button class="leitura-voltar">${iconeUI("voltar")}Passagens</button>
-      <p class="leitura-eyebrow">${escapar(passagem.referencia)}</p>
+    <aside class="biblia-lateral" aria-label="Navegação e legenda">
+      <section class="lateral-bloco">
+        <h3>${iconeUI("leitura")}${escapar(capitulo.livro)}</h3>
+        <nav class="grade-capitulos" aria-label="Capítulos de ${escapar(capitulo.livro)}">${grade}</nav>
+      </section>
+      <section class="lateral-bloco">
+        <h3>${iconeUI("evidencia")}Legenda</h3>
+        <p class="lateral-dica">As palavras sublinhadas no texto abrem uma nota. Toque num tipo para mostrá-lo ou escondê-lo.</p>
+        <ul class="legenda-leitura">${legenda}</ul>
+      </section>
+      ${quando}
+    </aside>`;
+}
+
+function htmlCabecalho(capitulo, itens) {
+  const { passagem } = capitulo;
+  return `
+    <header class="biblia-cabecalho">
+      <p class="leitura-eyebrow">${escapar(passagem.referencia)} · ${plural(itens.length, "nota", "notas")}</p>
       <h2 class="leitura-titulo">${escapar(passagem.titulo || passagem.referencia)}</h2>
-      <div class="leitura-resumo">${resumo}</div>
-      <div class="leitura-faixas">
-        ${faixaDeContexto("Quando foi escrito", "datacao", quando, true)}
-        ${faixaDeContexto("Leituras do texto", "leitura", leituras)}
-        ${faixaDeContexto("O que a ciência diz", "ciencia", ciencia)}
-      </div>
-      ${legenda}
+      <div class="leitura-resumo">${passagem.afirma.map((frase) => `<p>${comCitacoes(frase)}</p>`).join("")}</div>
     </header>`;
 }
 
-function htmlTextoDoCapitulo(capitulo, itens) {
-  const porInicio = new Map();
-  const comNota = new Set();
-  itens.forEach((item) => {
-    const [inicio, fim] = item.versiculos;
-    if (!porInicio.has(inicio)) porInicio.set(inicio, []);
-    porInicio.get(inicio).push(item);
-    for (let v = inicio; v <= fim; v++) comNota.add(v);
-  });
+// Cada versículo vira texto com links nos trechos comentados. Trechos iguais
+// no mesmo versículo viram um link só, que abre as notas juntas; notas sem
+// trecho viram um ícone no fim do versículo.
+function htmlTexto(capitulo, itens) {
+  const porVersiculo = new Map();
+  for (const item of itens) {
+    const v = item.versiculos[0];
+    if (!porVersiculo.has(v)) porVersiculo.set(v, []);
+    porVersiculo.get(v).push(item);
+  }
+
   const versiculos = capitulo.versiculos
     .map((v) => {
-      // Uma marca por tipo de nota no versículo, com contador: seis leituras
-      // no mesmo versículo viravam seis ícones iguais em fila.
-      const porTema = new Map();
-      for (const item of porInicio.get(v.n) || []) {
-        if (!porTema.has(item.tema)) porTema.set(item.tema, []);
-        porTema.get(item.tema).push(item);
+      const doVersiculo = porVersiculo.get(v.n) || [];
+      const grupos = new Map();
+      const soltos = [];
+      for (const item of doVersiculo) {
+        const indice = item.trecho ? v.texto.indexOf(item.trecho) : -1;
+        if (indice < 0) {
+          soltos.push(item);
+          continue;
+        }
+        if (!grupos.has(item.trecho)) grupos.set(item.trecho, { inicio: indice, fim: indice + item.trecho.length, itens: [] });
+        grupos.get(item.trecho).itens.push(item);
       }
-      const marcas = [...porTema.entries()]
-        .map(([nomeTema, doTema]) => {
-          const tema = TEMAS_LEITURA[nomeTema] || TEMAS_LEITURA.contexto;
-          const rotulo =
-            doTema.length === 1
-              ? `${tema.rotulo}: ${doTema[0].titulo}`
-              : `${tema.rotulo}: ${plural(doTema.length, "nota", "notas")} neste versículo`;
-          return `<button class="marca-nota" data-item="${escapar(doTema.map((i) => i.id).join(" "))}" style="--cor-tema: ${tema.cor}" aria-label="${escapar(
-            rotulo
-          )}" title="${escapar(rotulo)}">${iconeUI(tema.icone)}${doTema.length > 1 ? `<span class="marca-contagem">${doTema.length}</span>` : ""}</button>`;
-        })
+      // Trechos que se sobrepõem: o primeiro fica como link, os outros
+      // voltam a ser ícone (melhor do que um link dentro do outro).
+      const ordenados = [...grupos.values()].sort((a, b) => a.inicio - b.inicio);
+      const aceitos = [];
+      for (const g of ordenados) {
+        if (aceitos.length && g.inicio < aceitos[aceitos.length - 1].fim) soltos.push(...g.itens);
+        else aceitos.push(g);
+      }
+
+      let html = "";
+      let cursor = 0;
+      for (const g of aceitos) {
+        html += escapar(v.texto.slice(cursor, g.inicio));
+        const primeiro = g.itens[0];
+        const temas = [...new Set(g.itens.map((i) => i.tema))];
+        const rotulo =
+          g.itens.length === 1
+            ? `${temaDe(primeiro).rotulo}: ${primeiro.titulo}`
+            : `${plural(g.itens.length, "nota", "notas")} sobre este trecho`;
+        html += `<a href="#" class="termo" role="button" aria-haspopup="dialog" data-itens="${escapar(
+          g.itens.map((i) => i.id).join(" ")
+        )}" data-temas="${temas.join(" ")}" style="--cor-tema: ${temaDe(primeiro).cor}" title="${escapar(rotulo)}">${escapar(
+          v.texto.slice(g.inicio, g.fim)
+        )}<span class="termo-icone" aria-hidden="true">${iconeUI(temaDe(primeiro).icone)}${
+          g.itens.length > 1 ? `<span class="termo-contagem">${g.itens.length}</span>` : ""
+        }</span></a>`;
+        cursor = g.fim;
+      }
+      html += escapar(v.texto.slice(cursor));
+
+      const marcas = soltos
+        .map(
+          (item) =>
+            `<button class="marca-nota" data-itens="${escapar(item.id)}" data-temas="${item.tema}" style="--cor-tema: ${
+              temaDe(item).cor
+            }" aria-haspopup="dialog" aria-label="${escapar(`${temaDe(item).rotulo}: ${item.titulo}`)}" title="${escapar(
+              `${temaDe(item).rotulo}: ${item.titulo}`
+            )}">${iconeUI(temaDe(item).icone)}</button>`
+        )
         .join("");
-      return `<span class="versiculo${comNota.has(v.n) ? " tem-nota" : ""}" id="v-${v.n}" data-v="${v.n}"><sup class="num-versiculo">${
-        v.n
-      }</sup>${escapar(v.texto)}${marcas ? `<span class="marcas">${marcas}</span>` : ""}</span> `;
+
+      return `<span class="versiculo" id="v-${v.n}" data-v="${v.n}"><sup class="num-versiculo">${v.n}</sup>${html}${marcas}</span> `;
     })
     .join("");
   return `<div class="leitura-texto" lang="pt-BR"><p>${versiculos}</p></div>`;
 }
 
-function htmlCardDeItem(item, { compacto = false } = {}) {
-  const tema = TEMAS_LEITURA[item.tema] || TEMAS_LEITURA.contexto;
-  const referencia = referenciaVersiculos(capituloAberto.dados, item.versiculos);
-  const forca =
-    !compacto && item.aresta?.forca
-      ? `<span class="pill ${classePill(item.aresta.forca)}" title="Força do apoio">${escapar(rotuloForca(item.aresta.forca))}</span>`
-      : "";
-  // Compacto, o card é só um índice na margem (tipo, trecho e título): o
-  // texto inteiro abre no lugar, ao clicar. Com 20+ notas num capítulo,
-  // cards altos escorregavam para longe do versículo a que pertencem.
-  const corpo = compacto ? "" : `<p class="card-leitura-corpo">${comCitacoes(item.corpo || "", item.aresta)}</p>`;
-  const detalhes = compacto
-    ? ""
-    : `
+function htmlIndice(capitulo, itens) {
+  const porTema = Object.keys(TEMAS_LEITURA)
+    .map((tema) => [tema, itens.filter((i) => i.tema === tema)])
+    .filter(([, lista]) => lista.length);
+  return `
+    <aside class="biblia-indice" aria-label="Notas deste capítulo">
+      <h3>Neste capítulo</h3>
+      ${porTema
+        .map(
+          ([tema, lista]) => `
+        <section class="indice-grupo" data-tema="${tema}" style="--cor-tema: ${TEMAS_LEITURA[tema].cor}">
+          <h4>${iconeUI(TEMAS_LEITURA[tema].icone)}${escapar(TEMAS_LEITURA[tema].rotulo)}</h4>
+          <ul>${lista
+            .map(
+              (item) => `<li><button class="indice-item" data-itens="${escapar(item.id)}" data-v="${item.versiculos[0]}">
+                <span class="indice-ref">${escapar(referenciaVersiculos(capitulo, item.versiculos).replace(/^.* /, ""))}</span>
+                <span>${escapar(item.titulo)}</span></button></li>`
+            )
+            .join("")}</ul>
+        </section>`
+        )
+        .join("")}
+    </aside>`;
+}
+
+function htmlCardDeItem(item) {
+  const tema = temaDe(item);
+  const forca = item.aresta?.forca
+    ? `<span class="pill ${classePill(item.aresta.forca)}" title="Força do apoio">${escapar(rotuloForca(item.aresta.forca))}</span>`
+    : "";
+  return `
+    <article class="card-leitura" data-item="${escapar(item.id)}" style="--cor-tema: ${tema.cor}">
+      <p class="card-leitura-tipo">${iconeUI(tema.icone)}${escapar(tema.rotulo)}<span class="etiqueta">${escapar(
+        referenciaVersiculos(capituloAberto.dados, item.versiculos)
+      )}</span></p>
+      <h3 id="nota-titulo">${escapar(item.titulo)}</h3>
+      ${forca}
+      <p class="card-leitura-corpo">${comCitacoes(item.corpo || "", item.aresta)}</p>
       ${item.sobre ? `<p class="card-leitura-notas"><strong>Sobre ${escapar(item.sobre.nome)}:</strong> ${escapar(item.sobre.descricao)}</p>` : ""}
       ${
         item.leituras.length
@@ -2405,7 +2530,6 @@ function htmlCardDeItem(item, { compacto = false } = {}) {
               .join("")}</ul>`
           : ""
       }
-      ${item.notas ? `<p class="card-leitura-notas">${comCitacoes(item.notas.trim(), item.aresta)}</p>` : ""}
       ${
         item.fontes.length
           ? `<details class="mais"><summary>${plural(item.fontes.length, "fonte", "fontes")}</summary><ul class="card-leitura-fontes">${item.fontes
@@ -2417,22 +2541,11 @@ function htmlCardDeItem(item, { compacto = false } = {}) {
         item.aresta
           ? `<button class="card-leitura-mapa" data-id="${escapar(item.aresta.origem)}">${iconeUI("conexoes")}Ver no mapa</button>`
           : ""
-      }`;
-  const continuar = compacto
-    ? `<button class="card-leitura-abrir" data-item="${escapar(item.id)}" aria-label="Abrir: ${escapar(item.titulo)}">Abrir</button>`
-    : "";
-  return `
-    <article class="card-leitura${compacto ? " compacto" : ""}" data-item="${escapar(item.id)}" style="--cor-tema: ${tema.cor}">
-      <p class="card-leitura-tipo">${iconeUI(tema.icone)}${escapar(tema.rotulo)}<span class="etiqueta">${escapar(referencia)}</span></p>
-      <h3>${escapar(item.titulo)}</h3>
-      ${forca}
-      ${corpo}
-      ${detalhes}
-      ${continuar}
+      }
     </article>`;
 }
 
-function htmlCreditosDoCapitulo(capitulo) {
+function htmlCreditos(capitulo) {
   const t = capitulo.traducao;
   const licenca = urlSegura(t.licenca_url);
   const fonte = urlSegura(t.fonte);
@@ -2442,7 +2555,7 @@ function htmlCreditosDoCapitulo(capitulo) {
       <p>${fonte ? `<a href="${escapar(fonte)}" target="_blank" rel="noopener noreferrer">Arquivo de origem${ICONE_EXTERNO}</a>` : ""}${
         licenca ? ` · <a href="${escapar(licenca)}" target="_blank" rel="noopener noreferrer">Licença (${escapar(t.licenca)})${ICONE_EXTERNO}</a>` : ""
       }</p>
-      <p class="etiqueta">O texto aparece como na fonte, dividido em versículos. Títulos, resumos e notas são do Tudo Conectado, não da tradução.</p>
+      <p class="etiqueta">O texto aparece como na fonte, dividido em versículos. Títulos, resumos, destaques e notas são do Tudo Conectado, não da tradução.</p>
     </footer>`;
 }
 
@@ -2455,146 +2568,303 @@ async function abrirCapitulo(id, { atualizarHash = true } = {}) {
     mudarView("leitura");
     return;
   }
-  capituloAberto = { dados, itens: [] };
-  capituloAberto.itens = itensDoCapitulo(dados);
+  fecharNota({ devolverFoco: false });
+  capituloAberto = { dados, itens: itensDoCapitulo(dados) };
   const { itens } = capituloAberto;
 
   painel.innerHTML = `
-    <article class="leitura">
-      ${htmlTopoDoCapitulo(dados, itens)}
-      <div class="leitura-corpo">
-        ${htmlTextoDoCapitulo(dados, itens)}
-        <aside class="leitura-margem" aria-label="Notas e conexões do capítulo">
-          ${itens.map((item) => htmlCardDeItem(item, { compacto: true })).join("")}
-        </aside>
+    <div class="biblia">
+      ${htmlLateral(dados, itens)}
+      <article class="biblia-leitura">
+        <div class="biblia-progresso" aria-hidden="true"><span></span></div>
+        ${htmlCabecalho(dados, itens)}
+        ${htmlTexto(dados, itens)}
+        ${htmlCreditos(dados)}
+      </article>
+      ${htmlIndice(dados, itens)}
+    </div>
+    <div class="nota-flutuante" hidden role="dialog" aria-modal="false" aria-labelledby="nota-titulo">
+      <span class="nota-seta" aria-hidden="true"></span>
+      <div class="nota-barra">
+        <span class="nota-pager"></span>
+        <button class="nota-anterior" aria-label="Nota anterior">‹</button>
+        <button class="nota-seguinte" aria-label="Próxima nota">›</button>
+        <button class="nota-fechar" aria-label="Fechar nota">
+          <svg viewBox="0 0 24 24" class="icone"><path d="M18 6 6 18" /><path d="m6 6 12 12" /></svg>
+        </button>
       </div>
-      ${htmlCreditosDoCapitulo(dados)}
-    </article>
-    <div class="leitura-folha" hidden role="dialog" aria-modal="false" aria-label="Nota do versículo">
-      <button class="fechar-painel fechar-folha" aria-label="Fechar nota">
-        <svg viewBox="0 0 24 24" class="icone"><path d="M18 6 6 18" /><path d="m6 6 12 12" /></svg>
-      </button>
-      <div class="leitura-folha-corpo"></div>
+      <div class="nota-corpo"></div>
     </div>`;
 
-  ligarLeitura(painel);
+  aplicarTemasOcultosLeitura();
+  ligarBiblia(painel);
   mudarView("leitura");
-  if (atualizarHash && lerCapituloDoHash() !== id) {
-    history.pushState(null, "", `#capitulo=${encodeURIComponent(id)}`);
-  }
-  window.scrollTo({ top: 0 });
-  requestAnimationFrame(posicionarCardsNaMargem);
-  document.fonts?.ready.then(posicionarCardsNaMargem);
+  if (atualizarHash && lerCapituloDoHash() !== id) history.pushState(null, "", `#capitulo=${encodeURIComponent(id)}`);
+  areaDeRolagem().scrollTo({ top: 0 });
+  acompanharLeitura();
 }
 
-// Cards de margem alinhados ao versículo onde a nota começa; se dois se
-// encontram, o de baixo desce. Abaixo de 1100px não há margem: o CSS a
-// esconde e as marcas abrem a folha inferior.
-function posicionarCardsNaMargem() {
-  const margem = document.querySelector(".leitura-margem");
-  if (!margem || !ehLeituraLarga()) return;
-  const topoMargem = margem.getBoundingClientRect().top;
-  let fundoAnterior = 0;
-  margem.querySelectorAll(".card-leitura").forEach((card) => {
-    const item = capituloAberto.itens.find((i) => i.id === card.dataset.item);
-    const versiculo = document.querySelector(`#v-${item?.versiculos[0]}`);
-    const alvo = versiculo ? versiculo.getBoundingClientRect().top - topoMargem : fundoAnterior;
-    const topo = Math.max(alvo, fundoAnterior);
-    card.style.top = `${topo}px`;
-    fundoAnterior = topo + card.offsetHeight + 10;
+// --- Interação ------------------------------------------------------------------
+
+function aplicarTemasOcultosLeitura() {
+  const raiz = document.querySelector(".biblia");
+  if (!raiz) return;
+  raiz.querySelectorAll("[data-temas]").forEach((el) => {
+    const temas = el.dataset.temas.split(" ");
+    el.classList.toggle("tema-oculto", temas.every((t) => temasOcultosLeitura.has(t)));
   });
-  margem.style.minHeight = `${fundoAnterior}px`;
+  raiz.querySelectorAll(".indice-grupo").forEach((g) => (g.hidden = temasOcultosLeitura.has(g.dataset.tema)));
+  raiz.querySelectorAll(".legenda-tema").forEach((b) => {
+    const visivel = !temasOcultosLeitura.has(b.dataset.tema);
+    b.classList.toggle("apagado", !visivel);
+    b.setAttribute("aria-pressed", String(visivel));
+  });
 }
 
-function realcarVersiculos(item, ligado) {
-  if (!item) return;
-  for (let v = item.versiculos[0]; v <= item.versiculos[1]; v++) {
-    document.querySelector(`#v-${v}`)?.classList.toggle("realcado", ligado);
+function realcarVersiculos(ids, ligado) {
+  for (const id of ids) {
+    const item = capituloAberto?.itens.find((i) => i.id === id);
+    if (!item) continue;
+    for (let v = item.versiculos[0]; v <= item.versiculos[1]; v++) {
+      document.querySelector(`#v-${v}`)?.classList.toggle("realcado", ligado);
+    }
   }
 }
 
-function abrirItem(ids) {
-  const lista = String(ids).split(" ").filter(Boolean);
-  const id = lista[0];
-  const item = capituloAberto?.itens.find((i) => i.id === id);
-  if (!item) return;
-  if (ehLeituraLarga()) {
-    // Na margem, o card compacto vira o card completo no próprio lugar.
-    const card = document.querySelector(`.leitura-margem .card-leitura[data-item="${CSS.escape(id)}"]`);
-    if (!card) return;
-    document.querySelectorAll(".leitura-margem .card-leitura.ativo").forEach((c) => {
-      const outro = capituloAberto.itens.find((i) => i.id === c.dataset.item);
-      c.outerHTML = htmlCardDeItem(outro, { compacto: true });
-    });
-    const atual = document.querySelector(`.leitura-margem .card-leitura[data-item="${CSS.escape(id)}"]`);
-    atual.outerHTML = htmlCardDeItem(item);
-    const novo = document.querySelector(`.leitura-margem .card-leitura[data-item="${CSS.escape(id)}"]`);
-    novo.classList.add("ativo");
-    ligarLeitura(document.querySelector("#view-leitura"), { soMargem: true });
-    posicionarCardsNaMargem();
-    novo.scrollIntoView({ block: "nearest", behavior: animacoesOk() ? "smooth" : "auto" });
+// Ordem de navegação com ← e →: todas as notas visíveis, na ordem do texto.
+function idsNavegaveis() {
+  return capituloAberto.itens.filter((i) => !temasOcultosLeitura.has(i.tema)).map((i) => i.id);
+}
+
+function ancoraDoItem(id) {
+  return [...document.querySelectorAll(".biblia-leitura [data-itens]")].find((el) => el.dataset.itens.split(" ").includes(id));
+}
+
+function abrirNota(ids, ancora, indice = 0) {
+  if (!capituloAberto || !ids.length) return;
+  const pop = document.querySelector(".nota-flutuante");
+  if (notaAberta?.ancora && notaAberta.ancora !== ancora) {
+    notaAberta.ancora.classList.remove("ativo");
+    realcarVersiculos(notaAberta.ids, false);
+  }
+  notaAberta = { ids, indice, ancora };
+  const item = capituloAberto.itens.find((i) => i.id === ids[indice]);
+  pop.querySelector(".nota-corpo").innerHTML = htmlCardDeItem(item);
+  pop.querySelector(".nota-pager").textContent = ids.length > 1 ? `${indice + 1} de ${ids.length} neste trecho` : "";
+  pop.style.setProperty("--cor-tema", temaDe(item).cor);
+  ligarCardFlutuante(pop);
+
+  ancora?.classList.add("ativo");
+  realcarVersiculos(ids, true);
+  document.querySelectorAll(".indice-item").forEach((b) => b.classList.toggle("ativo", ids.includes(b.dataset.itens)));
+
+  const reabrindo = !pop.hidden;
+  pop.hidden = false;
+  pop.classList.toggle("folha", ehLeituraMovel());
+  posicionarNota();
+  if (!reabrindo) {
+    pop.classList.remove("entrando");
+    void pop.offsetWidth; // reinicia a animação de entrada
+    pop.classList.add("entrando");
+  }
+  pop.querySelector(".nota-fechar").focus({ preventScroll: true });
+}
+
+// Card junto da palavra: abaixo dela se couber, senão acima; nunca fora da
+// tela. No celular vira folha inferior (o CSS cuida da posição).
+function posicionarNota() {
+  const pop = document.querySelector(".nota-flutuante");
+  if (!pop || pop.hidden || !notaAberta?.ancora) return;
+  if (ehLeituraMovel()) {
+    pop.style.left = pop.style.top = "";
     return;
   }
-  const folha = document.querySelector(".leitura-folha");
-  folha.querySelector(".leitura-folha-corpo").innerHTML = lista
-    .map((i) => capituloAberto.itens.find((x) => x.id === i))
-    .filter(Boolean)
-    .map((i) => htmlCardDeItem(i))
-    .join("");
-  folha.hidden = false;
-  ligarLeitura(folha, { soFolha: true });
-  folha.querySelector(".fechar-folha").focus();
-}
-
-function fecharFolha() {
-  const folha = document.querySelector(".leitura-folha");
-  if (folha) folha.hidden = true;
-}
-
-function ligarLeitura(raiz, { soMargem = false, soFolha = false } = {}) {
-  const itemDe = (el) => capituloAberto.itens.find((i) => i.id === el.dataset.item.split(" ")[0]);
-  const itensDe = (el) => el.dataset.item.split(" ").map((id) => capituloAberto.itens.find((i) => i.id === id)).filter(Boolean);
-  if (!soMargem && !soFolha) {
-    raiz.querySelector(".leitura-voltar")?.addEventListener("click", () => {
-      history.pushState(null, "", location.pathname);
-      mudarView("passagens");
-    });
-    raiz.querySelectorAll(".marca-nota, .ir-para-item").forEach((botao) => {
-      botao.addEventListener("click", () => {
-        if (botao.classList.contains("ir-para-item")) {
-          const item = itemDe(botao);
-          document.querySelector(`#v-${item.versiculos[0]}`)?.scrollIntoView({ block: "center", behavior: animacoesOk() ? "smooth" : "auto" });
-        }
-        abrirItem(botao.dataset.item);
-      });
-      botao.addEventListener("mouseenter", () => itensDe(botao).forEach((i) => realcarVersiculos(i, true)));
-      botao.addEventListener("mouseleave", () => itensDe(botao).forEach((i) => realcarVersiculos(i, false)));
-    });
-    raiz.querySelector(".fechar-folha")?.addEventListener("click", fecharFolha);
-    raiz.querySelectorAll(".leitura-faixa").forEach((d) => d.addEventListener("toggle", posicionarCardsNaMargem));
+  const r = notaAberta.ancora.getBoundingClientRect();
+  // A palavra saiu da tela na rolagem: o card não fica solto na borda.
+  if (r.bottom < 0 || r.top > window.innerHeight) {
+    fecharNota({ devolverFoco: false });
+    return;
   }
-  const alvoCards = soFolha ? raiz : raiz.querySelector(".leitura-margem") || raiz;
-  alvoCards.querySelectorAll(".card-leitura").forEach((card) => {
-    card.addEventListener("mouseenter", () => realcarVersiculos(itemDe(card), true));
-    card.addEventListener("mouseleave", () => realcarVersiculos(itemDe(card), false));
-  });
-  alvoCards.querySelectorAll(".card-leitura-abrir").forEach((botao) => botao.addEventListener("click", () => abrirItem(botao.dataset.item)));
-  alvoCards.querySelectorAll(".card-leitura-mapa").forEach((botao) =>
+  const margem = 12;
+  // Espaço útil: da borda de baixo da tela até a de cima da área de leitura
+  // (o cabeçalho do site fica fora). Se o card não couber inteiro em nenhum
+  // lado, vai para o maior e rola por dentro.
+  const limiteDeCima = areaDeRolagem().getBoundingClientRect().top + margem;
+  const espacoAbaixo = window.innerHeight - r.bottom - 10 - margem;
+  const espacoAcima = r.top - 10 - limiteDeCima;
+  pop.style.maxHeight = "";
+  const alturaNatural = pop.offsetHeight;
+  const cabeAbaixo = alturaNatural <= espacoAbaixo || espacoAbaixo >= espacoAcima;
+  const espaco = cabeAbaixo ? espacoAbaixo : espacoAcima;
+  if (alturaNatural > espaco) pop.style.maxHeight = `${Math.max(espaco, 160)}px`;
+  const largura = pop.offsetWidth;
+  const altura = pop.offsetHeight;
+  const esquerda = Math.min(Math.max(margem, r.left + r.width / 2 - largura / 2), window.innerWidth - largura - margem);
+  const topo = cabeAbaixo ? r.bottom + 10 : Math.max(limiteDeCima, r.top - altura - 10);
+  // Posição fixa na tela: ao rolar, posicionarNota() acompanha a palavra.
+  pop.style.left = `${esquerda}px`;
+  pop.style.top = `${topo}px`;
+  pop.classList.toggle("acima", !cabeAbaixo);
+  pop.style.setProperty("--seta-x", `${Math.min(Math.max(16, r.left + r.width / 2 - esquerda), largura - 16)}px`);
+}
+
+function fecharNota({ devolverFoco = true } = {}) {
+  const pop = document.querySelector(".nota-flutuante");
+  if (!pop || pop.hidden) return;
+  pop.hidden = true;
+  if (notaAberta) {
+    notaAberta.ancora?.classList.remove("ativo");
+    realcarVersiculos(notaAberta.ids, false);
+    if (devolverFoco) notaAberta.ancora?.focus({ preventScroll: true });
+  }
+  document.querySelectorAll(".indice-item.ativo").forEach((b) => b.classList.remove("ativo"));
+  notaAberta = null;
+}
+
+// Vai para a nota vizinha na ordem do texto (setas ← → ou botões ‹ ›).
+function navegarNota(passo) {
+  if (!notaAberta) return;
+  const { ids, indice } = notaAberta;
+  if (ids.length > 1 && indice + passo >= 0 && indice + passo < ids.length) {
+    abrirNota(ids, notaAberta.ancora, indice + passo);
+    return;
+  }
+  const ordem = idsNavegaveis();
+  const atual = ordem.indexOf(ids[indice]);
+  const proximo = ordem[atual + passo];
+  if (!proximo) return;
+  const ancora = ancoraDoItem(proximo);
+  const grupo = ancora ? ancora.dataset.itens.split(" ") : [proximo];
+  ancora?.scrollIntoView({ block: "center", behavior: animacoesOk() ? "smooth" : "auto" });
+  setTimeout(() => abrirNota(grupo, ancora, grupo.indexOf(proximo)), animacoesOk() ? 250 : 0);
+}
+
+function ligarCardFlutuante(pop) {
+  pop.querySelectorAll(".card-leitura-mapa").forEach((botao) =>
     botao.addEventListener("click", () => {
-      fecharFolha();
+      fecharNota({ devolverFoco: false });
       history.pushState(null, "", location.pathname);
       mudarView("mapa");
       centralizarEm(botao.dataset.id);
     })
   );
-  alvoCards.querySelectorAll("details.mais").forEach((d) => d.addEventListener("toggle", posicionarCardsNaMargem));
+  pop.querySelectorAll("details").forEach((d) => d.addEventListener("toggle", posicionarNota));
+}
+
+function ligarBiblia(raiz) {
+  raiz.querySelectorAll(".biblia-leitura [data-itens]").forEach((el) => {
+    const ids = el.dataset.itens.split(" ");
+    el.addEventListener("click", (evento) => {
+      evento.preventDefault();
+      evento.stopPropagation();
+      if (notaAberta?.ancora === el) fecharNota();
+      else abrirNota(ids, el);
+    });
+    el.addEventListener("mouseenter", () => realcarVersiculos(ids, true));
+    el.addEventListener("mouseleave", () => {
+      if (notaAberta?.ancora !== el) realcarVersiculos(ids, false);
+    });
+  });
+  raiz.querySelectorAll(".indice-item").forEach((botao) =>
+    botao.addEventListener("click", (evento) => {
+      evento.stopPropagation();
+      const id = botao.dataset.itens;
+      const ancora = ancoraDoItem(id);
+      const grupo = ancora ? ancora.dataset.itens.split(" ") : [id];
+      ancora?.scrollIntoView({ block: "center", behavior: animacoesOk() ? "smooth" : "auto" });
+      setTimeout(() => abrirNota(grupo, ancora, grupo.indexOf(id)), animacoesOk() ? 300 : 0);
+    })
+  );
+  raiz.querySelectorAll(".legenda-tema").forEach((botao) =>
+    botao.addEventListener("click", () => {
+      const tema = botao.dataset.tema;
+      if (temasOcultosLeitura.has(tema)) temasOcultosLeitura.delete(tema);
+      else temasOcultosLeitura.add(tema);
+      fecharNota({ devolverFoco: false });
+      aplicarTemasOcultosLeitura();
+    })
+  );
+  raiz.querySelectorAll(".cap[data-capitulo]").forEach((botao) =>
+    botao.addEventListener("click", () => abrirCapitulo(botao.dataset.capitulo))
+  );
+  raiz.querySelectorAll(".lateral-bloco details").forEach((d) => d.addEventListener("toggle", posicionarNota));
+
+  const pop = raiz.querySelector(".nota-flutuante");
+  pop.querySelector(".nota-fechar").addEventListener("click", () => fecharNota());
+  pop.querySelector(".nota-anterior").addEventListener("click", () => navegarNota(-1));
+  pop.querySelector(".nota-seguinte").addEventListener("click", () => navegarNota(1));
+  pop.addEventListener("click", (evento) => evento.stopPropagation());
+}
+
+// Índice que acompanha a leitura: as notas dos versículos que estão na faixa
+// central da tela acendem. Com um capítulo de ~30 versículos, medir as
+// posições a cada quadro de rolagem é barato e não depende de quando o
+// navegador entrega eventos de interseção.
+let quadroPendente = false;
+function acompanharLeitura() {
+  if (quadroPendente) return;
+  quadroPendente = true;
+  requestAnimationFrame(() => {
+    quadroPendente = false;
+    const topo = window.innerHeight * 0.15;
+    const fundo = window.innerHeight * 0.65;
+    const naTela = new Set();
+    document.querySelectorAll(".leitura-texto .versiculo").forEach((v) => {
+      const r = v.getBoundingClientRect();
+      if (r.bottom > topo && r.top < fundo) naTela.add(Number(v.dataset.v));
+    });
+    document.querySelectorAll(".indice-item").forEach((b) => b.classList.toggle("na-tela", naTela.has(Number(b.dataset.v))));
+    atualizarProgresso();
+  });
+}
+
+function atualizarProgresso() {
+  const texto = document.querySelector(".leitura-texto");
+  const barra = document.querySelector(".biblia-progresso span");
+  if (!texto || !barra || document.querySelector("#view-leitura").hidden) return;
+  const r = texto.getBoundingClientRect();
+  const total = r.height - window.innerHeight * 0.5;
+  const lido = Math.min(Math.max((window.innerHeight * 0.5 - r.top) / Math.max(total, 1), 0), 1);
+  barra.style.transform = `scaleX(${lido})`;
+}
+
+function configurarBiblia() {
+  document.addEventListener("click", (evento) => {
+    const pop = document.querySelector(".nota-flutuante");
+    if (pop && !pop.hidden && !pop.contains(evento.target)) fecharNota({ devolverFoco: false });
+  });
+  document.addEventListener("keydown", (evento) => {
+    if (!notaAberta) return;
+    if (evento.key === "Escape") fecharNota();
+    else if (evento.key === "ArrowRight") navegarNota(1);
+    else if (evento.key === "ArrowLeft") navegarNota(-1);
+  });
+  areaDeRolagem().addEventListener(
+    "scroll",
+    () => {
+      acompanharLeitura();
+      posicionarNota();
+    },
+    { passive: true }
+  );
+  window.addEventListener("resize", () => {
+    atualizarProgresso();
+    posicionarNota();
+  });
+}
+
+// A aba Passagens é a Bíblia: abre o capítulo em leitura (ou o primeiro).
+function abrirBiblia() {
+  const id = capituloAberto?.dados.id || indiceCapitulos[0]?.id;
+  if (id) abrirCapitulo(id);
+  else mudarView("passagens");
 }
 
 function sincronizarLeituraComHash() {
   const id = lerCapituloDoHash();
   if (id && id !== capituloAberto?.dados.id) abrirCapitulo(id, { atualizarHash: false });
   else if (id) mudarView("leitura");
-  else if (document.querySelector("#view-leitura") && !document.querySelector("#view-leitura").hidden) mudarView("passagens");
+  else if (document.querySelector("#view-leitura") && !document.querySelector("#view-leitura").hidden) mudarView("mapa");
 }
 
 // --- Timeline -----------------------------------------------------------------
@@ -2628,10 +2898,7 @@ async function iniciar() {
     await carregarIndiceCapitulos();
     window.addEventListener("hashchange", sincronizarLeituraComHash);
     window.addEventListener("popstate", sincronizarLeituraComHash);
-    window.addEventListener("resize", posicionarCardsNaMargem);
-    document.addEventListener("keydown", (evento) => {
-      if (evento.key === "Escape") fecharFolha();
-    });
+    configurarBiblia();
     window.addEventListener("resize", () => {
       if (!cy) return;
       cy.resize();

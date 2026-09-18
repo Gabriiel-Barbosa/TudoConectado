@@ -4,7 +4,12 @@
   "title": "Passagem",
   "type": "object",
   "additionalProperties": false,
-  "required": ["id", "referencia", "afirma", "registros_citados"],
+  "required": [
+    "id",
+    "referencia",
+    "afirma",
+    "registros_citados"
+  ],
   "properties": {
     "id": {
       "type": "string",
@@ -29,34 +34,61 @@
       "items": {
         "type": "object",
         "additionalProperties": false,
-        "required": ["ligacao", "versiculos", "tema"],
+        "required": [
+          "ligacao",
+          "versiculos",
+          "tema"
+        ],
         "properties": {
-          "ligacao": { "type": "string" },
+          "ligacao": {
+            "type": "string"
+          },
           "versiculos": {
             "type": "array",
             "minItems": 2,
             "maxItems": 2,
-            "items": { "type": "integer", "minimum": 1 }
+            "items": {
+              "type": "integer",
+              "minimum": 1
+            }
           },
           "tema": {
             "type": "string",
-            "enum": ["paralelo", "ciencia", "leitura_literal", "leitura_nao_literal", "contexto"]
+            "enum": [
+              "paralelo",
+              "ciencia",
+              "leitura_literal",
+              "leitura_nao_literal",
+              "contexto"
+            ]
+          },
+          "trecho": {
+            "type": "string",
+            "minLength": 1,
+            "description": "Opcional: as palavras exatas do versículo (o primeiro do intervalo) que viram link para esta nota na tela de leitura. Precisam existir no texto do versículo; sem trecho, a nota aparece como ícone no fim do versículo."
           }
         }
       }
     },
     "afirma": {
       "type": "array",
-      "items": { "type": "string", "minLength": 1 },
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
       "minItems": 1
     },
     "registros_citados": {
       "type": "array",
-      "items": { "type": "string" }
+      "items": {
+        "type": "string"
+      }
     },
     "afirmacoes_citadas": {
       "type": "array",
-      "items": { "type": "string" },
+      "items": {
+        "type": "string"
+      },
       "description": "IDs de dados/afirmacoes/ que esta passagem sustenta — é o que liga o capítulo às Afirmações formais (com datação e ligações), não só à prosa livre de 'afirma'."
     },
     "paralelos_externos": {
@@ -64,9 +96,13 @@
       "items": {
         "type": "object",
         "additionalProperties": false,
-        "required": ["ligacao"],
+        "required": [
+          "ligacao"
+        ],
         "properties": {
-          "ligacao": { "type": "string" }
+          "ligacao": {
+            "type": "string"
+          }
         }
       }
     },
@@ -76,7 +112,15 @@
     }
   },
   "oneOf": [
-    { "required": ["paralelos_externos"] },
-    { "required": ["nenhum_paralelo_conhecido"] }
+    {
+      "required": [
+        "paralelos_externos"
+      ]
+    },
+    {
+      "required": [
+        "nenhum_paralelo_conhecido"
+      ]
+    }
   ]
 }

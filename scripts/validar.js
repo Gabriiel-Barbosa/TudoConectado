@@ -182,10 +182,18 @@ function validarCapitulos(dadosPorCategoria) {
   }
 
   const totalDeVersiculos = (passagem) => textos.get(passagem?.texto)?.t.versiculos?.length ?? null;
-  const conferirAncora = (rel, onde, [inicio, fim], passagem) => {
+  const conferirAncora = (rel, onde, [inicio, fim], passagem, trecho) => {
     if (inicio > fim) erros.push(`${rel}: ${onde} tem versículos [${inicio}, ${fim}]; o primeiro é maior que o último`);
     const total = totalDeVersiculos(passagem);
     if (total !== null && fim > total) erros.push(`${rel}: ${onde} vai até o versículo ${fim}, mas o capítulo tem ${total}`);
+    // O trecho vira link na tela de leitura: se não estiver no versículo,
+    // a nota ficaria sem lugar (ou no lugar errado).
+    if (trecho) {
+      const versiculo = textos.get(passagem?.texto)?.t.versiculos?.find((v) => v.n === inicio);
+      if (versiculo && !versiculo.texto.includes(trecho)) {
+        erros.push(`${rel}: ${onde} tem trecho "${trecho}", que não aparece no versículo ${inicio}`);
+      }
+    }
   };
 
   for (const [rel, passagem] of dadosPorCategoria.passagem || []) {
@@ -194,7 +202,7 @@ function validarCapitulos(dadosPorCategoria) {
     }
     for (const conexao of passagem.conexoes || []) {
       if (!ligacoes.has(conexao.ligacao)) erros.push(`${rel}: conexão com a ligação '${conexao.ligacao}', que não existe`);
-      conferirAncora(rel, `a conexão '${conexao.ligacao}'`, conexao.versiculos, passagem);
+      conferirAncora(rel, `a conexão '${conexao.ligacao}'`, conexao.versiculos, passagem, conexao.trecho);
     }
   }
 
@@ -204,7 +212,7 @@ function validarCapitulos(dadosPorCategoria) {
       erros.push(`${rel}: passagem '${nota.passagem}' não existe`);
       continue;
     }
-    conferirAncora(rel, "a nota", nota.versiculos, passagem);
+    conferirAncora(rel, "a nota", nota.versiculos, passagem, nota.trecho);
   }
   return erros;
 }
