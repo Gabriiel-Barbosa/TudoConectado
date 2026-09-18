@@ -69,6 +69,11 @@
             "type": "string",
             "minLength": 1,
             "description": "Localização exata: capítulo/versículo, coluna/linha, nº de catálogo ou página — nunca só o título do livro."
+          },
+          "url": {
+            "type": "string",
+            "pattern": "^https://[^\\s]+$",
+            "description": "Opcional. Onde o leitor consulta a fonte: DOI, catálogo oficial, edição digitalizada ou página da editora. Só um endereço que alguém abriu e viu que leva a ESTA obra — nunca um link deduzido. Não entra no hash da conferência: trocar o link não invalida o veredito sobre a fonte."
           }
         }
       }

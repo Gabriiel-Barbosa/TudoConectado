@@ -42,6 +42,60 @@ describe("compilarGrafo", () => {
     assert.equal(arestaLigacao.forca, "bem_estabelecido");
   });
 
+  test("a aresta de ligação carrega tipo_de_apoio, quem_sustenta e notas", () => {
+    const comEvidenciaCompleta = [
+      {
+        id: "lig-2",
+        tipo: "confirma",
+        entre: [{ registro: "moises" }, { afirmacao: "af-1" }],
+        evidencia: {
+          tipo_de_apoio: "achado_arqueologico",
+          forca: "bem_estabelecido",
+          quem_sustenta: [{ nome: "Fulana", ano: 2012 }],
+        },
+        fontes: [{ nivel: 1, descricao: "x" }],
+        o_que_derrubaria: "nada",
+        notas: "o que isso não demonstra",
+      },
+    ];
+    const { arestas } = compilarGrafo(registros, afirmacoes, [], comEvidenciaCompleta);
+    const aresta = arestas.find((a) => a.ligacao === "lig-2");
+    assert.equal(aresta.tipo_de_apoio, "achado_arqueologico");
+    assert.deepEqual(aresta.quem_sustenta, [{ nome: "Fulana", ano: 2012 }]);
+    assert.equal(aresta.notas, "o que isso não demonstra");
+  });
+
+  test("ligação sem tipo_de_apoio/quem_sustenta/notas não quebra a compilação", () => {
+    const { arestas } = compilarGrafo(registros, afirmacoes, [], ligacoes);
+    const aresta = arestas.find((a) => a.ligacao === "lig-1");
+    assert.equal(aresta.tipo_de_apoio, null);
+    assert.deepEqual(aresta.quem_sustenta, []);
+    assert.equal(aresta.notas, null);
+  });
+
+  test("justificativa_copia só aparece na aresta quando existe na ligação", () => {
+    const copia = [
+      {
+        id: "lig-copia",
+        tipo: "foi_copiado_de",
+        entre: [{ registro: "a" }, { registro: "b" }],
+        evidencia: { tipo_de_apoio: "texto", forca: "disputado", quem_sustenta: [] },
+        fontes: [{ nivel: 2, descricao: "x" }],
+        o_que_derrubaria: "nada",
+        justificativa_copia: {
+          semelhanca_especifica: "s",
+          anterioridade_comprovada: "a",
+          caminho_plausivel: "c",
+        },
+      },
+    ];
+    const { arestas } = compilarGrafo([], [], [], copia);
+    assert.equal(arestas[0].justificativa_copia.semelhanca_especifica, "s");
+
+    const { arestas: semCopia } = compilarGrafo(registros, afirmacoes, [], ligacoes);
+    assert.ok(!("justificativa_copia" in semCopia.find((a) => a.ligacao === "lig-1")));
+  });
+
   test("uma ligação com 3+ pontas em 'entre' vira uma cadeia de arestas", () => {
     const ligacaoTripla = [
       {

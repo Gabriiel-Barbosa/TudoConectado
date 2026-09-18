@@ -1,0 +1,49 @@
+# Gerado por .claude/skills/conferir/scripts/registrar.js — vereditos da
+# Contraprova para as fontes desta ligação. Edite à mão só 'revisao_humana'
+# (pendente -> feita) depois de conferir você mesmo.
+ligacao: hipotese-documentaria-contradiz-autoria-mosaica
+fontes:
+  - hash: bd1e5481bc4b
+    nivel: 2
+    descricao: >-
+      Wellhausen, J. (1885), Prolegomena to the History of Israel, trad. J. S. Black e A. Menzies,
+      Edimburgo: A. & C. Black — tradução da 2ª ed. alemã, Prolegomena zur Geschichte Israels
+      (Berlim: Reimer, 1883), cuja 1ª ed. saiu em 1878 como Geschichte Israels, vol. I (prefácio de
+      W. Robertson Smith, pp. v-vi); Introdução, §2, pp. 6-9
+    alegacao: >-
+      Wellhausen sustenta que Gênesis não foi escrito por Moisés, com base na análise literária do
+      Pentateuco como composto de fontes documentais posteriores.
+    veredito: nao_confirmavel
+    parou_em: localizacao
+    conferido_em: >-
+      https://archive.org/details/prolegomenatohi00wellgoog;
+      http://www.gutenberg.org/cache/epub/4732/pg4732.txt
+    observacao: >-
+      Edição de 1885 e histórico das edições confirmados. As leituras do OCR não concordam sobre a
+      paginação do §2 (6–9 ou até a p. 10–11). O prefácio vai além das pp. v–vi. O conteúdo implica
+      a autoria não mosaica (jeovista na época dos reis, Dt na de Josias), mas não a afirma com
+      essas palavras.
+    data: '2026-09-17'
+    conferido_por: contraprova
+    revisao_humana: pendente
+  - hash: bb8a34d0ba45
+    nivel: 2
+    descricao: >-
+      Baden, J. S. (2012), The Composition of the Pentateuch: Renewing the Documentary Hypothesis,
+      New Haven: Yale University Press (Anchor Yale Bible Reference Library), cap. 1, "The
+      Documentary Hypothesis", pp. 13-16
+    alegacao: >-
+      Baden sustenta que Gênesis não foi escrito por Moisés, com base na análise literária do
+      Pentateuco como composto de fontes documentais independentes.
+    veredito: nao_confirmavel
+    parou_em: localizacao
+    conferido_em: >-
+      https://yalebooks.yale.edu/book/9780300152630/the-composition-of-the-pentateuch/;
+      https://jhsonline.org/index.php/jhs/article/download/20697/15792?inline=1
+    observacao: >-
+      Bibliografia e existência do cap. 1 confirmadas. Não foi possível ver as pp. 13–16 em fonte
+      admissível (a prévia do Google Books não abriu), então não foi verificado se Baden fala de
+      Moisés ali.
+    data: '2026-09-17'
+    conferido_por: contraprova
+    revisao_humana: pendente

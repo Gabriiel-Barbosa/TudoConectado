@@ -1,0 +1,40 @@
+# Gerado por .claude/skills/conferir/scripts/registrar.js — vereditos da
+# Contraprova para as fontes desta ligação. Edite à mão só 'revisao_humana'
+# (pendente -> feita) depois de conferir você mesmo.
+ligacao: 6qpaleogen-confirma-genesis
+fontes:
+  - hash: ef5500812b4a
+    nivel: 1
+    descricao: Dead Sea Scrolls Digital Library (Israel Antiquities Authority), manuscrito 6Q1 (6QpaleoGen)
+    alegacao: >-
+      A Dead Sea Scrolls Digital Library registra que o manuscrito 6Q1 (6QpaleoGen) contém texto de
+      Gênesis.
+    veredito: confirmada
+    parou_em: null
+    conferido_em: https://www.deadseascrolls.org.il/explore-the-archive/manuscript/6Q1-1
+    observacao: >-
+      Confirmação apoiada apenas na designação 6Q1 e no título de catálogo '6Q paleoGenesis'; campos
+      descritivos (versículos, escrita, datação) não foram obtidos.
+    data: '2026-09-17'
+    conferido_por: contraprova
+    revisao_humana: pendente
+  - hash: ed581a31d4d4
+    nivel: 2
+    descricao: >-
+      Crawford, Sidnie White (2012), 'Genesis in the Dead Sea Scrolls', em Craig A. Evans, Joel N.
+      Lohr e David L. Petersen (orgs.), The Book of Genesis: Composition, Reception, and
+      Interpretation (Supplements to Vetus Testamentum 152), Brill, pp. 353–373 (6QpaleoGen na p.
+      353), doi:10.1163/9789004226579_016
+    alegacao: Crawford (2012) atesta que o manuscrito 6QpaleoGen (6Q1) é uma cópia de texto de Gênesis.
+    veredito: nao_confirmavel
+    parou_em: conteudo
+    conferido_em: >-
+      https://api.crossref.org/works/10.1163/9789004226579_016;
+      https://api.crossref.org/works/10.1163/9789004226579;
+      https://scholarlycommons.pacific.edu/ed-facbooks/12/
+    observacao: >-
+      Obra, organizadores, série e pp. 353–373 confirmados. O texto do capítulo não abriu (brill.com
+      403), então a p. 353 não foi lida.
+    data: '2026-09-17'
+    conferido_por: contraprova
+    revisao_humana: pendente

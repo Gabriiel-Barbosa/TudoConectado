@@ -71,8 +71,18 @@ function compilarGrafo(registros, afirmacoes, passagens, ligacoes) {
         destino: pontas[i + 1],
         tipo: ligacao.tipo,
         forca: ligacao.evidencia.forca,
+        // O schema já exige tipo_de_apoio/quem_sustenta e aceita notas e
+        // justificativa_copia; sem exportar aqui, a interface não consegue
+        // separar evidência arqueológica de textual, nem mostrar o limite
+        // da evidência que os dados já registram em 'notas'.
+        tipo_de_apoio: ligacao.evidencia.tipo_de_apoio ?? null,
+        quem_sustenta: ligacao.evidencia.quem_sustenta || [],
         fontes: ligacao.fontes,
         o_que_derrubaria: ligacao.o_que_derrubaria,
+        notas: ligacao.notas ?? null,
+        // Só existe em ligações foi_copiado_de (ver 'if/then' do schema) —
+        // fica de fora do JSON em vez de virar null nas outras.
+        ...(ligacao.justificativa_copia ? { justificativa_copia: ligacao.justificativa_copia } : {}),
       });
     }
   }
