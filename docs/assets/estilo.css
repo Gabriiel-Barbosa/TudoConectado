@@ -418,10 +418,22 @@ main {
   border: 1px solid var(--borda);
 }
 
+/* Fundo em camadas para dar profundidade ao grafo: duas malhas de pontos
+   que o app.js (agendarParallax) desloca com o pan/zoom, a mais próxima
+   mais depressa que a distante. Por cima, uma vinheta escurece as bordas.
+   Os brilhos coloridos ficam parados, como o "horizonte". */
 #grafo-canvas {
+  --pan-x: 0px;
+  --pan-y: 0px;
+  --zoom-fundo: 1;
   position: absolute;
   inset: 0;
   background:
+    radial-gradient(ellipse 75% 70% at 50% 50%, transparent 55%, rgba(0, 0, 0, 0.45) 100%),
+    radial-gradient(circle, rgba(255, 255, 255, 0.075) 1px, transparent 1.5px)
+      calc(var(--pan-x) * 0.4) calc(var(--pan-y) * 0.4) / calc(36px * var(--zoom-fundo)) calc(36px * var(--zoom-fundo)),
+    radial-gradient(circle, rgba(255, 255, 255, 0.04) 1px, transparent 1.5px)
+      calc(var(--pan-x) * 0.15) calc(var(--pan-y) * 0.15) / 61px 61px,
     radial-gradient(ellipse 60% 55% at 28% 45%, rgba(139, 107, 240, 0.16), transparent 60%),
     radial-gradient(ellipse 50% 50% at 85% 15%, rgba(52, 211, 201, 0.08), transparent 60%),
     var(--bg);
@@ -496,21 +508,53 @@ legend {
   font-size: 0.8rem;
 }
 
-.opcao-filtro span.rotulo-filtro {
-  text-transform: capitalize;
-}
 
 #legenda {
   display: flex;
   flex-direction: column;
-  gap: 0.4rem;
+  gap: 0.1rem;
 }
 
+/* Cada tipo da legenda é um botão que leva a um nó daquele tipo (ver
+   montarLegenda). Visual de lista, não de botão: a legenda continua sendo
+   lida como legenda. */
 .item-legenda {
   display: flex;
   align-items: center;
   gap: 0.5rem;
+  flex: 1;
+  min-width: 0;
+  padding: 0.22rem 0.4rem;
+  border: 0;
+  border-radius: var(--raio-pequeno);
+  background: none;
+  color: var(--fg);
+  font: inherit;
   font-size: 0.8rem;
+  text-align: left;
+  cursor: pointer;
+  transition: background 150ms;
+}
+
+.item-legenda:hover:not([disabled]) {
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.item-legenda[disabled] {
+  color: var(--muted-fraco);
+  cursor: default;
+}
+
+.item-legenda[disabled] .icone {
+  opacity: 0.45;
+  filter: none;
+}
+
+.item-legenda .contagem {
+  margin-left: auto;
+  color: var(--muted);
+  font-size: 0.72rem;
+  font-variant-numeric: tabular-nums;
 }
 
 .item-legenda .icone {
@@ -575,7 +619,7 @@ legend {
   position: absolute;
   top: 1rem;
   right: 1rem;
-  width: 300px;
+  width: 330px;
   max-height: calc(100% - 2rem);
   overflow-y: auto;
   padding: 1.1rem;
@@ -583,13 +627,19 @@ legend {
   z-index: 10;
 }
 
-#detalhes h2 {
+#detalhes h2,
+#dossie-corpo h2 {
   margin: 0 0 0.3rem;
-  font-size: 1.02rem;
-  letter-spacing: -0.01em;
+  font-size: 1.2rem;
+  line-height: 1.25;
+  letter-spacing: -0.015em;
 }
 
-#detalhes h3 {
+#detalhes h3,
+#dossie-corpo h3 {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
   margin: 0.9rem 0 0.35rem;
   font-size: 0.7rem;
   color: var(--muted);
@@ -597,7 +647,21 @@ legend {
   letter-spacing: 0.06em;
 }
 
-#detalhes ul {
+#detalhes h3 .icone,
+#dossie-corpo h3 .icone {
+  width: 13px;
+  height: 13px;
+}
+
+#dossie-corpo h4 {
+  margin: 0.6rem 0 0.3rem;
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--muted);
+}
+
+#detalhes ul,
+#dossie-corpo ul {
   margin: 0.2rem 0;
   padding-left: 0;
   list-style: none;
@@ -605,7 +669,8 @@ legend {
   gap: 0.35rem;
 }
 
-#detalhes li {
+#detalhes li,
+#dossie-corpo li {
   background: rgba(255, 255, 255, 0.035);
   border: 1px solid var(--borda);
   border-radius: var(--raio-pequeno);
@@ -896,4 +961,510 @@ legend {
 .linha-tempo .fonte {
   color: var(--muted);
   font-size: 0.8rem;
+}
+
+
+/* --- Card rico (níveis 1 e 2) --- */
+
+#detalhes-corpo {
+  display: block;
+}
+
+.bloco-card {
+  margin-top: 0.85rem;
+}
+
+/* Texto corrido um tom abaixo do título: com a mesma cor e peso, a
+   descrição competia com o nome do nó pela atenção. */
+.descricao {
+  margin: 0.6rem 0 0;
+  color: rgba(237, 238, 243, 0.84);
+  font-weight: 400;
+  line-height: 1.55;
+}
+
+.datacao-de {
+  display: block;
+  margin-bottom: 0.15rem;
+  color: var(--muted);
+  font-size: 0.72rem;
+}
+
+.relevancia {
+  margin: 0.6rem 0 0;
+  font-size: 0.78rem;
+  color: var(--muted);
+  border-left: 2px solid var(--borda-forte);
+  padding-left: 0.55rem;
+}
+
+.meta {
+  display: grid;
+  gap: 0.45rem;
+  margin-top: 0.7rem;
+  padding: 0.55rem 0.65rem;
+  border: 1px solid var(--borda);
+  border-radius: var(--raio-pequeno);
+  background: rgba(255, 255, 255, 0.025);
+}
+
+.meta-linha {
+  display: flex;
+  gap: 0.5rem;
+  align-items: flex-start;
+  font-size: 0.8rem;
+}
+
+.meta-linha > .icone {
+  margin-top: 0.15rem;
+  color: var(--muted);
+}
+
+.meta-lista {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 0.3rem;
+}
+
+/* Os itens de datação não usam o "cartão" padrão de li do painel: já estão
+   dentro do bloco de metadados, e dois fundos empilhados ficam pesados. */
+.meta-lista li {
+  background: none !important;
+  border: none !important;
+  padding: 0 !important;
+}
+
+.meta-lista strong {
+  display: block;
+  color: var(--ouro);
+  font-size: 0.82rem;
+}
+
+.etiqueta {
+  display: block;
+  color: var(--muted);
+  font-size: 0.74rem;
+  line-height: 1.4;
+}
+
+/* --- Conexões --- */
+
+.conexoes {
+  display: grid;
+  gap: 0.35rem;
+  margin: 0.2rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.conexao {
+  display: flex !important;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  padding: 0 !important;
+  background: none !important;
+  border: none !important;
+}
+
+.ir-para-no {
+  flex: 1;
+  min-width: 0;
+  display: grid;
+  gap: 0.1rem;
+  text-align: left;
+  padding: 0.45rem 0.6rem;
+  border: 1px solid var(--borda);
+  border-radius: var(--raio-pequeno);
+  background: rgba(255, 255, 255, 0.035);
+  color: var(--fg);
+  cursor: pointer;
+  transition: background 150ms, border-color 150ms;
+}
+
+.ir-para-no:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: var(--borda-forte);
+}
+
+.conexao-nome {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.82rem;
+  font-weight: 600;
+}
+
+.conexao-nome .icone {
+  width: 13px;
+  height: 13px;
+}
+
+.conexao-relacao {
+  color: var(--muted);
+  font-size: 0.73rem;
+  padding-left: 1.15rem;
+}
+
+/* Arestas estruturais (cita/envolve) não carregam evidência: recebem um
+   badge neutro, nunca um de força. */
+.pill-contexto {
+  background: rgba(124, 140, 240, 0.14);
+  color: #9aa6f5;
+  border-color: rgba(124, 140, 240, 0.32);
+}
+
+.pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  margin: 0.4rem 0 0;
+}
+
+/* --- Fontes --- */
+
+.nivel-fonte {
+  display: inline-block;
+  margin-right: 0.4rem;
+  padding: 0.05rem 0.4rem;
+  border-radius: 999px;
+  background: var(--ouro-fraco);
+  color: var(--ouro);
+  font-size: 0.68rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+/* --- Nível 2: expandir sem sair do grafo --- */
+
+details.mais {
+  margin-top: 0.4rem;
+}
+
+details.mais > summary {
+  cursor: pointer;
+  list-style: none;
+  color: var(--accent);
+  font-size: 0.78rem;
+  font-weight: 600;
+  padding: 0.2rem 0;
+}
+
+details.mais > summary::-webkit-details-marker {
+  display: none;
+}
+
+details.mais > summary::before {
+  content: "▸ ";
+  color: var(--muted);
+}
+
+details.mais[open] > summary::before {
+  content: "▾ ";
+}
+
+/* --- Caminho percorrido ("por que estou vendo isso?") --- */
+
+.caminho {
+  margin: 0.2rem 0 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 0.15rem;
+}
+
+.passo-no {
+  background: rgba(255, 255, 255, 0.035);
+  border: 1px solid var(--borda);
+  border-radius: var(--raio-pequeno);
+  padding: 0.35rem 0.55rem;
+  font-size: 0.8rem;
+}
+
+.passo-relacao {
+  padding: 0 0 0 0.6rem;
+  font-size: 0.72rem;
+  color: var(--muted);
+  background: none;
+  border: none;
+}
+
+.passo-relacao::before {
+  content: "↓ ";
+  color: var(--ouro);
+}
+
+/* --- Limites da evidência --- */
+
+.limite + .limite {
+  margin-top: 0.6rem;
+  padding-top: 0.6rem;
+  border-top: 1px solid rgba(217, 162, 75, 0.22);
+}
+
+.limite p {
+  margin: 0 0 0.35rem;
+  font-size: 0.8rem;
+  line-height: 1.45;
+}
+
+.limite p:last-child {
+  margin-bottom: 0;
+}
+
+.limite strong {
+  color: var(--ouro);
+}
+
+.limite-origem {
+  font-size: 0.7rem !important;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--muted);
+}
+
+.cartao-insight-cabecalho {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.cartao-insight-cabecalho .icone {
+  width: 13px;
+  height: 13px;
+}
+
+/* --- Ações do card --- */
+
+.acoes-card {
+  margin-top: 1rem;
+  display: flex;
+  gap: 0.4rem;
+}
+
+.acoes-card button {
+  flex: 1;
+  padding: 0.5rem 0.7rem;
+  border-radius: var(--raio-pequeno);
+  border: 1px solid rgba(52, 211, 201, 0.35);
+  background: var(--teal-fraco);
+  color: var(--accent);
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.acoes-card button:hover {
+  background: rgba(52, 211, 201, 0.24);
+}
+
+/* --- Trilha: a natureza da relação entre os passos --- */
+
+.trilha .separador em {
+  font-style: normal;
+  margin-left: 0.25rem;
+  color: var(--muted-fraco);
+  font-size: 0.7rem;
+}
+
+/* --- Dossiê (nível 3) --- */
+
+.dossie {
+  position: absolute;
+  inset: 0;
+  z-index: 40;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.25rem;
+  background: rgba(6, 8, 12, 0.72);
+  backdrop-filter: blur(3px);
+}
+
+.dossie-cartao {
+  position: relative;
+  width: min(640px, 100%);
+  max-height: 100%;
+  display: flex;
+  flex-direction: column;
+  background: var(--bg-glass-forte);
+  padding: 1.4rem 1.5rem 1.5rem;
+}
+
+.dossie .fechar-dossie {
+  display: flex;
+}
+
+#dossie-corpo {
+  overflow-y: auto;
+  font-size: 0.87rem;
+  padding-right: 0.25rem;
+}
+
+#dossie-corpo h2 {
+  margin-right: 2rem;
+}
+
+@media (max-width: 860px) {
+  .dossie {
+    position: fixed;
+    padding: 0.6rem;
+  }
+
+  .dossie-cartao {
+    padding: 2.8rem 1rem 1rem;
+  }
+}
+
+/* O badge de força divide a linha com o nome da conexão num painel estreito:
+   não pode encolher nem quebrar, senão empurra o nome para três linhas. */
+.conexao .pill {
+  flex: none;
+  padding: 0.18rem 0.5rem;
+  font-size: 0.68rem;
+  white-space: nowrap;
+}
+
+/* --- Seção recolhível ("Tipos de nó") --- */
+
+.alternar-secao {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 0.15rem 0;
+  border: 0;
+  background: none;
+  font-family: inherit;
+  cursor: pointer;
+  text-align: left;
+}
+
+.alternar-secao:hover {
+  color: var(--fg);
+}
+
+.alternar-secao .icone-seta {
+  width: 14px;
+  height: 14px;
+  transition: transform 150ms;
+}
+
+.alternar-secao[aria-expanded="false"] .icone-seta {
+  transform: rotate(-90deg);
+}
+
+/* --- Fontes e citações como links --- */
+
+.fonte-link {
+  color: var(--fg);
+  text-decoration: underline;
+  text-decoration-color: rgba(52, 211, 201, 0.45);
+  text-underline-offset: 2px;
+}
+
+.fonte-link:hover {
+  color: var(--accent);
+  text-decoration-color: currentColor;
+}
+
+.icone-externo {
+  width: 11px;
+  height: 11px;
+  margin-left: 0.25rem;
+  vertical-align: -1px;
+  color: var(--accent);
+}
+
+/* Toda citação entre aspas ganha um realce discreto; as que têm origem
+   declarada nos dados são links (ver comCitacoes). */
+.citacao {
+  padding: 0 0.15em;
+  border-radius: 3px;
+  background: var(--ouro-fraco);
+  color: #f0c27a;
+  font-style: italic;
+}
+
+a.citacao {
+  text-decoration: underline dotted;
+  text-underline-offset: 2px;
+  cursor: pointer;
+}
+
+a.citacao:hover {
+  background: rgba(217, 162, 75, 0.28);
+  text-decoration-style: solid;
+}
+
+@keyframes piscar-fonte {
+  0%,
+  60% {
+    border-color: var(--ouro);
+    background: var(--ouro-fraco);
+  }
+}
+
+.fonte-destacada {
+  animation: piscar-fonte 1.6s ease-out;
+}
+
+/* Linha da legenda: nome (navega) + olho (mostra/oculta o tipo no mapa). */
+.linha-legenda {
+  display: flex;
+  align-items: center;
+  gap: 0.15rem;
+  margin: 0 -0.4rem;
+}
+
+.alternar-tipo,
+.alternar-tipo-vaga {
+  flex: none;
+  width: 26px;
+  height: 26px;
+}
+
+.alternar-tipo {
+  display: grid;
+  place-items: center;
+  padding: 0;
+  border: 0;
+  border-radius: var(--raio-pequeno);
+  background: none;
+  color: var(--muted);
+  cursor: pointer;
+  transition: background 150ms, color 150ms;
+}
+
+.alternar-tipo:hover {
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--fg);
+}
+
+.alternar-tipo .icone {
+  width: 14px;
+  height: 14px;
+}
+
+.linha-legenda.tipo-oculto .item-legenda {
+  opacity: 0.45;
+}
+
+.linha-legenda.tipo-oculto .alternar-tipo {
+  color: var(--ouro);
+}
+
+.mostrar-todos {
+  align-self: flex-start;
+  margin-top: 0.35rem;
+  padding: 0.15rem 0;
+  border: 0;
+  background: none;
+  color: var(--accent);
+  font: inherit;
+  font-size: 0.76rem;
+  font-weight: 600;
+  cursor: pointer;
 }

@@ -10,7 +10,7 @@
   <!-- ?v= muda a cada deploy que toque em estilo.css/app.js — sem isso o
        navegador/CDN do GitHub Pages pode manter uma cópia antiga em cache
        e misturar HTML novo com JS/CSS velho. Bump manual por enquanto. -->
-  <link rel="stylesheet" href="assets/estilo.css?v=7" />
+  <link rel="stylesheet" href="assets/estilo.css?v=8" />
   <script defer src="https://cdn.jsdelivr.net/npm/cytoscape@3.34.3/dist/cytoscape.min.js"></script>
 </head>
 <body>
@@ -81,7 +81,10 @@
           </label>
 
           <div class="bloco">
-            <p class="rotulo-campo">Tipos de nó</p>
+            <button type="button" id="alternar-legenda" class="rotulo-campo alternar-secao" aria-expanded="true" aria-controls="legenda">
+              Tipos de nó
+              <svg viewBox="0 0 24 24" class="icone icone-seta" aria-hidden="true"><path d="m6 9 6 6 6-6" /></svg>
+            </button>
             <div id="legenda"></div>
           </div>
 
@@ -100,7 +103,12 @@
           <button class="fechar-painel" data-fechar="detalhes" aria-label="Fechar detalhes">
             <svg viewBox="0 0 24 24" class="icone"><path d="M18 6 6 18" /><path d="m6 6 12 12" /></svg>
           </button>
-          <p class="vazio">Clique em um nó ou em uma ligação para ver os detalhes.</p>
+          <!-- O card é redesenhado a cada seleção: ele escreve dentro de
+               #detalhes-corpo, nunca no #detalhes, senão o botão de fechar
+               acima (única saída do painel no celular) seria apagado junto. -->
+          <div id="detalhes-corpo">
+            <p class="vazio">Clique em um nó ou em uma ligação para ver os detalhes.</p>
+          </div>
         </aside>
 
         <div class="ferramentas painel-flutuante">
@@ -124,6 +132,15 @@
             <svg viewBox="0 0 24 24" class="icone"><path d="M18 6 6 18" /><path d="m6 6 12 12" /></svg>
           </button>
         </div>
+
+        <div id="dossie" class="dossie" hidden role="dialog" aria-modal="true" aria-labelledby="dossie-titulo">
+          <div class="dossie-cartao painel-flutuante">
+            <button class="fechar-painel fechar-dossie" aria-label="Fechar ficha completa">
+              <svg viewBox="0 0 24 24" class="icone"><path d="M18 6 6 18" /><path d="m6 6 12 12" /></svg>
+            </button>
+            <div id="dossie-corpo"></div>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -145,6 +162,6 @@
 
   <div id="tooltip" class="tooltip" hidden></div>
 
-  <script defer src="assets/app.js?v=7"></script>
+  <script defer src="assets/app.js?v=8"></script>
 </body>
 </html>

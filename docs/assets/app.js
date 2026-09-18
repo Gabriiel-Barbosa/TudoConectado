@@ -8,6 +8,8 @@ const tooltip = document.querySelector("#tooltip");
 
 let cy = null;
 let grafo = { nos: [], arestas: [] };
+// Cada passo guarda o id do no E o id da aresta percorrida para chegar ate
+// ele — sem a aresta nao da para dizer "voce chegou aqui via 'confirma'".
 let historico = [];
 const cores = lerCores();
 
@@ -62,10 +64,38 @@ function iconeInline(categoria, cor) {
   return `<svg viewBox="0 0 24 24" class="icone" aria-hidden="true"${estiloCor}>${ICONES[categoria] || ""}</svg>`;
 }
 
-// Dentro do canvas não existe currentColor — a cor vai fixa no próprio SVG.
-function uriIcone(categoria, cor) {
-  const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="48" height="48" fill="none" stroke="${cor}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">${ICONES[categoria] || ""}</svg>`;
+// Mistura duas cores #rrggbb (t = 0 devolve a, t = 1 devolve b). Só serve
+// para derivar o sombreado da esfera a partir das variáveis do CSS.
+function misturar(a, b, t) {
+  const rgb = (hex) => {
+    const h = hex.replace("#", "");
+    const cheio = h.length === 3 ? [...h].map((c) => c + c).join("") : h.slice(0, 6);
+    return [0, 2, 4].map((i) => parseInt(cheio.slice(i, i + 2), 16) || 0);
+  };
+  const [ra, ga, ba] = rgb(a);
+  const [rb, gb, bb] = rgb(b);
+  const canal = (x, y) => Math.round(x + (y - x) * t).toString(16).padStart(2, "0");
+  return `#${canal(ra, rb)}${canal(ga, gb)}${canal(ba, bb)}`;
+}
+
+// Cada nó é desenhado como uma esfera: o gradiente radial com a luz vindo
+// do alto à esquerda dá o volume (o "3D" discreto, à la Obsidian), e o ícone
+// vai por cima. Dentro do canvas não existe currentColor — as cores vão
+// fixas no próprio SVG. Orbes (livro, passagem) são esferas cheias na cor da
+// categoria; o resto é vidro escuro com um leve reflexo da cor.
+function uriNo(categoria, { orbe }) {
+  const cor = corDaCategoria(categoria);
+  const [claro, base, escuro] = orbe
+    ? [misturar(cor, "#ffffff", 0.35), cor, misturar(cor, "#000000", 0.45)]
+    : [misturar(cores.bg, cor, 0.3), misturar(cores.bg, "#ffffff", 0.07), misturar(cores.bg, "#000000", 0.5)];
+  const corIcone = orbe ? cores.bg : cor;
+  const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100"><defs><radialGradient id="e" cx="36%" cy="30%" r="78%"><stop offset="0" stop-color="${claro}"/><stop offset="0.55" stop-color="${base}"/><stop offset="1" stop-color="${escuro}"/></radialGradient></defs><circle cx="50" cy="50" r="50" fill="url(#e)"/><g transform="translate(29 29) scale(1.75)" fill="none" stroke="${corIcone}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">${ICONES[categoria] || ""}</g></svg>`;
   return `data:image/svg+xml;charset=utf-8,${encodeURIComponent(svg)}`;
+}
+
+// "1 nó", "2 nós" — em vez de "nó(s)", que lê mal em voz alta e no olho.
+function plural(n, singular, pluralForma) {
+  return `${n} ${n === 1 ? singular : pluralForma}`;
 }
 
 const ehMovel = () => window.matchMedia("(max-width: 860px)").matches;
@@ -144,11 +174,20 @@ function rotuloDoNo(no) {
 function elementosCytoscape(g) {
   const nos = g.nos.map((no) => {
     const categoria = categoriaDoNo(no);
-    // Livro e Passagem são orbes cheios (fundo colorido) — ícone escuro por
-    // cima; o resto é cartão escuro — ícone na cor da categoria.
-    const ehOrbe = categoria === "livro" || categoria === "passagem";
-    const corIcone = ehOrbe ? cores.bg : corDaCategoria(categoria);
-    return { data: { ...no, rotulo: rotuloDoNo(no), icone: uriIcone(categoria, corIcone) } };
+    const orbe = categoria === "livro" || categoria === "passagem";
+    return {
+      // tamanho/tamanhoVisual nascem com um valor provisório (o real vem de
+      // aplicarTamanhoPorGrau): um mapeamento data() sem o campo definido
+      // enche o console de avisos do Cytoscape.
+      data: {
+        ...no,
+        rotulo: rotuloDoNo(no),
+        icone: uriNo(categoria, { orbe }),
+        corCategoria: corDaCategoria(categoria),
+        tamanho: 32,
+        tamanhoVisual: 32,
+      },
+    };
   });
   const arestas = g.arestas.map((aresta) => ({
     data: { ...aresta, source: aresta.origem, target: aresta.destino },
@@ -159,8 +198,10 @@ function elementosCytoscape(g) {
 function estilosCytoscape() {
   return [
     {
-      // Nós, por padrão: cartão escuro com borda fina na cor da categoria —
-      // a cor carrega o significado, o preenchimento fica discreto.
+      // Nós, por padrão: esfera de vidro escuro (ver uriNo) com um aro fino
+      // na cor da categoria — a cor carrega o significado, o volume vem do
+      // sombreado. A largura sai de data(tamanhoVisual), que já embute a
+      // profundidade (ver aplicarProfundidade).
       selector: "node",
       style: {
         label: "data(rotulo)",
@@ -171,19 +212,25 @@ function estilosCytoscape() {
         "text-margin-y": 6,
         "text-wrap": "ellipsis",
         "text-max-width": "90px",
-        shape: "round-rectangle",
-        width: "data(tamanho)",
-        height: "data(tamanho)",
-        "background-color": cores.cartaoNo,
+        // Contorno na cor do fundo: o rótulo continua legível quando passa
+        // por cima de uma aresta ou de outro nó.
+        "text-outline-color": cores.bg,
+        "text-outline-width": 2,
+        "text-outline-opacity": 0.85,
+        shape: "ellipse",
+        width: "data(tamanhoVisual)",
+        height: "data(tamanhoVisual)",
+        "background-color": cores.bg,
         "background-image": "data(icone)",
         "background-fit": "none",
-        "background-width": "52%",
-        "background-height": "52%",
+        "background-width": "100%",
+        "background-height": "100%",
         "background-clip": "node",
-        "border-width": 2,
+        "border-width": 1.5,
         "border-color": cores.muted,
-        "transition-property": "opacity, text-opacity, border-width",
-        "transition-duration": "150ms",
+        "border-opacity": 0.9,
+        "transition-property": "opacity, text-opacity, border-width, width, height, underlay-opacity",
+        "transition-duration": animacoesOk() ? "300ms" : "0ms",
       },
     },
     { selector: "node[subtipo='pessoa']", style: { "border-color": cores.pessoa } },
@@ -194,15 +241,15 @@ function estilosCytoscape() {
     { selector: "node[tipo='afirmacao']", style: { "border-color": cores.afirmacao } },
 
     // A Passagem é um ponto de partida da árvore — vira um orbe cheio e
-    // "aceso", em vez de mais um cartão, pra puxar o olho pro centro.
+    // "aceso", com um halo (underlay), pra puxar o olho pro centro.
     {
       selector: "node[tipo='passagem']",
       style: {
-        shape: "ellipse",
-        "background-color": cores.passagem,
-        "border-width": 9,
-        "border-color": cores.passagem,
-        "border-opacity": 0.3,
+        "border-width": 0,
+        "underlay-color": cores.passagem,
+        "underlay-padding": 7,
+        "underlay-opacity": 0.2,
+        "underlay-shape": "ellipse",
         color: cores.fg,
         "font-weight": 600,
       },
@@ -210,25 +257,48 @@ function estilosCytoscape() {
 
     // O Livro (ver LIVROS_RAIZ) é a raiz de tudo — a base é a Bíblia e seus
     // livros, capítulos e conexões nascem dali. Mesmo tratamento de orbe da
-    // Passagem, mas na cor de "texto" (é um registro tipo=texto) e maior,
-    // porque fica acima até da Passagem na hierarquia.
+    // Passagem, mas na cor de "texto" (é um registro tipo=texto), com halo
+    // maior, porque fica acima até da Passagem na hierarquia.
     {
       selector: `node[id = "${LIVROS_RAIZ.join('"], node[id = "')}"]`,
       style: {
-        shape: "ellipse",
-        "background-color": cores.texto,
-        "border-width": 11,
-        "border-color": cores.texto,
-        "border-opacity": 0.3,
+        "border-width": 0,
+        "underlay-color": cores.texto,
+        "underlay-padding": 9,
+        "underlay-opacity": 0.22,
+        "underlay-shape": "ellipse",
         color: cores.fg,
         "font-weight": 700,
         "font-size": 12,
       },
     },
 
-    { selector: "node.foco", style: { "border-width": 4, "border-opacity": 1 } },
-    { selector: "node.escondido", style: { display: "none" } },
-    { selector: ".baixo-contraste", style: { opacity: 0.1, "text-opacity": 0.1 } },
+    // O nó em foco ganha um halo na própria cor — é o "mais perto" da cena.
+    {
+      selector: "node.foco",
+      style: {
+        "border-width": 2.5,
+        "border-opacity": 1,
+        "underlay-color": "data(corCategoria)",
+        "underlay-padding": 10,
+        "underlay-opacity": 0.28,
+        "underlay-shape": "ellipse",
+      },
+    },
+    { selector: "node.escondido, node.tipo-oculto", style: { display: "none" } },
+
+    // Profundidade a partir do nó em foco (ver aplicarProfundidade): quanto
+    // mais longe no grafo, menor (via tamanhoVisual), mais apagado e mais
+    // "atrás" (z-index). É o que dá a sensação de cena em camadas sem
+    // esconder nada — os nós distantes continuam legíveis e clicáveis.
+    { selector: "node.prof-0", style: { "z-index": 30 } },
+    { selector: "node.prof-1", style: { "z-index": 20 } },
+    { selector: "node.prof-2", style: { "z-index": 10, opacity: 0.6, "text-opacity": 0.55 } },
+    { selector: "node.prof-3", style: { "z-index": 0, opacity: 0.38, "text-opacity": 0.35 } },
+
+    // Passar o mouse num nó acende as ligações dele (como no Obsidian),
+    // sem mexer no resto da cena.
+    { selector: "node.realce", style: { opacity: 1, "text-opacity": 1 } },
 
     {
       // Ligações com evidência real: fio dourado, como um fio "aceso" —
@@ -262,6 +332,12 @@ function estilosCytoscape() {
     { selector: "edge[forca='poucos']", style: { "line-style": "dashed", width: 1.5, opacity: 0.65 } },
     { selector: "edge[forca='especulacao']", style: { "line-style": "dotted", width: 1.5, opacity: 0.55 } },
     { selector: "edge.escondido", style: { display: "none" } },
+
+    // Depois das regras de força, senão a opacidade da força sobrescreveria
+    // a da profundidade.
+    { selector: "edge.prof-2", style: { opacity: 0.4 } },
+    { selector: "edge.prof-3", style: { opacity: 0.2 } },
+    { selector: "edge.realce", style: { opacity: 1, "z-index": 99 } },
   ];
 }
 
@@ -288,7 +364,49 @@ function aplicarTamanhoPorGrau() {
   cy.nodes().forEach((n) => {
     const proporcao = n.degree() / maxGrau;
     // Mínimo de 32px pra o ícone dentro do nó continuar legível.
-    n.data("tamanho", 32 + proporcao * 22);
+    const tamanho = 32 + proporcao * 22;
+    n.data({ tamanho, tamanhoVisual: tamanho });
+  });
+}
+
+// Distância (em saltos, ignorando a direção das arestas e as escondidas por
+// filtro) de cada nó até a raiz em foco.
+function distanciasAte(id) {
+  const distancias = new Map([[id, 0]]);
+  const fila = [cy.$id(id)];
+  while (fila.length > 0) {
+    const atual = fila.shift();
+    const d = distancias.get(atual.id());
+    atual
+      .connectedEdges(":visible")
+      .connectedNodes(":visible")
+      .forEach((vizinho) => {
+        if (distancias.has(vizinho.id())) return;
+        distancias.set(vizinho.id(), d + 1);
+        fila.push(vizinho);
+      });
+  }
+  return distancias;
+}
+
+// Profundidade: o nó em foco e os vizinhos ficam "na frente"; o resto vai
+// recuando (menor, mais apagado, atrás). Substitui o antigo apagamento
+// quase total (opacidade 0.1) dos não vizinhos, que deixava rótulos ilegíveis.
+const ESCALA_POR_PROFUNDIDADE = [1.12, 1, 0.84, 0.7];
+
+function aplicarProfundidade(id) {
+  const distancias = distanciasAte(id);
+  const nivel = (noId) => Math.min(distancias.get(noId) ?? 3, 3);
+  cy.batch(() => {
+    cy.elements().removeClass("prof-0 prof-1 prof-2 prof-3");
+    cy.nodes().forEach((n) => {
+      const p = nivel(n.id());
+      n.addClass(`prof-${p}`);
+      n.data("tamanhoVisual", n.data("tamanho") * ESCALA_POR_PROFUNDIDADE[p]);
+    });
+    cy.edges().forEach((e) => {
+      e.addClass(`prof-${Math.max(nivel(e.source().id()), nivel(e.target().id()))}`);
+    });
   });
 }
 
@@ -346,7 +464,10 @@ function iniciarGrafo(grafoData) {
 
     aplicarTamanhoPorGrau();
 
-    cy.on("tap", "node", (evento) => centralizarEm(evento.target.id()));
+    cy.on("tap", "node", (evento) => {
+      const alvo = evento.target.id();
+      centralizarEm(alvo, { viaAresta: arestaEntre(idDoNoAtual(), alvo) });
+    });
     cy.on("tap", "edge", (evento) => {
       mostrarDetalhesAresta(evento.target.data());
       abrirDetalhesSeMovel();
@@ -358,9 +479,18 @@ function iniciarGrafo(grafoData) {
       }
     });
 
-    cy.on("mouseover", "node", (evento) => mostrarTooltip(evento.target.data()));
-    cy.on("mouseout", "node", () => (tooltip.hidden = true));
+    cy.on("mouseover", "node", (evento) => {
+      mostrarTooltip(evento.target.data());
+      evento.target.closedNeighborhood().addClass("realce");
+    });
+    cy.on("mouseout", "node", () => {
+      tooltip.hidden = true;
+      cy.elements(".realce").removeClass("realce");
+    });
     cy.on("mousemove", (evento) => posicionarTooltip(evento.originalEvent));
+
+    cy.on("viewport", agendarParallax);
+    agendarParallax();
   } catch (erro) {
     console.error("Falha ao iniciar o grafo:", erro);
     mostrarEstadoMapa("erro");
@@ -371,7 +501,11 @@ function iniciarGrafo(grafoData) {
   // Um erro aqui embaixo é só nos controles ao redor — não faz sentido
   // esconder um grafo que já funciona por causa de um filtro que quebrou.
   try {
-    document.querySelector("#stat-grafo").textContent = `${grafo.nos.length} nó(s) · ${grafo.arestas.length} ligação(ões)`;
+    document.querySelector("#stat-grafo").textContent = `${plural(grafo.nos.length, "nó", "nós")} · ${plural(
+      grafo.arestas.length,
+      "ligação",
+      "ligações"
+    )}`;
 
     montarLegenda();
     montarSeletorRaiz();
@@ -379,6 +513,7 @@ function iniciarGrafo(grafoData) {
     configurarBusca();
     configurarFerramentas();
     configurarPaineisMoveis();
+    configurarDossie();
 
     // A árvore nasce do livro — só cai pra uma passagem se nenhum livro
     // estiver carregado (ver LIVROS_RAIZ).
@@ -394,6 +529,26 @@ function iniciarGrafo(grafoData) {
   }
 }
 
+// O fundo tem duas camadas de pontos que acompanham o pan/zoom mais devagar
+// que o grafo (ver #grafo-canvas no CSS) — a diferença de velocidade é o
+// que faz o grafo parecer flutuar à frente do fundo. Uma atualização por
+// frame, no máximo: o evento "viewport" dispara dezenas de vezes num arrasto.
+let parallaxAgendado = false;
+
+function agendarParallax() {
+  if (parallaxAgendado || !cy) return;
+  parallaxAgendado = true;
+  requestAnimationFrame(() => {
+    parallaxAgendado = false;
+    if (!cy) return;
+    const canvas = document.querySelector("#grafo-canvas");
+    const { x, y } = cy.pan();
+    canvas.style.setProperty("--pan-x", `${x}px`);
+    canvas.style.setProperty("--pan-y", `${y}px`);
+    canvas.style.setProperty("--zoom-fundo", Math.sqrt(cy.zoom()).toFixed(3));
+  });
+}
+
 function mostrarTooltip(no) {
   const categoria = ROTULO_CATEGORIA[categoriaDoNo(no)] || no.tipo;
   tooltip.innerHTML = `<strong>${escapar(rotuloDoNo(no))}</strong><span>${escapar(categoria)}</span>`;
@@ -406,39 +561,76 @@ function posicionarTooltip(eventoOriginal) {
   tooltip.style.top = `${eventoOriginal.clientY + 14}px`;
 }
 
-function centralizarEm(id, { registrarHistorico = true } = {}) {
-  if (!cy || cy.$id(id).empty()) return;
-  const alvo = cy.$id(id);
+let layoutAtual = null;
 
-  cy.layout({
+// Roda o layout só sobre o que está visível: nós de tipo oculto e arestas
+// filtradas não ocupam lugar na árvore nem entram no enquadramento.
+function rodarLayout(raiz) {
+  if (layoutAtual) layoutAtual.stop();
+  layoutAtual = cy.elements(":visible").layout({
     name: "breadthfirst",
-    roots: alvo,
+    ...(raiz ? { roots: raiz } : {}),
     circle: true,
     spacingFactor: 1.4,
     padding: 60,
     animate: animacoesOk(),
     animationDuration: 400,
-  }).run();
+  });
+  layoutAtual.run();
+}
+
+function centralizarEm(id, { registrarHistorico = true, viaAresta = null, forcarLayout = false } = {}) {
+  if (!cy || cy.$id(id).empty()) return;
+  const alvo = cy.$id(id);
+
+  // Ir para um nó de um tipo oculto (pela busca, pela legenda, por uma
+  // conexão no card) mostra o tipo de novo — senão a câmera centralizaria
+  // num nó invisível.
+  const categoriaAlvo = categoriaDoNo(alvo.data());
+  const revelou = tiposOcultos.delete(categoriaAlvo);
+  if (revelou) aplicarTiposOcultos();
+
+  // Clicar de novo no nó que já está no centro não refaz o layout. Antes,
+  // cada clique rodava outro breadthfirst com fit animado — e, com cliques
+  // seguidos, dois layouts animavam ao mesmo tempo e o zoom ia e voltava.
+  const jaCentralizado = id === idDoNoAtual() && alvo.hasClass("foco");
+  if (!jaCentralizado || forcarLayout || revelou) rodarLayout(alvo);
 
   const seletor = document.querySelector("#seletor-raiz");
   if (seletor && [...seletor.options].some((o) => o.value === id)) seletor.value = id;
 
   cy.elements().removeClass("foco");
   alvo.addClass("foco");
-  aplicarFoco(alvo);
+  aplicarProfundidade(id);
 
   if (registrarHistorico) {
-    historico = historico.filter((h) => h !== id);
-    historico.push(id);
+    historico = historico.filter((h) => h.id !== id);
+    historico.push({ id, aresta: viaAresta });
     if (historico.length > 8) historico.shift();
   }
   renderizarTrilha();
 
-  const no = grafo.nos.find((n) => n.id === id);
+  const no = noPorId(id);
   if (no) {
     mostrarDetalhesNo(no);
     abrirDetalhesSeMovel();
   }
+}
+
+function idDoNoAtual() {
+  return historico.length > 0 ? historico[historico.length - 1].id : null;
+}
+
+// Qual aresta liga dois nos (em qualquer direcao). E o que transforma um
+// salto no grafo em um passo com natureza declarada na trilha.
+function arestaEntre(origemId, destinoId) {
+  if (!origemId || origemId === destinoId) return null;
+  const aresta = grafo.arestas.find(
+    (a) =>
+      (a.origem === origemId && a.destino === destinoId) ||
+      (a.origem === destinoId && a.destino === origemId)
+  );
+  return aresta ? aresta.id : null;
 }
 
 // No celular, os painéis de filtros e detalhes viram "bottom sheets"
@@ -515,14 +707,12 @@ function configurarFerramentas() {
   });
 }
 
-function aplicarFoco(colecao) {
-  const vizinhanca = colecao.closedNeighborhood();
-  cy.elements().addClass("baixo-contraste");
-  vizinhanca.removeClass("baixo-contraste");
-}
-
 function limparFoco() {
-  if (cy) cy.elements().removeClass("baixo-contraste").removeClass("foco");
+  if (!cy) return;
+  cy.batch(() => {
+    cy.elements().removeClass("foco prof-0 prof-1 prof-2 prof-3");
+    cy.nodes().forEach((n) => n.data("tamanhoVisual", n.data("tamanho")));
+  });
 }
 
 function renderizarTrilha() {
@@ -533,31 +723,168 @@ function renderizarTrilha() {
   }
   trilha.hidden = false;
   trilha.innerHTML = historico
-    .map((id, indice) => {
-      const no = grafo.nos.find((n) => n.id === id);
-      const rotulo = no ? rotuloDoNo(no) : id;
+    .map((passo, indice) => {
+      const no = noPorId(passo.id);
+      const rotulo = no ? rotuloDoNo(no) : passo.id;
       const atual = indice === historico.length - 1;
-      const separador = indice < historico.length - 1 ? '<span class="separador">›</span>' : "";
-      return `<button class="chip${atual ? " atual" : ""}" data-id="${id}">${escapar(truncar(rotulo, 22))}</button>${separador}`;
+      const proximo = historico[indice + 1];
+      const relacao = proximo ? descreverRelacao(proximo.aresta) : null;
+      const separador = proximo
+        ? `<span class="separador"${relacao ? ` title="${escapar(relacao)}"` : ""}>›${
+            relacao ? `<em>${escapar(relacao)}</em>` : ""
+          }</span>`
+        : "";
+      return `<button class="chip${atual ? " atual" : ""}" data-id="${passo.id}">${escapar(
+        truncar(rotulo, 22)
+      )}</button>${separador}`;
     })
     .join("");
 
   trilha.querySelectorAll(".chip").forEach((chip) => {
     chip.addEventListener("click", () => {
-      const indice = historico.indexOf(chip.dataset.id);
+      const indice = historico.findIndex((h) => h.id === chip.dataset.id);
       historico = historico.slice(0, indice + 1);
       centralizarEm(chip.dataset.id, { registrarHistorico: false });
     });
   });
 }
 
+function nosDaCategoria(categoria) {
+  return grafo.nos
+    .filter((n) => categoriaDoNo(n) === categoria)
+    .sort((a, b) => rotuloDoNo(a).localeCompare(rotuloDoNo(b)));
+}
+
+// Cada tipo da legenda leva a um nó daquele tipo. Clicar de novo no mesmo
+// tipo passa para o próximo nó dele, em ordem alfabética, e volta ao
+// primeiro no fim. Tipo sem nenhum nó fica desabilitado, não escondido: o
+// vazio também é informação (seção 11 da metodologia).
+// Recolher/expandir "Tipos de nó". A escolha fica no navegador de quem
+// visita (conveniência pessoal, não dado); se o armazenamento estiver
+// bloqueado, a seção só começa aberta.
+const CHAVE_LEGENDA = "tudo-conectado:legenda-recolhida";
+
+function configurarAlternarLegenda() {
+  const botao = document.querySelector("#alternar-legenda");
+  const legenda = document.querySelector("#legenda");
+  if (!botao || !legenda || botao.dataset.configurado) return;
+  botao.dataset.configurado = "1";
+
+  const aplicar = (recolhida) => {
+    legenda.hidden = recolhida;
+    botao.setAttribute("aria-expanded", String(!recolhida));
+    botao.title = recolhida ? "Mostrar os tipos de nó" : "Ocultar os tipos de nó";
+  };
+  let recolhida = false;
+  try {
+    recolhida = localStorage.getItem(CHAVE_LEGENDA) === "1";
+  } catch {}
+  aplicar(recolhida);
+
+  botao.addEventListener("click", () => {
+    const agora = botao.getAttribute("aria-expanded") === "true";
+    aplicar(agora);
+    try {
+      localStorage.setItem(CHAVE_LEGENDA, agora ? "1" : "0");
+    } catch {}
+  });
+}
+
+// --- Mostrar/ocultar tipos de nó no mapa ---------------------------------------
+// Ex.: ocultar tudo menos Livro e Objeto para ver só as ligações entre eles.
+// Ocultar é só visual (classe tipo-oculto → display: none); o dado continua
+// no grafo, na busca e no card.
+
+const tiposOcultos = new Set();
+
+const ICONE_OLHO =
+  '<svg viewBox="0 0 24 24" class="icone" aria-hidden="true"><path d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0"/><circle cx="12" cy="12" r="3"/></svg>';
+const ICONE_OLHO_FECHADO =
+  '<svg viewBox="0 0 24 24" class="icone" aria-hidden="true"><path d="M10.733 5.076a10.744 10.744 0 0 1 11.205 6.575 1 1 0 0 1 0 .696 10.747 10.747 0 0 1-1.444 2.49"/><path d="M14.084 14.158a3 3 0 0 1-4.242-4.242"/><path d="M17.479 17.499a10.75 10.75 0 0 1-15.417-5.151 1 1 0 0 1 0-.696 10.75 10.75 0 0 1 4.446-5.143"/><path d="m2 2 20 20"/></svg>';
+
+function aplicarTiposOcultos() {
+  if (!cy) return;
+  cy.batch(() => {
+    cy.nodes().forEach((n) => n.toggleClass("tipo-oculto", tiposOcultos.has(categoriaDoNo(n.data()))));
+  });
+  document.querySelectorAll(".linha-legenda").forEach((linha) => {
+    const oculto = tiposOcultos.has(linha.dataset.categoria);
+    const rotulo = ROTULO_CATEGORIA[linha.dataset.categoria];
+    linha.classList.toggle("tipo-oculto", oculto);
+    const olho = linha.querySelector(".alternar-tipo");
+    if (!olho) return;
+    olho.innerHTML = oculto ? ICONE_OLHO_FECHADO : ICONE_OLHO;
+    olho.setAttribute("aria-pressed", String(oculto));
+    const acao = `${oculto ? "Mostrar" : "Ocultar"} ${rotulo} no mapa`;
+    olho.setAttribute("aria-label", acao);
+    olho.title = acao;
+  });
+  const mostrarTodos = document.querySelector("#mostrar-todos-tipos");
+  if (mostrarTodos) mostrarTodos.hidden = tiposOcultos.size === 0;
+}
+
+// Depois de mudar o que está visível, refaz a cena: se o nó em foco
+// continua visível, re-centraliza nele; se ele sumiu, enquadra o que sobrou.
+function reorganizarAposVisibilidade() {
+  const emFoco = cy.nodes(".foco");
+  // Pelo estado, e não por emFoco.visible(): logo depois de trocar a classe,
+  // o Cytoscape ainda não recalculou o estilo e o nó recém-oculto responde
+  // "visível" — e centralizarEm o revelaria de novo.
+  if (emFoco.nonempty() && !tiposOcultos.has(categoriaDoNo(emFoco.data()))) {
+    centralizarEm(emFoco.id(), { registrarHistorico: false, forcarLayout: true });
+    return;
+  }
+  limparFoco();
+  limparDetalhes();
+  if (cy.nodes(":visible").nonempty()) rodarLayout(null);
+}
+
+function alternarTipo(categoria) {
+  if (tiposOcultos.has(categoria)) tiposOcultos.delete(categoria);
+  else tiposOcultos.add(categoria);
+  aplicarTiposOcultos();
+  reorganizarAposVisibilidade();
+}
+
 function montarLegenda() {
-  document.querySelector("#legenda").innerHTML = Object.entries(ROTULO_CATEGORIA)
-    .map(
-      ([categoria, rotulo]) =>
-        `<span class="item-legenda">${iconeInline(categoria, corDaCategoria(categoria))}${rotulo}</span>`
-    )
-    .join("");
+  configurarAlternarLegenda();
+  const legenda = document.querySelector("#legenda");
+  legenda.innerHTML =
+    Object.entries(ROTULO_CATEGORIA)
+      .map(([categoria, rotulo]) => {
+        const total = nosDaCategoria(categoria).length;
+        const dica =
+          total === 0 ? "Nenhum nó deste tipo ainda" : `Ir para ${plural(total, "nó", "nós")} do tipo ${rotulo}`;
+        // Dois botões lado a lado (e não um dentro do outro): o nome navega,
+        // o olho mostra/oculta o tipo no mapa.
+        const olho =
+          total === 0
+            ? '<span class="alternar-tipo-vaga" aria-hidden="true"></span>'
+            : `<button type="button" class="alternar-tipo" data-categoria="${categoria}" aria-pressed="false"></button>`;
+        return `<div class="linha-legenda" data-categoria="${categoria}"><button type="button" class="item-legenda" data-categoria="${categoria}" title="${escapar(
+          dica
+        )}"${total === 0 ? " disabled" : ""}>${iconeInline(categoria, corDaCategoria(categoria))}<span>${rotulo}</span><span class="contagem">${total}</span></button>${olho}</div>`;
+      })
+      .join("") + '<button type="button" id="mostrar-todos-tipos" class="mostrar-todos" hidden>Mostrar todos os tipos</button>';
+
+  legenda.querySelectorAll(".alternar-tipo").forEach((botao) => {
+    botao.addEventListener("click", () => alternarTipo(botao.dataset.categoria));
+  });
+  legenda.querySelector("#mostrar-todos-tipos").addEventListener("click", () => {
+    tiposOcultos.clear();
+    aplicarTiposOcultos();
+    reorganizarAposVisibilidade();
+  });
+  aplicarTiposOcultos();
+
+  legenda.querySelectorAll(".item-legenda:not([disabled])").forEach((botao) => {
+    botao.addEventListener("click", () => {
+      const nos = nosDaCategoria(botao.dataset.categoria);
+      const posicao = nos.findIndex((n) => n.id === idDoNoAtual());
+      const proximo = nos[(posicao + 1) % nos.length];
+      centralizarEm(proximo.id, { viaAresta: arestaEntre(idDoNoAtual(), proximo.id) });
+    });
+  });
 }
 
 function montarSeletorRaiz() {
@@ -605,7 +932,7 @@ function criarFiltro(atributo, valor, estiloLinha) {
   }
   const texto = document.createElement("span");
   texto.className = "rotulo-filtro";
-  texto.textContent = valor.replace(/_/g, " ");
+  texto.textContent = atributo === "forca" ? rotuloForca(valor) : rotuloFiltroTipo(valor);
   label.appendChild(texto);
   return label;
 }
@@ -623,6 +950,11 @@ function aplicarFiltros() {
       (aresta.data("tipo") && desligados.tipo.has(aresta.data("tipo")));
     aresta.toggleClass("escondido", escondida);
   });
+
+  // A profundidade é medida pelas arestas visíveis — esconder uma muda quem
+  // fica perto de quem.
+  const emFoco = cy.nodes(".foco");
+  if (emFoco.nonempty()) aplicarProfundidade(emFoco.id());
 }
 
 // --- Busca -------------------------------------------------------------------
@@ -677,6 +1009,225 @@ function corDoNo(no) {
   return corDaCategoria(categoriaDoNo(no));
 }
 
+// --- Índice derivado por nó --------------------------------------------------
+
+function noPorId(id) {
+  return grafo.nos.find((n) => n.id === id) || null;
+}
+
+function arestaPorId(id) {
+  return grafo.arestas.find((a) => a.id === id) || null;
+}
+
+function unicosPorId(nos) {
+  const vistos = new Map();
+  for (const no of nos) if (!vistos.has(no.id)) vistos.set(no.id, no);
+  return [...vistos.values()];
+}
+
+// Tudo que o card e o dossiê mostram é DERIVADO do grafo — nenhum campo novo
+// foi criado em schema/ para isso. A datação de um Registro são as datações
+// das Afirmações ligadas a ele; o local são os Registros tipo=lugar
+// conectados; as fontes são as das ligações incidentes, creditadas à ligação
+// de origem. Um campo editorial aqui seria conteúdo sem fonte dentro de um
+// projeto cujo princípio é que nada entra sem fonte.
+function indiceDoNo(no) {
+  const conexoes = [];
+  for (const aresta of grafo.arestas) {
+    if (aresta.origem !== no.id && aresta.destino !== no.id) continue;
+    const saindo = aresta.origem === no.id;
+    const outro = noPorId(saindo ? aresta.destino : aresta.origem);
+    if (!outro) continue;
+    // Arestas 'cita'/'envolve' são estruturais: não têm força nem fonte, e
+    // por isso nunca recebem badge de evidência (ver seção 5 da issue #1).
+    conexoes.push({ aresta, outro, saindo, ehEvidencia: Boolean(aresta.forca) });
+  }
+
+  const ligacoes = conexoes.filter((c) => c.ehEvidencia);
+  const estruturais = conexoes.filter((c) => !c.ehEvidencia);
+
+  const afirmacoesRelacionadas = unicosPorId([
+    ...(no.tipo === "afirmacao" ? [no] : []),
+    ...conexoes.filter((c) => c.outro.tipo === "afirmacao").map((c) => c.outro),
+  ]);
+
+  const datacoes = afirmacoesRelacionadas
+    .flatMap((a) => (a.datacao || []).map((d) => ({ ...d, afirmacao: a })))
+    .sort((a, b) => a.periodo[0] - b.periodo[0]);
+
+  const lugares = unicosPorId(conexoes.filter((c) => c.outro.subtipo === "lugar").map((c) => c.outro));
+  const passagens = unicosPorId(conexoes.filter((c) => c.outro.tipo === "passagem").map((c) => c.outro));
+
+  const fontes = ligacoes.flatMap((c) => (c.aresta.fontes || []).map((f) => ({ ...f, aresta: c.aresta })));
+
+  const limites = ligacoes
+    .filter((c) => c.aresta.o_que_derrubaria || c.aresta.notas || c.aresta.justificativa_copia)
+    .map((c) => ({ aresta: c.aresta, outro: c.outro }));
+
+  return { conexoes, ligacoes, estruturais, afirmacoesRelacionadas, datacoes, lugares, passagens, fontes, limites };
+}
+
+// --- Vocabulário: só o que o schema define -----------------------------------
+
+const ROTULO_FORCA = {
+  bem_estabelecido: "Bem estabelecido",
+  aceito_maioria: "Aceito pela maioria",
+  disputado: "Disputado",
+  poucos: "Poucos sustentam",
+  especulacao: "Especulação",
+};
+
+const ROTULO_APOIO = {
+  texto: "Evidência textual",
+  inscricao: "Inscrição",
+  achado_arqueologico: "Achado arqueológico",
+  moedas: "Moedas",
+  analise_linguistica: "Análise linguística",
+  nenhum: "Sem apoio material",
+};
+
+// Ícones da Lucide usados pelos blocos do card (os de tipo de nó estão em ICONES).
+const ICONES_UI = {
+  datacao: '<path d="M8 2v4"/><path d="M16 2v4"/><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M3 10h18"/>',
+  local:
+    '<path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/>',
+  conexoes:
+    '<path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/>',
+  fontes: '<path d="m16 6 4 14"/><path d="M12 6v14"/><path d="M8 8v12"/><path d="M4 4v16"/>',
+  evidencia: '<path d="m21 21-4.34-4.34"/><circle cx="11" cy="11" r="8"/>',
+  caminho:
+    '<circle cx="6" cy="19" r="3"/><path d="M9 19h8.5a3.5 3.5 0 0 0 0-7h-11a3.5 3.5 0 0 1 0-7H15"/><circle cx="18" cy="5" r="3"/>',
+  limites:
+    '<path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3"/><path d="M12 9v4"/><path d="M12 17h.01"/>',
+};
+
+function iconeUI(nome) {
+  return `<svg viewBox="0 0 24 24" class="icone" aria-hidden="true">${ICONES_UI[nome] || ""}</svg>`;
+}
+
+// --- Fontes e citações como links ----------------------------------------------
+
+const ICONE_EXTERNO =
+  '<svg viewBox="0 0 24 24" class="icone icone-externo" aria-hidden="true"><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg>';
+
+// Só https e só o que veio do campo 'url' da fonte (ver ligacao.schema.json).
+// O schema já exige isso; a checagem repetida aqui impede que um grafo.json
+// adulterado vire um link javascript: na página.
+function urlSegura(url) {
+  return typeof url === "string" && /^https:\/\/\S+$/.test(url) ? url : null;
+}
+
+// A descrição da fonte vira link para onde ela pode ser consultada, quando
+// a fonte tem 'url'. Sem url, continua texto: link deduzido seria fonte
+// inventada.
+function htmlFonte(fonte) {
+  const url = urlSegura(fonte.url);
+  if (!url) return escapar(fonte.descricao);
+  return `<a class="fonte-link" href="${escapar(url)}" target="_blank" rel="noopener noreferrer" title="Abrir a fonte (nova aba)">${escapar(
+    fonte.descricao
+  )}${ICONE_EXTERNO}</a>`;
+}
+
+// Atributo que marca o item de uma fonte na lista, para uma citação poder
+// apontar para ele (ver ligarAcoesDoPainel).
+function marcaFonte(aresta) {
+  return `data-fonte-ligacao="${aresta.ligacao || aresta.id}"`;
+}
+
+// Trechos entre aspas (curvas, retas duplas ou « ») viram destaque. O apóstrofo
+// reto fica de fora de propósito: "Bil'am" não é citação.
+const PADRAO_CITACAO = /“[^”]+”|"[^"]+"|‘[^’]+’|«[^»]+»/g;
+
+// Toda citação é destacada; vira link quando a origem é inequívoca pelos
+// dados — o texto pertence a uma ligação e essa ligação declara fontes.
+// Uma fonte com url: link para ela. Senão: link para a lista de fontes da
+// ligação no próprio painel. Texto de Registro não declara fonte, então a
+// citação ali fica só destacada, e o title diz isso — atribuir uma fonte
+// "provável" seria inventar a origem da citação.
+function comCitacoes(texto, aresta = null) {
+  const fontes = aresta?.fontes || [];
+  const unica = fontes.length === 1 ? urlSegura(fontes[0].url) : null;
+  let html = "";
+  let ultimo = 0;
+  for (const achado of (texto || "").matchAll(PADRAO_CITACAO)) {
+    // Nome de campo entre aspas ("forca: aceito_maioria") é referência
+    // técnica, não citação de uma fonte — marcar como citação linkada às
+    // fontes da ligação diria que a fonte escreveu aquilo.
+    if (/[a-z]_[a-z]/.test(achado[0])) continue;
+    html += escapar(texto.slice(ultimo, achado.index));
+    const trecho = escapar(achado[0]);
+    if (unica) {
+      html += `<a class="citacao" href="${escapar(unica)}" target="_blank" rel="noopener noreferrer" title="Citação — abrir a fonte (nova aba)">${trecho}</a>`;
+    } else if (fontes.length > 0) {
+      html += `<a class="citacao" href="#" data-ir-fonte="${aresta.ligacao || aresta.id}" title="Citação — ver ${
+        fontes.length === 1 ? "a fonte" : "as fontes"
+      } desta ligação">${trecho}</a>`;
+    } else {
+      html += `<span class="citacao" title="Citação sem fonte indicada nos dados">${trecho}</span>`;
+    }
+    ultimo = achado.index + achado[0].length;
+  }
+  return html + escapar((texto || "").slice(ultimo));
+}
+
+function rotuloForca(forca) {
+  return ROTULO_FORCA[forca] || (forca || "—").replace(/_/g, " ");
+}
+
+function rotuloApoio(apoio) {
+  return apoio ? ROTULO_APOIO[apoio] || apoio.replace(/_/g, " ") : null;
+}
+
+function rotuloTipoLigacao(tipo) {
+  return (tipo || "").replace(/_/g, " ");
+}
+
+const ehEstrutural = (tipo) => tipo === "cita" || tipo === "envolve";
+
+// No filtro, a primeira letra maiúscula vem daqui (e não de um
+// text-transform: capitalize, que também capitalizava "de" em "Foi Copiado
+// De"). Os estruturais avisam que não são evidência.
+function rotuloFiltroTipo(tipo) {
+  const texto = rotuloTipoLigacao(tipo);
+  const capitalizado = texto.charAt(0).toUpperCase() + texto.slice(1);
+  return ehEstrutural(tipo) ? `${capitalizado} (estrutural)` : capitalizado;
+}
+
+// Nome legível de uma ligação, para creditar uma fonte a ela sem mostrar o
+// id interno ("6qpaleogen-confirma-genesis") para quem lê.
+function rotuloLigacao(aresta) {
+  return `${rotuloPorId(aresta.origem)} ↔ ${rotuloPorId(aresta.destino)} (${rotuloTipoLigacao(aresta.tipo)})`;
+}
+
+// Como uma aresta estrutural se lê a partir do nó em foco. "envolve" e
+// "cita", soltos, não dizem ao leitor o que a ligação significa.
+function relacaoEstrutural(aresta, saindo) {
+  if (aresta.tipo === "envolve") return saindo ? "tema desta afirmação" : "afirmação sobre este item";
+  if (aresta.tipo === "cita") return saindo ? "citado nesta passagem" : "passagem que cita este item";
+  return rotuloTipoLigacao(aresta.tipo);
+}
+
+function formatarAno(ano) {
+  return ano < 0 ? `${Math.abs(ano)} a.C.` : `${ano} d.C.`;
+}
+
+function formatarPeriodo(periodo) {
+  if (!Array.isArray(periodo) || periodo.length < 2) return "";
+  const [inicio, fim] = periodo;
+  return inicio === fim ? formatarAno(inicio) : `${formatarAno(inicio)} – ${formatarAno(fim)}`;
+}
+
+// Natureza da relação, sempre a partir dos dados: tipo da ligação + tipo de
+// apoio. Nunca uma classificação inventada no frontend.
+function descreverRelacao(arestaOuId) {
+  const aresta = typeof arestaOuId === "string" ? arestaPorId(arestaOuId) : arestaOuId;
+  if (!aresta) return null;
+  const partes = [rotuloTipoLigacao(aresta.tipo)];
+  const apoio = rotuloApoio(aresta.tipo_de_apoio);
+  if (apoio && aresta.tipo_de_apoio !== "nenhum") partes.push(apoio.toLowerCase());
+  return partes.join(" · ");
+}
+
 // --- Painel de detalhes ------------------------------------------------------
 
 function classePill(forca) {
@@ -696,62 +1247,537 @@ function eyebrowNo(no) {
   )}</p>`;
 }
 
-function mostrarDetalhesNo(no) {
-  const painel = document.querySelector("#detalhes");
-  if (no.tipo === "registro") {
-    painel.innerHTML = `
-      ${eyebrowNo(no)}
-      <h2>${escapar(no.nome)}</h2>
-      ${no.alias?.length ? `<p class="etiqueta">${no.alias.map(escapar).join(" · ")}</p>` : ""}
-      <p>${escapar(no.descricao || "")}</p>
-    `;
-  } else if (no.tipo === "afirmacao") {
-    const datacoes = (no.datacao || [])
-      .map((d) => `<li>[${d.periodo[0]}, ${d.periodo[1]}] — ${escapar(d.segundo_quem)}</li>`)
+function secao(icone, titulo, corpo) {
+  if (!corpo) return "";
+  return `<section class="bloco-card"><h3>${iconeUI(icone)}${escapar(titulo)}</h3>${corpo}</section>`;
+}
+
+// --- Blocos do card ----------------------------------------------------------
+// Cada bloco devolve "" quando não há dado correspondente: bloco sem dado é
+// omitido, nunca preenchido com placeholder.
+
+function blocoMeta(no, idx) {
+  const linhas = [];
+
+  if (idx.datacoes.length > 0) {
+    // A datação nunca aparece sem o 'segundo_quem': mostrar a data sozinha
+    // transformaria interpretação em fato (seção 5 da metodologia).
+    // Num Registro, a datação vem de uma Afirmação ligada a ele — e não é
+    // "a data do Registro". Sem dizer de qual afirmação é, "1446–1200 a.C."
+    // debaixo de "Gênesis" parecia a data do livro.
+    const itens = idx.datacoes
+      .slice(0, 2)
+      .map((d) => {
+        const deQual =
+          d.afirmacao.id === no.id
+            ? ""
+            : `<span class="datacao-de">Data para “${escapar(truncar(d.afirmacao.texto.trim(), 80))}”</span>`;
+        return `<li>${deQual}<strong>${escapar(formatarPeriodo(d.periodo))}</strong><span class="etiqueta" title="${escapar(
+          d.segundo_quem.trim()
+        )}">Base: ${comCitacoes(truncar(d.segundo_quem.trim(), 110))}</span></li>`;
+      })
       .join("");
-    painel.innerHTML = `
-      ${eyebrowNo(no)}
-      <p>${escapar(no.texto)}</p>
-      ${datacoes ? `<h3>Datação</h3><ul>${datacoes}</ul>` : ""}
-    `;
-  } else if (no.tipo === "passagem") {
-    const afirma = (no.afirma || []).map((a) => `<li>${escapar(a)}</li>`).join("");
-    painel.innerHTML = `
-      ${eyebrowNo(no)}
-      <h2>${escapar(no.referencia)}</h2>
-      ${afirma ? `<ul>${afirma}</ul>` : ""}
-      ${no.nenhum_paralelo_conhecido ? '<p class="cartao-aviso">Nenhum paralelo externo conhecido.</p>' : ""}
-    `;
+    const extra =
+      idx.datacoes.length > 2
+        ? `<li class="etiqueta">+${plural(idx.datacoes.length - 2, "datação", "datações")} na ficha completa</li>`
+        : "";
+    linhas.push(`<div class="meta-linha">${iconeUI("datacao")}<ul class="meta-lista">${itens}${extra}</ul></div>`);
   }
+
+  if (idx.lugares.length > 0) {
+    linhas.push(
+      `<div class="meta-linha">${iconeUI("local")}<span>${idx.lugares
+        .map((l) => escapar(l.nome))
+        .join(" · ")}</span></div>`
+    );
+  }
+
+  return linhas.length > 0 ? `<div class="meta">${linhas.join("")}</div>` : "";
+}
+
+// Nível 1 mostra o resumo; nível 2 ("Mais detalhes") abre o texto inteiro
+// sem tirar o usuário do grafo.
+function blocoDescricao(no) {
+  const texto = (no.descricao || no.texto || "").trim();
+  if (!texto) return "";
+  const curto = truncar(texto, 240);
+  if (curto === texto) return `<p class="descricao">${comCitacoes(texto)}</p>`;
+  return `
+    <p class="descricao">${comCitacoes(curto)}</p>
+    <details class="mais"><summary>Mais detalhes</summary><p class="descricao">${comCitacoes(texto)}</p></details>`;
+}
+
+// "Por que está aqui" derivado das ligações incidentes e seus tipos — não
+// prosa editorial (ver seção 0 da issue #1).
+function blocoRelevancia(no, idx) {
+  if (idx.ligacoes.length === 0) return "";
+  // Nomeia com quem é cada ligação — "confirma (1)" sozinho não dizia o
+  // que confirma o quê.
+  const resumo = idx.ligacoes.map((c) => `${rotuloDoNo(c.outro)} (${rotuloTipoLigacao(c.aresta.tipo)})`).join("; ");
+  return `<p class="relevancia">${escapar(
+    plural(idx.ligacoes.length, "ligação com evidência", "ligações com evidência")
+  )}: ${escapar(resumo)}.</p>`;
+}
+
+function itemConexao(conexao) {
+  const { aresta, outro, ehEvidencia, saindo } = conexao;
+  const relacao = ehEvidencia
+    ? descreverRelacao(aresta) || rotuloTipoLigacao(aresta.tipo)
+    : relacaoEstrutural(aresta, saindo);
+  const badge = ehEvidencia
+    ? `<span class="pill ${classePill(aresta.forca)}" title="Força do apoio">${escapar(rotuloForca(aresta.forca))}</span>`
+    : '<span class="pill pill-contexto" title="Ligação estrutural: não tem força de evidência nem fonte">Estrutural</span>';
+  return `
+    <li class="conexao">
+      <button class="ir-para-no" data-id="${outro.id}" data-aresta="${aresta.id}">
+        <span class="conexao-nome">${iconeInline(categoriaDoNo(outro), corDoNo(outro))}${escapar(
+          truncar(rotuloDoNo(outro), 34)
+        )}</span>
+        <span class="conexao-relacao">${escapar(relacao)}</span>
+      </button>
+      ${badge}
+    </li>`;
+}
+
+function blocoConexoes(no, idx, { limite = 5 } = {}) {
+  if (idx.conexoes.length === 0) return "";
+  // Ligações com evidência primeiro; estruturais depois, como contexto.
+  const ordenadas = [...idx.ligacoes, ...idx.estruturais];
+  const visiveis = ordenadas.slice(0, limite);
+  const resto = ordenadas.length - visiveis.length;
+  return secao(
+    "conexoes",
+    "Conexões principais",
+    `<ul class="conexoes">${visiveis.map(itemConexao).join("")}</ul>${
+      resto > 0 ? `<p class="etiqueta">+${plural(resto, "conexão", "conexões")} na ficha completa</p>` : ""
+    }`
+  );
+}
+
+function blocoEvidencias(no, idx) {
+  if (idx.ligacoes.length === 0) return "";
+  const grupos = new Map();
+  for (const c of idx.ligacoes) {
+    const chave = c.aresta.tipo_de_apoio || "nenhum";
+    if (!grupos.has(chave)) grupos.set(chave, []);
+    grupos.get(chave).push(c);
+  }
+  const itens = [...grupos.entries()]
+    .map(
+      ([apoio, cs]) =>
+        `<li><strong>${escapar(rotuloApoio(apoio))}</strong><span class="etiqueta">${cs
+          .map((c) => `${escapar(rotuloTipoLigacao(c.aresta.tipo))} ${escapar(rotuloDoNo(c.outro))}`)
+          .join(" · ")}</span></li>`
+    )
+    .join("");
+  return secao("evidencia", "Tipo de evidência", `<ul>${itens}</ul>`);
+}
+
+function blocoFontes(no, idx) {
+  if (idx.fontes.length === 0) return "";
+  const itens = idx.fontes
+    .map(
+      (f) =>
+        `<li ${marcaFonte(f.aresta)}><span class="nivel-fonte">nível ${f.nivel}</span>${htmlFonte(
+          f
+        )}<span class="etiqueta">na ligação ${escapar(rotuloLigacao(f.aresta))}</span></li>`
+    )
+    .join("");
+  return secao(
+    "fontes",
+    "Fontes",
+    `<details class="mais"><summary>Ver ${plural(idx.fontes.length, "fonte", "fontes")}</summary><ul>${itens}</ul></details>`
+  );
+}
+
+function blocoAfirma(no) {
+  const itens = (no.afirma || []).map((a) => `<li>${comCitacoes(a)}</li>`).join("");
+  return itens ? secao("evidencia", "O que a passagem afirma", `<ul>${itens}</ul>`) : "";
+}
+
+function blocoParalelo(no) {
+  return no.nenhum_paralelo_conhecido ? '<p class="cartao-aviso">Nenhum paralelo externo conhecido.</p>' : "";
+}
+
+function blocoPassagens(no, idx) {
+  if (idx.passagens.length === 0) return "";
+  const itens = idx.passagens
+    .map(
+      (p) =>
+        `<li class="conexao"><button class="ir-para-no" data-id="${p.id}"><span class="conexao-nome">${escapar(
+          p.referencia
+        )}</span></button></li>`
+    )
+    .join("");
+  return secao("conexoes", "Passagens relacionadas", `<ul class="conexoes">${itens}</ul>`);
+}
+
+function blocoDatacoesCompletas(no, idx) {
+  if (idx.datacoes.length === 0) return "";
+  const itens = idx.datacoes
+    .map(
+      (d) =>
+        `<li><strong>${escapar(formatarPeriodo(d.periodo))}</strong><span class="etiqueta">Base: ${comCitacoes(
+          d.segundo_quem.trim()
+        )}</span></li>`
+    )
+    .join("");
+  return secao("datacao", "Datação", `<ul>${itens}</ul>`);
+}
+
+// Seção 4 da issue: "por que estou vendo isso?" — o caminho até o elemento,
+// com a natureza de cada passo, a partir do histórico de navegação.
+function blocoCaminho(no) {
+  const ate = historico.findIndex((h) => h.id === no.id);
+  const ateAqui = ate >= 0 ? historico.slice(0, ate + 1) : historico;
+  // Um passo sem aresta é um salto (busca, legenda, seletor), não uma
+  // ligação percorrida: o caminho honesto começa no último salto. Sem isso,
+  // pular de tipo em tipo pela legenda virava uma "trilha" que não existe.
+  let inicio = 0;
+  ateAqui.forEach((passo, i) => {
+    if (i > 0 && !passo.aresta) inicio = i;
+  });
+  const caminho = ateAqui.slice(inicio);
+  if (caminho.length <= 1) return "";
+  const passos = caminho
+    .map((passo, indice) => {
+      const outro = noPorId(passo.id);
+      const rotulo = outro ? rotuloDoNo(outro) : passo.id;
+      const relacao = indice > 0 ? descreverRelacao(passo.aresta) : null;
+      return `${relacao ? `<li class="passo-relacao">${escapar(relacao)}</li>` : ""}<li class="passo-no">${escapar(
+        truncar(rotulo, 40)
+      )}</li>`;
+    })
+    .join("");
+  return secao("caminho", "Você chegou aqui através de", `<ol class="caminho">${passos}</ol>`);
+}
+
+function blocoAcoes(no) {
+  return `<div class="acoes-card"><button class="abrir-dossie" data-id="${no.id}">Ver ficha completa</button></div>`;
+}
+
+// A seção que impede uma conexão de ser lida como afirmação mais forte do que
+// os dados permitem: 'notas' e 'o_que_derrubaria', que já existiam nos YAML e
+// só agora chegam à interface.
+function blocoLimites(limites) {
+  if (!limites || limites.length === 0) return "";
+  const itens = limites
+    .map(({ aresta, outro }) => {
+      const cabecalho =
+        outro && limites.length > 1
+          ? `<p class="limite-origem">${escapar(rotuloTipoLigacao(aresta.tipo))} · ${escapar(
+              rotuloDoNo(outro)
+            )}</p>`
+          : "";
+      const notas = aresta.notas
+        ? `<p><strong>O que essa evidência não demonstra:</strong> ${comCitacoes(aresta.notas.trim(), aresta)}</p>`
+        : "";
+      const derrubaria = aresta.o_que_derrubaria
+        ? `<p><strong>O que derrubaria isso:</strong> ${comCitacoes(aresta.o_que_derrubaria.trim(), aresta)}</p>`
+        : "";
+      const copia = aresta.justificativa_copia
+        ? `<p><strong>Justificativa de cópia:</strong> semelhança — ${comCitacoes(
+            aresta.justificativa_copia.semelhanca_especifica,
+            aresta
+          )}; anterioridade — ${comCitacoes(aresta.justificativa_copia.anterioridade_comprovada, aresta)}; caminho — ${comCitacoes(aresta.justificativa_copia.caminho_plausivel, aresta)}</p>`
+        : "";
+      return `<div class="limite">${cabecalho}${notas}${derrubaria}${copia}</div>`;
+    })
+    .join("");
+  return `<section class="bloco-card cartao-insight"><p class="cartao-insight-cabecalho">${iconeUI(
+    "limites"
+  )}Limites desta evidência</p>${itens}</section>`;
+}
+
+// Cada tipo prioriza o que é relevante à sua natureza — chaveado nos tipos que
+// o schema realmente prevê (os 5 subtipos de Registro, mais afirmacao,
+// passagem e o livro-raiz), nunca num vocabulário inventado.
+const BLOCOS_POR_CATEGORIA = {
+  livro: ["descricao", "meta", "relevancia", "passagens", "conexoes", "fontes"],
+  texto: ["descricao", "meta", "relevancia", "passagens", "conexoes", "fontes"],
+  pessoa: ["meta", "descricao", "relevancia", "conexoes", "fontes"],
+  lugar: ["descricao", "relevancia", "conexoes", "fontes"],
+  acontecimento: ["meta", "descricao", "evidencias", "conexoes", "fontes"],
+  objeto: ["meta", "descricao", "evidencias", "conexoes", "fontes"],
+  afirmacao: ["datacoesCompletas", "relevancia", "evidencias", "conexoes", "fontes"],
+  passagem: ["afirma", "paralelo", "meta", "conexoes", "fontes"],
+};
+
+const BLOCOS = {
+  meta: blocoMeta,
+  descricao: blocoDescricao,
+  relevancia: blocoRelevancia,
+  conexoes: blocoConexoes,
+  evidencias: blocoEvidencias,
+  fontes: blocoFontes,
+  afirma: blocoAfirma,
+  paralelo: blocoParalelo,
+  passagens: blocoPassagens,
+  datacoesCompletas: blocoDatacoesCompletas,
+};
+
+function tituloDoNo(no) {
+  if (no.tipo === "registro") return no.nome;
+  if (no.tipo === "passagem") return no.referencia;
+  return truncar(no.texto, 140);
+}
+
+function mostrarDetalhesNo(no) {
+  const corpo = document.querySelector("#detalhes-corpo");
+  const idx = indiceDoNo(no);
+  const categoria = categoriaDoNo(no);
+  const nomes = BLOCOS_POR_CATEGORIA[categoria] || ["descricao", "meta", "conexoes", "fontes"];
+
+  corpo.innerHTML = `
+    ${eyebrowNo(no)}
+    <h2>${escapar(tituloDoNo(no))}</h2>
+    ${no.alias?.length ? `<p class="etiqueta">${no.alias.map(escapar).join(" · ")}</p>` : ""}
+    ${nomes.map((nome) => BLOCOS[nome](no, idx)).join("")}
+    ${blocoCaminho(no)}
+    ${blocoAcoes(no)}
+  `;
+
+  ligarAcoesDoPainel(corpo);
 }
 
 function rotuloPorId(id) {
-  const no = grafo.nos.find((n) => n.id === id);
+  const no = noPorId(id);
   return no ? rotuloDoNo(no) : id;
 }
 
+function pontasDaAresta(aresta) {
+  return [noPorId(aresta.origem), noPorId(aresta.destino)]
+    .filter(Boolean)
+    .map(
+      (no) =>
+        `<li class="conexao"><button class="ir-para-no" data-id="${no.id}" data-aresta="${
+          aresta.id
+        }"><span class="conexao-nome">${iconeInline(categoriaDoNo(no), corDoNo(no))}${escapar(
+          truncar(rotuloDoNo(no), 34)
+        )}</span></button></li>`
+    )
+    .join("");
+}
+
 function mostrarDetalhesAresta(aresta) {
-  const painel = document.querySelector("#detalhes");
-  if (aresta.tipo === "cita") {
-    painel.innerHTML = `${eyebrow(cores.muted, "Cita")}<p>${escapar(rotuloPorId(aresta.origem))} cita ${escapar(rotuloPorId(aresta.destino))}.</p>`;
+  const corpo = document.querySelector("#detalhes-corpo");
+  const pontas = `<ul class="conexoes">${pontasDaAresta(aresta)}</ul>`;
+
+  // Arestas estruturais não têm força nem fonte — aparecem como contexto e
+  // jamais com badge de evidência.
+  if (aresta.tipo === "cita" || aresta.tipo === "envolve") {
+    const frase =
+      aresta.tipo === "cita"
+        ? `${escapar(rotuloPorId(aresta.origem))} cita ${escapar(rotuloPorId(aresta.destino))}.`
+        : `${escapar(rotuloPorId(aresta.origem))} é uma afirmação sobre ${escapar(rotuloPorId(aresta.destino))}.`;
+    corpo.innerHTML = `
+      ${eyebrow(cores.muted, aresta.tipo === "cita" ? "Cita" : "Envolve")}
+      <p class="pills"><span class="pill pill-contexto">Estrutural — sem força de evidência</span></p>
+      <p class="descricao">${frase}</p>
+      ${pontas}`;
+    ligarAcoesDoPainel(corpo);
     return;
   }
-  if (aresta.tipo === "envolve") {
-    painel.innerHTML = `${eyebrow(cores.muted, "Envolve")}<p>${escapar(rotuloPorId(aresta.origem))} é uma afirmação sobre ${escapar(rotuloPorId(aresta.destino))}.</p>`;
-    return;
-  }
-  const fontes = (aresta.fontes || []).map((f) => `<li>nível ${f.nivel} — ${escapar(f.descricao)}</li>`).join("");
-  painel.innerHTML = `
+
+  const apoio = rotuloApoio(aresta.tipo_de_apoio);
+  const sustentam = (aresta.quem_sustenta || []).map((q) => `<li>${escapar(q.nome)} (${q.ano})</li>`).join("");
+  const fontes = (aresta.fontes || [])
+    .map((f) => `<li ${marcaFonte(aresta)}><span class="nivel-fonte">nível ${f.nivel}</span>${htmlFonte(f)}</li>`)
+    .join("");
+
+  corpo.innerHTML = `
     ${eyebrow(cores.ouro, "Ligação")}
-    <h2>${escapar(aresta.tipo)}</h2>
-    <span class="pill ${classePill(aresta.forca)}">${escapar((aresta.forca || "—").replace(/_/g, " "))}</span>
-    ${fontes ? `<h3>Fontes</h3><ul>${fontes}</ul>` : ""}
-    ${aresta.o_que_derrubaria ? `<div class="cartao-insight"><p class="cartao-insight-cabecalho">O que derrubaria isso</p><p>${escapar(aresta.o_que_derrubaria)}</p></div>` : ""}
+    <h2>${escapar(rotuloTipoLigacao(aresta.tipo))}</h2>
+    <p class="pills">
+      <span class="pill ${classePill(aresta.forca)}">${escapar(rotuloForca(aresta.forca))}</span>
+      ${apoio ? `<span class="pill pill-contexto">${escapar(apoio)}</span>` : ""}
+    </p>
+    ${pontas}
+    ${sustentam ? secao("evidencia", "Quem sustenta", `<ul>${sustentam}</ul>`) : ""}
+    ${fontes ? secao("fontes", "Fontes", `<ul>${fontes}</ul>`) : ""}
+    ${blocoLimites([{ aresta, outro: null }])}
+    <div class="acoes-card"><button class="abrir-dossie" data-id="${aresta.origem}">Ver ficha completa</button></div>
   `;
+  ligarAcoesDoPainel(corpo);
+}
+
+// O card e o dossiê são redesenhados a cada seleção, então os listeners são
+// religados a cada render — não há como delegar no container, que também é
+// substituído.
+function ligarAcoesDoPainel(raiz) {
+  raiz.querySelectorAll(".ir-para-no").forEach((botao) => {
+    botao.addEventListener("click", () => {
+      fecharDossie();
+      centralizarEm(botao.dataset.id, { viaAresta: botao.dataset.aresta || null });
+    });
+  });
+  raiz.querySelectorAll(".abrir-dossie").forEach((botao) => {
+    botao.addEventListener("click", () => abrirDossie(botao.dataset.id));
+  });
+  // Citação sem url própria: leva às fontes da ligação no mesmo painel —
+  // abre o <details> se estiver fechado e pisca os itens por um instante.
+  raiz.querySelectorAll(".citacao[data-ir-fonte]").forEach((link) => {
+    link.addEventListener("click", (evento) => {
+      evento.preventDefault();
+      const itens = raiz.querySelectorAll(`[data-fonte-ligacao="${link.dataset.irFonte}"]`);
+      if (itens.length === 0) return;
+      itens.forEach((item) => {
+        const detalhes = item.closest("details");
+        if (detalhes) detalhes.open = true;
+        item.classList.remove("fonte-destacada");
+        void item.offsetWidth; // reinicia a animação num segundo clique
+        item.classList.add("fonte-destacada");
+      });
+      itens[0].scrollIntoView({ block: "nearest", behavior: animacoesOk() ? "smooth" : "auto" });
+    });
+  });
 }
 
 function limparDetalhes() {
-  document.querySelector("#detalhes").innerHTML = '<p class="vazio">Clique em um nó ou em uma ligação para ver os detalhes.</p>';
+  document.querySelector("#detalhes-corpo").innerHTML =
+    '<p class="vazio">Clique em um nó ou em uma ligação para ver os detalhes.</p>';
+}
+
+// --- Dossiê (nível 3) --------------------------------------------------------
+// Overlay sobre o mapa, e não uma quarta aba: a ficha completa não deve custar
+// o contexto do grafo. O estado vai no hash, para o link ser compartilhável.
+
+let focoAntesDoDossie = null;
+let dossieAberto = null;
+let dossieConfigurado = false;
+
+function montarDossie(no) {
+  const idx = indiceDoNo(no);
+  const categoria = categoriaDoNo(no);
+  const oQueE = (no.descricao || no.texto || "").trim();
+
+  // Fontes agrupadas por nível, cada uma creditada à ligação de onde vem.
+  const porNivel = new Map();
+  for (const f of idx.fontes) {
+    if (!porNivel.has(f.nivel)) porNivel.set(f.nivel, []);
+    porNivel.get(f.nivel).push(f);
+  }
+  const fontes = porNivel.size
+    ? secao(
+        "fontes",
+        `Fontes (${idx.fontes.length})`,
+        [...porNivel.entries()]
+          .sort((a, b) => a[0] - b[0])
+          .map(
+            ([nivel, fs]) =>
+              `<h4>Nível ${nivel}</h4><ul>${fs
+                .map(
+                  (f) =>
+                    `<li ${marcaFonte(f.aresta)}>${htmlFonte(f)}<span class="etiqueta">na ligação ${escapar(
+                      rotuloLigacao(f.aresta)
+                    )}</span></li>`
+                )
+                .join("")}</ul>`
+          )
+          .join("")
+      )
+    : "";
+
+  const sustentam = idx.ligacoes.flatMap((c) =>
+    (c.aresta.quem_sustenta || []).map(
+      (q) =>
+        `<li>${escapar(q.nome)} (${q.ano})<span class="etiqueta">${escapar(
+          rotuloTipoLigacao(c.aresta.tipo)
+        )} ${escapar(rotuloDoNo(c.outro))}</span></li>`
+    )
+  );
+
+  const conexoes = idx.conexoes.length
+    ? secao(
+        "conexoes",
+        "Conexões e a natureza de cada uma",
+        `<ul class="conexoes">${[...idx.ligacoes, ...idx.estruturais].map(itemConexao).join("")}</ul>`
+      )
+    : "";
+
+  return `
+    ${eyebrowNo(no)}
+    <h2 id="dossie-titulo">${escapar(tituloDoNo(no))}</h2>
+    ${no.alias?.length ? `<p class="etiqueta">${no.alias.map(escapar).join(" · ")}</p>` : ""}
+    ${oQueE ? secao("evidencia", "O que é", `<p class="descricao">${comCitacoes(oQueE)}</p>`) : ""}
+    ${categoria === "passagem" ? blocoAfirma(no) + blocoParalelo(no) : ""}
+    ${blocoDatacoesCompletas(no, idx)}
+    ${
+      idx.lugares.length
+        ? secao("local", "Lugares relacionados", `<ul>${idx.lugares.map((l) => `<li>${escapar(l.nome)}</li>`).join("")}</ul>`)
+        : ""
+    }
+    ${blocoEvidencias(no, idx)}
+    ${sustentam.length ? secao("evidencia", "Quem sustenta", `<ul>${sustentam.join("")}</ul>`) : ""}
+    ${conexoes}
+    ${fontes}
+    ${blocoLimites(idx.limites)}
+    ${blocoCaminho(no)}
+  `;
+}
+
+function abrirDossie(id) {
+  const no = noPorId(id);
+  const painel = document.querySelector("#dossie");
+  if (!no || !painel) return;
+
+  focoAntesDoDossie = document.activeElement;
+  const corpo = document.querySelector("#dossie-corpo");
+  corpo.innerHTML = montarDossie(no);
+  ligarAcoesDoPainel(corpo);
+  painel.hidden = false;
+  dossieAberto = id;
+  // Nessa ordem: zerar o scroll so vale depois do painel ter layout, e o
+  // focus precisa de preventScroll para nao arrastar a ficha ate o botao.
+  corpo.scrollTop = 0;
+  painel.querySelector(".fechar-dossie").focus({ preventScroll: true });
+
+  if (lerIdDoHash() !== id) location.hash = `dossie=${encodeURIComponent(id)}`;
+}
+
+function fecharDossie({ limparHash = true } = {}) {
+  const painel = document.querySelector("#dossie");
+  if (!painel || painel.hidden) return;
+  painel.hidden = true;
+  dossieAberto = null;
+  if (limparHash && lerIdDoHash()) {
+    // replaceState em vez de location.hash = "": zerar o hash deixaria um "#"
+    // preso na URL e um passo a mais no histórico do navegador.
+    history.replaceState(null, "", location.pathname + location.search);
+  }
+  if (focoAntesDoDossie?.isConnected) focoAntesDoDossie.focus();
+  focoAntesDoDossie = null;
+}
+
+function lerIdDoHash() {
+  const achado = /^#dossie=(.+)$/.exec(location.hash);
+  return achado ? decodeURIComponent(achado[1]) : null;
+}
+
+// Um link com #dossie=<id> abre direto na ficha completa daquele elemento.
+function sincronizarDossieComHash() {
+  const id = lerIdDoHash();
+  if (id && id === dossieAberto) return;
+  if (id && noPorId(id)) {
+    mudarView("mapa");
+    abrirDossie(id);
+  } else {
+    fecharDossie({ limparHash: false });
+  }
+}
+
+function configurarDossie() {
+  const painel = document.querySelector("#dossie");
+  if (!painel || dossieConfigurado) return;
+  dossieConfigurado = true;
+  painel.querySelector(".fechar-dossie").addEventListener("click", () => fecharDossie());
+  painel.addEventListener("click", (evento) => {
+    if (evento.target === painel) fecharDossie();
+  });
+  document.addEventListener("keydown", (evento) => {
+    if (evento.key === "Escape") fecharDossie();
+  });
+  window.addEventListener("hashchange", sincronizarDossieComHash);
 }
 
 // --- Percurso por passagem ---------------------------------------------------
@@ -769,7 +1795,7 @@ function montarPassagens() {
         <li>
           <button class="ver-no-grafo" data-id="${p.id}">
             <strong>${escapar(p.referencia)}</strong>
-            <span class="etiqueta">${citacoes} citação(ões)${p.nenhum_paralelo_conhecido ? " · nenhum paralelo externo conhecido" : ""}</span>
+            <span class="etiqueta">${plural(citacoes, "citação", "citações")}${p.nenhum_paralelo_conhecido ? " · nenhum paralelo externo conhecido" : ""}</span>
           </button>
         </li>
       `;
@@ -795,9 +1821,9 @@ async function montarTimeline() {
     .map(
       (e) => `
       <li>
-        <span class="periodo">${e.periodo[0]} a ${e.periodo[1]}</span>
-        <p class="texto">${escapar(e.texto)}</p>
-        <p class="fonte">segundo ${escapar(e.segundo_quem)}</p>
+        <span class="periodo">${escapar(formatarPeriodo(e.periodo))}</span>
+        <p class="texto">${comCitacoes(e.texto)}</p>
+        <p class="fonte">Base: ${comCitacoes(e.segundo_quem)}</p>
       </li>`
     )
     .join("");
@@ -814,6 +1840,8 @@ async function iniciar() {
     montarPassagens();
     await montarTimeline();
     window.addEventListener("resize", () => cy && cy.resize());
+    // Depois do grafo de pe: um link com #dossie=<id> abre direto na ficha.
+    sincronizarDossieComHash();
   } catch (erro) {
     // Rede de segurança final: qualquer falha inesperada aqui não pode
     // deixar a tela travada em "carregando" para sempre.
