@@ -1523,16 +1523,19 @@ function blocoMeta(no, idx) {
     // Num Registro, a datação vem de uma Afirmação ligada a ele — e não é
     // "a data do Registro". Sem dizer de qual afirmação é, "1446–1200 a.C."
     // debaixo de "Gênesis" parecia a data do livro.
+    // O texto de datação é uma narrativa que começa dizendo o que é datado
+    // e segundo quem (guia de estilo, "Narrativa histórica"); o card mostra
+    // a primeira frase e guarda o resto em "Continuar lendo".
     const itens = idx.datacoes
       .slice(0, 2)
       .map((d) => {
-        const deQual =
-          d.afirmacao.id === no.id
-            ? ""
-            : `<span class="datacao-de">Data para “${escapar(truncar(d.afirmacao.texto.trim(), 80))}”</span>`;
-        return `<li>${deQual}<strong>${escapar(formatarPeriodo(d.periodo))}</strong><span class="etiqueta" title="${escapar(
-          d.segundo_quem.trim()
-        )}">Base: ${comCitacoes(truncar(d.segundo_quem.trim(), 110))}</span></li>`;
+        const [inicio, resto] = primeiraFrase(d.segundo_quem.trim());
+        const mais = resto
+          ? `<details class="mais"><summary>Continuar lendo</summary><p>${comCitacoes(resto)}</p></details>`
+          : "";
+        return `<li><strong>${escapar(formatarPeriodo(d.periodo))}</strong><span class="datacao-texto">${comCitacoes(
+          inicio
+        )}</span>${mais}</li>`;
       })
       .join("");
     const extra =
@@ -1587,6 +1590,13 @@ function dividirNaFrase(texto) {
   return [texto.slice(0, corte).trim(), texto.slice(corte).trim()];
 }
 
+// Primeira frase e o resto, pelo mesmo critério de fim de frase da descrição.
+function primeiraFrase(texto) {
+  const fim = finsDeFrase(texto)[0];
+  if (!fim || fim >= texto.length) return [texto, ""];
+  return [texto.slice(0, fim).trim(), texto.slice(fim).trim()];
+}
+
 function blocoDescricao(no) {
   const texto = (no.descricao || no.texto || "").trim();
   if (!texto) return "";
@@ -1597,16 +1607,33 @@ function blocoDescricao(no) {
     <details class="mais"><summary>Continuar lendo</summary><p class="descricao">${comCitacoes(resto)}</p></details>`;
 }
 
+const ESTE_ITEM = {
+  livro: "este livro",
+  texto: "este texto",
+  passagem: "esta passagem",
+  afirmacao: "esta afirmação",
+  pessoa: "esta pessoa",
+  lugar: "este lugar",
+  acontecimento: "este acontecimento",
+  objeto: "este objeto",
+};
+
 // "Por que está aqui" derivado das ligações incidentes e seus tipos — não
 // prosa editorial (ver seção 0 da issue #1).
 function blocoRelevancia(no, idx) {
   if (idx.ligacoes.length === 0) return "";
   // Nomeia com quem é cada ligação — "confirma (1)" sozinho não dizia o
   // que confirma o quê.
-  const resumo = idx.ligacoes.map((c) => `${verboDaLigacao(c.aresta.tipo, c.saindo)} ${rotuloDoNo(c.outro)}`).join("; ");
-  return `<p class="relevancia">${escapar(
-    plural(idx.ligacoes.length, "ligação com evidência", "ligações com evidência")
-  )}: ${escapar(resumo)}.</p>`;
+  // Uma frase por ligação, com sujeito e verbo, na direção da seta:
+  // "6QpaleoGen confirma este livro.", "Este livro confirma X."
+  const aqui = ESTE_ITEM[categoriaDoNo(no)] || "este item";
+  const frases = idx.ligacoes.map((c) => {
+    const outro = rotuloDoNo(c.outro);
+    const verbo = verboDaLigacao(c.aresta.tipo);
+    const frase = c.saindo ? `${aqui} ${verbo} ${outro}` : `${outro} ${verbo} ${aqui}`;
+    return `${frase.charAt(0).toUpperCase()}${frase.slice(1)}.`;
+  });
+  return `<p class="relevancia">${escapar(frases.join(" "))}</p>`;
 }
 
 function itemConexao(conexao) {
@@ -1707,7 +1734,7 @@ function blocoDatacoesCompletas(no, idx) {
   const itens = idx.datacoes
     .map(
       (d) =>
-        `<li><strong>${escapar(formatarPeriodo(d.periodo))}</strong><span class="etiqueta">Base: ${comCitacoes(
+        `<li><strong>${escapar(formatarPeriodo(d.periodo))}</strong><span class="datacao-texto">${comCitacoes(
           d.segundo_quem.trim()
         )}</span></li>`
     )
@@ -2116,7 +2143,7 @@ async function montarTimeline() {
       <li>
         <span class="periodo">${escapar(formatarPeriodo(e.periodo))}</span>
         <p class="texto">${comCitacoes(e.texto)}</p>
-        <p class="fonte">Base: ${comCitacoes(e.segundo_quem)}</p>
+        <p class="fonte">${comCitacoes(e.segundo_quem)}</p>
       </li>`
     )
     .join("");

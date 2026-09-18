@@ -1032,11 +1032,20 @@ legend {
   line-height: 1.55;
 }
 
-.datacao-de {
+/* Narrativa da datação: frase inteira, legível, logo abaixo do período. */
+.datacao-texto {
   display: block;
-  margin-bottom: 0.15rem;
-  color: var(--muted);
-  font-size: 0.72rem;
+  margin-top: 0.2rem;
+  color: rgba(237, 238, 243, 0.8);
+  font-size: 0.8rem;
+  line-height: 1.5;
+}
+
+.meta-lista .mais p {
+  margin: 0.3rem 0 0;
+  color: rgba(237, 238, 243, 0.8);
+  font-size: 0.8rem;
+  line-height: 1.5;
 }
 
 .relevancia {

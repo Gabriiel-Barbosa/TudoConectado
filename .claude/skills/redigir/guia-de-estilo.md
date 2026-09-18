@@ -49,6 +49,51 @@ Exemplo de antes e depois (Hipótese Documentária):
 Repare que o "depois" não traz nenhuma afirmação nova sobre a hipótese.
 Ele só explica o que "Pentateuco" e "fonte" querem dizer.
 
+### Narrativa histórica, não anotação
+
+Todo campo de prosa é lido **sozinho**, num card, por quem não viu o resto
+do arquivo. Por isso cada texto conta um pedaço de história completo: quem
+fez o quê, quando, e por que isso importa para o que está sendo mostrado.
+Nada de frase solta que só faz sentido para quem já sabe do que se trata.
+
+- **Sujeito e objeto explícitos.** Não "A faixa é ampla porque…" (faixa de
+  quê?), e sim "Pela cronologia tradicional, Moisés teria escrito Gênesis
+  entre c. 1446 e 1200 a.C.". Diga sempre o que está sendo datado,
+  confirmado ou contestado, pelo nome.
+- **Comece pelo acontecimento, depois a explicação.** Primeiro o que se
+  diz que aconteceu, e quando; em seguida por que a data ou a evidência é
+  essa; por fim o limite ou a discussão.
+- **Tom de relato histórico.** Frases que situam o leitor no tempo e no
+  lugar: "No século III a.C., um escriba copiou…", "Séculos depois, os
+  rabinos da Babilônia registraram…". Só com fatos que o arquivo ou as
+  fontes registradas sustentam.
+- **A narrativa não apaga a atribuição.** Contar como história não é
+  transformar tradição ou hipótese em fato do narrador. Use o condicional
+  ou o "segundo quem" quando a afirmação é de alguém: "Segundo a tradição
+  judaica e cristã, Moisés teria escrito…", "Os estudiosos que seguem a
+  Hipótese Documentária propõem…". Nunca "Moisés escreveu Gênesis em 1446
+  a.C.". "Estima-se" só quando o arquivo registra quem estima.
+- **Os números do próprio arquivo podem e devem ir para o texto.** Se a
+  `datacao` tem `periodo: [-1446, -1200]`, o `segundo_quem` pode dizer "entre
+  c. 1446 e 1200 a.C.": não é fato novo, é o mesmo dado escrito por extenso.
+
+Exemplo de antes e depois (datação da afirmação "Gênesis foi escrito por
+Moisés", `periodo: [-1446, -1200]`):
+
+> **Antes:** A cronologia tradicional. A faixa é ampla porque a própria
+> tradição se divide entre duas datações. A "alta", por volta do século XV
+> a.C., vem de uma leitura literal de 1 Reis 6:1. […]
+>
+> **Depois:** Pela cronologia tradicional, Moisés teria escrito Gênesis
+> entre c. 1446 e 1200 a.C. O intervalo é largo porque a própria tradição
+> não chega a uma data só. Quem lê ao pé da letra 1 Reis 6:1 põe o Êxodo, a
+> saída dos israelitas do Egito, por volta do século XV a.C.; quem o
+> associa ao reinado do faraó Ramessés II o desloca para o século XIII a.C.
+
+O "depois" não acrescenta nada: o intervalo estava no `periodo`, e as duas
+datações já estavam no texto. Ele só diz, logo de saída, o que está sendo
+datado e segundo quem.
+
 ## 1. Fidelidade: reescrever não é acrescentar
 
 - **Nenhum fato novo sobre o assunto.** Datas, números, nomes, lugares,
@@ -180,9 +225,9 @@ O que fazer no lugar:
 |---|---|---|
 | `registro.descricao` | sim | 2 a 6 frases. A primeira define para o leigo; as outras aprofundam. |
 | `afirmacao.texto` | **não** | É a afirmação que as ligações julgam. Mudar o texto muda o que foi conferido. Só sugira. |
-| `datacao[].segundo_quem` | sim, com cuidado | Começar pelo sujeito da datação, com artigo quando couber ("A cronologia tradicional…"). Nunca remova a justificativa. |
-| `ligacao.notas` | sim | Diz o que a evidência **não** demonstra. Não pode virar argumento a favor. |
-| `ligacao.o_que_derrubaria` | sim | Uma condição concreta e verificável, e não "se surgirem novas evidências". |
+| `datacao[].segundo_quem` | sim, com cuidado | Frase inteira que diz o que é datado, quando e segundo quem ("Pela cronologia tradicional, Moisés teria escrito Gênesis entre c. 1446 e 1200 a.C."), usando o `periodo` do arquivo; depois a justificativa. Nunca remova a justificativa. |
+| `ligacao.notas` | sim | Diz o que a evidência **não** demonstra, contado como narrativa: o que a evidência é, o que ela mostra e onde ela para. Não pode virar argumento a favor. |
+| `ligacao.o_que_derrubaria` | sim | Uma condição concreta e verificável, e não "se surgirem novas evidências". Nomeie a ligação pelo que ela diz ("A ideia de que o 6QpaleoGen é uma cópia de Gênesis cairia se…"), e não "Esta ligação". |
 | `justificativa_copia.*` | só gramática | Qualquer mudança de conteúdo precisa de nova conferência. |
 | `fontes[].descricao` | **não** | É bibliografia conferida. Qualquer mudança invalida o veredito da Contraprova. |
 | `id`, `tipo`, `entre`, `forca`, `nivel`, `quem_sustenta` | **não** | Estrutura, não texto. |

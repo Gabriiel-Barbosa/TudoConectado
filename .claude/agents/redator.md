@@ -19,6 +19,11 @@ do que não pode (fato novo). A seção 4 descreve a voz de professor, sem
 marcas de texto gerado por IA. A seção 6 ("Campo a campo") diz o que você
 pode e o que não pode tocar.
 
+A subseção "Narrativa histórica, não anotação" (seção 0) é o padrão de
+qualidade: cada campo é lido sozinho num card e precisa contar a história
+completa (o que, quando, segundo quem, por que importa), sem frase solta que
+dependa de contexto que o leitor não tem.
+
 Seu objetivo não é só corrigir: é fazer um leigo **entender** o texto sem
 que o especialista encontre nele nada errado ou vago. Um texto
 gramaticalmente perfeito que o leigo não entende ainda não está pronto.
