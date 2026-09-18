@@ -1,6 +1,6 @@
 import { test, describe } from "node:test";
 import assert from "node:assert/strict";
-import { validarRegrasDeLigacao, validarIdsUnicos, validarIntegridadeReferencial } from "./validar.js";
+import { validarRegrasDeLigacao, validarDirecaoDeLigacao, validarIdsUnicos, validarIntegridadeReferencial } from "./validar.js";
 
 describe("validarRegrasDeLigacao", () => {
   test("passa quando há fonte de nível 1", () => {
@@ -32,6 +32,33 @@ describe("validarRegrasDeLigacao", () => {
     const ligacoes = [["a.yaml", { fontes: [] }]];
     const erros = validarRegrasDeLigacao(ligacoes);
     assert.equal(erros.length, 1); // só a regra de nível 1/2 se aplica com lista vazia
+  });
+});
+
+describe("validarDirecaoDeLigacao", () => {
+  const ligacao = (id, tipo, a, b) => ["l.yaml", { id, tipo, entre: [{ registro: a }, { registro: b }] }];
+
+  test("passa quando entre segue a ordem sujeito → alvo do id", () => {
+    const l = ligacao("6qpaleogen-confirma-genesis", "confirma", "manuscrito-6qpaleogen", "genesis");
+    assert.deepEqual(validarDirecaoDeLigacao([l]), []);
+  });
+
+  test("recusa quando entre está na ordem inversa do id", () => {
+    const l = ligacao("6qpaleogen-confirma-genesis", "confirma", "genesis", "manuscrito-6qpaleogen");
+    const erros = validarDirecaoDeLigacao([l]);
+    assert.ok(erros.some((e) => /ordem inversa/.test(e)));
+  });
+
+  test("entende tipos com _ e ids separados por _", () => {
+    const certa = ligacao("gilgamesh_foi_copiado_de_atrahasis", "foi_copiado_de", "epopeia-gilgamesh", "atrahasis");
+    const trocada = ligacao("gilgamesh_foi_copiado_de_atrahasis", "foi_copiado_de", "atrahasis", "epopeia-gilgamesh");
+    assert.deepEqual(validarDirecaoDeLigacao([certa]), []);
+    assert.equal(validarDirecaoDeLigacao([trocada]).length, 1);
+  });
+
+  test("não acusa quando o id não permite decidir", () => {
+    const l = ligacao("ligacao-qualquer", "confirma", "x", "y");
+    assert.deepEqual(validarDirecaoDeLigacao([l]), []);
   });
 });
 

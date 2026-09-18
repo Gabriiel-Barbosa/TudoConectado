@@ -1,8 +1,8 @@
 id: 6qpaleogen-confirma-genesis
 tipo: confirma
 entre:
-  - registro: genesis
   - registro: manuscrito-6qpaleogen
+  - registro: genesis
 evidencia:
   tipo_de_apoio: achado_arqueologico
   forca: bem_estabelecido

@@ -728,7 +728,8 @@ function renderizarTrilha() {
       const rotulo = no ? rotuloDoNo(no) : passo.id;
       const atual = indice === historico.length - 1;
       const proximo = historico[indice + 1];
-      const relacao = proximo ? descreverRelacao(proximo.aresta) : null;
+      const arestaDoPasso = proximo ? arestaPorId(proximo.aresta) : null;
+      const relacao = arestaDoPasso ? descreverRelacao(arestaDoPasso, arestaDoPasso.origem === passo.id) : null;
       const separador = proximo
         ? `<span class="separador"${relacao ? ` title="${escapar(relacao)}"` : ""}>›${
             relacao ? `<em>${escapar(relacao)}</em>` : ""
@@ -1062,7 +1063,7 @@ function indiceDoNo(no) {
 
   const limites = ligacoes
     .filter((c) => c.aresta.o_que_derrubaria || c.aresta.notas || c.aresta.justificativa_copia)
-    .map((c) => ({ aresta: c.aresta, outro: c.outro }));
+    .map((c) => ({ aresta: c.aresta, outro: c.outro, saindo: c.saindo }));
 
   return { conexoes, ligacoes, estruturais, afirmacoesRelacionadas, datacoes, lugares, passagens, fontes, limites };
 }
@@ -1196,7 +1197,11 @@ function rotuloFiltroTipo(tipo) {
 // Nome legível de uma ligação, para creditar uma fonte a ela sem mostrar o
 // id interno ("6qpaleogen-confirma-genesis") para quem lê.
 function rotuloLigacao(aresta) {
-  return `${rotuloPorId(aresta.origem)} ↔ ${rotuloPorId(aresta.destino)} (${rotuloTipoLigacao(aresta.tipo)})`;
+  // Uma afirmação é uma frase inteira; sem aspas, "X confirma Gênesis foi
+  // escrito por Moisés." não se lê como uma frase só.
+  const ponta = (id) =>
+    noPorId(id)?.tipo === "afirmacao" ? `“${rotuloPorId(id).replace(/\.$/, "")}”` : rotuloPorId(id);
+  return `${ponta(aresta.origem)} ${verboDaLigacao(aresta.tipo)} ${ponta(aresta.destino)}`;
 }
 
 // Como uma aresta estrutural se lê a partir do nó em foco. "envolve" e
@@ -1217,12 +1222,27 @@ function formatarPeriodo(periodo) {
   return inicio === fim ? formatarAno(inicio) : `${formatarAno(inicio)} – ${formatarAno(fim)}`;
 }
 
+// A ligação tem sentido: origem é quem confirma/contradiz/foi copiado,
+// destino é o alvo (regra checada por validarDirecaoDeLigacao). Lida a partir
+// do alvo, a relação vira a voz passiva — "confirmado por", não "confirma".
+const VOZ_PASSIVA = {
+  confirma: "confirmado por",
+  contradiz: "contradito por",
+  foi_copiado_de: "copiado por",
+};
+
+function verboDaLigacao(tipo, lidoDaOrigem = true) {
+  if (!lidoDaOrigem && VOZ_PASSIVA[tipo]) return VOZ_PASSIVA[tipo];
+  return rotuloTipoLigacao(tipo);
+}
+
 // Natureza da relação, sempre a partir dos dados: tipo da ligação + tipo de
-// apoio. Nunca uma classificação inventada no frontend.
-function descreverRelacao(arestaOuId) {
+// apoio. Nunca uma classificação inventada no frontend. `lidoDaOrigem` diz
+// de que ponta o leitor está olhando (padrão: da origem, voz ativa).
+function descreverRelacao(arestaOuId, lidoDaOrigem = true) {
   const aresta = typeof arestaOuId === "string" ? arestaPorId(arestaOuId) : arestaOuId;
   if (!aresta) return null;
-  const partes = [rotuloTipoLigacao(aresta.tipo)];
+  const partes = [verboDaLigacao(aresta.tipo, lidoDaOrigem)];
   const apoio = rotuloApoio(aresta.tipo_de_apoio);
   if (apoio && aresta.tipo_de_apoio !== "nenhum") partes.push(apoio.toLowerCase());
   return partes.join(" · ");
@@ -1313,7 +1333,7 @@ function blocoRelevancia(no, idx) {
   if (idx.ligacoes.length === 0) return "";
   // Nomeia com quem é cada ligação — "confirma (1)" sozinho não dizia o
   // que confirma o quê.
-  const resumo = idx.ligacoes.map((c) => `${rotuloDoNo(c.outro)} (${rotuloTipoLigacao(c.aresta.tipo)})`).join("; ");
+  const resumo = idx.ligacoes.map((c) => `${verboDaLigacao(c.aresta.tipo, c.saindo)} ${rotuloDoNo(c.outro)}`).join("; ");
   return `<p class="relevancia">${escapar(
     plural(idx.ligacoes.length, "ligação com evidência", "ligações com evidência")
   )}: ${escapar(resumo)}.</p>`;
@@ -1322,7 +1342,7 @@ function blocoRelevancia(no, idx) {
 function itemConexao(conexao) {
   const { aresta, outro, ehEvidencia, saindo } = conexao;
   const relacao = ehEvidencia
-    ? descreverRelacao(aresta) || rotuloTipoLigacao(aresta.tipo)
+    ? descreverRelacao(aresta, saindo) || rotuloTipoLigacao(aresta.tipo)
     : relacaoEstrutural(aresta, saindo);
   const badge = ehEvidencia
     ? `<span class="pill ${classePill(aresta.forca)}" title="Força do apoio">${escapar(rotuloForca(aresta.forca))}</span>`
@@ -1366,7 +1386,7 @@ function blocoEvidencias(no, idx) {
     .map(
       ([apoio, cs]) =>
         `<li><strong>${escapar(rotuloApoio(apoio))}</strong><span class="etiqueta">${cs
-          .map((c) => `${escapar(rotuloTipoLigacao(c.aresta.tipo))} ${escapar(rotuloDoNo(c.outro))}`)
+          .map((c) => `${escapar(verboDaLigacao(c.aresta.tipo, c.saindo))} ${escapar(rotuloDoNo(c.outro))}`)
           .join(" · ")}</span></li>`
     )
     .join("");
@@ -1443,7 +1463,10 @@ function blocoCaminho(no) {
     .map((passo, indice) => {
       const outro = noPorId(passo.id);
       const rotulo = outro ? rotuloDoNo(outro) : passo.id;
-      const relacao = indice > 0 ? descreverRelacao(passo.aresta) : null;
+      const arestaDoPasso = indice > 0 ? arestaPorId(passo.aresta) : null;
+      const relacao = arestaDoPasso
+        ? descreverRelacao(arestaDoPasso, arestaDoPasso.origem === caminho[indice - 1].id)
+        : null;
       return `${relacao ? `<li class="passo-relacao">${escapar(relacao)}</li>` : ""}<li class="passo-no">${escapar(
         truncar(rotulo, 40)
       )}</li>`;
@@ -1462,10 +1485,10 @@ function blocoAcoes(no) {
 function blocoLimites(limites) {
   if (!limites || limites.length === 0) return "";
   const itens = limites
-    .map(({ aresta, outro }) => {
+    .map(({ aresta, outro, saindo }) => {
       const cabecalho =
         outro && limites.length > 1
-          ? `<p class="limite-origem">${escapar(rotuloTipoLigacao(aresta.tipo))} · ${escapar(
+          ? `<p class="limite-origem">${escapar(verboDaLigacao(aresta.tipo, saindo))} ${escapar(
               rotuloDoNo(outro)
             )}</p>`
           : "";
@@ -1587,7 +1610,7 @@ function mostrarDetalhesAresta(aresta) {
 
   corpo.innerHTML = `
     ${eyebrow(cores.ouro, "Ligação")}
-    <h2>${escapar(rotuloTipoLigacao(aresta.tipo))}</h2>
+    <h2>${escapar(rotuloLigacao(aresta))}</h2>
     <p class="pills">
       <span class="pill ${classePill(aresta.forca)}">${escapar(rotuloForca(aresta.forca))}</span>
       ${apoio ? `<span class="pill pill-contexto">${escapar(apoio)}</span>` : ""}
@@ -1682,7 +1705,7 @@ function montarDossie(no) {
     (c.aresta.quem_sustenta || []).map(
       (q) =>
         `<li>${escapar(q.nome)} (${q.ano})<span class="etiqueta">${escapar(
-          rotuloTipoLigacao(c.aresta.tipo)
+          verboDaLigacao(c.aresta.tipo, c.saindo)
         )} ${escapar(rotuloDoNo(c.outro))}</span></li>`
     )
   );

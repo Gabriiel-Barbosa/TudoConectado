@@ -1,8 +1,8 @@
 id: talmude-confirma-autoria-mosaica
 tipo: confirma
 entre:
-  - afirmacao: autoria-mosaica-genesis
   - registro: talmude-babilonico
+  - afirmacao: autoria-mosaica-genesis
 evidencia:
   tipo_de_apoio: texto
   forca: aceito_maioria

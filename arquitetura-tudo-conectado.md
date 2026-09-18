@@ -96,9 +96,9 @@ Campo a campo, mapeado direto na seção 1 e na seção 4 da metodologia — nen
 ```yaml
 id: prisma-taylor_confirma_2reis18
 tipo: confirma                     # ver tabela de tipos na seção 3 da metodologia
-entre:
-  - afirmacao: cerco-jerusalem-701
+entre:                             # lê-se: entre[0] <tipo> entre[1] (sujeito → alvo)
   - registro: prisma-taylor
+  - afirmacao: cerco-jerusalem-701
 evidencia:
   tipo_de_apoio: inscricao         # texto | inscricao | achado_arqueologico | moedas | analise_linguistica | nenhum
   forca: bem_estabelecido          # bem_estabelecido | aceito_maioria | disputado | poucos | especulacao

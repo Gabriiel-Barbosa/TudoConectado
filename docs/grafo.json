@@ -68,8 +68,8 @@
     {
       "id": "6qpaleogen-confirma-genesis__0",
       "ligacao": "6qpaleogen-confirma-genesis",
-      "origem": "genesis",
-      "destino": "manuscrito-6qpaleogen",
+      "origem": "manuscrito-6qpaleogen",
+      "destino": "genesis",
       "tipo": "confirma",
       "forca": "bem_estabelecido",
       "tipo_de_apoio": "achado_arqueologico",
@@ -130,8 +130,8 @@
     {
       "id": "talmude-confirma-autoria-mosaica__0",
       "ligacao": "talmude-confirma-autoria-mosaica",
-      "origem": "autoria-mosaica-genesis",
-      "destino": "talmude-babilonico",
+      "origem": "talmude-babilonico",
+      "destino": "autoria-mosaica-genesis",
       "tipo": "confirma",
       "forca": "aceito_maioria",
       "tipo_de_apoio": "texto",

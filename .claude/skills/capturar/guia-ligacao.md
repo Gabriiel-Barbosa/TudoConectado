@@ -24,7 +24,9 @@ partir dos tipos que aparecem nos dados. Um tipo novo muda a interface.
 
 **Direção:** leia a ligação como "`entre[0]` *tipo* `entre[1]`". Por
 exemplo, `hipotese-documentaria` contradiz `autoria-mosaica-genesis`. A
-aresta do grafo é compilada nessa ordem.
+aresta do grafo é compilada nessa ordem: a seta sai da evidência e aponta
+para o alvo. O id segue a mesma ordem (`<sujeito>-<tipo>-<alvo>`), e o
+`validar.js` recusa uma ligação cujo `entre` esteja na ordem inversa do id.
 
 ## Força (`evidencia.forca`)
 

@@ -16,6 +16,7 @@
       "description": "Ver tabela de tipos de ligação na seção 3 da METODOLOGIA.md (ex.: confirma, contradiz, foi_copiado_de)."
     },
     "entre": {
+      "description": "Lê-se entre[0] <tipo> entre[1]: o primeiro item é o sujeito (a evidência que confirma, contradiz ou foi copiada) e o segundo é o alvo. A seta do grafo segue essa ordem; validar.js recusa a ordem inversa à do id.",
       "type": "array",
       "minItems": 2,
       "items": {

@@ -70,6 +70,35 @@ function validarRegrasDeLigacao(ligacoes) {
   return erros;
 }
 
+// Direção da ligação: entre[0] é o sujeito (quem confirma, contradiz, foi
+// copiado) e entre[1] é o alvo — a mesma ordem em que o id se lê
+// ("6qpaleogen-confirma-genesis"). O compilar.js desenha a seta de entre[0]
+// para entre[1], então uma ordem trocada inverte o sentido da seta no mapa.
+// Só acusa quando o id casa MELHOR com a ordem trocada do que com a ordem
+// escrita; ids que não seguem o padrão sujeito-tipo-alvo passam em silêncio.
+function validarDirecaoDeLigacao(ligacoes) {
+  const erros = [];
+  const pedacos = (texto) => new Set(texto.split(/[-_]/).filter(Boolean));
+  const emComum = (a, b) => [...a].filter((p) => b.has(p)).length;
+  for (const [rel, ligacao] of ligacoes) {
+    const pontas = (ligacao.entre || []).map((item) => Object.values(item)[0]);
+    if (pontas.length !== 2 || !ligacao.id || !ligacao.tipo) continue;
+    const partes = ligacao.id.split(new RegExp(`[-_]${ligacao.tipo}[-_]`));
+    if (partes.length !== 2) continue;
+    const [sujeito, alvo] = partes.map(pedacos);
+    const [primeira, segunda] = pontas.map(pedacos);
+    const naOrdem = emComum(sujeito, primeira) + emComum(alvo, segunda);
+    const trocada = emComum(sujeito, segunda) + emComum(alvo, primeira);
+    if (trocada > naOrdem) {
+      const verbo = ligacao.tipo.replace(/_/g, " ");
+      erros.push(
+        `${rel}: 'entre' parece estar na ordem inversa — pelo id, '${pontas[1]}' é o sujeito, mas está em entre[1]. entre[0] deve ser quem ${verbo}; entre[1], o alvo`
+      );
+    }
+  }
+  return erros;
+}
+
 // IDs precisam ser únicos globalmente, não só dentro da própria categoria —
 // registro, afirmação, ligação e passagem compartilham o mesmo espaço de IDs
 // no grafo compilado (scripts/compilar.js), então uma colisão entre categorias
@@ -182,6 +211,7 @@ function main() {
 
   erros.push(...validarIdsUnicos(idsPorCategoria));
   erros.push(...validarRegrasDeLigacao(dadosPorCategoria.ligacao));
+  erros.push(...validarDirecaoDeLigacao(dadosPorCategoria.ligacao));
   erros.push(...validarIntegridadeReferencial(dadosPorCategoria, idsPorCategoria));
 
   if (erros.length > 0) {
@@ -195,7 +225,7 @@ function main() {
   console.log(`OK — ${total} arquivo(s) validado(s) em dados/.`);
 }
 
-export { validarRegrasDeLigacao, validarIdsUnicos, validarIntegridadeReferencial };
+export { validarRegrasDeLigacao, validarDirecaoDeLigacao, validarIdsUnicos, validarIntegridadeReferencial };
 
 if (import.meta.url === pathToFileURL(process.argv[1] || "").href) {
   main();
