@@ -1,0 +1,30 @@
+id: missao-planck-confirma-idade-do-universo
+tipo: confirma
+entre:
+  - registro: missao-planck
+  - afirmacao: idade-do-universo
+evidencia:
+  tipo_de_apoio: medicao_cientifica
+  forca: bem_estabelecido
+  quem_sustenta:
+    - nome: Colaboração Planck
+      ano: 2020
+fontes:
+  - nivel: 2
+    descricao: >-
+      Planck Collaboration (N. Aghanim et al.) (2020), "Planck 2018 results.
+      VI. Cosmological parameters", Astronomy & Astrophysics 641, A6, Tabela
+      1, p. 15 (paginação do arXiv 1807.06209v4),
+      doi:10.1051/0004-6361/201833910
+    url: https://doi.org/10.1051/0004-6361/201833910
+o_que_derrubaria: >-
+  A idade de 13,8 bilhões de anos cairia se novas medições, ou um modelo
+  cosmológico diferente do padrão, dessem ao universo uma idade muito
+  diferente.
+notas: >-
+  O valor vale dentro do modelo cosmológico padrão, em que a equipe fez o
+  cálculo. Para Gênesis 1, que narra a criação dos céus e da terra ao longo
+  de seis dias, o dado importa porque, somado à idade da Terra (cerca de
+  4,54 bilhões de anos, pela datação radiométrica), deixa quase nove bilhões
+  de anos entre o começo do universo e a formação da Terra. Essa diferença é
+  uma conta feita a partir das duas medições, e não uma frase das fontes.

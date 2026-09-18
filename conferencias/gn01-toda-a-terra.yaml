@@ -1,0 +1,28 @@
+# Gerado por .claude/skills/conferir/scripts/registrar.js — vereditos da
+# Contraprova para as fontes desta ligação. Edite à mão só 'revisao_humana'
+# (pendente -> feita) depois de conferir você mesmo.
+ligacao: gn01-toda-a-terra
+fontes:
+  - hash: 516974856f9e
+    nivel: 2
+    descricao: >-
+      Hendel, R. S. (1998), The Text of Genesis 1–11: Textual Studies and Critical Edition, Nova
+      York/Oxford: Oxford University Press, p. 42
+    alegacao: >-
+      Hendel (1998), p. 42, atesta que em Gn 1:26 muitos comentaristas preferem a leitura da
+      Peshitta siríaca à de "toda a terra", e que ele considera arriscado apoiar-se numa leitura
+      atestada só numa versão menor.
+    veredito: confirmada
+    parou_em: null
+    conferido_em: >-
+      cópia digitalizada da obra no archive.org (item
+      ronald-s.-hendel-the-text-of-genesis-1-11.-textual-studies-and-critical-edition), busca de
+      texto integral e mapa de folha para página; a obra consta no catálogo da OUP
+      (https://academic.oup.com/book/50213); folha 58 = p. 42
+    observacao: >-
+      p. 42: "most commentators prefer the reading of Syr in v 26 ... thereby seeing a reference to
+      land animals"; "it is precarious to rely on a reading attested solely in one of the minor
+      versions". Hendel diz "most" (a maioria); a nota foi ajustada.
+    data: '2026-09-18'
+    conferido_por: contraprova
+    revisao_humana: pendente

@@ -1,0 +1,24 @@
+id: guia-dos-perplexos-confirma-dias-de-genesis-nao-literais
+tipo: confirma
+entre:
+  - registro: guia-dos-perplexos
+  - afirmacao: dias-de-genesis-nao-literais
+evidencia:
+  tipo_de_apoio: texto
+  forca: aceito_maioria
+  quem_sustenta: []
+fontes:
+  - nivel: 1
+    descricao: >-
+      Maimônides, Guia dos Perplexos, parte II, cap. 30, trad. M.
+      Friedländer, 2ª ed., Londres: George Routledge and Sons, 1904
+    url: https://archive.org/details/guideforperplexe00maimiala
+o_que_derrubaria: >-
+  A ideia de que Maimônides lê os dias de forma não literal cairia se o
+  capítulo II.30 tratasse os seis dias como seis atos de criação separados
+  no tempo.
+notas: >-
+  Maimônides lê o começo de Gênesis como a criação de todas as coisas de uma
+  vez, separadas depois, umas das outras, pouco a pouco. Para explicar,
+  repete uma comparação dos sábios judeus: sementes de vários tipos semeadas
+  no mesmo dia brotam em dias diferentes.

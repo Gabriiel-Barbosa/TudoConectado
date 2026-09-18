@@ -1,0 +1,44 @@
+# Gerado por .claude/skills/conferir/scripts/registrar.js — vereditos da
+# Contraprova para as fontes desta ligação. Edite à mão só 'revisao_humana'
+# (pendente -> feita) depois de conferir você mesmo.
+ligacao: gn01-lugar-ou-ajuntamento
+fontes:
+  - hash: 31a5584552e1
+    nivel: 2
+    descricao: >-
+      Hendel, R. S. (1998), The Text of Genesis 1–11: Textual Studies and Critical Edition, Nova
+      York/Oxford: Oxford University Press, p. 24
+    alegacao: >-
+      Hendel (1998), p. 24, atesta que a palavra da Septuaginta em Gn 1:9 traduz o hebraico miqveh,
+      leitura confirmada no manuscrito 4QGen-h, enquanto o Texto Massorético lê maqom.
+    veredito: nao_confirmavel
+    parou_em: conteudo
+    conferido_em: >-
+      cópia digitalizada da obra no archive.org (item
+      ronald-s.-hendel-the-text-of-genesis-1-11.-textual-studies-and-critical-edition), busca de
+      texto integral e mapa de folha para página; a obra consta no catálogo da OUP
+      (https://academic.oup.com/book/50213); folha 40 = p. 24
+    observacao: >-
+      A p. 24 confirma que G συναγωγήν corresponde a miqveh e não ao maqom do Texto Massorético, e
+      que "the correctness of this retroversion is now confirmed in 4QGen[?]". O expoente que
+      identifica o manuscrito está ilegível no OCR; a atribuição a 4QGen-h ficou sem verificação.
+    data: '2026-09-18'
+    conferido_por: contraprova
+    revisao_humana: pendente
+  - hash: 561637e1ba60
+    nivel: 2
+    descricao: >-
+      Skinner, J. (1910), A Critical and Exegetical Commentary on Genesis (International Critical
+      Commentary), Nova York: Charles Scribner's Sons, p. 22
+    alegacao: >-
+      Skinner (1910), p. 22, propõe ler em Gn 1:9 "ajuntamento" (miqveh) com a Septuaginta, em vez
+      de "lugar" (maqom).
+    veredito: confirmada
+    parou_em: null
+    conferido_em: >-
+      https://archive.org/details/criticalexegetic00skinuoft (busca de texto integral e mapa de
+      folha para página; folha 124 = p. 22)
+    observacao: 'p. 22: "For [maqom] read with G [miqveh] ''gathering-place''".'
+    data: '2026-09-18'
+    conferido_por: contraprova
+    revisao_humana: pendente

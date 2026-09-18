@@ -1,0 +1,32 @@
+id: gn01-lugar-ou-ajuntamento
+tipo: variante
+versiculos:
+  - 9
+  - 9
+titulo: As águas se juntam “em um lugar” ou “em um ajuntamento”?
+descricao: >-
+  No versículo 9, o hebraico padrão manda as águas se juntarem “em um lugar”
+  (maqom). A palavra que a Septuaginta usa supõe outro termo hebraico,
+  miqveh, “ajuntamento”, o mesmo que aparece no versículo 10. Um manuscrito
+  de Qumran, 4QGen-h, mostra que essa leitura existiu em hebraico. Skinner
+  (1910) já propunha ler miqveh, como a Septuaginta.
+leituras:
+  - leitura: maqom, “lugar”
+    quem: >-
+      Texto Massorético, Pentateuco Samaritano e 4QGen-b (Hendel 1998, p.
+      24)
+  - leitura: miqveh, “ajuntamento”
+    quem: Septuaginta e 4QGen-h (Hendel 1998, p. 24)
+fontes:
+  - nivel: 2
+    descricao: >-
+      Hendel, R. S. (1998), The Text of Genesis 1–11: Textual Studies and
+      Critical Edition, Nova York/Oxford: Oxford University Press, p. 24
+  - nivel: 2
+    descricao: >-
+      Skinner, J. (1910), A Critical and Exegetical Commentary on Genesis
+      (International Critical Commentary), Nova York: Charles Scribner's
+      Sons, p. 22
+    url: https://archive.org/details/criticalexegetic00skinuoft
+passagem: gen-01-01_01-31
+notas: null

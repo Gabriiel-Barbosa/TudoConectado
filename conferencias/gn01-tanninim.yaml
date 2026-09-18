@@ -1,0 +1,41 @@
+# Gerado por .claude/skills/conferir/scripts/registrar.js — vereditos da
+# Contraprova para as fontes desta ligação. Edite à mão só 'revisao_humana'
+# (pendente -> feita) depois de conferir você mesmo.
+ligacao: gn01-tanninim
+fontes:
+  - hash: be7fbe5c0c2d
+    nivel: 2
+    descricao: >-
+      Skinner, J. (1910), A Critical and Exegetical Commentary on Genesis (International Critical
+      Commentary), Nova York: Charles Scribner's Sons, p. 28
+    alegacao: >-
+      Skinner (1910), p. 28, atesta que tanninim designa ali animais marinhos reais, que é quase o
+      único trecho com certeza desse sentido, que o uso da palavra tem traços de mitologia e que ela
+      pode ter sido o nome de monstros lendários como Tiamat.
+    veredito: confirmada
+    parou_em: null
+    conferido_em: >-
+      https://archive.org/details/criticalexegetic00skinuoft (busca de texto completo do item e mapa
+      oficial de folha para página impressa)
+    observacao: >-
+      p. 28: "here denotes actual marine animals; but this is almost the only passage where it
+      certainly bears that sense … strong traces of mythology … may have been originally the name of
+      a class of legendary monsters like Ti'amat."
+    data: '2026-09-18'
+    conferido_por: contraprova
+    revisao_humana: pendente
+  - hash: fd8624ef52a1
+    nivel: 2
+    descricao: >-
+      Hiebert, R. J. V. (trad.) (2007), "Genesis", em A. Pietersma e B. G. Wright (orgs.), A New
+      English Translation of the Septuagint, Oxford: Oxford University Press, p. 6
+    alegacao: NETS, p. 6, traduz Gênesis 1:21 com "the great sea monsters".
+    veredito: confirmada
+    parou_em: null
+    conferido_em: >-
+      cópia local do PDF oficial https://ccat.sas.upenn.edu/nets/edition/01-gen-nets.pdf, p. 6 (Gn
+      1:1–26)
+    observacao: '"21And God made the great sea monsters and every creature among creeping animals"'
+    data: '2026-09-18'
+    conferido_por: contraprova
+    revisao_humana: pendente

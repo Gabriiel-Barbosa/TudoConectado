@@ -1,0 +1,23 @@
+id: catecismo-da-igreja-catolica-confirma-dias-de-genesis-nao-literais
+tipo: confirma
+entre:
+  - registro: catecismo-da-igreja-catolica
+  - afirmacao: dias-de-genesis-nao-literais
+evidencia:
+  tipo_de_apoio: texto
+  forca: bem_estabelecido
+  quem_sustenta: []
+fontes:
+  - nivel: 1
+    descricao: Catecismo da Igreja Católica, § 337
+    url: >-
+      https://www.vatican.va/content/catechism/en/part_one/section_two/chapter_one/article_1/paragraph_5_heaven_and_earth.html
+o_que_derrubaria: >-
+  A ideia de que o Catecismo lê os seis dias como não literais cairia se o
+  parágrafo 337 não apresentasse a criação em seis dias como simbólica, ou
+  se uma edição oficial posterior mudasse o texto nesse ponto.
+notas: >-
+  O parágrafo 337 diz que a Escritura apresenta a obra da criação
+  simbolicamente, como uma sucessão de seis dias de trabalho divino
+  encerrados pelo descanso do sétimo. É a posição oficial da Igreja
+  Católica, e não a opinião de um teólogo.

@@ -1,0 +1,41 @@
+# Gerado por .claude/skills/conferir/scripts/registrar.js — vereditos da
+# Contraprova para as fontes desta ligação. Edite à mão só 'revisao_humana'
+# (pendente -> feita) depois de conferir você mesmo.
+ligacao: gn01-firmamento
+fontes:
+  - hash: 1410d092bd2b
+    nivel: 2
+    descricao: >-
+      Skinner, J. (1910), A Critical and Exegetical Commentary on Genesis (International Critical
+      Commentary), Nova York: Charles Scribner's Sons, p. 21
+    alegacao: >-
+      Skinner (1910), p. 21, atesta que o firmamento é a abóbada do céu, entendida pelos antigos
+      como estrutura material, que a ideia da palavra é de solidez, e registra as traduções da
+      Septuaginta e da Vulgata.
+    veredito: confirmada
+    parou_em: null
+    conferido_em: >-
+      https://archive.org/details/criticalexegetic00skinuoft (busca de texto completo do item e mapa
+      oficial de folha para página impressa)
+    observacao: >-
+      p. 21: "The 'firmament' is the dome of heaven, which to the ancients was no optical illusion,
+      but a material structure"; "The idea is solidity, not thinness or extension"; registra
+      στερέωμα e firmamentum.
+    data: '2026-09-18'
+    conferido_por: contraprova
+    revisao_humana: pendente
+  - hash: e06111159a1f
+    nivel: 2
+    descricao: >-
+      Hiebert, R. J. V. (trad.) (2007), "Genesis", em A. Pietersma e B. G. Wright (orgs.), A New
+      English Translation of the Septuagint, Oxford: Oxford University Press, p. 6
+    alegacao: NETS, p. 6, traduz a palavra de Gênesis 1:6–8 como "firmament".
+    veredito: confirmada
+    parou_em: null
+    conferido_em: >-
+      cópia local do PDF oficial https://ccat.sas.upenn.edu/nets/edition/01-gen-nets.pdf, p. 6 (Gn
+      1:1–26)
+    observacao: '"Let a firmament come into being in the midst of the water..."; "God called the firmament Sky"'
+    data: '2026-09-18'
+    conferido_por: contraprova
+    revisao_humana: pendente

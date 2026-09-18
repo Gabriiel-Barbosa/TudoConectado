@@ -1,0 +1,32 @@
+id: gn01-e-assim-foi
+tipo: variante
+versiculos:
+  - 6
+  - 7
+titulo: Onde fica o “e assim foi”?
+descricao: >-
+  No hebraico padrão, a frase “e assim foi” aparece seis vezes no capítulo,
+  e no segundo dia vem no versículo 7. Na Septuaginta aparece sete vezes: já
+  no fim do versículo 6 e também no versículo 20. Para Hendel (1998), essas
+  diferenças vêm de ajustes feitos pelos copistas do texto hebraico que os
+  tradutores gregos usaram, para deixar os dias mais parecidos entre si, e
+  não de liberdade do tradutor.
+fontes:
+  - nivel: 2
+    descricao: >-
+      Hendel, R. S. (1998), The Text of Genesis 1–11: Textual Studies and
+      Critical Edition, Nova York/Oxford: Oxford University Press, pp. 20–23
+  - nivel: 2
+    descricao: >-
+      Skinner, J. (1910), A Critical and Exegetical Commentary on Genesis
+      (International Critical Commentary), Nova York: Charles Scribner's
+      Sons, pp. 22 e 28
+    url: https://archive.org/details/criticalexegetic00skinuoft
+  - nivel: 2
+    descricao: >-
+      Hiebert, R. J. V. (trad.) (2007), "Genesis", em A. Pietersma e B. G.
+      Wright (orgs.), A New English Translation of the Septuagint, Oxford:
+      Oxford University Press, p. 6
+    url: https://ccat.sas.upenn.edu/nets/edition/01-gen-nets.pdf
+passagem: gen-01-01_01-31
+notas: null

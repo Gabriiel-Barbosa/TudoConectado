@@ -1,0 +1,89 @@
+# Gerado por .claude/skills/conferir/scripts/registrar.js — vereditos da
+# Contraprova para as fontes desta ligação. Edite à mão só 'revisao_humana'
+# (pendente -> feita) depois de conferir você mesmo.
+ligacao: enuma-elish-paralelo-genesis
+fontes:
+  - hash: dc9a61ef4acc
+    nivel: 1
+    descricao: >-
+      Enuma Elish, tabuleta IV, linhas 137–140, na tradução de A. Heidel (1951), The Babylonian
+      Genesis, 2ª ed., Chicago: University of Chicago Press, p. 42
+    alegacao: >-
+      O Enuma Elish, tabuleta IV, linhas 137–140 (trad. Heidel, p. 42), narra que Marduk parte
+      Tiamat em duas e faz de uma das metades o céu.
+    veredito: confirmada
+    parou_em: null
+    conferido_em: >-
+      https://isac-assets.s3.amazonaws.com/isac-publications/misc_genesis.pdf (PDF oficial do ISAC,
+      2ª ed. 1951), p. 42
+    observacao: >-
+      Tab. IV, l. 137: "He split her open like a mussel(?) into two (parts)"; l. 138: "Half of her
+      he set in place and formed the sky (therewith) as a roof." As linhas 139–140 tratam da trava e
+      dos guardas que retêm as águas dela.
+    data: '2026-09-18'
+    conferido_por: contraprova
+    revisao_humana: pendente
+  - hash: bac19985ad74
+    nivel: 2
+    descricao: >-
+      Heidel, A. (1951), The Babylonian Genesis: The Story of Creation, 2ª ed., Chicago: University
+      of Chicago Press, pp. 82, 128–130 e 139
+    alegacao: >-
+      Heidel (1951), pp. 82, 128–130 e 139, atesta semelhanças entre o Enuma Elish e Gênesis 1 (caos
+      aquoso dividido em céu e terra, luz antes dos astros, mesma ordem dos eventos), vê uma relação
+      de parentesco entre as duas histórias e deixa em aberto se o relato bíblico depende do
+      material babilônico.
+    veredito: confirmada
+    parou_em: null
+    conferido_em: >-
+      cópia local do PDF oficial do ISAC
+      https://isac-assets.s3.amazonaws.com/isac-publications/misc_genesis.pdf (2ª ed., 1951)
+    observacao: >-
+      p. 82: "a watery chaos, which was separated into heaven and earth", luz "before the creation
+      of the luminous bodies", "as to the succession"; pp. 128–129: "the order in which the points
+      of contact follow upon one another is the same"; p. 130: "There no doubt is a genetic relation
+      between the two stories"; p. 139: "the whole question must still be left open... whether the
+      biblical account is or is not dependent on Babylonian material". Contexto: na p. 130 as
+      divergências "are much more far-reaching", e no alto da p. 139 Heidel diz que o texto hebraico
+      não saiu do babilônico ("the differences are far too great").
+    data: '2026-09-18'
+    conferido_por: contraprova
+    revisao_humana: pendente
+  - hash: 2b4cb210c32b
+    nivel: 2
+    descricao: >-
+      Millard, A. R. (1967), "A New Babylonian 'Genesis' Story", Tyndale Bulletin 18, pp. 17–18,
+      doi:10.53751/001c.30683
+    alegacao: >-
+      Millard (1967), pp. 17–18, atesta que ainda não se mostrou que Gênesis tenha tomado emprestado
+      de um texto babilônico conhecido.
+    veredito: confirmada
+    parou_em: null
+    conferido_em: https://www.tyndalebulletin.org/article/30683-a-new-babylonian-genesis-story.pdf, pp. 17–18
+    observacao: >-
+      p. 17: "However, it has yet to be shown that there was borrowing, even indirectly." p. 18: "it
+      could be said that the stories were borrowed from there, but not that they were borrowed from
+      any text now known to us." O artigo trata sobretudo do Atrahasis e do Dilúvio.
+    data: '2026-09-18'
+    conferido_por: contraprova
+    revisao_humana: pendente
+  - hash: 4c753d5c34c7
+    nivel: 2
+    descricao: >-
+      Routledge, R. (2010), "Did God Create Chaos? Unresolved Tension in Genesis 1:1–2", Tyndale
+      Bulletin 61.1, pp. 72–73, doi:10.53751/001c.29296
+    alegacao: >-
+      Routledge (2010), pp. 72–73, atesta que há pontos de semelhança entre Gênesis 1 e o mito
+      babilônico, mas que é amplamente reconhecido que nada indica dependência.
+    veredito: confirmada
+    parou_em: null
+    conferido_em: >-
+      https://www.tyndalebulletin.org/article/29296-did-god-create-chaos-unresolved-tension-in-genesis-1-1-2.pdf,
+      p. 72
+    observacao: >-
+      p. 72: "while there may be enough points of similarity to suggest that the writer of Genesis 1
+      knew the Babylonian myth and used some of its imagery, it is widely recognised that there is
+      nothing to indicate dependence." Routledge admite que o autor pode ter conhecido o mito.
+    data: '2026-09-18'
+    conferido_por: contraprova
+    revisao_humana: pendente

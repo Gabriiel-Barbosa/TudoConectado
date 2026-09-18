@@ -1,0 +1,31 @@
+id: gn01-aguas-frase-a-mais
+tipo: variante
+versiculos:
+  - 9
+  - 9
+titulo: Uma frase a mais sobre as águas
+descricao: >-
+  A Septuaginta acrescenta ao versículo 9 uma frase que não está no hebraico
+  padrão: a água que estava debaixo do céu se juntou nos seus ajuntamentos,
+  e a terra seca apareceu. As duas últimas palavras dessa frase aparecem em
+  hebraico num manuscrito de Qumran, 4QGen-k. Hendel (1998) considera essa a
+  leitura original, que o texto hebraico padrão teria perdido.
+fontes:
+  - nivel: 2
+    descricao: >-
+      Hendel, R. S. (1998), The Text of Genesis 1–11: Textual Studies and
+      Critical Edition, Nova York/Oxford: Oxford University Press, pp. 25–27
+  - nivel: 2
+    descricao: >-
+      Skinner, J. (1910), A Critical and Exegetical Commentary on Genesis
+      (International Critical Commentary), Nova York: Charles Scribner's
+      Sons, p. 22
+    url: https://archive.org/details/criticalexegetic00skinuoft
+  - nivel: 2
+    descricao: >-
+      Hiebert, R. J. V. (trad.) (2007), "Genesis", em A. Pietersma e B. G.
+      Wright (orgs.), A New English Translation of the Septuagint, Oxford:
+      Oxford University Press, p. 6
+    url: https://ccat.sas.upenn.edu/nets/edition/01-gen-nets.pdf
+passagem: gen-01-01_01-31
+notas: null

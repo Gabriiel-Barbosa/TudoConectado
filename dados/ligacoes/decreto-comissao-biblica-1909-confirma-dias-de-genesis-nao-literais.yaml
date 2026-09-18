@@ -1,0 +1,28 @@
+id: decreto-comissao-biblica-1909-confirma-dias-de-genesis-nao-literais
+tipo: confirma
+entre:
+  - registro: decreto-comissao-biblica-1909
+  - afirmacao: dias-de-genesis-nao-literais
+evidencia:
+  tipo_de_apoio: texto
+  forca: bem_estabelecido
+  quem_sustenta: []
+fontes:
+  - nivel: 1
+    descricao: >-
+      Pontifícia Comissão Bíblica, "De charactere historico trium priorum
+      capitum Geneseos", Acta Apostolicae Sedis 1 (1909), pp. 568–569,
+      questões VII e VIII
+    url: https://www.vatican.va/archive/aas/documents/AAS-01-1909-ocr.pdf
+o_que_derrubaria: >-
+  A ideia de que o decreto admite dias não literais cairia se a resposta à
+  questão VIII não permitisse ler a palavra yom (dia) como um período de
+  tempo.
+notas: >-
+  Na questão VIII, a comissão respondeu que a palavra hebraica yom, “dia”,
+  pode ser entendida como um dia natural ou como um período de tempo, e que
+  os estudiosos podem discutir isso livremente. A questão VII parte do
+  pressuposto de que o autor de Gênesis 1 não pretendia ensinar a ordem da
+  criação de modo científico. O mesmo decreto, porém, defende nas questões I a III o sentido
+  literal e histórico dos três primeiros capítulos: ele abre espaço para ler
+  os dias como períodos, sem negar a historicidade do relato.

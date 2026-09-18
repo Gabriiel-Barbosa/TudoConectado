@@ -1,0 +1,27 @@
+# Gerado por .claude/skills/conferir/scripts/registrar.js — vereditos da
+# Contraprova para as fontes desta ligação. Edite à mão só 'revisao_humana'
+# (pendente -> feita) depois de conferir você mesmo.
+ligacao: guia-dos-perplexos-confirma-dias-de-genesis-nao-literais
+fontes:
+  - hash: 7e14c0a022a3
+    nivel: 1
+    descricao: >-
+      Maimônides, Guia dos Perplexos, parte II, cap. 30, trad. M. Friedländer, 2ª ed., Londres:
+      George Routledge and Sons, 1904
+    alegacao: >-
+      Em II.30, Maimônides diz que todas as coisas foram criadas juntas e depois separadas
+      sucessivamente, com a comparação das sementes semeadas ao mesmo tempo que brotam em dias
+      diferentes.
+    veredito: confirmada
+    parou_em: null
+    conferido_em: >-
+      https://archive.org/details/guideforperplexe00maimiala (edição de 1904, George Routledge &
+      Sons), pp. 278–279
+    observacao: >-
+      p. 279: "Consequently, all things were created together, but were separated from each other
+      successively" e "We sow various seeds at the same time; some spring forth after one day, some
+      after two, and some after three days, although all have been sown at the same time." A URL
+      original (dli.csl.8809) era de uma reimpressão de 1947; trocada pela de 1904.
+    data: '2026-09-18'
+    conferido_por: contraprova
+    revisao_humana: pendente

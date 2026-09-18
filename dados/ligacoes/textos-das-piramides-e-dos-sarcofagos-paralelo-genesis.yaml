@@ -1,0 +1,38 @@
+id: textos-das-piramides-e-dos-sarcofagos-paralelo-genesis
+tipo: paralelo
+entre:
+  - registro: textos-das-piramides-e-dos-sarcofagos
+  - registro: genesis
+evidencia:
+  tipo_de_apoio: texto
+  forca: aceito_maioria
+  quem_sustenta:
+    - nome: James P. Allen
+      ano: 1988
+    - nome: Alexander Heidel
+      ano: 1951
+fontes:
+  - nivel: 2
+    descricao: >-
+      Allen, J. P. (1988), Genesis in Egypt: The Philosophy of Ancient
+      Egyptian Creation Accounts (Yale Egyptological Studies 2), New Haven:
+      Yale Egyptological Seminar, pp. 4–5 e 13
+  - nivel: 2
+    descricao: >-
+      Heidel, A. (1951), The Babylonian Genesis: The Story of Creation, 2ª
+      ed., Chicago: University of Chicago Press, p. 115
+    url: >-
+      https://isac.uchicago.edu/research/publications/misc/babylonian-genesis-story-creation
+o_que_derrubaria: >-
+  O paralelo entre os textos egípcios e Gênesis 1 cairia se a leitura dos
+  Textos das Pirâmides e dos Sarcófagos mostrasse que a imagem de um céu que
+  mantém as águas afastadas da terra não está neles.
+notas: >-
+  A semelhança é de imagem, não de texto: nos dois casos, o céu separa o
+  mundo das águas que o cercam. Allen (1988) aproxima os textos egípcios
+  justamente de Gênesis 1:6–7, mas essa fonte ainda não foi conferida num
+  exemplar oficial. Heidel (1951) lembra que criar céu e terra
+  dividindo ou separando alguma coisa é um traço comum a quase todas as
+  cosmogonias antigas, o que enfraquece a ideia de um empréstimo direto. No
+  Egito, além disso, o mundo surge de deuses gerados pelo deus Atum, e não
+  da palavra de um deus único.

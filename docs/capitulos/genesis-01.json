@@ -1,0 +1,599 @@
+{
+  "id": "genesis-01",
+  "livro": "Gênesis",
+  "capitulo": 1,
+  "traducao": {
+    "sigla": "BLIVRE",
+    "nome": "Bíblia Livre",
+    "licenca": "Creative Commons Atribuição 3.0 Brasil (CC BY 3.0 BR)",
+    "atribuicao": "Todas as Escrituras em português citadas são da Bíblia Livre (BLIVRE), Copyright © Diego Santos, Mario Sérgio, e Marco Teles, http://sites.google.com/site/biblialivre/ - fevereiro de 2018. Licença Creative Commons Atribuição 3.0 Brasil (http://creativecommons.org/licenses/by/3.0/br/). Reprodução permitida desde que devidamente mencionados fonte e autores.",
+    "fonte": "https://github.com/blivre/BibliaLivre/releases/download/2018.2.0/bliv-n4_vpl.zip",
+    "licenca_url": "https://raw.githubusercontent.com/blivre/BibliaLivre/master/LICENCA.md"
+  },
+  "versiculos": [
+    {
+      "n": 1,
+      "texto": "No princípio criou Deus os céus e a terra."
+    },
+    {
+      "n": 2,
+      "texto": "E a terra estava desordenada e vazia, e as trevas estavam sobre a face do abismo, e o Espírito de Deus se movia sobre a face das águas."
+    },
+    {
+      "n": 3,
+      "texto": "E disse Deus: Haja luz; e houve luz."
+    },
+    {
+      "n": 4,
+      "texto": "E viu Deus que a luz era boa: e separou Deus a luz das trevas."
+    },
+    {
+      "n": 5,
+      "texto": "E chamou Deus à luz Dia, e às trevas chamou Noite: e foi a tarde e a manhã o primeiro dia."
+    },
+    {
+      "n": 6,
+      "texto": "E disse Deus: Haja expansão em meio das águas, e separe as águas das águas."
+    },
+    {
+      "n": 7,
+      "texto": "E fez Deus a expansão, e separou as águas que estavam debaixo da expansão, das águas que estavam sobre a expansão: e foi assim."
+    },
+    {
+      "n": 8,
+      "texto": "E chamou Deus à expansão Céus: e foi a tarde e a manhã, o dia segundo."
+    },
+    {
+      "n": 9,
+      "texto": "E disse Deus: Juntem-se as águas que estão debaixo dos céus em um lugar, e descubra-se a porção seca; e foi assim."
+    },
+    {
+      "n": 10,
+      "texto": "E chamou Deus à porção seca Terra, e à reunião das águas chamou Mares; e viu Deus que era bom."
+    },
+    {
+      "n": 11,
+      "texto": "E disse Deus: Produza a terra erva verde, erva que dê semente; árvore de fruto que dê fruto segundo a sua espécie, que sua semente esteja nela, sobre a terra: e foi assim."
+    },
+    {
+      "n": 12,
+      "texto": "E produziu a terra erva verde, erva que dá semente segundo sua natureza, e árvore que dá fruto, cuja semente está nele, segundo a sua espécie; e viu Deus que era bom."
+    },
+    {
+      "n": 13,
+      "texto": "E foi a tarde e a manhã, o dia terceiro."
+    },
+    {
+      "n": 14,
+      "texto": "E disse Deus: Haja luminares na expansão dos céus para separar o dia e a noite: e sejam por sinais, e para as estações, e para dias e anos;"
+    },
+    {
+      "n": 15,
+      "texto": "E sejam por luminares na expansão dos céus para iluminar sobre a terra: e foi."
+    },
+    {
+      "n": 16,
+      "texto": "E fez Deus os dois grandes luminares; o luminar maior para que exerça domínio no dia, e o luminar menor para que exerça domínio na noite; fez também as estrelas."
+    },
+    {
+      "n": 17,
+      "texto": "E as pôs Deus na expansão dos céus, para iluminar sobre a terra,"
+    },
+    {
+      "n": 18,
+      "texto": "E para exercer domínio no dia e na noite, e para separar a luz e as trevas: e viu Deus que era bom."
+    },
+    {
+      "n": 19,
+      "texto": "E foi a tarde e a manhã, o dia quarto."
+    },
+    {
+      "n": 20,
+      "texto": "E disse Deus: Produzam as águas répteis de alma vivente, e aves que voem sobre a terra, na expansão aberta dos céus."
+    },
+    {
+      "n": 21,
+      "texto": "E criou Deus as grandes criaturas marinhas, e toda coisa viva que anda arrastando, que as águas produziram segundo a sua espécie, e toda ave de asas segundo sua espécie: e viu Deus que era bom."
+    },
+    {
+      "n": 22,
+      "texto": "E Deus os abençoou dizendo: Frutificai e multiplicai, e enchei as águas nos mares, e as aves se multipliquem na terra."
+    },
+    {
+      "n": 23,
+      "texto": "E foi a tarde e a manhã, o dia quinto."
+    },
+    {
+      "n": 24,
+      "texto": "E disse Deus: Produza a terra seres viventes segundo a sua espécie, animais e serpentes e animais da terra segundo sua espécie: e foi assim."
+    },
+    {
+      "n": 25,
+      "texto": "E fez Deus animais da terra segundo a sua espécie, e gado segundo a sua espécie, e todo animal que anda arrastando sobre a terra segundo sua espécie: e viu Deus que era bom."
+    },
+    {
+      "n": 26,
+      "texto": "E disse Deus: Façamos ao ser humano à nossa imagem, conforme nossa semelhança; e domine os peixes do mar, e as aves dos céus, e os animais, e toda a terra, e todo animal que anda arrastando sobre a terra."
+    },
+    {
+      "n": 27,
+      "texto": "E criou Deus o ser humano à sua imagem, à imagem de Deus o criou; macho e fêmea os criou."
+    },
+    {
+      "n": 28,
+      "texto": "E Deus os abençoou; e disse-lhes Deus: Frutificai e multiplicai, e enchei a terra, e subjugai-a, e dominai os peixes do mar, as aves dos céus, e todos os animais que se movem sobre a terra."
+    },
+    {
+      "n": 29,
+      "texto": "E disse Deus: Eis que vos dei toda erva que dá semente, que está sobre a face de toda a terra; e toda árvore em que há fruto de árvore que dá semente, vos será para comer."
+    },
+    {
+      "n": 30,
+      "texto": "E a todo animal da terra, e a todas as aves dos céus, e a tudo o que se move sobre a terra, em que há vida, toda erva verde lhes será para comer: e foi assim."
+    },
+    {
+      "n": 31,
+      "texto": "E viu Deus tudo o que havia feito, e eis que era bom em grande maneira. E foi a tarde e a manhã, o dia sexto."
+    }
+  ],
+  "passagem": {
+    "id": "gen-01-01_01-31",
+    "referencia": "Gênesis 1:1–31",
+    "titulo": "A criação do mundo em seis dias",
+    "afirma": [
+      "No princípio, Deus cria os céus e a terra. A terra está sem forma e vazia, as trevas cobrem o abismo, e o Espírito de Deus se move sobre as águas.",
+      "Em seis dias, Deus cria pela palavra: a luz; a expansão que separa as águas de cima das de baixo; a terra seca e as plantas; o Sol, a Lua e as estrelas; os animais das águas e as aves; os animais da terra e, por fim, o ser humano.",
+      "Deus cria o ser humano, homem e mulher, à sua imagem, abençoa-o e lhe dá domínio sobre os animais. Cada dia termina com a frase “e foi a tarde e a manhã”, e Deus vê que o que fez é bom."
+    ]
+  },
+  "notas": [
+    {
+      "id": "gn01-no-principio",
+      "tipo": "traducao",
+      "versiculos": [
+        1,
+        3
+      ],
+      "titulo": "“No princípio criou” ou “Quando Deus começou a criar”?",
+      "descricao": "A primeira palavra do hebraico, bereshit, pode ser lida de dois modos. Na leitura tradicional, o versículo 1 é uma frase completa: “No princípio criou Deus os céus e a terra”. Na outra, que remonta aos comentaristas judeus medievais Rashi e Ibn Ezra, o versículo 1 é só o começo da frase (“Quando Deus começou a criar os céus e a terra”), o versículo 2 descreve como as coisas estavam, e a ação principal só chega no versículo 3, com “Haja luz”.",
+      "leituras": [
+        {
+          "leitura": "Frase completa: “No princípio criou Deus…”",
+          "quem": "Todas as versões antigas, inclusive a Septuaginta grega (Skinner 1910, p. 12)"
+        },
+        {
+          "leitura": "Começo de frase: “Quando Deus começou a criar…”",
+          "quem": "Rashi, Ibn Ezra e comentaristas modernos citados por Skinner (1910, pp. 12–13)"
+        }
+      ],
+      "fontes": [
+        {
+          "nivel": 2,
+          "descricao": "Skinner, J. (1910), A Critical and Exegetical Commentary on Genesis (International Critical Commentary), Nova York: Charles Scribner's Sons, pp. 12–13",
+          "url": "https://archive.org/details/criticalexegetic00skinuoft"
+        },
+        {
+          "nivel": 2,
+          "descricao": "Hiebert, R. J. V. (trad.) (2007), \"Genesis\", em A. Pietersma e B. G. Wright (orgs.), A New English Translation of the Septuagint, Oxford: Oxford University Press, p. 6",
+          "url": "https://ccat.sas.upenn.edu/nets/edition/01-gen-nets.pdf"
+        }
+      ],
+      "passagem": "gen-01-01_01-31",
+      "notas": null
+    },
+    {
+      "id": "gn01-espirito-ou-vento",
+      "tipo": "traducao",
+      "versiculos": [
+        2,
+        2
+      ],
+      "titulo": "“Espírito de Deus” ou “vento de Deus”?",
+      "descricao": "A palavra hebraica ruach quer dizer tanto “espírito” quanto “vento” ou “sopro”. Por isso o versículo 2 pode dizer que o Espírito de Deus se movia sobre as águas, como na Bíblia Livre, ou que um vento de Deus passava sobre elas, como na Septuaginta grega. O verbo também admite duas imagens, e Skinner (1910) diz ser impossível decidir entre elas: pairar sobre as águas ou chocá-las, como uma ave sobre o ninho.",
+      "leituras": [
+        {
+          "leitura": "“Espírito de Deus”",
+          "quem": "Skinner (1910, pp. 17–18), que rejeita a leitura “vento”"
+        },
+        {
+          "leitura": "“Vento de Deus”",
+          "quem": "A Septuaginta grega (NETS, p. 6)"
+        }
+      ],
+      "fontes": [
+        {
+          "nivel": 2,
+          "descricao": "Skinner, J. (1910), A Critical and Exegetical Commentary on Genesis (International Critical Commentary), Nova York: Charles Scribner's Sons, pp. 17–18",
+          "url": "https://archive.org/details/criticalexegetic00skinuoft"
+        },
+        {
+          "nivel": 2,
+          "descricao": "Hiebert, R. J. V. (trad.) (2007), \"Genesis\", em A. Pietersma e B. G. Wright (orgs.), A New English Translation of the Septuagint, Oxford: Oxford University Press, p. 6",
+          "url": "https://ccat.sas.upenn.edu/nets/edition/01-gen-nets.pdf"
+        }
+      ],
+      "passagem": "gen-01-01_01-31",
+      "notas": null
+    },
+    {
+      "id": "gn01-tehom",
+      "tipo": "traducao",
+      "versiculos": [
+        2,
+        2
+      ],
+      "titulo": "Tehom, “o abismo”, e a Tiamat babilônica",
+      "descricao": "A palavra traduzida por “abismo” no versículo 2, tehom, corresponde, na língua, ao nome Tiamat, a personificação das águas primordiais no mito babilônico da criação. Mesmo assim, Skinner (1910) observa que o relato hebraico não tem associações mitológicas e duvida que reste no nome algum traço de personificação.",
+      "fontes": [
+        {
+          "nivel": 2,
+          "descricao": "Skinner, J. (1910), A Critical and Exegetical Commentary on Genesis (International Critical Commentary), Nova York: Charles Scribner's Sons, p. 17",
+          "url": "https://archive.org/details/criticalexegetic00skinuoft"
+        }
+      ],
+      "passagem": "gen-01-01_01-31",
+      "notas": null
+    },
+    {
+      "id": "gn01-tohu-wabohu",
+      "tipo": "traducao",
+      "versiculos": [
+        2,
+        2
+      ],
+      "titulo": "O que é “tohu wabohu”?",
+      "descricao": "O versículo 2 descreve a terra antes da criação com duas palavras hebraicas que rimam, tohu e bohu. O sentido exato é incerto: tohu vai do concreto “deserto” ao abstrato “nada”, e bohu talvez signifique “vazio”. As traduções antigas foram por caminhos diferentes. A Septuaginta grega diz que a terra era “invisível e sem forma”; a Bíblia Livre, que estava “desordenada e vazia”.",
+      "fontes": [
+        {
+          "nivel": 2,
+          "descricao": "Skinner, J. (1910), A Critical and Exegetical Commentary on Genesis (International Critical Commentary), Nova York: Charles Scribner's Sons, p. 16",
+          "url": "https://archive.org/details/criticalexegetic00skinuoft"
+        },
+        {
+          "nivel": 2,
+          "descricao": "Hiebert, R. J. V. (trad.) (2007), \"Genesis\", em A. Pietersma e B. G. Wright (orgs.), A New English Translation of the Septuagint, Oxford: Oxford University Press, p. 6",
+          "url": "https://ccat.sas.upenn.edu/nets/edition/01-gen-nets.pdf"
+        }
+      ],
+      "passagem": "gen-01-01_01-31",
+      "notas": null
+    },
+    {
+      "id": "gn01-e-assim-foi",
+      "tipo": "variante",
+      "versiculos": [
+        6,
+        7
+      ],
+      "titulo": "Onde fica o “e assim foi”?",
+      "descricao": "No hebraico padrão, a frase “e assim foi” aparece seis vezes no capítulo, e no segundo dia vem no versículo 7. Na Septuaginta aparece sete vezes: já no fim do versículo 6 e também no versículo 20. Para Hendel (1998), essas diferenças vêm de ajustes feitos pelos copistas do texto hebraico que os tradutores gregos usaram, para deixar os dias mais parecidos entre si, e não de liberdade do tradutor.",
+      "fontes": [
+        {
+          "nivel": 2,
+          "descricao": "Hendel, R. S. (1998), The Text of Genesis 1–11: Textual Studies and Critical Edition, Nova York/Oxford: Oxford University Press, pp. 20–23"
+        },
+        {
+          "nivel": 2,
+          "descricao": "Skinner, J. (1910), A Critical and Exegetical Commentary on Genesis (International Critical Commentary), Nova York: Charles Scribner's Sons, pp. 22 e 28",
+          "url": "https://archive.org/details/criticalexegetic00skinuoft"
+        },
+        {
+          "nivel": 2,
+          "descricao": "Hiebert, R. J. V. (trad.) (2007), \"Genesis\", em A. Pietersma e B. G. Wright (orgs.), A New English Translation of the Septuagint, Oxford: Oxford University Press, p. 6",
+          "url": "https://ccat.sas.upenn.edu/nets/edition/01-gen-nets.pdf"
+        }
+      ],
+      "passagem": "gen-01-01_01-31",
+      "notas": null
+    },
+    {
+      "id": "gn01-firmamento",
+      "tipo": "traducao",
+      "versiculos": [
+        6,
+        8
+      ],
+      "titulo": "“Firmamento” ou “expansão”?",
+      "descricao": "No segundo dia, Deus faz o raqia para separar as águas de cima das de baixo. Para Skinner (1910), a palavra designa a abóbada do céu, que os antigos entendiam como uma estrutura material, e não como ilusão de ótica; a ideia, diz ele, é de solidez. É por isso que a Septuaginta e a Vulgata dizem “firmamento”. A Bíblia Livre, como outras traduções modernas, prefere “expansão”.",
+      "leituras": [
+        {
+          "leitura": "“Firmamento”, algo sólido",
+          "quem": "Septuaginta e Vulgata (Skinner 1910, p. 21; NETS, p. 6)"
+        },
+        {
+          "leitura": "“Expansão”",
+          "quem": "A Bíblia Livre, entre outras traduções modernas"
+        }
+      ],
+      "fontes": [
+        {
+          "nivel": 2,
+          "descricao": "Skinner, J. (1910), A Critical and Exegetical Commentary on Genesis (International Critical Commentary), Nova York: Charles Scribner's Sons, p. 21",
+          "url": "https://archive.org/details/criticalexegetic00skinuoft"
+        },
+        {
+          "nivel": 2,
+          "descricao": "Hiebert, R. J. V. (trad.) (2007), \"Genesis\", em A. Pietersma e B. G. Wright (orgs.), A New English Translation of the Septuagint, Oxford: Oxford University Press, p. 6",
+          "url": "https://ccat.sas.upenn.edu/nets/edition/01-gen-nets.pdf"
+        }
+      ],
+      "passagem": "gen-01-01_01-31",
+      "notas": null
+    },
+    {
+      "id": "gn01-quem-separou",
+      "tipo": "variante",
+      "versiculos": [
+        7,
+        7
+      ],
+      "titulo": "Quem separou as águas?",
+      "descricao": "No hebraico padrão do versículo 7, o sujeito de “separou” pode ser Deus ou a própria expansão. A Septuaginta desfaz a dúvida e escreve “Deus separou”. Hendel (1998) vê nisso um acréscimo feito para explicar o texto, e não uma palavra que o hebraico tenha perdido.",
+      "fontes": [
+        {
+          "nivel": 2,
+          "descricao": "Hendel, R. S. (1998), The Text of Genesis 1–11: Textual Studies and Critical Edition, Nova York/Oxford: Oxford University Press, p. 23"
+        },
+        {
+          "nivel": 2,
+          "descricao": "Hiebert, R. J. V. (trad.) (2007), \"Genesis\", em A. Pietersma e B. G. Wright (orgs.), A New English Translation of the Septuagint, Oxford: Oxford University Press, p. 6",
+          "url": "https://ccat.sas.upenn.edu/nets/edition/01-gen-nets.pdf"
+        }
+      ],
+      "passagem": "gen-01-01_01-31",
+      "notas": null
+    },
+    {
+      "id": "gn01-segundo-dia-sem-aprovacao",
+      "tipo": "variante",
+      "versiculos": [
+        8,
+        8
+      ],
+      "titulo": "O segundo dia sem “e viu Deus que era bom”",
+      "descricao": "No texto hebraico padrão, o Texto Massorético, o segundo dia é o único ato da criação que não termina com “e viu Deus que era bom”. A Septuaginta, a tradução grega feita na Antiguidade, tem a frase. Um manuscrito de Qumran, 4QGen-b, concorda com o hebraico padrão. Para Hendel (1998), o mais provável é que a frase tenha sido acrescentada ao texto hebraico que os tradutores gregos usavam, para deixar o segundo dia igual aos outros.",
+      "leituras": [
+        {
+          "leitura": "Sem a frase",
+          "quem": "Texto Massorético e o manuscrito 4QGen-b (Hendel 1998, p. 23)"
+        },
+        {
+          "leitura": "Com a frase",
+          "quem": "Septuaginta (NETS, p. 6)"
+        }
+      ],
+      "fontes": [
+        {
+          "nivel": 2,
+          "descricao": "Hendel, R. S. (1998), The Text of Genesis 1–11: Textual Studies and Critical Edition, Nova York/Oxford: Oxford University Press, p. 23"
+        },
+        {
+          "nivel": 2,
+          "descricao": "Skinner, J. (1910), A Critical and Exegetical Commentary on Genesis (International Critical Commentary), Nova York: Charles Scribner's Sons, p. 22",
+          "url": "https://archive.org/details/criticalexegetic00skinuoft"
+        },
+        {
+          "nivel": 2,
+          "descricao": "Hiebert, R. J. V. (trad.) (2007), \"Genesis\", em A. Pietersma e B. G. Wright (orgs.), A New English Translation of the Septuagint, Oxford: Oxford University Press, p. 6",
+          "url": "https://ccat.sas.upenn.edu/nets/edition/01-gen-nets.pdf"
+        }
+      ],
+      "passagem": "gen-01-01_01-31",
+      "notas": null
+    },
+    {
+      "id": "gn01-aguas-frase-a-mais",
+      "tipo": "variante",
+      "versiculos": [
+        9,
+        9
+      ],
+      "titulo": "Uma frase a mais sobre as águas",
+      "descricao": "A Septuaginta acrescenta ao versículo 9 uma frase que não está no hebraico padrão: a água que estava debaixo do céu se juntou nos seus ajuntamentos, e a terra seca apareceu. As duas últimas palavras dessa frase aparecem em hebraico num manuscrito de Qumran, 4QGen-k. Hendel (1998) considera essa a leitura original, que o texto hebraico padrão teria perdido.",
+      "fontes": [
+        {
+          "nivel": 2,
+          "descricao": "Hendel, R. S. (1998), The Text of Genesis 1–11: Textual Studies and Critical Edition, Nova York/Oxford: Oxford University Press, pp. 25–27"
+        },
+        {
+          "nivel": 2,
+          "descricao": "Skinner, J. (1910), A Critical and Exegetical Commentary on Genesis (International Critical Commentary), Nova York: Charles Scribner's Sons, p. 22",
+          "url": "https://archive.org/details/criticalexegetic00skinuoft"
+        },
+        {
+          "nivel": 2,
+          "descricao": "Hiebert, R. J. V. (trad.) (2007), \"Genesis\", em A. Pietersma e B. G. Wright (orgs.), A New English Translation of the Septuagint, Oxford: Oxford University Press, p. 6",
+          "url": "https://ccat.sas.upenn.edu/nets/edition/01-gen-nets.pdf"
+        }
+      ],
+      "passagem": "gen-01-01_01-31",
+      "notas": null
+    },
+    {
+      "id": "gn01-lugar-ou-ajuntamento",
+      "tipo": "variante",
+      "versiculos": [
+        9,
+        9
+      ],
+      "titulo": "As águas se juntam “em um lugar” ou “em um ajuntamento”?",
+      "descricao": "No versículo 9, o hebraico padrão manda as águas se juntarem “em um lugar” (maqom). A palavra que a Septuaginta usa supõe outro termo hebraico, miqveh, “ajuntamento”, o mesmo que aparece no versículo 10. Um manuscrito de Qumran, 4QGen-h, mostra que essa leitura existiu em hebraico. Skinner (1910) já propunha ler miqveh, como a Septuaginta.",
+      "leituras": [
+        {
+          "leitura": "maqom, “lugar”",
+          "quem": "Texto Massorético, Pentateuco Samaritano e 4QGen-b (Hendel 1998, p. 24)"
+        },
+        {
+          "leitura": "miqveh, “ajuntamento”",
+          "quem": "Septuaginta e 4QGen-h (Hendel 1998, p. 24)"
+        }
+      ],
+      "fontes": [
+        {
+          "nivel": 2,
+          "descricao": "Hendel, R. S. (1998), The Text of Genesis 1–11: Textual Studies and Critical Edition, Nova York/Oxford: Oxford University Press, p. 24"
+        },
+        {
+          "nivel": 2,
+          "descricao": "Skinner, J. (1910), A Critical and Exegetical Commentary on Genesis (International Critical Commentary), Nova York: Charles Scribner's Sons, p. 22",
+          "url": "https://archive.org/details/criticalexegetic00skinuoft"
+        }
+      ],
+      "passagem": "gen-01-01_01-31",
+      "notas": null
+    },
+    {
+      "id": "gn01-tanninim",
+      "tipo": "traducao",
+      "versiculos": [
+        21,
+        21
+      ],
+      "titulo": "Grandes animais marinhos ou monstros do mar?",
+      "descricao": "O versículo 21 fala dos tanninim, que a Bíblia Livre traduz por “grandes criaturas marinhas” e a Septuaginta, por “grandes monstros marinhos”. Aqui a palavra designa animais reais, mas Skinner (1910) observa que este é quase o único trecho em que ela tem certamente esse sentido. Em outros livros da Bíblia hebraica, ela carrega traços de mitologia e pode ter sido, na origem, o nome de monstros lendários como Tiamat.",
+      "fontes": [
+        {
+          "nivel": 2,
+          "descricao": "Skinner, J. (1910), A Critical and Exegetical Commentary on Genesis (International Critical Commentary), Nova York: Charles Scribner's Sons, p. 28",
+          "url": "https://archive.org/details/criticalexegetic00skinuoft"
+        },
+        {
+          "nivel": 2,
+          "descricao": "Hiebert, R. J. V. (trad.) (2007), \"Genesis\", em A. Pietersma e B. G. Wright (orgs.), A New English Translation of the Septuagint, Oxford: Oxford University Press, p. 6",
+          "url": "https://ccat.sas.upenn.edu/nets/edition/01-gen-nets.pdf"
+        }
+      ],
+      "passagem": "gen-01-01_01-31",
+      "notas": null
+    },
+    {
+      "id": "gn01-facamos",
+      "tipo": "traducao",
+      "versiculos": [
+        26,
+        26
+      ],
+      "titulo": "“Façamos”: com quem Deus fala?",
+      "descricao": "No versículo 26, Deus fala no plural: “Façamos ao ser humano à nossa imagem”. A quem esse plural se refere é uma pergunta que, nas palavras de Skinner (1910), sempre incomodou os leitores. Ele rejeita a leitura cristã que vê ali a Trindade, uma doutrina que diz ser desconhecida no Antigo Testamento, e considera mais natural e mais aceita a explicação de que Deus delibera com outros seres divinos, os anjos ou o exército celeste.",
+      "fontes": [
+        {
+          "nivel": 2,
+          "descricao": "Skinner, J. (1910), A Critical and Exegetical Commentary on Genesis (International Critical Commentary), Nova York: Charles Scribner's Sons, pp. 30–31",
+          "url": "https://archive.org/details/criticalexegetic00skinuoft"
+        }
+      ],
+      "passagem": "gen-01-01_01-31",
+      "notas": null
+    },
+    {
+      "id": "gn01-toda-a-terra",
+      "tipo": "variante",
+      "versiculos": [
+        26,
+        26
+      ],
+      "titulo": "“Toda a terra” numa lista de animais",
+      "descricao": "No versículo 26, Deus dá ao ser humano domínio sobre os peixes, as aves, os animais e “toda a terra”. A tradução siríaca antiga, a Peshitta, lê “todos os animais selvagens da terra”, e a maioria dos comentaristas prefere essa leitura, porque o contexto fala de animais terrestres. Hendel (1998) acha arriscado apoiar-se numa leitura que só aparece numa versão secundária, que pode ter ajustado o texto.",
+      "leituras": [
+        {
+          "leitura": "“Toda a terra”",
+          "quem": "Texto Massorético, Pentateuco Samaritano e Septuaginta (Hendel 1998, p. 42)"
+        },
+        {
+          "leitura": "“Os animais selvagens da terra”",
+          "quem": "Peshitta siríaca e a maioria dos comentaristas (Hendel 1998, p. 42)"
+        }
+      ],
+      "fontes": [
+        {
+          "nivel": 2,
+          "descricao": "Hendel, R. S. (1998), The Text of Genesis 1–11: Textual Studies and Critical Edition, Nova York/Oxford: Oxford University Press, p. 42"
+        }
+      ],
+      "passagem": "gen-01-01_01-31",
+      "notas": null
+    }
+  ],
+  "conexoes": [
+    {
+      "ligacao": "missao-planck-confirma-idade-do-universo",
+      "versiculos": [
+        1,
+        1
+      ],
+      "tema": "ciencia"
+    },
+    {
+      "ligacao": "textos-das-piramides-e-dos-sarcofagos-paralelo-genesis",
+      "versiculos": [
+        6,
+        7
+      ],
+      "tema": "paralelo"
+    },
+    {
+      "ligacao": "enuma-elish-paralelo-genesis",
+      "versiculos": [
+        6,
+        8
+      ],
+      "tema": "paralelo"
+    },
+    {
+      "ligacao": "meteorito-canyon-diablo-confirma-formacao-da-terra",
+      "versiculos": [
+        9,
+        10
+      ],
+      "tema": "ciencia"
+    },
+    {
+      "ligacao": "declaracao-breve-sinodo-missouri-contradiz-dias-de-genesis-nao-literais",
+      "versiculos": [
+        31,
+        31
+      ],
+      "tema": "leitura_literal"
+    },
+    {
+      "ligacao": "catecismo-da-igreja-catolica-confirma-dias-de-genesis-nao-literais",
+      "versiculos": [
+        31,
+        31
+      ],
+      "tema": "leitura_nao_literal"
+    },
+    {
+      "ligacao": "decreto-comissao-biblica-1909-confirma-dias-de-genesis-nao-literais",
+      "versiculos": [
+        31,
+        31
+      ],
+      "tema": "leitura_nao_literal"
+    },
+    {
+      "ligacao": "relatorio-criacao-pca-2000-confirma-dias-de-genesis-nao-literais",
+      "versiculos": [
+        31,
+        31
+      ],
+      "tema": "leitura_nao_literal"
+    },
+    {
+      "ligacao": "guia-dos-perplexos-confirma-dias-de-genesis-nao-literais",
+      "versiculos": [
+        31,
+        31
+      ],
+      "tema": "leitura_nao_literal"
+    },
+    {
+      "ligacao": "cidade-de-deus-confirma-dias-de-genesis-nao-literais",
+      "versiculos": [
+        31,
+        31
+      ],
+      "tema": "leitura_nao_literal"
+    }
+  ]
+}

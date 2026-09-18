@@ -1,0 +1,57 @@
+# Gerado por .claude/skills/conferir/scripts/registrar.js — vereditos da
+# Contraprova para as fontes desta ligação. Edite à mão só 'revisao_humana'
+# (pendente -> feita) depois de conferir você mesmo.
+ligacao: gn01-e-assim-foi
+fontes:
+  - hash: 110451b196f4
+    nivel: 2
+    descricao: >-
+      Hendel, R. S. (1998), The Text of Genesis 1–11: Textual Studies and Critical Edition, Nova
+      York/Oxford: Oxford University Press, pp. 20–23
+    alegacao: >-
+      Hendel (1998), pp. 20–23, atesta que "e assim foi" ocorre seis vezes no Texto Massorético e
+      sete na Septuaginta (inclusive nos vv. 6 e 20), e que as leituras gregas dos vv. 6 e 20 vêm de
+      harmonizações na tradição escribal, e não do tradutor.
+    veredito: confirmada
+    parou_em: null
+    conferido_em: >-
+      cópia digitalizada da obra no archive.org (item
+      ronald-s.-hendel-the-text-of-genesis-1-11.-textual-studies-and-critical-edition), busca de
+      texto integral e mapa de folha para página; a obra consta no catálogo da OUP
+      (https://academic.oup.com/book/50213); folhas 36–39 = pp. 20–23
+    observacao: >-
+      p. 20: "the harmonizations occurred in the Hebrew scribal traditions and are not attributable
+      to the G translator"; p. 22: "The total in M is six ... seven".
+    data: '2026-09-18'
+    conferido_por: contraprova
+    revisao_humana: pendente
+  - hash: 772e2cf8f459
+    nivel: 2
+    descricao: >-
+      Skinner, J. (1910), A Critical and Exegetical Commentary on Genesis (International Critical
+      Commentary), Nova York: Charles Scribner's Sons, pp. 22 e 28
+    alegacao: >-
+      Skinner (1910), pp. 22 e 28, atesta que a Septuaginta põe "e assim foi" no fim do v. 6 e o
+      insere no v. 20.
+    veredito: confirmada
+    parou_em: null
+    conferido_em: https://archive.org/details/criticalexegetic00skinuoft (folhas 124 e 130 = pp. 22 e 28)
+    observacao: >-
+      p. 22: "transposed in G to end of v. 6, its normal position"; p. 28: "G inserts [...] at the
+      end of the v." O hebraico sai ilegível no OCR; a expressão foi identificada pelo contexto.
+    data: '2026-09-18'
+    conferido_por: contraprova
+    revisao_humana: pendente
+  - hash: d3af5095b134
+    nivel: 2
+    descricao: >-
+      Hiebert, R. J. V. (trad.) (2007), "Genesis", em A. Pietersma e B. G. Wright (orgs.), A New
+      English Translation of the Septuagint, Oxford: Oxford University Press, p. 6
+    alegacao: NETS, p. 6, traz a frase "e assim foi" em Gn 1:6 e em Gn 1:20.
+    veredito: confirmada
+    parou_em: null
+    conferido_em: cópia local do PDF oficial https://ccat.sas.upenn.edu/nets/edition/01-gen-nets.pdf, p. 6
+    observacao: '"And it became so" no fim de 1:6 e no fim de 1:20.'
+    data: '2026-09-18'
+    conferido_por: contraprova
+    revisao_humana: pendente

@@ -1,0 +1,58 @@
+id: enuma-elish-paralelo-genesis
+tipo: paralelo
+entre:
+  - registro: enuma-elish
+  - registro: genesis
+evidencia:
+  tipo_de_apoio: texto
+  forca: bem_estabelecido
+  quem_sustenta:
+    - nome: Alexander Heidel
+      ano: 1951
+    - nome: A. R. Millard
+      ano: 1967
+    - nome: Robin Routledge
+      ano: 2010
+fontes:
+  - nivel: 1
+    descricao: >-
+      Enuma Elish, tabuleta IV, linhas 137–140, na tradução de A. Heidel
+      (1951), The Babylonian Genesis, 2ª ed., Chicago: University of Chicago
+      Press, p. 42
+    url: >-
+      https://isac.uchicago.edu/research/publications/misc/babylonian-genesis-story-creation
+  - nivel: 2
+    descricao: >-
+      Heidel, A. (1951), The Babylonian Genesis: The Story of Creation, 2ª
+      ed., Chicago: University of Chicago Press, pp. 82, 128–130 e 139
+    url: >-
+      https://isac.uchicago.edu/research/publications/misc/babylonian-genesis-story-creation
+  - nivel: 2
+    descricao: >-
+      Millard, A. R. (1967), "A New Babylonian 'Genesis' Story", Tyndale
+      Bulletin 18, pp. 17–18, doi:10.53751/001c.30683
+    url: >-
+      https://www.tyndalebulletin.org/article/30683-a-new-babylonian-genesis-story.pdf
+  - nivel: 2
+    descricao: >-
+      Routledge, R. (2010), "Did God Create Chaos? Unresolved Tension in
+      Genesis 1:1–2", Tyndale Bulletin 61.1, pp. 72–73,
+      doi:10.53751/001c.29296
+    url: >-
+      https://www.tyndalebulletin.org/article/29296-did-god-create-chaos-unresolved-tension-in-genesis-1-1-2.pdf
+o_que_derrubaria: >-
+  O paralelo entre o Enuma Elish e Gênesis 1 cairia se uma nova leitura das
+  tabuletas mostrasse que as semelhanças apontadas, como as águas
+  primordiais divididas para formar o céu e a mesma ordem dos
+  acontecimentos, não estão no texto babilônico ou dependem de trechos mal
+  reconstituídos.
+notas: >-
+  Paralelo não quer dizer cópia. Heidel (1951), que lista as semelhanças,
+  vê pela ordem dos acontecimentos uma relação de parentesco entre as duas
+  histórias, mas deixa em aberto se o relato bíblico depende do material
+  babilônico. Para Routledge (2010), é amplamente reconhecido que nada
+  indica dependência, e Millard (1967) diz que ainda não se mostrou
+  empréstimo algum. A data em que o Enuma Elish foi composto também é
+  discutida, o que impede dizer qual dos dois textos é mais antigo. Heidel
+  observa ainda que as diferenças vão mais fundo que as semelhanças: no
+  poema babilônico, o mundo nasce da luta de um deus contra outro.

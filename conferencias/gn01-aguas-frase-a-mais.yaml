@@ -1,0 +1,58 @@
+# Gerado por .claude/skills/conferir/scripts/registrar.js — vereditos da
+# Contraprova para as fontes desta ligação. Edite à mão só 'revisao_humana'
+# (pendente -> feita) depois de conferir você mesmo.
+ligacao: gn01-aguas-frase-a-mais
+fontes:
+  - hash: 9cce0ea8aa85
+    nivel: 2
+    descricao: >-
+      Hendel, R. S. (1998), The Text of Genesis 1–11: Textual Studies and Critical Edition, Nova
+      York/Oxford: Oxford University Press, pp. 25–27
+    alegacao: >-
+      Hendel (1998), pp. 25–27, atesta que a Septuaginta tem em Gn 1:9 uma frase a mais, que duas
+      palavras dela estão preservadas em 4QGen-k, e que ele a considera a leitura original.
+    veredito: confirmada
+    parou_em: null
+    conferido_em: >-
+      cópia digitalizada da obra no archive.org (item
+      ronald-s.-hendel-the-text-of-genesis-1-11.-textual-studies-and-critical-edition), busca de
+      texto integral e mapa de folha para página; a obra consta no catálogo da OUP
+      (https://academic.oup.com/book/50213); folhas 41–43 = pp. 25–27
+    observacao: >-
+      p. 25: "Only the last two words of the plus ... are preserved in 4QGenk"; p. 27: "should be
+      taken as the archetypal or original reading".
+    data: '2026-09-18'
+    conferido_por: contraprova
+    revisao_humana: pendente
+  - hash: 561637e1ba60
+    nivel: 2
+    descricao: >-
+      Skinner, J. (1910), A Critical and Exegetical Commentary on Genesis (International Critical
+      Commentary), Nova York: Charles Scribner's Sons, p. 22
+    alegacao: >-
+      Skinner (1910), p. 22, atesta que a Septuaginta acrescenta ao fim de Gn 1:9 a frase sobre a
+      água se juntar e a terra seca aparecer.
+    veredito: confirmada
+    parou_em: null
+    conferido_em: >-
+      https://archive.org/details/criticalexegetic00skinuoft (busca de texto integral e mapa de
+      folha para página; folha 124 = p. 22)
+    observacao: 'p. 22: "At the end of the v. G adds: καὶ συνήχθη τὸ ὕδωρ ... καὶ ὤφθη ἡ ξηρά".'
+    data: '2026-09-18'
+    conferido_por: contraprova
+    revisao_humana: pendente
+  - hash: 9e000dd1a510
+    nivel: 2
+    descricao: >-
+      Hiebert, R. J. V. (trad.) (2007), "Genesis", em A. Pietersma e B. G. Wright (orgs.), A New
+      English Translation of the Septuagint, Oxford: Oxford University Press, p. 6
+    alegacao: NETS, p. 6, inclui em Gn 1:9 a frase sobre a água que se juntou e a terra seca que apareceu.
+    veredito: confirmada
+    parou_em: null
+    conferido_em: cópia local do PDF oficial https://ccat.sas.upenn.edu/nets/edition/01-gen-nets.pdf, p. 6
+    observacao: >-
+      "And the water that was under the sky was gathered into their gatherings, and the dry land
+      appeared."
+    data: '2026-09-18'
+    conferido_por: contraprova
+    revisao_humana: pendente

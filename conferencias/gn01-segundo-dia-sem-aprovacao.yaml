@@ -1,0 +1,58 @@
+# Gerado por .claude/skills/conferir/scripts/registrar.js — vereditos da
+# Contraprova para as fontes desta ligação. Edite à mão só 'revisao_humana'
+# (pendente -> feita) depois de conferir você mesmo.
+ligacao: gn01-segundo-dia-sem-aprovacao
+fontes:
+  - hash: dd761cb07609
+    nivel: 2
+    descricao: >-
+      Hendel, R. S. (1998), The Text of Genesis 1–11: Textual Studies and Critical Edition, Nova
+      York/Oxford: Oxford University Press, p. 23
+    alegacao: >-
+      Hendel (1998), p. 23, atesta que no Texto Massorético a fórmula de aprovação falta só no
+      segundo dia, que a Septuaginta a tem em Gn 1:8, que 4QGen-b concorda com o Texto Massorético,
+      e que o mais provável é um acréscimo harmonizador na tradição do texto usado pelos tradutores
+      gregos.
+    veredito: confirmada
+    parou_em: null
+    conferido_em: >-
+      cópia digitalizada da obra no archive.org (item
+      ronald-s.-hendel-the-text-of-genesis-1-11.-textual-studies-and-critical-edition), busca de
+      texto integral e mapa de folha para página; a obra consta no catálogo da OUP
+      (https://academic.oup.com/book/50213); folha 39 = p. 23
+    observacao: >-
+      p. 23: "The formula is lacking for only one act of creation, the creation of sky on the second
+      day. The G reading of v 8 contains the expected approval formula ... more likely that the
+      harmonizing tendency ... is responsible for this plus in proto-G". O expoente da sigla 4QGen
+      saiu ilegível no OCR; lido como "b" pelo mesmo padrão no aparato.
+    data: '2026-09-18'
+    conferido_por: contraprova
+    revisao_humana: pendente
+  - hash: bd96d751ec1d
+    nivel: 2
+    descricao: >-
+      Skinner, J. (1910), A Critical and Exegetical Commentary on Genesis (International Critical
+      Commentary), Nova York: Charles Scribner's Sons, p. 22
+    alegacao: Skinner (1910), p. 22, atesta que a Septuaginta insere a fórmula de aprovação em Gn 1:8.
+    veredito: confirmada
+    parou_em: null
+    conferido_em: >-
+      https://archive.org/details/criticalexegetic00skinuoft (busca de texto integral e mapa de
+      folha para página; folha 124 = p. 22)
+    observacao: 'p. 22: "8. G also inserts here the formula of approval".'
+    data: '2026-09-18'
+    conferido_por: contraprova
+    revisao_humana: pendente
+  - hash: f3a0d741d850
+    nivel: 2
+    descricao: >-
+      Hiebert, R. J. V. (trad.) (2007), "Genesis", em A. Pietersma e B. G. Wright (orgs.), A New
+      English Translation of the Septuagint, Oxford: Oxford University Press, p. 6
+    alegacao: NETS, p. 6, traz em Gn 1:8 "And God saw that it was good".
+    veredito: confirmada
+    parou_em: null
+    conferido_em: cópia local do PDF oficial https://ccat.sas.upenn.edu/nets/edition/01-gen-nets.pdf, p. 6
+    observacao: '"8And God called the firmament Sky. And God saw that it was good." A p. 6 cobre Gn 1:1–26.'
+    data: '2026-09-18'
+    conferido_por: contraprova
+    revisao_humana: pendente

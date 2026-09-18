@@ -1,0 +1,25 @@
+# Gerado por .claude/skills/conferir/scripts/registrar.js — vereditos da
+# Contraprova para as fontes desta ligação. Edite à mão só 'revisao_humana'
+# (pendente -> feita) depois de conferir você mesmo.
+ligacao: cidade-de-deus-confirma-dias-de-genesis-nao-literais
+fontes:
+  - hash: 7450a36a8083
+    nivel: 1
+    descricao: >-
+      Agostinho, A Cidade de Deus, livro XI, cap. 6, trad. M. Dods, em Nicene and Post-Nicene
+      Fathers, 1ª série, vol. 2, Buffalo: Christian Literature Publishing, 1887
+    alegacao: >-
+      Em XI.6, Agostinho diz que é extremamente difícil, ou talvez impossível, conceber que espécie
+      de dias foram os da criação.
+    veredito: confirmada
+    parou_em: null
+    conferido_em: >-
+      https://ccel.org/ccel/schaff/npnf102/npnf102.iv.XI.6.html (Christian Classics Ethereal
+      Library, edição Schaff do NPNF)
+    observacao: >-
+      Fim de XI.6: "What kind of days these were it is extremely difficult, or perhaps impossible
+      for us to conceive, and how much more to say!" A URL original (New Advent) foi trocada pela
+      CCEL. Local e data da publicação (Buffalo, 1887) não conferidos.
+    data: '2026-09-18'
+    conferido_por: contraprova
+    revisao_humana: pendente

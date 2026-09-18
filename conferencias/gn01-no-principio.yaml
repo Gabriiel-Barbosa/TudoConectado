@@ -1,0 +1,40 @@
+# Gerado por .claude/skills/conferir/scripts/registrar.js — vereditos da
+# Contraprova para as fontes desta ligação. Edite à mão só 'revisao_humana'
+# (pendente -> feita) depois de conferir você mesmo.
+ligacao: gn01-no-principio
+fontes:
+  - hash: 3900142a50b0
+    nivel: 2
+    descricao: >-
+      Skinner, J. (1910), A Critical and Exegetical Commentary on Genesis (International Critical
+      Commentary), Nova York: Charles Scribner's Sons, pp. 12–13
+    alegacao: >-
+      Skinner (1910), pp. 12–13, atesta que Gênesis 1:1 pode ser lido como frase completa ou como
+      oração temporal, que as versões antigas o leem como frase completa e que Rashi e Ibn Ezra o
+      leem como oração temporal.
+    veredito: confirmada
+    parou_em: null
+    conferido_em: >-
+      https://archive.org/details/criticalexegetic00skinuoft (busca de texto completo do item e mapa
+      oficial de folha para página impressa)
+    observacao: >-
+      p. 12: "While all ancient Vns. and many moderns take the verse as a complete sentence, others
+      (following Rashi and Ibn Ezra) treat it as a temporal clause". Só a p. 12 foi conferida.
+    data: '2026-09-18'
+    conferido_por: contraprova
+    revisao_humana: pendente
+  - hash: 60472bd2fdb1
+    nivel: 2
+    descricao: >-
+      Hiebert, R. J. V. (trad.) (2007), "Genesis", em A. Pietersma e B. G. Wright (orgs.), A New
+      English Translation of the Septuagint, Oxford: Oxford University Press, p. 6
+    alegacao: NETS, p. 6, traduz Gênesis 1:1 da Septuaginta como frase completa.
+    veredito: confirmada
+    parou_em: null
+    conferido_em: >-
+      cópia local do PDF oficial https://ccat.sas.upenn.edu/nets/edition/01-gen-nets.pdf, p. 6 (Gn
+      1:1–26)
+    observacao: '"1 In the beginning God made the sky and the earth."'
+    data: '2026-09-18'
+    conferido_por: contraprova
+    revisao_humana: pendente

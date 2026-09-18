@@ -1,0 +1,42 @@
+# Gerado por .claude/skills/conferir/scripts/registrar.js — vereditos da
+# Contraprova para as fontes desta ligação. Edite à mão só 'revisao_humana'
+# (pendente -> feita) depois de conferir você mesmo.
+ligacao: gn01-espirito-ou-vento
+fontes:
+  - hash: 8ae87ebea81e
+    nivel: 2
+    descricao: >-
+      Skinner, J. (1910), A Critical and Exegetical Commentary on Genesis (International Critical
+      Commentary), Nova York: Charles Scribner's Sons, pp. 17–18
+    alegacao: >-
+      Skinner (1910), pp. 17–18, atesta que a expressão de Gênesis 1:2 foi entendida como "Espírito
+      de Deus" e também como um vento, que ele prefere "Espírito", e que é impossível decidir se o
+      verbo significa "chocar" ou "pairar".
+    veredito: confirmada
+    parou_em: null
+    conferido_em: >-
+      https://archive.org/details/criticalexegetic00skinuoft (busca de texto completo do item e mapa
+      oficial de folha para página impressa)
+    observacao: >-
+      pp. 17–18: "The Spirit of God was brooding — not, as has sometimes been supposed, a wind sent
+      from God to dry up the waters, but the divine Spirit"; p. 18: "It is impossible to say whether
+      'brood' or 'hover' is the exact image here". Mais do que preferir, Skinner rejeita a leitura
+      "vento".
+    data: '2026-09-18'
+    conferido_por: contraprova
+    revisao_humana: pendente
+  - hash: 9fe8b39736a0
+    nivel: 2
+    descricao: >-
+      Hiebert, R. J. V. (trad.) (2007), "Genesis", em A. Pietersma e B. G. Wright (orgs.), A New
+      English Translation of the Septuagint, Oxford: Oxford University Press, p. 6
+    alegacao: NETS, p. 6, traduz a expressão de Gênesis 1:2 como um vento divino ("a divine wind").
+    veredito: confirmada
+    parou_em: null
+    conferido_em: >-
+      cópia local do PDF oficial https://ccat.sas.upenn.edu/nets/edition/01-gen-nets.pdf, p. 6 (Gn
+      1:1–26)
+    observacao: '"...and a divine wind was being carried along over the water."'
+    data: '2026-09-18'
+    conferido_por: contraprova
+    revisao_humana: pendente

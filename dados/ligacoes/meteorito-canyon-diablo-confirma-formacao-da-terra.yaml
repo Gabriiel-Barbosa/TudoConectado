@@ -1,0 +1,37 @@
+id: meteorito-canyon-diablo-confirma-formacao-da-terra
+tipo: confirma
+entre:
+  - registro: meteorito-canyon-diablo
+  - afirmacao: formacao-da-terra
+evidencia:
+  tipo_de_apoio: medicao_cientifica
+  forca: bem_estabelecido
+  quem_sustenta:
+    - nome: G. Brent Dalrymple
+      ano: 2001
+fontes:
+  - nivel: 2
+    descricao: >-
+      U.S. Geological Survey (2007), Geologic Time, página "Age of the
+      Earth" (texto único, sem numeração de páginas)
+    url: https://pubs.usgs.gov/gip/geotime/age.html
+  - nivel: 2
+    descricao: >-
+      Dalrymple, G. B. (2001), "The age of the Earth in the twentieth
+      century: a problem (mostly) solved", Geological Society, London,
+      Special Publications 190, pp. 205–221 (resumo, p. 205),
+      doi:10.1144/GSL.SP.2001.190.01.14
+    url: https://doi.org/10.1144/GSL.SP.2001.190.01.14
+o_que_derrubaria: >-
+  A idade de 4,54 bilhões de anos cairia se se mostrasse que o decaimento
+  radioativo não ocorre em ritmo constante, ou que o chumbo dos meteoritos
+  não serve de referência para o da Terra.
+notas: >-
+  A idade vem do decaimento de elementos radioativos em rochas e meteoritos:
+  o chumbo do meteorito Canyon Diablo é comparado ao de minérios terrestres
+  antigos. Segundo Dalrymple (2001), o primeiro cálculo válido foi feito por
+  Patterson em 1953, e o valor usado hoje, 4,54 bilhões de anos, é o de
+  Tera, de 1980. Para Gênesis 1, que põe a criação da terra e a dos astros
+  na mesma semana, a medição situa a Terra quase nove bilhões de anos depois
+  do começo do universo; essa diferença é conta nossa, a partir desta
+  medição e da missão Planck.

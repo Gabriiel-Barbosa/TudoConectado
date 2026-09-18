@@ -1,0 +1,38 @@
+id: gn01-no-principio
+tipo: traducao
+versiculos:
+  - 1
+  - 3
+titulo: “No princípio criou” ou “Quando Deus começou a criar”?
+descricao: >-
+  A primeira palavra do hebraico, bereshit, pode ser lida de dois modos. Na
+  leitura tradicional, o versículo 1 é uma frase completa: “No princípio
+  criou Deus os céus e a terra”. Na outra, que remonta aos comentaristas
+  judeus medievais Rashi e Ibn Ezra, o versículo 1 é só o começo da frase
+  (“Quando Deus começou a criar os céus e a terra”), o versículo 2 descreve
+  como as coisas estavam, e a ação principal só chega no versículo 3, com
+  “Haja luz”.
+leituras:
+  - leitura: 'Frase completa: “No princípio criou Deus…”'
+    quem: >-
+      Todas as versões antigas, inclusive a Septuaginta grega (Skinner 1910,
+      p. 12)
+  - leitura: 'Começo de frase: “Quando Deus começou a criar…”'
+    quem: >-
+      Rashi, Ibn Ezra e comentaristas modernos citados por Skinner (1910,
+      pp. 12–13)
+fontes:
+  - nivel: 2
+    descricao: >-
+      Skinner, J. (1910), A Critical and Exegetical Commentary on Genesis
+      (International Critical Commentary), Nova York: Charles Scribner's
+      Sons, pp. 12–13
+    url: https://archive.org/details/criticalexegetic00skinuoft
+  - nivel: 2
+    descricao: >-
+      Hiebert, R. J. V. (trad.) (2007), "Genesis", em A. Pietersma e B. G.
+      Wright (orgs.), A New English Translation of the Septuagint, Oxford:
+      Oxford University Press, p. 6
+    url: https://ccat.sas.upenn.edu/nets/edition/01-gen-nets.pdf
+passagem: gen-01-01_01-31
+notas: null

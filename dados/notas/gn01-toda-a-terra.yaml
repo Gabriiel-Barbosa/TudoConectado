@@ -1,0 +1,27 @@
+id: gn01-toda-a-terra
+tipo: variante
+versiculos:
+  - 26
+  - 26
+titulo: “Toda a terra” numa lista de animais
+descricao: >-
+  No versículo 26, Deus dá ao ser humano domínio sobre os peixes, as aves,
+  os animais e “toda a terra”. A tradução siríaca antiga, a Peshitta, lê
+  “todos os animais selvagens da terra”, e a maioria dos comentaristas prefere
+  essa leitura, porque o contexto fala de animais terrestres. Hendel (1998)
+  acha arriscado apoiar-se numa leitura que só aparece numa versão
+  secundária, que pode ter ajustado o texto.
+leituras:
+  - leitura: “Toda a terra”
+    quem: >-
+      Texto Massorético, Pentateuco Samaritano e Septuaginta (Hendel 1998,
+      p. 42)
+  - leitura: “Os animais selvagens da terra”
+    quem: Peshitta siríaca e a maioria dos comentaristas (Hendel 1998, p. 42)
+fontes:
+  - nivel: 2
+    descricao: >-
+      Hendel, R. S. (1998), The Text of Genesis 1–11: Textual Studies and
+      Critical Edition, Nova York/Oxford: Oxford University Press, p. 42
+passagem: gen-01-01_01-31
+notas: null

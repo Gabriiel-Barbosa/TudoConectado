@@ -1,0 +1,33 @@
+id: gn01-firmamento
+tipo: traducao
+versiculos:
+  - 6
+  - 8
+titulo: “Firmamento” ou “expansão”?
+descricao: >-
+  No segundo dia, Deus faz o raqia para separar as águas de cima das de
+  baixo. Para Skinner (1910), a palavra designa a abóbada do céu, que os
+  antigos entendiam como uma estrutura material, e não como ilusão de ótica;
+  a ideia, diz ele, é de solidez. É por isso que a Septuaginta e a Vulgata
+  dizem “firmamento”. A Bíblia Livre, como outras traduções modernas,
+  prefere “expansão”.
+leituras:
+  - leitura: “Firmamento”, algo sólido
+    quem: Septuaginta e Vulgata (Skinner 1910, p. 21; NETS, p. 6)
+  - leitura: “Expansão”
+    quem: A Bíblia Livre, entre outras traduções modernas
+fontes:
+  - nivel: 2
+    descricao: >-
+      Skinner, J. (1910), A Critical and Exegetical Commentary on Genesis
+      (International Critical Commentary), Nova York: Charles Scribner's
+      Sons, p. 21
+    url: https://archive.org/details/criticalexegetic00skinuoft
+  - nivel: 2
+    descricao: >-
+      Hiebert, R. J. V. (trad.) (2007), "Genesis", em A. Pietersma e B. G.
+      Wright (orgs.), A New English Translation of the Septuagint, Oxford:
+      Oxford University Press, p. 6
+    url: https://ccat.sas.upenn.edu/nets/edition/01-gen-nets.pdf
+passagem: gen-01-01_01-31
+notas: null

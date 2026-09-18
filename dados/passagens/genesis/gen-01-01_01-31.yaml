@@ -1,0 +1,74 @@
+id: gen-01-01_01-31
+referencia: Gênesis 1:1–31
+titulo: A criação do mundo em seis dias
+texto: genesis-01
+afirma:
+  - >-
+    No princípio, Deus cria os céus e a terra. A terra está sem forma e
+    vazia, as trevas cobrem o abismo, e o Espírito de Deus se move sobre as
+    águas.
+  - >-
+    Em seis dias, Deus cria pela palavra: a luz; a expansão que separa as
+    águas de cima das de baixo; a terra seca e as plantas; o Sol, a Lua e as
+    estrelas; os animais das águas e as aves; os animais da terra e, por
+    fim, o ser humano.
+  - >-
+    Deus cria o ser humano, homem e mulher, à sua imagem, abençoa-o e lhe dá
+    domínio sobre os animais. Cada dia termina com a frase “e foi a tarde e
+    a manhã”, e Deus vê que o que fez é bom.
+registros_citados: []
+paralelos_externos:
+  - ligacao: enuma-elish-paralelo-genesis
+  - ligacao: textos-das-piramides-e-dos-sarcofagos-paralelo-genesis
+conexoes:
+  - ligacao: missao-planck-confirma-idade-do-universo
+    versiculos:
+      - 1
+      - 1
+    tema: ciencia
+  - ligacao: textos-das-piramides-e-dos-sarcofagos-paralelo-genesis
+    versiculos:
+      - 6
+      - 7
+    tema: paralelo
+  - ligacao: enuma-elish-paralelo-genesis
+    versiculos:
+      - 6
+      - 8
+    tema: paralelo
+  - ligacao: meteorito-canyon-diablo-confirma-formacao-da-terra
+    versiculos:
+      - 9
+      - 10
+    tema: ciencia
+  - ligacao: >-
+      declaracao-breve-sinodo-missouri-contradiz-dias-de-genesis-nao-literais
+    versiculos:
+      - 31
+      - 31
+    tema: leitura_literal
+  - ligacao: catecismo-da-igreja-catolica-confirma-dias-de-genesis-nao-literais
+    versiculos:
+      - 31
+      - 31
+    tema: leitura_nao_literal
+  - ligacao: decreto-comissao-biblica-1909-confirma-dias-de-genesis-nao-literais
+    versiculos:
+      - 31
+      - 31
+    tema: leitura_nao_literal
+  - ligacao: relatorio-criacao-pca-2000-confirma-dias-de-genesis-nao-literais
+    versiculos:
+      - 31
+      - 31
+    tema: leitura_nao_literal
+  - ligacao: guia-dos-perplexos-confirma-dias-de-genesis-nao-literais
+    versiculos:
+      - 31
+      - 31
+    tema: leitura_nao_literal
+  - ligacao: cidade-de-deus-confirma-dias-de-genesis-nao-literais
+    versiculos:
+      - 31
+      - 31
+    tema: leitura_nao_literal

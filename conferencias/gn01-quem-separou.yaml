@@ -1,0 +1,39 @@
+# Gerado por .claude/skills/conferir/scripts/registrar.js — vereditos da
+# Contraprova para as fontes desta ligação. Edite à mão só 'revisao_humana'
+# (pendente -> feita) depois de conferir você mesmo.
+ligacao: gn01-quem-separou
+fontes:
+  - hash: bca70bf5a6f5
+    nivel: 2
+    descricao: >-
+      Hendel, R. S. (1998), The Text of Genesis 1–11: Textual Studies and Critical Edition, Nova
+      York/Oxford: Oxford University Press, p. 23
+    alegacao: >-
+      Hendel (1998), p. 23, atesta que a Septuaginta acrescenta "Deus" como sujeito de "separou" em
+      Gn 1:7 e considera isso um acréscimo explicativo.
+    veredito: confirmada
+    parou_em: null
+    conferido_em: >-
+      cópia digitalizada da obra no archive.org (item
+      ronald-s.-hendel-the-text-of-genesis-1-11.-textual-studies-and-critical-edition), busca de
+      texto integral e mapa de folha para página; a obra consta no catálogo da OUP
+      (https://academic.oup.com/book/50213); folha 39 = p. 23
+    observacao: >-
+      p. 23: "The G reading is easily understood as an explicating plus, and there is no motive to
+      think that the M reading is the result of an omission."
+    data: '2026-09-18'
+    conferido_por: contraprova
+    revisao_humana: pendente
+  - hash: bb3b55396423
+    nivel: 2
+    descricao: >-
+      Hiebert, R. J. V. (trad.) (2007), "Genesis", em A. Pietersma e B. G. Wright (orgs.), A New
+      English Translation of the Septuagint, Oxford: Oxford University Press, p. 6
+    alegacao: NETS, p. 6, traz "and God separated" em Gn 1:7.
+    veredito: confirmada
+    parou_em: null
+    conferido_em: cópia local do PDF oficial https://ccat.sas.upenn.edu/nets/edition/01-gen-nets.pdf, p. 6
+    observacao: '"7And God made the firmament, and God separated between the water..."'
+    data: '2026-09-18'
+    conferido_por: contraprova
+    revisao_humana: pendente

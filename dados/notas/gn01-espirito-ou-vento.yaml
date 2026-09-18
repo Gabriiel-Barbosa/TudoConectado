@@ -1,0 +1,33 @@
+id: gn01-espirito-ou-vento
+tipo: traducao
+versiculos:
+  - 2
+  - 2
+titulo: “Espírito de Deus” ou “vento de Deus”?
+descricao: >-
+  A palavra hebraica ruach quer dizer tanto “espírito” quanto “vento” ou
+  “sopro”. Por isso o versículo 2 pode dizer que o Espírito de Deus se movia
+  sobre as águas, como na Bíblia Livre, ou que um vento de Deus passava
+  sobre elas, como na Septuaginta grega. O verbo também admite duas imagens,
+  e Skinner (1910) diz ser impossível decidir entre elas: pairar sobre as
+  águas ou chocá-las, como uma ave sobre o ninho.
+leituras:
+  - leitura: “Espírito de Deus”
+    quem: Skinner (1910, pp. 17–18), que rejeita a leitura “vento”
+  - leitura: “Vento de Deus”
+    quem: A Septuaginta grega (NETS, p. 6)
+fontes:
+  - nivel: 2
+    descricao: >-
+      Skinner, J. (1910), A Critical and Exegetical Commentary on Genesis
+      (International Critical Commentary), Nova York: Charles Scribner's
+      Sons, pp. 17–18
+    url: https://archive.org/details/criticalexegetic00skinuoft
+  - nivel: 2
+    descricao: >-
+      Hiebert, R. J. V. (trad.) (2007), "Genesis", em A. Pietersma e B. G.
+      Wright (orgs.), A New English Translation of the Septuagint, Oxford:
+      Oxford University Press, p. 6
+    url: https://ccat.sas.upenn.edu/nets/edition/01-gen-nets.pdf
+passagem: gen-01-01_01-31
+notas: null

@@ -1,0 +1,13 @@
+id: formacao-da-terra
+texto: A Terra e o Sistema Solar se formaram há cerca de 4,54 bilhões de anos.
+registros_envolvidos:
+  - meteorito-canyon-diablo
+datacao:
+  - periodo:
+      - -4580000000
+      - -4530000000
+    segundo_quem: >-
+      Segundo o Serviço Geológico dos Estados Unidos (USGS), a datação
+      radiométrica mostra que os meteoritos, e portanto o Sistema Solar, se
+      formaram entre 4,53 e 4,58 bilhões de anos atrás; o cálculo para a
+      Terra dá 4,54 bilhões de anos, com incerteza menor que 1%.

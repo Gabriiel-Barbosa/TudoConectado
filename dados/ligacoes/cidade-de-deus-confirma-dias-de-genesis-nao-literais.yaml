@@ -1,0 +1,25 @@
+id: cidade-de-deus-confirma-dias-de-genesis-nao-literais
+tipo: confirma
+entre:
+  - registro: cidade-de-deus
+  - afirmacao: dias-de-genesis-nao-literais
+evidencia:
+  tipo_de_apoio: texto
+  forca: aceito_maioria
+  quem_sustenta: []
+fontes:
+  - nivel: 1
+    descricao: >-
+      Agostinho, A Cidade de Deus, livro XI, cap. 6, trad. M. Dods, em
+      Nicene and Post-Nicene Fathers, 1ª série, vol. 2, Buffalo: Christian
+      Literature Publishing, 1887
+    url: https://ccel.org/ccel/schaff/npnf102/npnf102.iv.XI.6.html
+o_que_derrubaria: >-
+  A ideia de que Agostinho não lia os dias como dias comuns cairia se o
+  capítulo XI.6 os tratasse como dias de 24 horas.
+notas: >-
+  Agostinho escreve que é extremamente difícil, talvez impossível, conceber
+  que espécie de dias foram aqueles. No capítulo seguinte, lembra que o
+  texto fala de tarde e manhã antes de existir o Sol. A dúvida sobre a
+  natureza dos dias não é, portanto, uma invenção moderna: já estava num dos
+  teólogos mais lidos do cristianismo antigo.

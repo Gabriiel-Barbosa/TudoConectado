@@ -1,0 +1,45 @@
+# Gerado por .claude/skills/conferir/scripts/registrar.js — vereditos da
+# Contraprova para as fontes desta ligação. Edite à mão só 'revisao_humana'
+# (pendente -> feita) depois de conferir você mesmo.
+ligacao: textos-das-piramides-e-dos-sarcofagos-paralelo-genesis
+fontes:
+  - hash: 44182fc9e6c0
+    nivel: 2
+    descricao: >-
+      Allen, J. P. (1988), Genesis in Egypt: The Philosophy of Ancient Egyptian Creation Accounts
+      (Yale Egyptological Studies 2), New Haven: Yale Egyptological Seminar, pp. 4–5 e 13
+    alegacao: >-
+      Allen (1988), pp. 4–5, atesta que os Textos das Pirâmides e dos Sarcófagos falam de manter o
+      céu afastado da terra e das águas e que a mesma imagem aparece no relato hebraico da criação
+      (Gn 1:6–7); e, na p. 13, que Atum gera outros deuses.
+    veredito: nao_confirmavel
+    parou_em: localizacao
+    conferido_em: nenhuma fonte admissível acessível; só uma digitalização não oficial no Internet Archive
+    observacao: >-
+      A obra existe e o texto confere na digitalização ("The Pyramid Texts and Coffin Texts speak of
+      'keeping the sky clear of the earth and the Waters.' The same image appears in the Hebrew
+      account of creation", seguido de Gn 1:6–7; e PT 527, em que Atum gera Shu e Tefnut). Mas a
+      numeração de página veio de um extrator automático e a cópia não é admissível. Falta conferir
+      num exemplar físico ou numa cópia oficial.
+    data: '2026-09-18'
+    conferido_por: contraprova
+    revisao_humana: pendente
+  - hash: b98bec16c645
+    nivel: 2
+    descricao: >-
+      Heidel, A. (1951), The Babylonian Genesis: The Story of Creation, 2ª ed., Chicago: University
+      of Chicago Press, p. 115
+    alegacao: >-
+      Heidel (1951), p. 115, atesta que criar céu e terra por divisão ou separação é comum a quase
+      todas as cosmogonias, citando também o Egito.
+    veredito: confirmada
+    parou_em: null
+    conferido_em: https://isac-assets.s3.amazonaws.com/isac-publications/misc_genesis.pdf, p. 115
+    observacao: >-
+      p. 115: "the general view that the creation of heaven and earth was accomplished in part by a
+      process of division or separation is 'common property of almost all cosmogonies.' Thus in
+      Egypt the air-god Shû separated heaven and earth…" A expressão entre aspas é de W. Wundt (nota
+      97), endossada por Heidel.
+    data: '2026-09-18'
+    conferido_por: contraprova
+    revisao_humana: pendente

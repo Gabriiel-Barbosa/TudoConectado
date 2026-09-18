@@ -1,5 +1,23 @@
 [
   {
+    "afirmacao": "idade-do-universo",
+    "texto": "O universo começou há cerca de 13,8 bilhões de anos.",
+    "periodo": [
+      -13820000000,
+      -13774000000
+    ],
+    "segundo_quem": "Segundo a colaboração Planck (2020), na análise padrão e dentro do modelo cosmológico padrão, o universo tem 13,797 bilhões de anos, com margem de 23 milhões de anos para mais ou para menos. O intervalo registrado aqui é essa margem."
+  },
+  {
+    "afirmacao": "formacao-da-terra",
+    "texto": "A Terra e o Sistema Solar se formaram há cerca de 4,54 bilhões de anos.",
+    "periodo": [
+      -4580000000,
+      -4530000000
+    ],
+    "segundo_quem": "Segundo o Serviço Geológico dos Estados Unidos (USGS), a datação radiométrica mostra que os meteoritos, e portanto o Sistema Solar, se formaram entre 4,53 e 4,58 bilhões de anos atrás; o cálculo para a Terra dá 4,54 bilhões de anos, com incerteza menor que 1%."
+  },
+  {
     "afirmacao": "autoria-mosaica-genesis",
     "texto": "Gênesis foi escrito por Moisés.",
     "periodo": [

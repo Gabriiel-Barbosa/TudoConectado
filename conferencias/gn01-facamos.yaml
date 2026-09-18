@@ -1,0 +1,27 @@
+# Gerado por .claude/skills/conferir/scripts/registrar.js — vereditos da
+# Contraprova para as fontes desta ligação. Edite à mão só 'revisao_humana'
+# (pendente -> feita) depois de conferir você mesmo.
+ligacao: gn01-facamos
+fontes:
+  - hash: c3363bd2a29a
+    nivel: 2
+    descricao: >-
+      Skinner, J. (1910), A Critical and Exegetical Commentary on Genesis (International Critical
+      Commentary), Nova York: Charles Scribner's Sons, pp. 30–31
+    alegacao: >-
+      Skinner (1910), pp. 30–31, atesta que a dificuldade do plural "façamos" sempre foi sentida,
+      rejeita a leitura trinitária e considera mais natural e mais aceita a explicação de que Deus
+      delibera com seres divinos.
+    veredito: confirmada
+    parou_em: null
+    conferido_em: >-
+      https://archive.org/details/criticalexegetic00skinuoft (busca de texto completo do item e mapa
+      oficial de folha para página impressa)
+    observacao: >-
+      p. 30: "The difficulty of the 1st pers. pl. has always been felt"; "that doctrine is entirely
+      unknown to the OT"; p. 31: "The most natural and most widely accepted explanation is that God
+      is here represented as taking counsel with divine beings other than Himself, viz. the angels
+      or host of heaven".
+    data: '2026-09-18'
+    conferido_por: contraprova
+    revisao_humana: pendente

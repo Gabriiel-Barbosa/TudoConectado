@@ -1,0 +1,30 @@
+# Gerado por .claude/skills/conferir/scripts/registrar.js — vereditos da
+# Contraprova para as fontes desta ligação. Edite à mão só 'revisao_humana'
+# (pendente -> feita) depois de conferir você mesmo.
+ligacao: decreto-comissao-biblica-1909-confirma-dias-de-genesis-nao-literais
+fontes:
+  - hash: 120ea2776263
+    nivel: 1
+    descricao: >-
+      Pontifícia Comissão Bíblica, "De charactere historico trium priorum capitum Geneseos", Acta
+      Apostolicae Sedis 1 (1909), pp. 568–569, questões VII e VIII
+    alegacao: >-
+      Na questão VIII, o decreto responde afirmativamente que a palavra yom (dia) em Gênesis 1 pode
+      ser tomada como dia natural ou como um espaço de tempo e que isso pode ser discutido
+      livremente; na questão VII, que o autor de Gênesis 1 não pretendia ensinar a ordem da criação
+      de modo científico.
+    veredito: confirmada
+    parou_em: null
+    conferido_em: >-
+      https://www.vatican.va/roman_curia/congregations/cfaith/pcb_documents/rc_con_cfaith_doc_19090630_genesi_lt.html
+      (texto latino oficial); índice oficial dá AAS 1 (1909) 567-569
+    observacao: >-
+      Dúvida VIII: "sumi possit vox Yom (dies), sive sensu proprio pro die naturali, sive sensu
+      improprio pro quodam temporis spatio, deque huiusmodi quaestione libere inter exegetas
+      disceptare liceat?" Resp. Affirmative. Na dúvida VII, a frase sobre o autor não pretender
+      ensinar a ordem da criação de modo científico é premissa da pergunta, não resposta. As quebras
+      de página 568–569 não foram vistas no PDF escaneado; ficam dentro do intervalo oficial
+      567–569.
+    data: '2026-09-18'
+    conferido_por: contraprova
+    revisao_humana: pendente

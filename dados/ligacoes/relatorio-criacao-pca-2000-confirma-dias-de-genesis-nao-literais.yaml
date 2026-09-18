@@ -1,0 +1,28 @@
+id: relatorio-criacao-pca-2000-confirma-dias-de-genesis-nao-literais
+tipo: confirma
+entre:
+  - registro: relatorio-criacao-pca-2000
+  - afirmacao: dias-de-genesis-nao-literais
+evidencia:
+  tipo_de_apoio: texto
+  forca: aceito_maioria
+  quem_sustenta: []
+fontes:
+  - nivel: 1
+    descricao: >-
+      Igreja Presbiteriana na América, Report of the Creation Study
+      Committee (junho de 2000; recomendações adotadas pela 28ª Assembleia
+      Geral), PDF avulso do PCA Historical Center, pp. 2331, 2342, 2348 e
+      2364 (paginação do PDF avulso; nas Minutes do 28º GA o relatório ocupa
+      as pp. 119–212)
+    url: https://www.pcahistory.org/pca/studies/creation/report.pdf
+o_que_derrubaria: >-
+  A ideia de que a igreja aceita leituras não literais cairia se a
+  recomendação da p. 2364 não tivesse sido adotada, ou se uma assembleia
+  posterior a revogasse.
+notas: >-
+  O relatório descreve quatro leituras dos dias: dias de calendário, que é a
+  leitura literal, dias-era, a leitura de moldura literária e a de dias
+  analógicos. A assembleia declarou aceitável essa diversidade, desde que se
+  aceite a plena historicidade do relato. A igreja, portanto, não escolhe
+  entre as leituras: admite as não literais ao lado da literal.

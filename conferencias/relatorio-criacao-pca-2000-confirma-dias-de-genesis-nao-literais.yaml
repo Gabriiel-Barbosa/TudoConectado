@@ -1,0 +1,28 @@
+# Gerado por .claude/skills/conferir/scripts/registrar.js — vereditos da
+# Contraprova para as fontes desta ligação. Edite à mão só 'revisao_humana'
+# (pendente -> feita) depois de conferir você mesmo.
+ligacao: relatorio-criacao-pca-2000-confirma-dias-de-genesis-nao-literais
+fontes:
+  - hash: 9186ddac306b
+    nivel: 1
+    descricao: >-
+      Igreja Presbiteriana na América, Report of the Creation Study Committee (junho de 2000;
+      recomendações adotadas pela 28ª Assembleia Geral), PDF avulso do PCA Historical Center, pp.
+      2331, 2342, 2348 e 2364 (paginação do PDF avulso; nas Minutes do 28º GA o relatório ocupa as
+      pp. 119–212)
+    alegacao: >-
+      O relatório descreve as leituras dia-era (p. 2331), framework (p. 2342) e dias analógicos (p.
+      2348), e a recomendação adotada (p. 2364) declara aceitável a diversidade de leituras dos dias
+      desde que se aceite a plena historicidade do relato.
+    veredito: confirmada
+    parou_em: null
+    conferido_em: cópia local do PDF https://www.pcahistory.org/pca/studies/creation/report.pdf (texto extraído)
+    observacao: >-
+      A numeração de página no rodapé bate com o sumário (Day-Age 2331, Framework 2342, Analogical
+      Days 2348, Recommendations 2364). As seções framework e analógica começam no fim das pp. 2341
+      e 2347. Na p. 2364: "that such diversity as covered in this report is acceptable as long as
+      the full historicity of the creation account is accepted. Adopted as amended". Não conferidos:
+      a data "junho de 2000", as pp. 119–212 das Minutes e se a redação é a emendada final.
+    data: '2026-09-18'
+    conferido_por: contraprova
+    revisao_humana: pendente

@@ -1,0 +1,37 @@
+id: gn01-segundo-dia-sem-aprovacao
+tipo: variante
+versiculos:
+  - 8
+  - 8
+titulo: O segundo dia sem “e viu Deus que era bom”
+descricao: >-
+  No texto hebraico padrão, o Texto Massorético, o segundo dia é o único ato
+  da criação que não termina com “e viu Deus que era bom”. A Septuaginta, a
+  tradução grega feita na Antiguidade, tem a frase. Um manuscrito de Qumran,
+  4QGen-b, concorda com o hebraico padrão. Para Hendel (1998), o mais
+  provável é que a frase tenha sido acrescentada ao texto hebraico que os
+  tradutores gregos usavam, para deixar o segundo dia igual aos outros.
+leituras:
+  - leitura: Sem a frase
+    quem: Texto Massorético e o manuscrito 4QGen-b (Hendel 1998, p. 23)
+  - leitura: Com a frase
+    quem: Septuaginta (NETS, p. 6)
+fontes:
+  - nivel: 2
+    descricao: >-
+      Hendel, R. S. (1998), The Text of Genesis 1–11: Textual Studies and
+      Critical Edition, Nova York/Oxford: Oxford University Press, p. 23
+  - nivel: 2
+    descricao: >-
+      Skinner, J. (1910), A Critical and Exegetical Commentary on Genesis
+      (International Critical Commentary), Nova York: Charles Scribner's
+      Sons, p. 22
+    url: https://archive.org/details/criticalexegetic00skinuoft
+  - nivel: 2
+    descricao: >-
+      Hiebert, R. J. V. (trad.) (2007), "Genesis", em A. Pietersma e B. G.
+      Wright (orgs.), A New English Translation of the Septuagint, Oxford:
+      Oxford University Press, p. 6
+    url: https://ccat.sas.upenn.edu/nets/edition/01-gen-nets.pdf
+passagem: gen-01-01_01-31
+notas: null

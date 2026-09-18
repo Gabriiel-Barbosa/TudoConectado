@@ -1,0 +1,26 @@
+# Gerado por .claude/skills/conferir/scripts/registrar.js — vereditos da
+# Contraprova para as fontes desta ligação. Edite à mão só 'revisao_humana'
+# (pendente -> feita) depois de conferir você mesmo.
+ligacao: gn01-tehom
+fontes:
+  - hash: 5c2fe982df1d
+    nivel: 2
+    descricao: >-
+      Skinner, J. (1910), A Critical and Exegetical Commentary on Genesis (International Critical
+      Commentary), Nova York: Charles Scribner's Sons, p. 17
+    alegacao: >-
+      Skinner (1910), p. 17, atesta que tehom é o equivalente filológico do babilônico Tiamat, que o
+      relato hebraico não tem associações mitológicas e que é duvidoso que reste traço de
+      personificação no nome.
+    veredito: confirmada
+    parou_em: null
+    conferido_em: >-
+      https://archive.org/details/criticalexegetic00skinuoft (busca de texto completo do item e mapa
+      oficial de folha para página impressa)
+    observacao: >-
+      p. 17: "[tehom] is undoubtedly the philological equivalent of Bab. Ti'amat"; "The Heb.
+      narrative is free from mythological associations, and it is doubtful if even a trace of
+      personification lingers in the name".
+    data: '2026-09-18'
+    conferido_por: contraprova
+    revisao_humana: pendente

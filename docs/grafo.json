@@ -9,6 +9,60 @@
       "descricao": "Personagem bíblico, figura central do livro de Êxodo, o segundo livro da Bíblia. Segundo a tradição judaica e cristã, foi Moisés quem escreveu o Pentateuco (os cinco primeiros livros da Bíblia), incluindo Gênesis. A crítica bíblica acadêmica moderna estuda a Bíblia com os métodos da história e da análise de textos. Nela, estão em disputa tanto a existência histórica de Moisés quanto a autoria do Pentateuco que a tradição lhe atribui (ver Hipótese Documentária).\n"
     },
     {
+      "id": "missao-planck",
+      "tipo": "registro",
+      "subtipo": "acontecimento",
+      "nome": "Missão Planck",
+      "alias": [],
+      "descricao": "Missão espacial de astronomia. A equipe responsável publicou os resultados finais em 2020, na revista Astronomy & Astrophysics, com uma estimativa da idade do universo."
+    },
+    {
+      "id": "catecismo-da-igreja-catolica",
+      "tipo": "registro",
+      "subtipo": "texto",
+      "nome": "Catecismo da Igreja Católica",
+      "alias": [],
+      "descricao": "Texto oficial em que a Igreja Católica expõe a sua doutrina, organizado em parágrafos numerados."
+    },
+    {
+      "id": "cidade-de-deus",
+      "tipo": "registro",
+      "subtipo": "texto",
+      "nome": "A Cidade de Deus",
+      "alias": [
+        "De civitate Dei"
+      ],
+      "descricao": "Obra de Agostinho de Hipona, bispo e teólogo cristão da Antiguidade."
+    },
+    {
+      "id": "declaracao-breve-sinodo-missouri",
+      "tipo": "registro",
+      "subtipo": "texto",
+      "nome": "Declaração Breve do Sínodo de Missouri (1932)",
+      "alias": [
+        "Brief Statement"
+      ],
+      "descricao": "Declaração da doutrina da Igreja Luterana–Sínodo de Missouri, adotada em 1932."
+    },
+    {
+      "id": "decreto-comissao-biblica-1909",
+      "tipo": "registro",
+      "subtipo": "texto",
+      "nome": "Decreto da Pontifícia Comissão Bíblica (1909)",
+      "alias": [],
+      "descricao": "Respostas oficiais da Pontifícia Comissão Bíblica, órgão do Vaticano para questões de interpretação da Bíblia, sobre o caráter histórico dos três primeiros capítulos de Gênesis. Foram publicadas em 1909 na Acta Apostolicae Sedis, o boletim oficial da Santa Sé."
+    },
+    {
+      "id": "enuma-elish",
+      "tipo": "registro",
+      "subtipo": "texto",
+      "nome": "Enuma Elish",
+      "alias": [
+        "Enūma eliš"
+      ],
+      "descricao": "Poema babilônico sobre a origem do mundo, escrito em acádio em sete tabuletas de argila. Conta como o deus Marduk vence Tiamat, a personificação das águas primordiais, parte o corpo dela em dois e faz de uma das metades o céu. As cópias mais antigas conhecidas são de c. 1000 a.C.; a data em que o poema foi composto é discutida pelos estudiosos."
+    },
+    {
       "id": "genesis",
       "tipo": "registro",
       "subtipo": "texto",
@@ -18,6 +72,16 @@
         "Bereshith"
       ],
       "descricao": "Primeiro livro da Bíblia, tanto na Bíblia judaica quanto na cristã. Abre a Torá, também chamada de Pentateuco: o conjunto dos cinco primeiros livros bíblicos, de Gênesis a Deuteronômio. Em 50 capítulos, Gênesis conta uma história que começa na criação do mundo e termina com a morte de José (filho de Jacó) no Egito. O nome hebraico do livro, Bereshit (\"No princípio\"), vem da primeira palavra do texto.\n"
+    },
+    {
+      "id": "guia-dos-perplexos",
+      "tipo": "registro",
+      "subtipo": "texto",
+      "nome": "Guia dos Perplexos",
+      "alias": [
+        "Moreh Nevukhim"
+      ],
+      "descricao": "Obra de Maimônides, rabino e filósofo judeu da Idade Média, sobre como ler a Bíblia hebraica à luz da filosofia."
     },
     {
       "id": "hipotese-documentaria",
@@ -30,6 +94,14 @@
       "descricao": "Explicação acadêmica de como foram escritos os cinco primeiros livros da Bíblia (o Pentateuco, de Gênesis a Deuteronômio). Segundo ela, esses livros não saíram das mãos de um único autor. Eles nasceram de quatro textos distintos, reunidos e editados ao longo de séculos. Os estudiosos chamam esses textos de \"fontes\" e dão a cada um um nome e uma letra: Javista (J), Eloísta (E), Sacerdotal (P, do inglês Priestly) e Deuteronomista (D), daí a sigla JEDP. O estudioso Julius Wellhausen formalizou a hipótese num livro de 1878, que reeditou em 1883. Estudiosos posteriores a revisaram, entre eles Joel S. Baden (2012).\n"
     },
     {
+      "id": "relatorio-criacao-pca-2000",
+      "tipo": "registro",
+      "subtipo": "texto",
+      "nome": "Relatório sobre a criação da Igreja Presbiteriana na América (2000)",
+      "alias": [],
+      "descricao": "Relatório de um comitê de estudo da Igreja Presbiteriana na América, adotado pela assembleia geral da igreja em 2000. Descreve quatro maneiras de ler os dias de Gênesis 1."
+    },
+    {
       "id": "talmude-babilonico",
       "tipo": "registro",
       "subtipo": "texto",
@@ -38,6 +110,14 @@
         "Bavli"
       ],
       "descricao": "Grande coletânea de debates entre rabinos, os mestres da lei judaica. Foi redigida ao longo de séculos na Babilônia (região do atual Iraque) e concluída por volta dos séculos VI e VII d.C. Nesses debates, os rabinos discutem a Mishná (uma compilação mais antiga da lei oral judaica) e a tradição legal judaica como um todo. A obra se divide em partes chamadas tratados. Um deles, Bava Batra, trata, entre outros temas, de quem a tradição aponta como autor dos livros da Bíblia.\n"
+    },
+    {
+      "id": "textos-das-piramides-e-dos-sarcofagos",
+      "tipo": "registro",
+      "subtipo": "texto",
+      "nome": "Textos das Pirâmides e dos Sarcófagos",
+      "alias": [],
+      "descricao": "Conjuntos de textos religiosos do antigo Egito, gravados nas pirâmides do Antigo Império e escritos em sarcófagos do Médio Império. Entre outras coisas, contam como o mundo surgiu das águas primordiais e como o céu foi mantido afastado da terra e dessas águas."
     },
     {
       "id": "manuscrito-6qpaleogen",
@@ -50,6 +130,14 @@
       "descricao": "Fragmento de um manuscrito antigo com o texto de Gênesis 6:13–21. Foi encontrado na Gruta 6 de Qumran, sítio junto ao Mar Morto, e está em escrita paleo-hebraica (a escrita hebraica antiga, anterior à quadrada). O nome resume isso: 6 é a gruta, Q é Qumran, paleo indica a escrita e Gen abrevia Gênesis. Pelo estilo da letra (datação paleográfica), o fragmento foi datado entre o século III e o início do século II a.C. (c. 250–150 a.C.). Segundo Crawford (2012), é a cópia mais antiga de Gênesis entre os manuscritos do Mar Morto, os textos antigos achados nas grutas da região.\n"
     },
     {
+      "id": "meteorito-canyon-diablo",
+      "tipo": "registro",
+      "subtipo": "objeto",
+      "nome": "Meteorito Canyon Diablo",
+      "alias": [],
+      "descricao": "Meteorito cujo chumbo é usado como referência para calcular a idade da Terra: a composição do chumbo dele é comparada à de minérios terrestres antigos."
+    },
+    {
       "id": "autoria-mosaica-genesis",
       "tipo": "afirmacao",
       "texto": "Gênesis foi escrito por Moisés.",
@@ -60,6 +148,39 @@
             -1200
           ],
           "segundo_quem": "Pela cronologia tradicional, Moisés teria escrito Gênesis entre c. 1446 e 1200 a.C. O intervalo é largo porque a própria tradição se divide entre duas datações. A \"alta\", por volta do século XV a.C., vem de uma leitura literal de 1 Reis 6:1. A \"baixa\", por volta do século XIII a.C., associa o Êxodo (a saída dos israelitas do Egito) ao reinado do faraó Ramessés II.\n"
+        }
+      ]
+    },
+    {
+      "id": "dias-de-genesis-nao-literais",
+      "tipo": "afirmacao",
+      "texto": "Os seis dias de Gênesis 1 não precisam ser lidos como dias de 24 horas."
+    },
+    {
+      "id": "formacao-da-terra",
+      "tipo": "afirmacao",
+      "texto": "A Terra e o Sistema Solar se formaram há cerca de 4,54 bilhões de anos.",
+      "datacao": [
+        {
+          "periodo": [
+            -4580000000,
+            -4530000000
+          ],
+          "segundo_quem": "Segundo o Serviço Geológico dos Estados Unidos (USGS), a datação radiométrica mostra que os meteoritos, e portanto o Sistema Solar, se formaram entre 4,53 e 4,58 bilhões de anos atrás; o cálculo para a Terra dá 4,54 bilhões de anos, com incerteza menor que 1%."
+        }
+      ]
+    },
+    {
+      "id": "idade-do-universo",
+      "tipo": "afirmacao",
+      "texto": "O universo começou há cerca de 13,8 bilhões de anos.",
+      "datacao": [
+        {
+          "periodo": [
+            -13820000000,
+            -13774000000
+          ],
+          "segundo_quem": "Segundo a colaboração Planck (2020), na análise padrão e dentro do modelo cosmológico padrão, o universo tem 13,797 bilhões de anos, com margem de 23 milhões de anos para mais ou para menos. O intervalo registrado aqui é essa margem."
         }
       ]
     },
@@ -83,6 +204,19 @@
           "segundo_quem": "Segundo Julius Wellhausen (1885), o Pentateuco só se tornou conhecido como lei de Moisés em 444 a.C., quando Esdras o publicou em Jerusalém, cerca de um século depois do exílio na Babilônia. Esdras havia chegado à cidade em 458 a.C. Gênesis, o primeiro dos cinco livros, entra nessa datação por fazer parte do conjunto.\n"
         }
       ]
+    },
+    {
+      "id": "gen-01-01_01-31",
+      "tipo": "passagem",
+      "referencia": "Gênesis 1:1–31",
+      "afirma": [
+        "No princípio, Deus cria os céus e a terra. A terra está sem forma e vazia, as trevas cobrem o abismo, e o Espírito de Deus se move sobre as águas.",
+        "Em seis dias, Deus cria pela palavra: a luz; a expansão que separa as águas de cima das de baixo; a terra seca e as plantas; o Sol, a Lua e as estrelas; os animais das águas e as aves; os animais da terra e, por fim, o ser humano.",
+        "Deus cria o ser humano, homem e mulher, à sua imagem, abençoa-o e lhe dá domínio sobre os animais. Cada dia termina com a frase “e foi a tarde e a manhã”, e Deus vê que o que fez é bom."
+      ],
+      "nenhum_paralelo_conhecido": false,
+      "titulo": "A criação do mundo em seis dias",
+      "texto": "genesis-01"
     }
   ],
   "arestas": [
@@ -114,6 +248,148 @@
       ],
       "o_que_derrubaria": "A ideia de que o fragmento 6QpaleoGen é uma cópia antiga de Gênesis cairia em dois casos. Um deles seria uma nova análise paleográfica (a datação pelo estilo da letra) que empurrasse o fragmento para um período bem posterior. O outro seria a evidência de que o texto do 6QpaleoGen se afasta tanto de Gênesis 6 que já não dá para tratá-lo como o mesmo livro.\n",
       "notas": "O 6QpaleoGen é um fragmento com um trecho de Gênesis 6. Ele pertence aos manuscritos do Mar Morto, textos antigos achados em grutas junto ao Mar Morto. Entre esses manuscritos, é a cópia de Gênesis mais antiga conhecida até a publicação de Crawford (2012). Ser a mais antiga conhecida não faz dele a mais antiga que já existiu. O texto original de Gênesis é anterior a qualquer cópia que chegou até nós.\n"
+    },
+    {
+      "id": "catecismo-da-igreja-catolica-confirma-dias-de-genesis-nao-literais__0",
+      "ligacao": "catecismo-da-igreja-catolica-confirma-dias-de-genesis-nao-literais",
+      "origem": "catecismo-da-igreja-catolica",
+      "destino": "dias-de-genesis-nao-literais",
+      "tipo": "confirma",
+      "forca": "bem_estabelecido",
+      "tipo_de_apoio": "texto",
+      "quem_sustenta": [],
+      "fontes": [
+        {
+          "nivel": 1,
+          "descricao": "Catecismo da Igreja Católica, § 337",
+          "url": "https://www.vatican.va/content/catechism/en/part_one/section_two/chapter_one/article_1/paragraph_5_heaven_and_earth.html"
+        }
+      ],
+      "o_que_derrubaria": "A ideia de que o Catecismo lê os seis dias como não literais cairia se o parágrafo 337 não apresentasse a criação em seis dias como simbólica, ou se uma edição oficial posterior mudasse o texto nesse ponto.",
+      "notas": "O parágrafo 337 diz que a Escritura apresenta a obra da criação simbolicamente, como uma sucessão de seis dias de trabalho divino encerrados pelo descanso do sétimo. É a posição oficial da Igreja Católica, e não a opinião de um teólogo."
+    },
+    {
+      "id": "cidade-de-deus-confirma-dias-de-genesis-nao-literais__0",
+      "ligacao": "cidade-de-deus-confirma-dias-de-genesis-nao-literais",
+      "origem": "cidade-de-deus",
+      "destino": "dias-de-genesis-nao-literais",
+      "tipo": "confirma",
+      "forca": "aceito_maioria",
+      "tipo_de_apoio": "texto",
+      "quem_sustenta": [],
+      "fontes": [
+        {
+          "nivel": 1,
+          "descricao": "Agostinho, A Cidade de Deus, livro XI, cap. 6, trad. M. Dods, em Nicene and Post-Nicene Fathers, 1ª série, vol. 2, Buffalo: Christian Literature Publishing, 1887",
+          "url": "https://ccel.org/ccel/schaff/npnf102/npnf102.iv.XI.6.html"
+        }
+      ],
+      "o_que_derrubaria": "A ideia de que Agostinho não lia os dias como dias comuns cairia se o capítulo XI.6 os tratasse como dias de 24 horas.",
+      "notas": "Agostinho escreve que é extremamente difícil, talvez impossível, conceber que espécie de dias foram aqueles. No capítulo seguinte, lembra que o texto fala de tarde e manhã antes de existir o Sol. A dúvida sobre a natureza dos dias não é, portanto, uma invenção moderna: já estava num dos teólogos mais lidos do cristianismo antigo."
+    },
+    {
+      "id": "declaracao-breve-sinodo-missouri-contradiz-dias-de-genesis-nao-literais__0",
+      "ligacao": "declaracao-breve-sinodo-missouri-contradiz-dias-de-genesis-nao-literais",
+      "origem": "declaracao-breve-sinodo-missouri",
+      "destino": "dias-de-genesis-nao-literais",
+      "tipo": "contradiz",
+      "forca": "bem_estabelecido",
+      "tipo_de_apoio": "texto",
+      "quem_sustenta": [],
+      "fontes": [
+        {
+          "nivel": 1,
+          "descricao": "Igreja Luterana–Sínodo de Missouri, Brief Statement of the Doctrinal Position of the Missouri Synod (1932), seção \"Of Creation\"",
+          "url": "https://www.lcms.org/about/beliefs/doctrine/brief-statement-of-lcms-doctrinal-position"
+        }
+      ],
+      "o_que_derrubaria": "A ideia de que o Sínodo de Missouri exige a leitura literal cairia se a seção sobre a criação não afirmasse os seis dias no tempo registrado em Gênesis, ou se o sínodo revogasse a declaração.",
+      "notas": "A declaração ensina que Deus criou céus e terra do modo e no espaço de tempo registrados em Gênesis 1 e 2, em seis dias, e rejeita a ideia de que o mundo tenha se desenvolvido mais ou menos por conta própria, pela evolução, ao longo de imensos períodos de tempo. É um exemplo documentado da leitura literal dos dias."
+    },
+    {
+      "id": "decreto-comissao-biblica-1909-confirma-dias-de-genesis-nao-literais__0",
+      "ligacao": "decreto-comissao-biblica-1909-confirma-dias-de-genesis-nao-literais",
+      "origem": "decreto-comissao-biblica-1909",
+      "destino": "dias-de-genesis-nao-literais",
+      "tipo": "confirma",
+      "forca": "bem_estabelecido",
+      "tipo_de_apoio": "texto",
+      "quem_sustenta": [],
+      "fontes": [
+        {
+          "nivel": 1,
+          "descricao": "Pontifícia Comissão Bíblica, \"De charactere historico trium priorum capitum Geneseos\", Acta Apostolicae Sedis 1 (1909), pp. 568–569, questões VII e VIII",
+          "url": "https://www.vatican.va/archive/aas/documents/AAS-01-1909-ocr.pdf"
+        }
+      ],
+      "o_que_derrubaria": "A ideia de que o decreto admite dias não literais cairia se a resposta à questão VIII não permitisse ler a palavra yom (dia) como um período de tempo.",
+      "notas": "Na questão VIII, a comissão respondeu que a palavra hebraica yom, “dia”, pode ser entendida como um dia natural ou como um período de tempo, e que os estudiosos podem discutir isso livremente. A questão VII parte do pressuposto de que o autor de Gênesis 1 não pretendia ensinar a ordem da criação de modo científico. O mesmo decreto, porém, defende nas questões I a III o sentido literal e histórico dos três primeiros capítulos: ele abre espaço para ler os dias como períodos, sem negar a historicidade do relato."
+    },
+    {
+      "id": "enuma-elish-paralelo-genesis__0",
+      "ligacao": "enuma-elish-paralelo-genesis",
+      "origem": "enuma-elish",
+      "destino": "genesis",
+      "tipo": "paralelo",
+      "forca": "bem_estabelecido",
+      "tipo_de_apoio": "texto",
+      "quem_sustenta": [
+        {
+          "nome": "Alexander Heidel",
+          "ano": 1951
+        },
+        {
+          "nome": "A. R. Millard",
+          "ano": 1967
+        },
+        {
+          "nome": "Robin Routledge",
+          "ano": 2010
+        }
+      ],
+      "fontes": [
+        {
+          "nivel": 1,
+          "descricao": "Enuma Elish, tabuleta IV, linhas 137–140, na tradução de A. Heidel (1951), The Babylonian Genesis, 2ª ed., Chicago: University of Chicago Press, p. 42",
+          "url": "https://isac.uchicago.edu/research/publications/misc/babylonian-genesis-story-creation"
+        },
+        {
+          "nivel": 2,
+          "descricao": "Heidel, A. (1951), The Babylonian Genesis: The Story of Creation, 2ª ed., Chicago: University of Chicago Press, pp. 82, 128–130 e 139",
+          "url": "https://isac.uchicago.edu/research/publications/misc/babylonian-genesis-story-creation"
+        },
+        {
+          "nivel": 2,
+          "descricao": "Millard, A. R. (1967), \"A New Babylonian 'Genesis' Story\", Tyndale Bulletin 18, pp. 17–18, doi:10.53751/001c.30683",
+          "url": "https://www.tyndalebulletin.org/article/30683-a-new-babylonian-genesis-story.pdf"
+        },
+        {
+          "nivel": 2,
+          "descricao": "Routledge, R. (2010), \"Did God Create Chaos? Unresolved Tension in Genesis 1:1–2\", Tyndale Bulletin 61.1, pp. 72–73, doi:10.53751/001c.29296",
+          "url": "https://www.tyndalebulletin.org/article/29296-did-god-create-chaos-unresolved-tension-in-genesis-1-1-2.pdf"
+        }
+      ],
+      "o_que_derrubaria": "O paralelo entre o Enuma Elish e Gênesis 1 cairia se uma nova leitura das tabuletas mostrasse que as semelhanças apontadas, como as águas primordiais divididas para formar o céu e a mesma ordem dos acontecimentos, não estão no texto babilônico ou dependem de trechos mal reconstituídos.",
+      "notas": "Paralelo não quer dizer cópia. Heidel (1951), que lista as semelhanças, vê pela ordem dos acontecimentos uma relação de parentesco entre as duas histórias, mas deixa em aberto se o relato bíblico depende do material babilônico. Para Routledge (2010), é amplamente reconhecido que nada indica dependência, e Millard (1967) diz que ainda não se mostrou empréstimo algum. A data em que o Enuma Elish foi composto também é discutida, o que impede dizer qual dos dois textos é mais antigo. Heidel observa ainda que as diferenças vão mais fundo que as semelhanças: no poema babilônico, o mundo nasce da luta de um deus contra outro."
+    },
+    {
+      "id": "guia-dos-perplexos-confirma-dias-de-genesis-nao-literais__0",
+      "ligacao": "guia-dos-perplexos-confirma-dias-de-genesis-nao-literais",
+      "origem": "guia-dos-perplexos",
+      "destino": "dias-de-genesis-nao-literais",
+      "tipo": "confirma",
+      "forca": "aceito_maioria",
+      "tipo_de_apoio": "texto",
+      "quem_sustenta": [],
+      "fontes": [
+        {
+          "nivel": 1,
+          "descricao": "Maimônides, Guia dos Perplexos, parte II, cap. 30, trad. M. Friedländer, 2ª ed., Londres: George Routledge and Sons, 1904",
+          "url": "https://archive.org/details/guideforperplexe00maimiala"
+        }
+      ],
+      "o_que_derrubaria": "A ideia de que Maimônides lê os dias de forma não literal cairia se o capítulo II.30 tratasse os seis dias como seis atos de criação separados no tempo.",
+      "notas": "Maimônides lê o começo de Gênesis como a criação de todas as coisas de uma vez, separadas depois, umas das outras, pouco a pouco. Para explicar, repete uma comparação dos sábios judeus: sementes de vários tipos semeadas no mesmo dia brotam em dias diferentes."
     },
     {
       "id": "hipotese-documentaria-confirma-publicacao-pentateuco-periodo-persa__0",
@@ -182,6 +458,78 @@
       "notas": "Julius Wellhausen (1883) e, mais tarde, Joel S. Baden (2012) sustentaram a Hipótese Documentária. Segundo ela, o Pentateuco (os cinco primeiros livros da Bíblia) junta quatro fontes, chamadas J, E, P e D, em vez de ter um único autor, o que contradiz a atribuição a Moisés. Essa contestação aparece aqui como aceita pela maioria. A maioria, no caso, é a dos estudiosos da crítica bíblica acadêmica, que examinam os textos bíblicos com métodos históricos. Isso não quer dizer que haja o mesmo acordo nas comunidades religiosas que seguem a tradição de atribuir o texto a Moisés.\n"
     },
     {
+      "id": "meteorito-canyon-diablo-confirma-formacao-da-terra__0",
+      "ligacao": "meteorito-canyon-diablo-confirma-formacao-da-terra",
+      "origem": "meteorito-canyon-diablo",
+      "destino": "formacao-da-terra",
+      "tipo": "confirma",
+      "forca": "bem_estabelecido",
+      "tipo_de_apoio": "medicao_cientifica",
+      "quem_sustenta": [
+        {
+          "nome": "G. Brent Dalrymple",
+          "ano": 2001
+        }
+      ],
+      "fontes": [
+        {
+          "nivel": 2,
+          "descricao": "U.S. Geological Survey (2007), Geologic Time, página \"Age of the Earth\" (texto único, sem numeração de páginas)",
+          "url": "https://pubs.usgs.gov/gip/geotime/age.html"
+        },
+        {
+          "nivel": 2,
+          "descricao": "Dalrymple, G. B. (2001), \"The age of the Earth in the twentieth century: a problem (mostly) solved\", Geological Society, London, Special Publications 190, pp. 205–221 (resumo, p. 205), doi:10.1144/GSL.SP.2001.190.01.14",
+          "url": "https://doi.org/10.1144/GSL.SP.2001.190.01.14"
+        }
+      ],
+      "o_que_derrubaria": "A idade de 4,54 bilhões de anos cairia se se mostrasse que o decaimento radioativo não ocorre em ritmo constante, ou que o chumbo dos meteoritos não serve de referência para o da Terra.",
+      "notas": "A idade vem do decaimento de elementos radioativos em rochas e meteoritos: o chumbo do meteorito Canyon Diablo é comparado ao de minérios terrestres antigos. Segundo Dalrymple (2001), o primeiro cálculo válido foi feito por Patterson em 1953, e o valor usado hoje, 4,54 bilhões de anos, é o de Tera, de 1980. Para Gênesis 1, que põe a criação da terra e a dos astros na mesma semana, a medição situa a Terra quase nove bilhões de anos depois do começo do universo; essa diferença é conta nossa, a partir desta medição e da missão Planck."
+    },
+    {
+      "id": "missao-planck-confirma-idade-do-universo__0",
+      "ligacao": "missao-planck-confirma-idade-do-universo",
+      "origem": "missao-planck",
+      "destino": "idade-do-universo",
+      "tipo": "confirma",
+      "forca": "bem_estabelecido",
+      "tipo_de_apoio": "medicao_cientifica",
+      "quem_sustenta": [
+        {
+          "nome": "Colaboração Planck",
+          "ano": 2020
+        }
+      ],
+      "fontes": [
+        {
+          "nivel": 2,
+          "descricao": "Planck Collaboration (N. Aghanim et al.) (2020), \"Planck 2018 results. VI. Cosmological parameters\", Astronomy & Astrophysics 641, A6, Tabela 1, p. 15 (paginação do arXiv 1807.06209v4), doi:10.1051/0004-6361/201833910",
+          "url": "https://doi.org/10.1051/0004-6361/201833910"
+        }
+      ],
+      "o_que_derrubaria": "A idade de 13,8 bilhões de anos cairia se novas medições, ou um modelo cosmológico diferente do padrão, dessem ao universo uma idade muito diferente.",
+      "notas": "O valor vale dentro do modelo cosmológico padrão, em que a equipe fez o cálculo. Para Gênesis 1, que narra a criação dos céus e da terra ao longo de seis dias, o dado importa porque, somado à idade da Terra (cerca de 4,54 bilhões de anos, pela datação radiométrica), deixa quase nove bilhões de anos entre o começo do universo e a formação da Terra. Essa diferença é uma conta feita a partir das duas medições, e não uma frase das fontes."
+    },
+    {
+      "id": "relatorio-criacao-pca-2000-confirma-dias-de-genesis-nao-literais__0",
+      "ligacao": "relatorio-criacao-pca-2000-confirma-dias-de-genesis-nao-literais",
+      "origem": "relatorio-criacao-pca-2000",
+      "destino": "dias-de-genesis-nao-literais",
+      "tipo": "confirma",
+      "forca": "aceito_maioria",
+      "tipo_de_apoio": "texto",
+      "quem_sustenta": [],
+      "fontes": [
+        {
+          "nivel": 1,
+          "descricao": "Igreja Presbiteriana na América, Report of the Creation Study Committee (junho de 2000; recomendações adotadas pela 28ª Assembleia Geral), PDF avulso do PCA Historical Center, pp. 2331, 2342, 2348 e 2364 (paginação do PDF avulso; nas Minutes do 28º GA o relatório ocupa as pp. 119–212)",
+          "url": "https://www.pcahistory.org/pca/studies/creation/report.pdf"
+        }
+      ],
+      "o_que_derrubaria": "A ideia de que a igreja aceita leituras não literais cairia se a recomendação da p. 2364 não tivesse sido adotada, ou se uma assembleia posterior a revogasse.",
+      "notas": "O relatório descreve quatro leituras dos dias: dias de calendário, que é a leitura literal, dias-era, a leitura de moldura literária e a de dias analógicos. A assembleia declarou aceitável essa diversidade, desde que se aceite a plena historicidade do relato. A igreja, portanto, não escolhe entre as leituras: admite as não literais ao lado da literal."
+    },
+    {
       "id": "talmude-confirma-autoria-mosaica__0",
       "ligacao": "talmude-confirma-autoria-mosaica",
       "origem": "talmude-babilonico",
@@ -200,6 +548,44 @@
       "notas": "No Talmude Babilônico, a grande coletânea de debates dos rabinos (os mestres da lei judaica), o tratado Bava Batra traz nos fólios 14b–15a uma baraita, isto é, um ensinamento rabínico antigo que o Talmude cita. Essa baraita atribui a Moisés “seu livro”, a Torá (os cinco primeiros livros da Bíblia), além da porção de Balaão e do livro de Jó. Gênesis não aparece pelo nome. Ele entra na atribuição por fazer parte da Torá. A mesma passagem atribui a Josué os oito últimos versículos da Torá, o que não afeta Gênesis. O apoio do Talmude aparece aqui como aceito pela maioria, e essa classificação mede a adesão à atribuição a Moisés dentro da tradição rabínica, a dos mestres judeus cujas discussões formam o Talmude. Ela não avalia se, do ponto de vista histórico, Moisés escreveu Gênesis. Essa questão fica com a ligação entre a Hipótese Documentária e a autoria de Moisés. Por enquanto, o apoio do Talmude se sustenta só na fonte primária, o próprio texto talmúdico. Falta uma obra acadêmica que comente a passagem, com a página indicada; esse ponto está pendente de conferência.\n"
     },
     {
+      "id": "textos-das-piramides-e-dos-sarcofagos-paralelo-genesis__0",
+      "ligacao": "textos-das-piramides-e-dos-sarcofagos-paralelo-genesis",
+      "origem": "textos-das-piramides-e-dos-sarcofagos",
+      "destino": "genesis",
+      "tipo": "paralelo",
+      "forca": "aceito_maioria",
+      "tipo_de_apoio": "texto",
+      "quem_sustenta": [
+        {
+          "nome": "James P. Allen",
+          "ano": 1988
+        },
+        {
+          "nome": "Alexander Heidel",
+          "ano": 1951
+        }
+      ],
+      "fontes": [
+        {
+          "nivel": 2,
+          "descricao": "Allen, J. P. (1988), Genesis in Egypt: The Philosophy of Ancient Egyptian Creation Accounts (Yale Egyptological Studies 2), New Haven: Yale Egyptological Seminar, pp. 4–5 e 13"
+        },
+        {
+          "nivel": 2,
+          "descricao": "Heidel, A. (1951), The Babylonian Genesis: The Story of Creation, 2ª ed., Chicago: University of Chicago Press, p. 115",
+          "url": "https://isac.uchicago.edu/research/publications/misc/babylonian-genesis-story-creation"
+        }
+      ],
+      "o_que_derrubaria": "O paralelo entre os textos egípcios e Gênesis 1 cairia se a leitura dos Textos das Pirâmides e dos Sarcófagos mostrasse que a imagem de um céu que mantém as águas afastadas da terra não está neles.",
+      "notas": "A semelhança é de imagem, não de texto: nos dois casos, o céu separa o mundo das águas que o cercam. Allen (1988) aproxima os textos egípcios justamente de Gênesis 1:6–7, mas essa fonte ainda não foi conferida num exemplar oficial. Heidel (1951) lembra que criar céu e terra dividindo ou separando alguma coisa é um traço comum a quase todas as cosmogonias antigas, o que enfraquece a ideia de um empréstimo direto. No Egito, além disso, o mundo surge de deuses gerados pelo deus Atum, e não da palavra de um deus único."
+    },
+    {
+      "id": "gen-01-01_01-31__parte_de__genesis",
+      "origem": "gen-01-01_01-31",
+      "destino": "genesis",
+      "tipo": "parte_de"
+    },
+    {
       "id": "autoria-mosaica-genesis__envolve__moises",
       "origem": "autoria-mosaica-genesis",
       "destino": "moises",
@@ -209,6 +595,24 @@
       "id": "autoria-mosaica-genesis__envolve__genesis",
       "origem": "autoria-mosaica-genesis",
       "destino": "genesis",
+      "tipo": "envolve"
+    },
+    {
+      "id": "dias-de-genesis-nao-literais__envolve__genesis",
+      "origem": "dias-de-genesis-nao-literais",
+      "destino": "genesis",
+      "tipo": "envolve"
+    },
+    {
+      "id": "formacao-da-terra__envolve__meteorito-canyon-diablo",
+      "origem": "formacao-da-terra",
+      "destino": "meteorito-canyon-diablo",
+      "tipo": "envolve"
+    },
+    {
+      "id": "idade-do-universo__envolve__missao-planck",
+      "origem": "idade-do-universo",
+      "destino": "missao-planck",
       "tipo": "envolve"
     },
     {

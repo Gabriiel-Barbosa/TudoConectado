@@ -1,0 +1,26 @@
+# Gerado por .claude/skills/conferir/scripts/registrar.js — vereditos da
+# Contraprova para as fontes desta ligação. Edite à mão só 'revisao_humana'
+# (pendente -> feita) depois de conferir você mesmo.
+ligacao: declaracao-breve-sinodo-missouri-contradiz-dias-de-genesis-nao-literais
+fontes:
+  - hash: d2305aaaa4b7
+    nivel: 1
+    descricao: >-
+      Igreja Luterana–Sínodo de Missouri, Brief Statement of the Doctrinal Position of the Missouri
+      Synod (1932), seção "Of Creation"
+    alegacao: >-
+      A seção ensina que Deus criou o mundo no modo e no espaço de tempo registrados em Gênesis 1 e
+      2, em seis dias, e rejeita a ideia de que o mundo tenha se desenvolvido ao longo de imensos
+      períodos de tempo.
+    veredito: confirmada
+    parou_em: null
+    conferido_em: https://www.lcms.org/about/beliefs/doctrine/brief-statement-of-lcms-doctrinal-position
+    observacao: >-
+      "in the manner and in the space of time recorded in the Holy Scriptures, especially Gen. 1 and
+      2, namely, by His almighty creative word, and in six days"; rejeita "that the world came into
+      existence through a process of evolution; that is, that it has, in immense periods of time,
+      developed more or less of itself." A alegação omite o qualificador "more or less of itself",
+      sem distorcer o sentido; as notas foram ajustadas para incluí-lo.
+    data: '2026-09-18'
+    conferido_por: contraprova
+    revisao_humana: pendente

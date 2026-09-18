@@ -1,0 +1,49 @@
+# Gerado por .claude/skills/conferir/scripts/registrar.js — vereditos da
+# Contraprova para as fontes desta ligação. Edite à mão só 'revisao_humana'
+# (pendente -> feita) depois de conferir você mesmo.
+ligacao: meteorito-canyon-diablo-confirma-formacao-da-terra
+fontes:
+  - hash: 16427c7e98e5
+    nivel: 2
+    descricao: >-
+      U.S. Geological Survey (2007), Geologic Time, página "Age of the Earth" (texto único, sem
+      numeração de páginas)
+    alegacao: >-
+      A página atesta que, pela datação radiométrica (incluindo o chumbo do meteorito Canyon
+      Diablo), a Terra e os meteoritos têm 4,54 bilhões de anos, com incerteza menor que 1%, e que
+      os meteoritos se formaram entre 4,53 e 4,58 bilhões de anos atrás.
+    veredito: confirmada
+    parou_em: null
+    conferido_em: >-
+      https://pubs.usgs.gov/gip/geotime/age.html (publicação oficial do USGS, última atualização em
+      9 de julho de 2007)
+    observacao: >-
+      Trechos literais: "The best age for the Earth (4.54 Ga) is based on ... Pb ratios in troilite
+      from iron meteorites, specifically the Canyon Diablo meteorite"; "the meteorites, and
+      therefore the Solar System, formed between 4.53 and 4.58 billion years ago"; "an age for the
+      Earth and meteorites, and hence the Solar System, of 4.54 billion years with an uncertainty of
+      less than 1 percent."
+    data: '2026-09-18'
+    conferido_por: contraprova
+    revisao_humana: pendente
+  - hash: 71cd9e8f77ed
+    nivel: 2
+    descricao: >-
+      Dalrymple, G. B. (2001), "The age of the Earth in the twentieth century: a problem (mostly)
+      solved", Geological Society, London, Special Publications 190, pp. 205–221 (resumo, p. 205),
+      doi:10.1144/GSL.SP.2001.190.01.14
+    alegacao: >-
+      O resumo atesta que Patterson fez em 1953 o primeiro cálculo válido da idade da Terra (4,55
+      bilhões de anos) e que o valor em uso hoje, 4,54 bilhões, foi determinado por Tera em 1980.
+    veredito: confirmada
+    parou_em: null
+    conferido_em: >-
+      https://api.crossref.org/works/10.1144/GSL.SP.2001.190.01.14 (metadados depositados pela
+      editora, com o resumo)
+    observacao: >-
+      O resumo diz literalmente "the first calculation by Patterson in 1953 of a valid age for the
+      Earth of 4.55 Ga" e "The value for the age of the Earth in wide use today was determined by
+      Tera in 1980, who found a value of 4.54 Ga".
+    data: '2026-09-18'
+    conferido_por: contraprova
+    revisao_humana: pendente
