@@ -19,8 +19,13 @@ docs/checklist_citacoes.md
 *.swp
 
 # Estado interno de ferramentas de agente (Claude Code, etc.) — nunca
-# pertence ao repositório.
-.claude/
+# pertence ao repositório. Exceção: agentes e skills do projeto SÃO parte do
+# repositório (seção 9 da arquitetura: o repositório é autossuficiente).
+# Lista de permissão em vez de bloqueio — qualquer outro arquivo que o
+# Claude Code crie em .claude/ continua fora (ver commit 640fbc9).
+.claude/*
+!.claude/agents/
+!.claude/skills/
 
 # Sistema operacional
 .DS_Store

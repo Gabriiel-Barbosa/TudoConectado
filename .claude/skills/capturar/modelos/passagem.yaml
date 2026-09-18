@@ -1,0 +1,12 @@
+# Modelo de Passagem — apague todos os comentários antes de gravar.
+# Caminho: dados/passagens/genesis/<id>.yaml   (schema/passagem.schema.json)
+id: gen-<CC>-<VV>_<CC>-<VV>     # ex.: gen-10-01_10-32 = Gênesis 10:1–32
+referencia: "Gênesis <C>:<V>–<C>:<V>"
+afirma:                          # o que o TEXTO diz, sem interpretação histórica
+  - "<paráfrase fiel do trecho>"
+registros_citados: []            # entidades nomeadas no trecho (IDs que já existem)
+afirmacoes_citadas: []           # opcional: afirmações formais que o trecho sustenta
+# Exatamente UM dos dois blocos abaixo:
+paralelos_externos:
+  - ligacao: <id-de-ligacao-existente>
+# nenhum_paralelo_conhecido: true   # só com confirmação do usuário de que não há paralelo

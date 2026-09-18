@@ -1,0 +1,11 @@
+# Modelo de Afirmação — apague todos os comentários antes de gravar.
+# Caminho: dados/afirmacoes/<id>.yaml   (schema/afirmacao.schema.json)
+id: <id>                  # só [a-z0-9-], sem "_"
+texto: "<Frase verificável, neutra, que pode ser verdadeira ou falsa.>"
+registros_envolvidos: [<registro-a>, <registro-b>]   # IDs que já existem
+datacao:
+  # Uma entrada por datação concorrente — nunca uma média entre elas.
+  # Faixa [início, fim] em anos inteiros; negativo = a.C. Evite início == fim.
+  - periodo: [<inicio>, <fim>]
+    segundo_quem: >
+      Quem data assim (obra/tradição) e, se a faixa for larga, por quê.

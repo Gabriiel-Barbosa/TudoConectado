@@ -1,0 +1,9 @@
+# Modelo de Registro — apague todos os comentários antes de gravar.
+# Caminho: dados/registros/<tipo>/<id>.yaml   (schema/registro.schema.json)
+id: <id>                  # checar-id.js registro <id>; só [a-z0-9-], sem "_"
+tipo: <tipo>              # pessoa | lugar | acontecimento | texto | objeto — igual à pasta
+nome: <Nome usual em português>
+alias: []                 # opcional: [Grafia Inglesa, Nome Original]
+descricao: >
+  Uma ou duas frases que identificam a entidade. Toda data ou fato aqui
+  precisa estar sustentado no grafo ou vir do usuário (diga segundo quem).

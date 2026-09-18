@@ -1,0 +1,25 @@
+# Modelo de Ligação — apague todos os comentários antes de gravar.
+# Caminho: dados/ligacoes/<id>.yaml   (schema/ligacao.schema.json)
+# Leia guia-ligacao.md antes de preencher.
+id: <a>-<tipo>-<b>
+tipo: <tipo>              # tipo já usado em dados/ligacoes/; tipo novo só com confirmação do usuário
+entre:                    # lê-se: entre[0] <tipo> entre[1]
+  - registro: <id-a>      # cada item: registro: OU afirmacao:
+  - afirmacao: <id-b>
+evidencia:
+  tipo_de_apoio: <apoio>  # texto | inscricao | achado_arqueologico | moedas | analise_linguistica | nenhum
+  forca: <forca>          # bem_estabelecido | aceito_maioria | disputado | poucos | especulacao
+  quem_sustenta:          # pode ser [] — nome e ano são FATOS, nunca de memória
+    - nome: "<Nome Sobrenome>"
+      ano: <aaaa>
+fontes:                   # ≥1 de nível 1 ou 2; localização exata obrigatória
+  - nivel: 1
+    descricao: "<Obra/objeto, localização exata: p. / cap:vers / col./linha / fólio / nº de catálogo>"
+o_que_derrubaria: >
+  Qual evidência concreta faria esta ligação cair, e com que resultado.
+notas: null               # ou texto: escopo da força, limite da evidência, ligação do outro lado
+# Só se tipo: foi_copiado_de — as três com fonte nesta ligação:
+# justificativa_copia:
+#   semelhanca_especifica: >
+#   anterioridade_comprovada: >
+#   caminho_plausivel: >
