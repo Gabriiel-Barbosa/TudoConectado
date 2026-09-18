@@ -62,6 +62,27 @@
           "segundo_quem": "Pela cronologia tradicional, Moisés teria escrito Gênesis entre c. 1446 e 1200 a.C. O intervalo é largo porque a própria tradição se divide entre duas datações. A \"alta\", por volta do século XV a.C., vem de uma leitura literal de 1 Reis 6:1. A \"baixa\", por volta do século XIII a.C., associa o Êxodo (a saída dos israelitas do Egito) ao reinado do faraó Ramessés II.\n"
         }
       ]
+    },
+    {
+      "id": "publicacao-pentateuco-periodo-persa",
+      "tipo": "afirmacao",
+      "texto": "O Pentateuco, do qual Gênesis faz parte, foi publicado pela primeira vez depois do exílio na Babilônia, no período persa.",
+      "datacao": [
+        {
+          "periodo": [
+            -539,
+            -332
+          ],
+          "segundo_quem": "Segundo Thomas Römer (2008), há amplo acordo entre os estudiosos de que o Pentateuco, ou uma primeira versão dele, foi publicado pela primeira vez em meados do período persa. Gênesis, o primeiro dos cinco livros, entra nessa datação por fazer parte do conjunto. O intervalo registrado aqui é o do período persa inteiro, de 539 a 332 a.C., porque o autor não dá anos.\n"
+        },
+        {
+          "periodo": [
+            -458,
+            -444
+          ],
+          "segundo_quem": "Segundo Julius Wellhausen (1885), o Pentateuco só se tornou conhecido como lei de Moisés em 444 a.C., quando Esdras o publicou em Jerusalém, cerca de um século depois do exílio na Babilônia. Esdras havia chegado à cidade em 458 a.C. Gênesis, o primeiro dos cinco livros, entra nessa datação por fazer parte do conjunto.\n"
+        }
+      ]
     }
   ],
   "arestas": [
@@ -93,6 +114,39 @@
       ],
       "o_que_derrubaria": "A ideia de que o fragmento 6QpaleoGen é uma cópia antiga de Gênesis cairia em dois casos. Um deles seria uma nova análise paleográfica (a datação pelo estilo da letra) que empurrasse o fragmento para um período bem posterior. O outro seria a evidência de que o texto do 6QpaleoGen se afasta tanto de Gênesis 6 que já não dá para tratá-lo como o mesmo livro.\n",
       "notas": "O 6QpaleoGen é um fragmento com um trecho de Gênesis 6. Ele pertence aos manuscritos do Mar Morto, textos antigos achados em grutas junto ao Mar Morto. Entre esses manuscritos, é a cópia de Gênesis mais antiga conhecida até a publicação de Crawford (2012). Ser a mais antiga conhecida não faz dele a mais antiga que já existiu. O texto original de Gênesis é anterior a qualquer cópia que chegou até nós.\n"
+    },
+    {
+      "id": "hipotese-documentaria-confirma-publicacao-pentateuco-periodo-persa__0",
+      "ligacao": "hipotese-documentaria-confirma-publicacao-pentateuco-periodo-persa",
+      "origem": "hipotese-documentaria",
+      "destino": "publicacao-pentateuco-periodo-persa",
+      "tipo": "confirma",
+      "forca": "aceito_maioria",
+      "tipo_de_apoio": "texto",
+      "quem_sustenta": [
+        {
+          "nome": "Julius Wellhausen",
+          "ano": 1883
+        },
+        {
+          "nome": "Thomas Römer",
+          "ano": 2008
+        }
+      ],
+      "fontes": [
+        {
+          "nivel": 2,
+          "descricao": "Wellhausen, J. (1885), Prolegomena to the History of Israel, trad. J. S. Black e A. Menzies, Edimburgo: A. & C. Black, cap. \"The Oral and the Written Torah\", pp. 405 e 408–409",
+          "url": "https://archive.org/details/prolegomenatohi00wellgoog"
+        },
+        {
+          "nivel": 2,
+          "descricao": "Römer, T. (2008), \"Moses Outside the Torah and the Construction of a Diaspora Identity\", Journal of Hebrew Scriptures 8, art. 15, p. 2, doi:10.5508/jhs.2008.v8.a15",
+          "url": "https://jhsonline.org/index.php/jhs/article/view/6213"
+        }
+      ],
+      "o_que_derrubaria": "A ideia de que o Pentateuco, com Gênesis, só foi publicado pela primeira vez no período persa cairia se aparecesse uma cópia do Pentateuco, ou de um trecho que a pesquisa atribui às suas camadas mais tardias, datada com segurança de antes do exílio na Babilônia.\n",
+      "notas": "As duas fontes datam o Pentateuco inteiro, e não Gênesis em separado: Gênesis entra na datação por ser o primeiro dos cinco livros. A data vale para o conjunto, e não para cada parte: para Wellhausen, o Deuteronômio já era conhecido desde 621 a.C., antes do exílio. As duas fontes também falam da primeira publicação, não do texto definitivo. Wellhausen admite, numa nota da p. 409, acréscimos depois de Esdras, e Römer atribui revisões posteriores aos últimos redatores da Torá. Os dois também vêm de momentos diferentes da pesquisa. Wellhausen formalizou a Hipótese Documentária no século XIX. Römer não a defende: segundo ele, a maioria dos estudiosos abandonou o modelo clássico das quatro fontes, sem que um novo consenso tomasse o lugar dele. Ele está aqui porque registra que o acordo sobre a data continua amplo. A força \"aceito pela maioria\" vem dessa observação de Römer e descreve os estudiosos da crítica bíblica acadêmica. Ela não mede o que pensam as comunidades religiosas que atribuem o livro a Moisés.\n"
     },
     {
       "id": "hipotese-documentaria-contradiz-autoria-mosaica__0",
@@ -155,6 +209,18 @@
       "id": "autoria-mosaica-genesis__envolve__genesis",
       "origem": "autoria-mosaica-genesis",
       "destino": "genesis",
+      "tipo": "envolve"
+    },
+    {
+      "id": "publicacao-pentateuco-periodo-persa__envolve__genesis",
+      "origem": "publicacao-pentateuco-periodo-persa",
+      "destino": "genesis",
+      "tipo": "envolve"
+    },
+    {
+      "id": "publicacao-pentateuco-periodo-persa__envolve__hipotese-documentaria",
+      "origem": "publicacao-pentateuco-periodo-persa",
+      "destino": "hipotese-documentaria",
       "tipo": "envolve"
     }
   ]

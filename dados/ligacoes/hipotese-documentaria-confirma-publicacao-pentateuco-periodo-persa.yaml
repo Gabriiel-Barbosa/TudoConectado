@@ -1,0 +1,41 @@
+id: hipotese-documentaria-confirma-publicacao-pentateuco-periodo-persa
+tipo: confirma
+entre:
+  - registro: hipotese-documentaria
+  - afirmacao: publicacao-pentateuco-periodo-persa
+evidencia:
+  tipo_de_apoio: texto
+  forca: aceito_maioria
+  quem_sustenta:
+    - nome: "Julius Wellhausen"
+      ano: 1883
+    - nome: "Thomas Römer"
+      ano: 2008
+fontes:
+  - nivel: 2
+    descricao: "Wellhausen, J. (1885), Prolegomena to the History of Israel, trad. J. S. Black e A. Menzies, Edimburgo: A. & C. Black, cap. \"The Oral and the Written Torah\", pp. 405 e 408–409"
+    url: "https://archive.org/details/prolegomenatohi00wellgoog"
+  - nivel: 2
+    descricao: "Römer, T. (2008), \"Moses Outside the Torah and the Construction of a Diaspora Identity\", Journal of Hebrew Scriptures 8, art. 15, p. 2, doi:10.5508/jhs.2008.v8.a15"
+    url: "https://jhsonline.org/index.php/jhs/article/view/6213"
+o_que_derrubaria: >
+  A ideia de que o Pentateuco, com Gênesis, só foi publicado pela primeira
+  vez no período persa cairia se aparecesse uma cópia do Pentateuco, ou de
+  um trecho que a pesquisa atribui às suas camadas mais tardias, datada com
+  segurança de antes do exílio na Babilônia.
+notas: >
+  As duas fontes datam o Pentateuco inteiro, e não Gênesis em separado:
+  Gênesis entra na datação por ser o primeiro dos cinco livros. A data
+  vale para o conjunto, e não para cada parte: para Wellhausen, o
+  Deuteronômio já era conhecido desde 621 a.C., antes do exílio. As duas
+  fontes também falam da primeira publicação, não do texto definitivo. Wellhausen admite,
+  numa nota da p. 409, acréscimos depois de Esdras, e Römer atribui
+  revisões posteriores aos últimos redatores da Torá. Os dois também vêm de
+  momentos diferentes da pesquisa. Wellhausen formalizou a Hipótese
+  Documentária no século XIX. Römer não a defende: segundo ele, a maioria
+  dos estudiosos abandonou o modelo clássico das quatro fontes, sem que um
+  novo consenso tomasse o lugar dele. Ele está aqui porque registra que o
+  acordo sobre a data continua amplo. A força "aceito pela maioria" vem
+  dessa observação de Römer e descreve os estudiosos da crítica bíblica
+  acadêmica. Ela não mede o que pensam as comunidades religiosas que
+  atribuem o livro a Moisés.

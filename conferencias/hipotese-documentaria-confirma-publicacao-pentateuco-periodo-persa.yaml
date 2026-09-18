@@ -1,0 +1,51 @@
+# Gerado por .claude/skills/conferir/scripts/registrar.js — vereditos da
+# Contraprova para as fontes desta ligação. Edite à mão só 'revisao_humana'
+# (pendente -> feita) depois de conferir você mesmo.
+ligacao: hipotese-documentaria-confirma-publicacao-pentateuco-periodo-persa
+fontes:
+  - hash: 47617d719f01
+    nivel: 2
+    descricao: >-
+      Wellhausen, J. (1885), Prolegomena to the History of Israel, trad. J. S. Black e A. Menzies,
+      Edimburgo: A. & C. Black, cap. "The Oral and the Written Torah", pp. 405 e 408–409
+    alegacao: >-
+      Wellhausen (1885), pp. 405 e 408–409, atesta que o Pentateuco, do qual Gênesis faz parte, foi
+      publicado pela primeira vez depois do exílio na Babilônia, no período persa.
+    veredito: confirmada
+    parou_em: null
+    conferido_em: >-
+      https://archive.org/details/bwb_C0-AVN-740 (fac-símile da edição de 1885, Edinburgh: Adam &
+      Charles Black; busca de texto integral do item; cabeçalhos "THE ORAL AND THE WRITTEN TORAH.
+      405 / 407 / 409" nas folhas 423, 425 e 427)
+    observacao: >-
+      p. 405: "The Priestly Code, worked into the Pentateuch… As such it was published and
+      introduced in the year 444 B.C., a century after the exile"; Esdras vem "with a mandate from
+      the Persian king". p. 408: "the remaining Torah of the Pentateuch—for there is no doubt that
+      the law of Ezra was the whole Pentateuch—became known in the year 444 and was unknown till
+      then". p. 409: "The introduction of the law, first Deuteronomy, and then the whole
+      Pentateuch…". Ressalvas: o Deuteronômio é situado em 621 a.C., antes do exílio, então
+      "publicado pela primeira vez depois do exílio" vale para o conjunto, não para cada parte;
+      Gênesis não é citado nessas páginas ("do qual Gênesis faz parte" é acréscimo da alegação).
+    data: '2026-09-18'
+    conferido_por: contraprova
+    revisao_humana: pendente
+  - hash: d0e3453ffc19
+    nivel: 2
+    descricao: >-
+      Römer, T. (2008), "Moses Outside the Torah and the Construction of a Diaspora Identity",
+      Journal of Hebrew Scriptures 8, art. 15, p. 2, doi:10.5508/jhs.2008.v8.a15
+    alegacao: >-
+      Römer (2008), p. 2, atesta que o Pentateuco, do qual Gênesis faz parte, foi publicado pela
+      primeira vez depois do exílio na Babilônia, no período persa.
+    veredito: confirmada
+    parou_em: null
+    conferido_em: https://jhsonline.org/index.php/jhs/article/download/6213/5247 (PDF oficial, p. 2)
+    observacao: >-
+      p. 2: "there is a widespread agreement that the first publication of the Pentateuch—or of a
+      Proto-Pentateuch—took place in the middle of the Persian period." É relato de consenso, com a
+      ressalva "ou de um Proto-Pentateuco". A mesma página diz que "the majority of scholars
+      abandoned the traditional documentary hypothesis": o artigo não sustenta que seja a Hipótese
+      Documentária que confirma a datação.
+    data: '2026-09-18'
+    conferido_por: contraprova
+    revisao_humana: pendente
