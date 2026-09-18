@@ -229,7 +229,8 @@ function estilosCytoscape() {
         "border-width": 1.5,
         "border-color": cores.muted,
         "border-opacity": 0.9,
-        "transition-property": "opacity, text-opacity, border-width, width, height, underlay-opacity",
+        "transition-property":
+          "opacity, background-image-opacity, border-opacity, border-width, width, height, underlay-opacity",
         "transition-duration": animacoesOk() ? "300ms" : "0ms",
       },
     },
@@ -291,14 +292,23 @@ function estilosCytoscape() {
     // mais longe no grafo, menor (via tamanhoVisual), mais apagado e mais
     // "atrás" (z-index). É o que dá a sensação de cena em camadas sem
     // esconder nada — os nós distantes continuam legíveis e clicáveis.
+    // Só a esfera e o aro apagam; o rótulo nunca. "opacity" no nó levava o
+    // rótulo junto (0,38 × 0,35 ≈ 13% no nível 3) e o nome sumia no fundo.
+    // Os cinzas do rótulo ficam acima de 7:1 sobre o fundo (WCAG AA pede 4.5:1).
     { selector: "node.prof-0", style: { "z-index": 30 } },
     { selector: "node.prof-1", style: { "z-index": 20 } },
-    { selector: "node.prof-2", style: { "z-index": 10, opacity: 0.6, "text-opacity": 0.55 } },
-    { selector: "node.prof-3", style: { "z-index": 0, opacity: 0.38, "text-opacity": 0.35 } },
+    {
+      selector: "node.prof-2",
+      style: { "z-index": 10, "background-image-opacity": 0.6, "border-opacity": 0.5, color: ROTULO_PROFUNDO[0] },
+    },
+    {
+      selector: "node.prof-3",
+      style: { "z-index": 0, "background-image-opacity": 0.4, "border-opacity": 0.35, color: ROTULO_PROFUNDO[1] },
+    },
 
     // Passar o mouse num nó acende as ligações dele (como no Obsidian),
     // sem mexer no resto da cena.
-    { selector: "node.realce", style: { opacity: 1, "text-opacity": 1 } },
+    { selector: "node.realce", style: { "background-image-opacity": 1, "border-opacity": 1, color: cores.fg } },
 
     {
       // Ligações com evidência real: fio dourado, como um fio "aceso" —
@@ -393,6 +403,8 @@ function distanciasAte(id) {
 // recuando (menor, mais apagado, atrás). Substitui o antigo apagamento
 // quase total (opacidade 0.1) dos não vizinhos, que deixava rótulos ilegíveis.
 const ESCALA_POR_PROFUNDIDADE = [1.12, 1, 0.84, 0.7];
+// Cor do rótulo nos níveis 2 e 3: 10,3:1 e 8,2:1 sobre --bg (#0a0c10).
+const ROTULO_PROFUNDO = ["#b9bcc8", "#a3a7b5"];
 
 function aplicarProfundidade(id) {
   const distancias = distanciasAte(id);
@@ -520,7 +532,7 @@ function iniciarGrafo(grafoData) {
     const raizInicial =
       grafo.nos.find((n) => LIVROS_RAIZ.includes(n.id)) || grafo.nos.find((n) => n.tipo === "passagem");
     if (raizInicial) {
-      centralizarEm(raizInicial.id);
+      centralizarEm(raizInicial.id, { abrirPainel: false });
     } else {
       cy.layout({ name: "breadthfirst", circle: true, spacingFactor: 1.4, padding: 60 }).run();
     }
@@ -579,7 +591,13 @@ function rodarLayout(raiz) {
   layoutAtual.run();
 }
 
-function centralizarEm(id, { registrarHistorico = true, viaAresta = null, forcarLayout = false } = {}) {
+// `abrirPainel: false` para centralizações que não vêm de um gesto do
+// leitor (a carga inicial, o re-layout ao ocultar um tipo): no celular, abrir
+// o card nesses casos cobria o grafo antes de alguém tocar em nada.
+function centralizarEm(
+  id,
+  { registrarHistorico = true, viaAresta = null, forcarLayout = false, abrirPainel = true } = {}
+) {
   if (!cy || cy.$id(id).empty()) return;
   const alvo = cy.$id(id);
 
@@ -613,8 +631,23 @@ function centralizarEm(id, { registrarHistorico = true, viaAresta = null, forcar
   const no = noPorId(id);
   if (no) {
     mostrarDetalhesNo(no);
-    abrirDetalhesSeMovel();
+    if (abrirPainel) abrirDetalhesSeMovel();
   }
+  atualizarAlca();
+}
+
+// A alça aparece no celular quando o card está fechado e há um nó em foco.
+function atualizarAlca() {
+  const alca = document.querySelector("#alca-detalhes");
+  if (!alca) return;
+  const emFoco = cy ? cy.nodes(".foco") : null;
+  const no = emFoco && emFoco.nonempty() ? noPorId(emFoco.id()) : null;
+  const cardFechado = document.querySelector("#detalhes").classList.contains("oculto");
+  const controlesFechados = document.querySelector("#mapa-controles").classList.contains("oculto");
+  alca.hidden = !(ehMovel() && no && cardFechado && controlesFechados);
+  if (no) alca.querySelector(".alca-nome").innerHTML = `${iconeInline(categoriaDoNo(no), corDoNo(no))}${escapar(
+    truncar(rotuloDoNo(no), 40)
+  )}`;
 }
 
 function idDoNoAtual() {
@@ -677,6 +710,13 @@ function configurarPaineisMoveis() {
     });
   });
 
+  // A alça depende do estado dos dois painéis; observar a classe cobre
+  // todos os caminhos que abrem ou fecham um deles (botões, X, toque no nó).
+  const observador = new MutationObserver(atualizarAlca);
+  observador.observe(controles, { attributes: true, attributeFilter: ["class"] });
+  observador.observe(detalhes, { attributes: true, attributeFilter: ["class"] });
+  document.querySelector("#alca-detalhes").addEventListener("click", abrirDetalhesSeMovel);
+
   aplicarEstadoInicial();
   // Só reaplica o padrão ao cruzar o breakpoint (não a cada resize —
   // no celular a barra de endereço aparecendo/sumindo dispara "resize" o
@@ -713,6 +753,7 @@ function limparFoco() {
     cy.elements().removeClass("foco prof-0 prof-1 prof-2 prof-3");
     cy.nodes().forEach((n) => n.data("tamanhoVisual", n.data("tamanho")));
   });
+  atualizarAlca();
 }
 
 function renderizarTrilha() {
@@ -832,7 +873,7 @@ function reorganizarAposVisibilidade() {
   // o Cytoscape ainda não recalculou o estilo e o nó recém-oculto responde
   // "visível" — e centralizarEm o revelaria de novo.
   if (emFoco.nonempty() && !tiposOcultos.has(categoriaDoNo(emFoco.data()))) {
-    centralizarEm(emFoco.id(), { registrarHistorico: false, forcarLayout: true });
+    centralizarEm(emFoco.id(), { registrarHistorico: false, forcarLayout: true, abrirPainel: false });
     return;
   }
   limparFoco();
@@ -1315,16 +1356,48 @@ function blocoMeta(no, idx) {
   return linhas.length > 0 ? `<div class="meta">${linhas.join("")}</div>` : "";
 }
 
-// Nível 1 mostra o resumo; nível 2 ("Mais detalhes") abre o texto inteiro
-// sem tirar o usuário do grafo.
+// Nível 1 mostra o começo; nível 2 ("Continuar lendo") mostra o resto sem
+// tirar o usuário do grafo. Até DESCRICAO_INTEIRA_ATE o texto cabe inteiro
+// no card; acima disso, corta no fim de uma frase.
+const DESCRICAO_INTEIRA_ATE = 480;
+const DESCRICAO_CORTE_ALVO = 360;
+
+// Fins de frase onde dá para cortar: pontuação final seguida de espaço e
+// maiúscula. Iniciais ("Joel S. Baden") não contam, e o corte nunca cai
+// dentro de aspas.
+function finsDeFrase(texto) {
+  const fins = [];
+  const padrao = /[.!?]["”»)]?\s+(?=[A-ZÀ-Ý])/g;
+  let achado;
+  while ((achado = padrao.exec(texto))) {
+    const antes = texto.slice(0, achado.index + 1);
+    const ultimaPalavra = antes.split(/\s/).pop();
+    if (/^[A-ZÀ-Ý]\.$/.test(ultimaPalavra)) continue;
+    const aspas = (antes.match(/["“”]/g) || []).length;
+    if (aspas % 2 !== 0) continue;
+    fins.push(achado.index + achado[0].length);
+  }
+  return fins;
+}
+
+// Divide em [início, resto]; resto vazio quando o texto cabe inteiro ou
+// não tem onde cortar sem partir uma frase.
+function dividirNaFrase(texto) {
+  if (texto.length <= DESCRICAO_INTEIRA_ATE) return [texto, ""];
+  const fins = finsDeFrase(texto);
+  const corte = fins.filter((f) => f <= DESCRICAO_CORTE_ALVO).pop() ?? fins[0];
+  if (!corte || corte >= texto.length) return [texto, ""];
+  return [texto.slice(0, corte).trim(), texto.slice(corte).trim()];
+}
+
 function blocoDescricao(no) {
   const texto = (no.descricao || no.texto || "").trim();
   if (!texto) return "";
-  const curto = truncar(texto, 240);
-  if (curto === texto) return `<p class="descricao">${comCitacoes(texto)}</p>`;
+  const [inicio, resto] = dividirNaFrase(texto);
+  if (!resto) return `<p class="descricao">${comCitacoes(texto)}</p>`;
   return `
-    <p class="descricao">${comCitacoes(curto)}</p>
-    <details class="mais"><summary>Mais detalhes</summary><p class="descricao">${comCitacoes(texto)}</p></details>`;
+    <p class="descricao">${comCitacoes(inicio)}</p>
+    <details class="mais"><summary>Continuar lendo</summary><p class="descricao">${comCitacoes(resto)}</p></details>`;
 }
 
 // "Por que está aqui" derivado das ligações incidentes e seus tipos — não

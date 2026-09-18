@@ -111,6 +111,15 @@
           </div>
         </aside>
 
+        <!-- Só no celular: com o card fechado, a alça mostra qual nó está em
+             foco e abre o card num toque, sem cobrir o grafo. -->
+        <button id="alca-detalhes" class="alca-detalhes painel-flutuante" hidden aria-controls="detalhes">
+          <span class="alca-nome"></span>
+          <span class="alca-acao">Ver detalhes
+            <svg viewBox="0 0 24 24" class="icone" aria-hidden="true"><path d="m18 15-6-6-6 6" /></svg>
+          </span>
+        </button>
+
         <div class="ferramentas painel-flutuante">
           <button id="btn-filtros" class="so-movel" title="Filtros" aria-label="Mostrar filtros" aria-pressed="false">
             <svg viewBox="0 0 24 24" class="icone"><path d="M10 20a1 1 0 0 0 .553.895l2 1A1 1 0 0 0 14 21v-7a2 2 0 0 1 .517-1.341L21.74 4.67A1 1 0 0 0 21 3H3a1 1 0 0 0-.742 1.67l7.225 7.989A2 2 0 0 1 10 14z" /></svg>
