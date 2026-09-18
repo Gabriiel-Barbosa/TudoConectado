@@ -573,22 +573,214 @@ function posicionarTooltip(eventoOriginal) {
   tooltip.style.top = `${eventoOriginal.clientY + 14}px`;
 }
 
-let layoutAtual = null;
 
 // Roda o layout só sobre o que está visível: nós de tipo oculto e arestas
 // filtradas não ocupam lugar na árvore nem entram no enquadramento.
-function rodarLayout(raiz) {
-  if (layoutAtual) layoutAtual.stop();
-  layoutAtual = cy.elements(":visible").layout({
-    name: "breadthfirst",
-    ...(raiz ? { roots: raiz } : {}),
-    circle: true,
-    spacingFactor: 1.4,
-    padding: 60,
-    animate: animacoesOk(),
-    animationDuration: 400,
+// Geometria e câmera.
+// - Layout radial próprio: o nó em foco no centro e cada distância a ele num
+//   anel de raio RAIO_POR_NIVEL × distância. O raio não depende da tela —
+//   antes saía da largura do container, e no celular os anéis colavam e os
+//   rótulos se sobrepunham. Nós de um anel ficam perto do "pai" no anel de
+//   dentro e são afastados até caber um rótulo entre eles.
+// - A câmera enquadra a área livre da tela (sem painéis, barra e alça por
+//   cima). Mostra o grafo inteiro só se ele couber com rótulo legível
+//   (ZOOM_LEGIVEL = rótulo de 10px); senão, o foco e os vizinhos diretos, e
+//   o resto fica a um arrasto. Antes o fit caía ao zoom mínimo (rótulos de 3px).
+const RAIO_POR_NIVEL = 170;
+const RAIO_POR_NIVEL_MOVEL = 120; // tela estreita: anéis mais próximos
+const ALTURA_NO_COM_ROTULO = 80;
+const LARGURA_ROTULO = 120; // espaço de arco por nó num anel (rótulo + folga)
+const ZOOM_LEGIVEL = 1;
+const ZOOM_MAXIMO_ENQUADRAR = 1.6;
+const MARGEM_ENQUADRAR = 28;
+
+function posicoesRadiais(raiz, nos) {
+  const posicoes = new Map();
+  if (!raiz) return posicoes;
+  const distancias = distanciasAte(raiz.id());
+  const angulo = new Map([[raiz.id(), 0]]);
+  posicoes.set(raiz.id(), { x: 0, y: 0 });
+
+  const porNivel = new Map();
+  nos.forEach((n) => {
+    if (n.id() === raiz.id()) return;
+    const d = distancias.get(n.id()) ?? 1 + Math.max(0, ...distancias.values());
+    if (!porNivel.has(d)) porNivel.set(d, []);
+    porNivel.get(d).push(n);
   });
-  layoutAtual.run();
+
+  for (const d of [...porNivel.keys()].sort((a, b) => a - b)) {
+    const anel = porNivel.get(d);
+    const raio = d * (ehMovel() ? RAIO_POR_NIVEL_MOVEL : RAIO_POR_NIVEL);
+    const passoMinimo = Math.min(LARGURA_ROTULO / raio, (2 * Math.PI) / anel.length);
+    let angulos;
+    if (d === 1) {
+      // Primeiro anel: distribuído por igual, girado para o ângulo em que o
+      // foco e os vizinhos melhor cabem na área livre. Numa tela em pé, dois
+      // vizinhos vão para cima e para baixo em vez de saírem pelas bordas.
+      angulos = girarParaCaber(anel.length, raio);
+    } else {
+      // Anéis de fora: cada nó mira o ângulo médio dos vizinhos do anel de
+      // dentro; depois uma varredura afasta quem ficou perto demais.
+      const alvo = anel.map((n) => {
+        const pais = n.neighborhood("node").filter((v) => angulo.has(v.id()) && distancias.get(v.id()) === d - 1);
+        if (pais.empty()) return 0;
+        const sx = pais.reduce((s, p) => s + Math.cos(angulo.get(p.id())), 0);
+        const sy = pais.reduce((s, p) => s + Math.sin(angulo.get(p.id())), 0);
+        return Math.atan2(sy, sx);
+      });
+      const ordem = anel.map((n, i) => ({ n, a: alvo[i] })).sort((p, q) => p.a - q.a);
+      for (let i = 1; i < ordem.length; i++) {
+        ordem[i].a = Math.max(ordem[i].a, ordem[i - 1].a + passoMinimo);
+      }
+      // Centraliza o bloco no ângulo-alvo médio (a varredura só empurra para um lado).
+      const deslocamento =
+        ordem.reduce((s, o, i) => s + (o.a - alvo[anel.indexOf(o.n)]), 0) / Math.max(1, ordem.length);
+      ordem.forEach((o) => (o.a -= deslocamento));
+      // Dando a volta no círculo, o último pode encostar no primeiro:
+      // nesse caso o anel está cheio e vai distribuído por igual.
+      const fechaVolta = ordem.length > 1 && ordem[0].a + 2 * Math.PI - ordem[ordem.length - 1].a < passoMinimo;
+      if (fechaVolta) ordem.forEach((o, i) => (o.a = ordem[0].a + (2 * Math.PI * i) / ordem.length));
+      anel.splice(0, anel.length, ...ordem.map((o) => o.n));
+      angulos = ordem.map((o) => o.a);
+    }
+    anel.forEach((n, i) => {
+      angulo.set(n.id(), angulos[i]);
+      posicoes.set(n.id(), { x: raio * Math.cos(angulos[i]), y: raio * Math.sin(angulos[i]) });
+    });
+  }
+  return posicoes;
+}
+
+function girarParaCaber(quantos, raio) {
+  const livre = areaLivre();
+  const larg = Math.max(1, livre.x2 - livre.x1);
+  const alt = Math.max(1, livre.y2 - livre.y1);
+  const passo = (2 * Math.PI) / quantos;
+  let melhor = { custo: Infinity, inicio: 0 };
+  for (let k = 0; k < 24; k++) {
+    const inicio = -Math.PI / 2 + (passo * k) / 24;
+    const xs = [0], ys = [0];
+    for (let i = 0; i < quantos; i++) {
+      xs.push(raio * Math.cos(inicio + passo * i));
+      ys.push(raio * Math.sin(inicio + passo * i));
+    }
+    const custo = Math.max(
+      (Math.max(...xs) - Math.min(...xs) + LARGURA_ROTULO) / larg,
+      (Math.max(...ys) - Math.min(...ys) + ALTURA_NO_COM_ROTULO) / alt
+    );
+    if (custo < melhor.custo - 1e-9) melhor = { custo, inicio };
+  }
+  return Array.from({ length: quantos }, (_, i) => melhor.inicio + passo * i);
+}
+
+// Retângulo da tela (em px do container) que nenhum painel cobre.
+function areaLivre() {
+  const caixa = cy.container().getBoundingClientRect();
+  // Só a parte do container que está na janela conta: com o celular
+  // deitado, o cabeçalho empurra o mapa e parte dele fica abaixo da dobra.
+  const livre = {
+    x1: 0,
+    y1: Math.max(0, -caixa.top),
+    x2: caixa.width,
+    y2: Math.min(caixa.height, window.innerHeight - caixa.top),
+  };
+  const visivel = (el) => el && !el.hidden && !el.classList.contains("oculto") && el.offsetParent !== null;
+  const rel = (el) => {
+    const r = el.getBoundingClientRect();
+    return { x1: r.left - caixa.left, x2: r.right - caixa.left, y1: r.top - caixa.top, y2: r.bottom - caixa.top };
+  };
+  if (!ehMovel()) {
+    for (const seletor of ["#mapa-controles", "#detalhes"]) {
+      const el = document.querySelector(seletor);
+      if (!visivel(el)) continue;
+      const r = rel(el);
+      if (r.x1 < caixa.width / 2) livre.x1 = Math.max(livre.x1, r.x2);
+      else livre.x2 = Math.min(livre.x2, r.x1);
+    }
+  }
+  for (const seletor of [".ferramentas", "#trilha", "#alca-detalhes"]) {
+    const el = document.querySelector(seletor);
+    // A alça só aparece depois da centralização (ver atualizarAlca), mas o
+    // enquadramento é calculado antes: reserva o lugar dela se vai aparecer.
+    const alcaVaiAparecer =
+      seletor === "#alca-detalhes" &&
+      ehMovel() &&
+      alcaCabe() &&
+      document.querySelector("#detalhes").classList.contains("oculto") &&
+      document.querySelector("#mapa-controles").classList.contains("oculto");
+    if (!visivel(el) && !alcaVaiAparecer) continue;
+    const escondida = el.hidden;
+    el.hidden = false;
+    const r = rel(el);
+    el.hidden = escondida;
+    // A alça é fixa no rodapé da janela: sempre limita por baixo, mesmo
+    // quando a janela corta o mapa e ela cai no meio do container.
+    const emCima = seletor !== "#alca-detalhes" && r.y1 < (livre.y1 + livre.y2) / 2;
+    if (emCima) livre.y1 = Math.max(livre.y1, r.y2);
+    else livre.y2 = Math.min(livre.y2, r.y1);
+  }
+  // Painéis largos demais para a tela: ignora e usa o container inteiro.
+  if (livre.x2 - livre.x1 < 200) Object.assign(livre, { x1: 0, x2: caixa.width });
+  if (livre.y2 - livre.y1 < 120) Object.assign(livre, { y1: Math.max(0, -caixa.top), y2: Math.min(caixa.height, window.innerHeight - caixa.top) });
+  return livre;
+}
+
+// Câmera que enquadra `caixa` (coordenadas do modelo) na área livre.
+function cameraPara(caixa, livre, zoomFixo = null) {
+  const larg = livre.x2 - livre.x1 - 2 * MARGEM_ENQUADRAR;
+  const alt = livre.y2 - livre.y1 - 2 * MARGEM_ENQUADRAR;
+  const zoom = zoomFixo ?? Math.min(larg / Math.max(caixa.w, 1), alt / Math.max(caixa.h, 1), ZOOM_MAXIMO_ENQUADRAR);
+  const cx = (caixa.x1 + caixa.x2) / 2;
+  const cy_ = (caixa.y1 + caixa.y2) / 2;
+  return {
+    zoom,
+    pan: { x: (livre.x1 + livre.x2) / 2 - zoom * cx, y: (livre.y1 + livre.y2) / 2 - zoom * cy_ },
+  };
+}
+
+// As caixas incluem os rótulos; como a largura do rótulo em modelo não muda
+// com o zoom, medir no zoom 1 basta.
+function enquadramento(raiz) {
+  const livre = areaLivre();
+  const caixaDe = (els) => els.boundingBox({ includeLabels: true });
+  const tudo = cameraPara(caixaDe(cy.elements(":visible")), livre);
+  if (tudo.zoom >= ZOOM_LEGIVEL || !raiz) return tudo;
+  const vizinhos = cameraPara(caixaDe(raiz.closedNeighborhood(":visible")), livre);
+  if (vizinhos.zoom >= ZOOM_LEGIVEL) return vizinhos;
+  return cameraPara(caixaDe(raiz), livre, ZOOM_LEGIVEL);
+}
+
+function rodarLayout(raiz) {
+  cy.stop(true);
+  cy.nodes().stop(true);
+
+  const nos = cy.nodes(":visible");
+  const antes = new Map(nos.map((n) => [n.id(), { ...n.position() }]));
+  let depois = posicoesRadiais(raiz, nos);
+  if (!raiz) {
+    // Sem foco (o nó em foco foi ocultado): círculo simples com o que sobrou.
+    const raio = Math.max(ehMovel() ? RAIO_POR_NIVEL_MOVEL : RAIO_POR_NIVEL, (nos.length * LARGURA_ROTULO) / (2 * Math.PI));
+    depois = new Map(
+      nos.map((n, i) => [n.id(), { x: raio * Math.cos((2 * Math.PI * i) / nos.length), y: raio * Math.sin((2 * Math.PI * i) / nos.length) }])
+    );
+  }
+
+  // Aplica as posições finais só para medir o enquadramento; depois nós e
+  // câmera animam juntos até lá, num movimento só.
+  nos.forEach((n) => n.position(depois.get(n.id())));
+  const camera = enquadramento(raiz);
+
+  if (!animacoesOk()) {
+    cy.viewport(camera);
+    return;
+  }
+  const duracao = 400;
+  nos.forEach((n) => {
+    n.position(antes.get(n.id()));
+    n.animate({ position: depois.get(n.id()) }, { duration: duracao, easing: "ease-in-out-cubic" });
+  });
+  cy.animate(camera, { duration: duracao, easing: "ease-in-out-cubic" });
 }
 
 // `abrirPainel: false` para centralizações que não vêm de um gesto do
@@ -637,6 +829,11 @@ function centralizarEm(
 }
 
 // A alça aparece no celular quando o card está fechado e há um nó em foco.
+// Em tela baixa (celular deitado) ela cobriria o meio do mapa; ali o botão
+// de detalhes da barra de ferramentas basta.
+const ALTURA_MINIMA_ALCA = 500;
+const alcaCabe = () => window.innerHeight >= ALTURA_MINIMA_ALCA;
+
 function atualizarAlca() {
   const alca = document.querySelector("#alca-detalhes");
   if (!alca) return;
@@ -644,7 +841,7 @@ function atualizarAlca() {
   const no = emFoco && emFoco.nonempty() ? noPorId(emFoco.id()) : null;
   const cardFechado = document.querySelector("#detalhes").classList.contains("oculto");
   const controlesFechados = document.querySelector("#mapa-controles").classList.contains("oculto");
-  alca.hidden = !(ehMovel() && no && cardFechado && controlesFechados);
+  alca.hidden = !(ehMovel() && alcaCabe() && no && cardFechado && controlesFechados);
   if (no) alca.querySelector(".alca-nome").innerHTML = `${iconeInline(categoriaDoNo(no), corDoNo(no))}${escapar(
     truncar(rotuloDoNo(no), 40)
   )}`;
@@ -1935,7 +2132,11 @@ async function iniciar() {
     iniciarGrafo(grafoData);
     montarPassagens();
     await montarTimeline();
-    window.addEventListener("resize", () => cy && cy.resize());
+    window.addEventListener("resize", () => {
+      if (!cy) return;
+      cy.resize();
+      atualizarAlca(); // girar o celular muda a altura, e a alça pode deixar de caber
+    });
     // Depois do grafo de pe: um link com #dossie=<id> abre direto na ficha.
     sincronizarDossieComHash();
   } catch (erro) {
