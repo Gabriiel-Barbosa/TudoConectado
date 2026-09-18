@@ -117,7 +117,10 @@ function mudarView(nome) {
   // A leitura de um capítulo não tem aba própria: ela é a aba Passagens
   // aprofundada, e é essa aba que fica marcada.
   const aba = nome === "leitura" ? "passagens" : nome;
-  if (nome !== "leitura") fecharNota({ devolverFoco: false });
+  if (nome !== "leitura") {
+    fecharNota({ devolverFoco: false });
+    fecharPersonagem();
+  }
   botoesNav.forEach((b) => {
     const ativo = b.dataset.view === aba;
     b.classList.toggle("ativo", ativo);
@@ -2393,6 +2396,11 @@ function htmlLateral(capitulo, itens) {
         <h3>${iconeUI("leitura")}${escapar(capitulo.livro)}</h3>
         <nav class="grade-capitulos" aria-label="Capítulos de ${escapar(capitulo.livro)}">${grade}</nav>
       </section>
+      ${
+        personagensDoCapitulo(capitulo).length
+          ? `<section class="lateral-bloco"><h3>${iconeInline("pessoa", corDaCategoria("pessoa"))}Personagens</h3>${htmlChipsPersonagens(capitulo)}<p class="lateral-dica">Passe o mouse para ver onde aparecem; clique para a ficha técnica.</p></section>`
+          : ""
+      }
       <section class="lateral-bloco">
         <h3>${iconeUI("evidencia")}Legenda</h3>
         <p class="lateral-dica">As palavras sublinhadas no texto abrem uma nota. Toque num tipo para mostrá-lo ou escondê-lo.</p>
@@ -2409,6 +2417,7 @@ function htmlCabecalho(capitulo, itens) {
       <p class="leitura-eyebrow">${escapar(passagem.referencia)} · ${plural(itens.length, "nota", "notas")}</p>
       <h2 class="leitura-titulo">${escapar(passagem.titulo || passagem.referencia)}</h2>
       <div class="leitura-resumo">${passagem.afirma.map((frase) => `<p>${comCitacoes(frase)}</p>`).join("")}</div>
+      ${htmlChipsPersonagens(capitulo)}
     </header>`;
 }
 
@@ -2569,6 +2578,7 @@ async function abrirCapitulo(id, { atualizarHash = true } = {}) {
     return;
   }
   fecharNota({ devolverFoco: false });
+  personagemAberto = null;
   capituloAberto = { dados, itens: itensDoCapitulo(dados) };
   const { itens } = capituloAberto;
 
@@ -2594,7 +2604,13 @@ async function abrirCapitulo(id, { atualizarHash = true } = {}) {
         </button>
       </div>
       <div class="nota-corpo"></div>
-    </div>`;
+    </div>
+    <aside class="ficha-personagem" hidden role="dialog" aria-modal="false" aria-labelledby="ficha-titulo">
+      <button class="ficha-fechar" aria-label="Fechar ficha">
+        <svg viewBox="0 0 24 24" class="icone"><path d="M18 6 6 18" /><path d="m6 6 12 12" /></svg>
+      </button>
+      <div class="ficha-corpo"></div>
+    </aside>`;
 
   aplicarTemasOcultosLeitura();
   ligarBiblia(painel);
@@ -2794,6 +2810,7 @@ function ligarBiblia(raiz) {
   pop.querySelector(".nota-anterior").addEventListener("click", () => navegarNota(-1));
   pop.querySelector(".nota-seguinte").addEventListener("click", () => navegarNota(1));
   pop.addEventListener("click", (evento) => evento.stopPropagation());
+  ligarPersonagens(raiz);
 }
 
 // Índice que acompanha a leitura: as notas dos versículos que estão na faixa
@@ -2834,7 +2851,10 @@ function configurarBiblia() {
     if (pop && !pop.hidden && !pop.contains(evento.target)) fecharNota({ devolverFoco: false });
   });
   document.addEventListener("keydown", (evento) => {
-    if (!notaAberta) return;
+    if (!notaAberta) {
+      if (evento.key === "Escape" && personagemAberto) fecharPersonagem();
+      return;
+    }
     if (evento.key === "Escape") fecharNota();
     else if (evento.key === "ArrowRight") navegarNota(1);
     else if (evento.key === "ArrowLeft") navegarNota(-1);
@@ -2851,6 +2871,262 @@ function configurarBiblia() {
     atualizarProgresso();
     posicionarNota();
   });
+}
+
+// --- Personagens do capítulo ------------------------------------------------------
+// Os personagens são os registros tipo=pessoa que a passagem cita
+// (registros_citados). Cada um tem uma ficha técnica derivada do grafo:
+// descrição, datações, conexões e os objetos historicamente comprovados.
+
+// "Comprovado historicamente": objeto ligado por evidência material
+// (achado arqueológico ou inscrição) com força forte. O critério aparece na
+// própria ficha, para o leitor saber o que entrou e o que ficou de fora.
+const APOIO_MATERIAL = new Set(["achado_arqueologico", "inscricao"]);
+const FORCA_COMPROVADA = new Set(["bem_estabelecido", "aceito_maioria"]);
+
+let personagemAberto = null;
+
+function personagensDoCapitulo(capitulo) {
+  return grafo.arestas
+    .filter((a) => a.tipo === "cita" && a.origem === capitulo.passagem.id)
+    .map((a) => noPorId(a.destino))
+    .filter((no) => no?.tipo === "registro" && no.subtipo === "pessoa");
+}
+
+// Versículos em que o personagem aparece: o nome ou um dos outros nomes,
+// como palavra inteira, sem diferenciar maiúsculas.
+function versiculosDoPersonagem(capitulo, pessoa) {
+  const nomes = [pessoa.nome, ...(pessoa.alias || [])].filter(Boolean);
+  const padroes = nomes.map((n) => new RegExp(`(^|[^\\p{L}])${n.replace(/[.*+?^${}()|[\]\\]/g, "\\// A aba Passagens é a Bíblia: abre o capítulo em leitura (ou o primeiro).")}(?=$|[^\\p{L}])`, "iu"));
+  return capitulo.versiculos.filter((v) => padroes.some((p) => p.test(v.texto))).map((v) => v.n);
+}
+
+// Vizinhos no grafo, pelo caminho que importa para a ficha: ligações com
+// evidência e as afirmações sobre o personagem (e, através delas, quem as
+// confirma ou contradiz).
+function conexoesDoPersonagem(pessoa) {
+  const vizinhos = new Map();
+  const juntar = (no, aresta, via = null) => {
+    if (!no || no.id === pessoa.id || vizinhos.has(no.id)) return;
+    vizinhos.set(no.id, { no, aresta, via });
+  };
+  for (const a of grafo.arestas) {
+    if (a.origem !== pessoa.id && a.destino !== pessoa.id) continue;
+    if (a.tipo === "cita") continue;
+    const outro = noPorId(a.origem === pessoa.id ? a.destino : a.origem);
+    juntar(outro, a);
+    if (outro?.tipo === "afirmacao") {
+      for (const b of grafo.arestas) {
+        if (!b.forca || (b.origem !== outro.id && b.destino !== outro.id)) continue;
+        juntar(noPorId(b.origem === outro.id ? b.destino : b.origem), b, outro);
+      }
+    }
+  }
+  return [...vizinhos.values()];
+}
+
+function objetosComprovados(pessoa) {
+  return conexoesDoPersonagem(pessoa).filter(
+    ({ no, aresta }) =>
+      no.subtipo === "objeto" && APOIO_MATERIAL.has(aresta.tipo_de_apoio) && FORCA_COMPROVADA.has(aresta.forca)
+  );
+}
+
+// Mini-grafo radial: o personagem no centro, os vizinhos em volta. É SVG
+// puro (sem o Cytoscape), porque cabe em 300px e não precisa de física.
+function htmlMiniGrafo(pessoa, conexoes) {
+  if (conexoes.length === 0) return `<p class="ficha-vazio">Nenhuma conexão registrada ainda.</p>`;
+  const largura = 320;
+  const altura = 240;
+  const cx = largura / 2;
+  const cy_ = altura / 2;
+  const raio = 88;
+  const itens = conexoes.slice(0, 10);
+  const pontos = itens.map((c, i) => {
+    const angulo = -Math.PI / 2 + (2 * Math.PI * i) / itens.length;
+    return { ...c, x: cx + raio * Math.cos(angulo), y: cy_ + raio * Math.sin(angulo) };
+  });
+  const linhas = pontos
+    .map(
+      (p) =>
+        `<line x1="${cx}" y1="${cy_}" x2="${p.x.toFixed(1)}" y2="${p.y.toFixed(1)}" class="mini-linha${
+          p.aresta.forca ? "" : " estrutural"
+        }" />`
+    )
+    .join("");
+  const nos = pontos
+    .map((p) => {
+      const categoria = categoriaDoNo(p.no);
+      const rotulo = truncar(rotuloDoNo(p.no), 18);
+      const abaixo = p.y >= cy_;
+      return `<g class="mini-no" role="button" tabindex="0" data-id="${escapar(p.no.id)}" aria-label="${escapar(
+        rotuloDoNo(p.no)
+      )}">
+        <title>${escapar(rotuloDoNo(p.no))}</title>
+        <circle cx="${p.x.toFixed(1)}" cy="${p.y.toFixed(1)}" r="11" style="stroke: ${corDaCategoria(categoria)}" />
+        <text x="${p.x.toFixed(1)}" y="${(p.y + (abaixo ? 26 : -17)).toFixed(1)}" text-anchor="middle">${escapar(rotulo)}</text>
+      </g>`;
+    })
+    .join("");
+  const extra = conexoes.length > itens.length ? `<p class="etiqueta">+${conexoes.length - itens.length} no mapa</p>` : "";
+  return `
+    <svg class="mini-grafo" viewBox="0 0 ${largura} ${altura}" role="img" aria-label="Conexões de ${escapar(pessoa.nome)}">
+      ${linhas}
+      <circle cx="${cx}" cy="${cy_}" r="17" class="mini-centro" />
+      <text x="${cx}" y="${cy_ + 34}" text-anchor="middle" class="mini-centro-rotulo">${escapar(truncar(pessoa.nome, 22))}</text>
+      ${nos}
+    </svg>${extra}`;
+}
+
+function htmlFichaPersonagem(capitulo, pessoa) {
+  const versos = versiculosDoPersonagem(capitulo, pessoa);
+  const conexoes = conexoesDoPersonagem(pessoa);
+  const objetos = objetosComprovados(pessoa);
+  const datacoes = conexoes
+    .filter(({ no, via }) => no.tipo === "afirmacao" && !via)
+    .flatMap(({ no }) => (no.datacao || []).map((d) => ({ ...d, afirmacao: no })));
+
+  const htmlObjetos = objetos.length
+    ? `<ul class="ficha-objetos">${objetos
+        .map(
+          ({ no, aresta, via }) => `<li>
+            <button class="ficha-objeto" data-id="${escapar(no.id)}">
+              <span class="ficha-objeto-nome">${iconeInline("objeto", corDaCategoria("objeto"))}${escapar(no.nome)}</span>
+              <span class="pill ${classePill(aresta.forca)}">${escapar(rotuloForca(aresta.forca))}</span>
+            </button>
+            <p>${escapar(no.descricao || "")}</p>
+            ${via ? `<p class="etiqueta">${escapar(verboDaLigacao(aresta.tipo))}: “${escapar(via.texto.trim().replace(/\.$/, ""))}”</p>` : ""}
+          </li>`
+        )
+        .join("")}</ul>`
+    : `<p class="ficha-vazio">Nenhum objeto arqueológico comprovado está ligado a este personagem até agora. Isso não quer dizer que não exista: quer dizer que nenhum foi cadastrado com fonte conferida.</p>`;
+
+  return `
+    <p class="ficha-eyebrow">${iconeInline("pessoa", corDaCategoria("pessoa"))}Personagem · ${escapar(capitulo.livro)} ${capitulo.capitulo}</p>
+    <h2 id="ficha-titulo">${escapar(pessoa.nome)}</h2>
+    ${(pessoa.alias || []).length ? `<p class="ficha-alias">${pessoa.alias.map((a) => `<span>${escapar(a)}</span>`).join("")}</p>` : ""}
+    <p class="ficha-descricao">${comCitacoes(pessoa.descricao || "")}</p>
+
+    <dl class="ficha-tecnica">
+      <div><dt>Aparece em</dt><dd>${plural(versos.length, "versículo", "versículos")} deste capítulo${
+        versos.length ? ` <button class="ficha-realcar" aria-pressed="false">Realçar no texto</button>` : ""
+      }</dd></div>
+      <div><dt>Conexões</dt><dd>${plural(conexoes.length, "elemento", "elementos")} no mapa</dd></div>
+      <div><dt>Objetos comprovados</dt><dd>${objetos.length}</dd></div>
+    </dl>
+
+    ${
+      datacoes.length
+        ? `<section class="ficha-secao"><h3>${iconeUI("datacao")}Datação</h3><ul class="lateral-datacoes">${datacoes
+            .map((d) => `<li><strong>${escapar(formatarPeriodo(d.periodo))}</strong><span>${comCitacoes(primeiraFrase(d.segundo_quem.trim())[0])}</span></li>`)
+            .join("")}</ul></section>`
+        : ""
+    }
+
+    <section class="ficha-secao"><h3>${iconeUI("conexoes")}Conexões</h3>${htmlMiniGrafo(pessoa, conexoes)}</section>
+
+    <section class="ficha-secao">
+      <h3>${iconeUI("evidencia")}Objetos comprovados historicamente</h3>
+      <p class="lateral-dica">Entram só objetos ligados por achado arqueológico ou inscrição, com força “bem estabelecido” ou “aceito pela maioria”.</p>
+      ${htmlObjetos}
+    </section>
+
+    <button class="card-leitura-mapa ficha-mapa" data-id="${escapar(pessoa.id)}">${iconeUI("conexoes")}Ver ${escapar(pessoa.nome)} no mapa</button>`;
+}
+
+function abrirPersonagem(id) {
+  const pessoa = noPorId(id);
+  const painel = document.querySelector(".ficha-personagem");
+  if (!pessoa || !painel || !capituloAberto) return;
+  fecharNota({ devolverFoco: false });
+  realcarPersonagem(null);
+  personagemAberto = id;
+  painel.querySelector(".ficha-corpo").innerHTML = htmlFichaPersonagem(capituloAberto.dados, pessoa);
+  painel.hidden = false;
+  requestAnimationFrame(() => painel.classList.add("aberta"));
+  document.querySelectorAll(".chip-personagem").forEach((c) => c.classList.toggle("ativo", c.dataset.id === id));
+
+  const irParaMapa = (alvo) => {
+    fecharPersonagem();
+    history.pushState(null, "", location.pathname);
+    mudarView("mapa");
+    centralizarEm(alvo);
+  };
+  painel.querySelectorAll(".ficha-mapa, .ficha-objeto").forEach((b) => b.addEventListener("click", () => irParaMapa(b.dataset.id)));
+  painel.querySelectorAll(".mini-no").forEach((g) => {
+    const abrir = () => {
+      const no = noPorId(g.dataset.id);
+      if (no?.subtipo === "pessoa" && personagensDoCapitulo(capituloAberto.dados).some((p) => p.id === no.id)) abrirPersonagem(no.id);
+      else irParaMapa(g.dataset.id);
+    };
+    g.addEventListener("click", abrir);
+    g.addEventListener("keydown", (e) => {
+      if (e.key === "Enter" || e.key === " ") {
+        e.preventDefault();
+        abrir();
+      }
+    });
+  });
+  const realcar = painel.querySelector(".ficha-realcar");
+  realcar?.addEventListener("click", () => {
+    const ligado = realcar.getAttribute("aria-pressed") !== "true";
+    realcar.setAttribute("aria-pressed", String(ligado));
+    realcarPersonagem(ligado ? id : null);
+  });
+  painel.querySelector(".ficha-fechar").focus({ preventScroll: true });
+}
+
+function fecharPersonagem() {
+  const painel = document.querySelector(".ficha-personagem");
+  if (!painel || painel.hidden) return;
+  painel.classList.remove("aberta");
+  realcarPersonagem(null);
+  document.querySelectorAll(".chip-personagem.ativo").forEach((c) => c.classList.remove("ativo"));
+  const id = personagemAberto;
+  personagemAberto = null;
+  setTimeout(() => (painel.hidden = !painel.classList.contains("aberta") ? true : painel.hidden), animacoesOk() ? 220 : 0);
+  document.querySelector(`.chip-personagem[data-id="${CSS.escape(id || "")}"]`)?.focus({ preventScroll: true });
+}
+
+function realcarPersonagem(id) {
+  document.querySelectorAll(".versiculo.do-personagem").forEach((v) => v.classList.remove("do-personagem"));
+  if (!id || !capituloAberto) return;
+  const pessoa = noPorId(id);
+  for (const n of versiculosDoPersonagem(capituloAberto.dados, pessoa)) {
+    document.querySelector(`#v-${n}`)?.classList.add("do-personagem");
+  }
+}
+
+function htmlChipsPersonagens(capitulo) {
+  const pessoas = personagensDoCapitulo(capitulo);
+  if (!pessoas.length) return "";
+  return `<ul class="chips-personagens" aria-label="Personagens do capítulo">${pessoas
+    .map((p) => {
+      const n = versiculosDoPersonagem(capitulo, p).length;
+      return `<li><button class="chip-personagem" data-id="${escapar(p.id)}" aria-haspopup="dialog" title="Ficha técnica de ${escapar(
+        p.nome
+      )}">${iconeInline("pessoa", corDaCategoria("pessoa"))}<span>${escapar(p.nome)}</span><span class="chip-contagem">${n}</span></button></li>`;
+    })
+    .join("")}</ul>`;
+}
+
+function ligarPersonagens(raiz) {
+  raiz.querySelectorAll(".chip-personagem").forEach((chip) => {
+    chip.addEventListener("click", (e) => {
+      e.stopPropagation();
+      if (personagemAberto === chip.dataset.id) fecharPersonagem();
+      else abrirPersonagem(chip.dataset.id);
+    });
+    chip.addEventListener("mouseenter", () => {
+      if (!personagemAberto) realcarPersonagem(chip.dataset.id);
+    });
+    chip.addEventListener("mouseleave", () => {
+      if (!personagemAberto) realcarPersonagem(null);
+    });
+  });
+  const painel = raiz.querySelector(".ficha-personagem");
+  painel?.querySelector(".ficha-fechar").addEventListener("click", () => fecharPersonagem());
+  painel?.addEventListener("click", (e) => e.stopPropagation());
 }
 
 // A aba Passagens é a Bíblia: abre o capítulo em leitura (ou o primeiro).

@@ -1,0 +1,27 @@
+# Gerado por .claude/skills/conferir/scripts/registrar.js — vereditos da
+# Contraprova para as fontes desta ligação. Edite à mão só 'revisao_humana'
+# (pendente -> feita) depois de conferir você mesmo.
+ligacao: amuletos-de-ketef-hinnom-confirma-nome-yhwh-fora-da-biblia
+fontes:
+  - hash: c2f53cdf7589
+    nivel: 2
+    descricao: >-
+      Waaler, E. (2002), "A Revised Date for Pentateuchal Texts? Evidence from Ketef Hinnom",
+      Tyndale Bulletin 53.1, pp. 29 e 35, doi:10.53751/001c.30240
+    alegacao: >-
+      Waaler (2002) atesta, na p. 29, que os amuletos de Ketef Hinnom são datados entre 725 e 650
+      a.C. e contêm a bênção sacerdotal, e, na p. 35, que o nome Yahweh aparece nas inscrições dos
+      amuletos.
+    veredito: confirmada
+    parou_em: null
+    conferido_em: >-
+      cópia local do PDF oficial
+      https://www.tyndalebulletin.org/article/30240-a-revised-date-for-pentateuchal-texts-evidence-from-ketef-hinnom.pdf,
+      pp. 29 e 35
+    observacao: >-
+      p. 29: "the amulets are dated between 725 and 650 BC. The amulets contain material from the
+      Priestly source (Nu. 6:24-26)"; p. 35: "...on the first amulet line 15 and the second amulet
+      lines 6 and 8-9, all of them in the name of Yahweh".
+    data: '2026-09-18'
+    conferido_por: contraprova
+    revisao_humana: pendente

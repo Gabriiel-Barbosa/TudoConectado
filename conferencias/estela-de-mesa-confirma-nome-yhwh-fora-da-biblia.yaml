@@ -1,0 +1,42 @@
+# Gerado por .claude/skills/conferir/scripts/registrar.js — vereditos da
+# Contraprova para as fontes desta ligação. Edite à mão só 'revisao_humana'
+# (pendente -> feita) depois de conferir você mesmo.
+ligacao: estela-de-mesa-confirma-nome-yhwh-fora-da-biblia
+fontes:
+  - hash: 815713953b6e
+    nivel: 1
+    descricao: >-
+      Estela de Mesa, Museu do Louvre, Departamento de Antiguidades Orientais, AO 5066 (ficha do
+      objeto: inscrição de 34 linhas, gravada pouco depois de 842 a.C.)
+    alegacao: >-
+      A ficha do Louvre registra a Estela de Mesa com o número AO 5066, uma inscrição de 34 linhas
+      do rei Mesa de Moabe, gravada pouco depois de 842 a.C.
+    veredito: confirmada
+    parou_em: null
+    conferido_em: https://collections.louvre.fr/en/ark:/53355/cl010120339 (ficha oficial do objeto)
+    observacao: >-
+      "34 lignes en caractère de type phénicien et en dialecte très proche de l'hébreu"; "Gravé peu
+      après 842"; identifica o rei Mesha de Moabe. A ficha também traz a referência KAI 181.
+    data: '2026-09-18'
+    conferido_por: contraprova
+    revisao_humana: pendente
+  - hash: a1ca9422f472
+    nivel: 2
+    descricao: >-
+      Rendsburg, G. A. (2007), "bʿaw in Mesha Stele, Line 12", Maarav 14.1, pp. 9–25 (transliteração
+      e tradução das linhas 17–18 na p. 22)
+    alegacao: >-
+      Rendsburg (2007), p. 22, traz a transliteração e a tradução das linhas 17–18 da Estela de
+      Mesa, em que o rei diz ter tomado os vasos de YHWH e os levado diante de Camós, e registra que
+      a leitura é aceita por quase todos os estudiosos.
+    veredito: confirmada
+    parou_em: null
+    conferido_em: >-
+      https://jewishstudies.rutgers.edu/images/documents/faculty/Rendsburg/Maarav_Mesha_Stele_line12.pdf
+      (baixado e extraído), p. 22
+    observacao: >-
+      p. 22: "and I took from there the vessels of Yahweh, and I dragged them before Kemosh"; "the
+      reading ylk 'vessels of' is restored, but almost all scholars agree on this reading."
+    data: '2026-09-18'
+    conferido_por: contraprova
+    revisao_humana: pendente

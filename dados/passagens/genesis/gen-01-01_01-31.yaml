@@ -16,7 +16,9 @@ afirma:
     Deus cria o ser humano, homem e mulher, à sua imagem, abençoa-o e lhe dá
     domínio sobre os animais. Cada dia termina com a frase “e foi a tarde e
     a manhã”, e Deus vê que o que fez é bom.
-registros_citados: []
+registros_citados:
+  - deus
+  - ser-humano
 paralelos_externos:
   - ligacao: enuma-elish-paralelo-genesis
   - ligacao: textos-das-piramides-e-dos-sarcofagos-paralelo-genesis

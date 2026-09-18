@@ -1,12 +1,33 @@
 {
   "nos": [
     {
+      "id": "deus",
+      "tipo": "registro",
+      "subtipo": "pessoa",
+      "nome": "Deus",
+      "alias": [
+        "Elohim",
+        "YHWH"
+      ],
+      "descricao": "Em Gênesis 1, o criador de tudo o que existe, que faz o mundo pela palavra ao longo de seis dias. O texto hebraico deste capítulo o chama de Elohim. Em outros trechos da Bíblia hebraica, o deus de Israel também é chamado pelo nome próprio YHWH.\n"
+    },
+    {
       "id": "moises",
       "tipo": "registro",
       "subtipo": "pessoa",
       "nome": "Moisés",
       "alias": [],
       "descricao": "Personagem bíblico, figura central do livro de Êxodo, o segundo livro da Bíblia. Segundo a tradição judaica e cristã, foi Moisés quem escreveu o Pentateuco (os cinco primeiros livros da Bíblia), incluindo Gênesis. A crítica bíblica acadêmica moderna estuda a Bíblia com os métodos da história e da análise de textos. Nela, estão em disputa tanto a existência histórica de Moisés quanto a autoria do Pentateuco que a tradição lhe atribui (ver Hipótese Documentária).\n"
+    },
+    {
+      "id": "ser-humano",
+      "tipo": "registro",
+      "subtipo": "pessoa",
+      "nome": "Ser humano",
+      "alias": [
+        "macho e fêmea"
+      ],
+      "descricao": "Em Gênesis 1, a humanidade que Deus cria no sexto dia, homem e mulher, à sua imagem e semelhança, e a quem dá domínio sobre os peixes, as aves e os animais da terra. O texto não dá nome a ninguém: Adão e Eva só aparecem, com nome, nos capítulos seguintes.\n"
     },
     {
       "id": "missao-planck",
@@ -120,6 +141,24 @@
       "descricao": "Conjuntos de textos religiosos do antigo Egito, gravados nas pirâmides do Antigo Império e escritos em sarcófagos do Médio Império. Entre outras coisas, contam como o mundo surgiu das águas primordiais e como o céu foi mantido afastado da terra e dessas águas."
     },
     {
+      "id": "amuletos-de-ketef-hinnom",
+      "tipo": "registro",
+      "subtipo": "objeto",
+      "nome": "Amuletos de Ketef Hinnom",
+      "alias": [],
+      "descricao": "Dois pequenos rolos de prata achados numa câmara funerária em Ketef Hinnom, em Jerusalém. Trazem uma forma abreviada da bênção sacerdotal de Números 6:24–26, em que aparece o nome YHWH.\n"
+    },
+    {
+      "id": "estela-de-mesa",
+      "tipo": "registro",
+      "subtipo": "objeto",
+      "nome": "Estela de Mesa",
+      "alias": [
+        "Pedra Moabita"
+      ],
+      "descricao": "Estela de basalto do rei Mesa, de Moabe, achada em 1868 em Dhiban, na atual Jordânia. Traz uma inscrição de 34 linhas numa língua muito próxima do hebraico. Está no Museu do Louvre, com o número AO 5066.\n"
+    },
+    {
       "id": "manuscrito-6qpaleogen",
       "tipo": "registro",
       "subtipo": "objeto",
@@ -181,6 +220,27 @@
             -13774000000
           ],
           "segundo_quem": "Segundo a colaboração Planck (2020), na análise padrão e dentro do modelo cosmológico padrão, o universo tem 13,797 bilhões de anos, com margem de 23 milhões de anos para mais ou para menos. O intervalo registrado aqui é essa margem."
+        }
+      ]
+    },
+    {
+      "id": "nome-yhwh-fora-da-biblia",
+      "tipo": "afirmacao",
+      "texto": "O deus de Israel já era chamado pelo nome YHWH na Antiguidade, em textos de fora da Bíblia.",
+      "datacao": [
+        {
+          "periodo": [
+            -842,
+            -805
+          ],
+          "segundo_quem": "Segundo o catálogo do Museu do Louvre, a Estela de Mesa foi gravada pouco depois de 842 a.C., no reinado de Mesa, rei de Moabe (c. 830–805 a.C.). Nas linhas 17 e 18, o rei conta que tomou os vasos de YHWH e os levou diante de Camós, o deus de Moabe.\n"
+        },
+        {
+          "periodo": [
+            -725,
+            -650
+          ],
+          "segundo_quem": "Segundo Erik Waaler (2002), os amuletos de prata de Ketef Hinnom, que trazem o nome YHWH, são de entre 725 e 650 a.C. A datação é discutida: outros estudiosos situam os amuletos mais tarde, no fim do século VII ou no começo do século VI a.C.\n"
         }
       ]
     },
@@ -248,6 +308,30 @@
       ],
       "o_que_derrubaria": "A ideia de que o fragmento 6QpaleoGen é uma cópia antiga de Gênesis cairia em dois casos. Um deles seria uma nova análise paleográfica (a datação pelo estilo da letra) que empurrasse o fragmento para um período bem posterior. O outro seria a evidência de que o texto do 6QpaleoGen se afasta tanto de Gênesis 6 que já não dá para tratá-lo como o mesmo livro.\n",
       "notas": "O 6QpaleoGen é um fragmento com um trecho de Gênesis 6. Ele pertence aos manuscritos do Mar Morto, textos antigos achados em grutas junto ao Mar Morto. Entre esses manuscritos, é a cópia de Gênesis mais antiga conhecida até a publicação de Crawford (2012). Ser a mais antiga conhecida não faz dele a mais antiga que já existiu. O texto original de Gênesis é anterior a qualquer cópia que chegou até nós.\n"
+    },
+    {
+      "id": "amuletos-de-ketef-hinnom-confirma-nome-yhwh-fora-da-biblia__0",
+      "ligacao": "amuletos-de-ketef-hinnom-confirma-nome-yhwh-fora-da-biblia",
+      "origem": "amuletos-de-ketef-hinnom",
+      "destino": "nome-yhwh-fora-da-biblia",
+      "tipo": "confirma",
+      "forca": "aceito_maioria",
+      "tipo_de_apoio": "inscricao",
+      "quem_sustenta": [
+        {
+          "nome": "Erik Waaler",
+          "ano": 2002
+        }
+      ],
+      "fontes": [
+        {
+          "nivel": 2,
+          "descricao": "Waaler, E. (2002), \"A Revised Date for Pentateuchal Texts? Evidence from Ketef Hinnom\", Tyndale Bulletin 53.1, pp. 29 e 35, doi:10.53751/001c.30240",
+          "url": "https://www.tyndalebulletin.org/article/30240-a-revised-date-for-pentateuchal-texts-evidence-from-ketef-hinnom.pdf"
+        }
+      ],
+      "o_que_derrubaria": "A ideia de que os amuletos de Ketef Hinnom trazem o nome YHWH cairia se uma nova leitura das duas placas de prata mostrasse que as letras lidas como esse nome dizem outra coisa.\n",
+      "notas": "Os amuletos são pequenos objetos pessoais, enterrados com os mortos, e trazem uma forma abreviada da bênção sacerdotal de Números 6:24–26, com o nome YHWH repetido. Eles comprovam o uso do nome e dessa bênção, mas não dizem nada sobre Gênesis 1. A data é discutida: Waaler (2002) os põe entre 725 e 650 a.C., e outros estudiosos, mais tarde. O número de catálogo no Museu de Israel, onde estão expostos, ainda não foi conferido.\n"
     },
     {
       "id": "catecismo-da-igreja-catolica-confirma-dias-de-genesis-nao-literais__0",
@@ -371,6 +455,35 @@
       ],
       "o_que_derrubaria": "O paralelo entre o Enuma Elish e Gênesis 1 cairia se uma nova leitura das tabuletas mostrasse que as semelhanças apontadas, como as águas primordiais divididas para formar o céu e a mesma ordem dos acontecimentos, não estão no texto babilônico ou dependem de trechos mal reconstituídos.",
       "notas": "Paralelo não quer dizer cópia. Heidel (1951), que lista as semelhanças, vê pela ordem dos acontecimentos uma relação de parentesco entre as duas histórias, mas deixa em aberto se o relato bíblico depende do material babilônico. Para Routledge (2010), é amplamente reconhecido que nada indica dependência, e Millard (1967) diz que ainda não se mostrou empréstimo algum. A data em que o Enuma Elish foi composto também é discutida, o que impede dizer qual dos dois textos é mais antigo. Heidel observa ainda que as diferenças vão mais fundo que as semelhanças: no poema babilônico, o mundo nasce da luta de um deus contra outro."
+    },
+    {
+      "id": "estela-de-mesa-confirma-nome-yhwh-fora-da-biblia__0",
+      "ligacao": "estela-de-mesa-confirma-nome-yhwh-fora-da-biblia",
+      "origem": "estela-de-mesa",
+      "destino": "nome-yhwh-fora-da-biblia",
+      "tipo": "confirma",
+      "forca": "bem_estabelecido",
+      "tipo_de_apoio": "inscricao",
+      "quem_sustenta": [
+        {
+          "nome": "Gary A. Rendsburg",
+          "ano": 2007
+        }
+      ],
+      "fontes": [
+        {
+          "nivel": 1,
+          "descricao": "Estela de Mesa, Museu do Louvre, Departamento de Antiguidades Orientais, AO 5066 (ficha do objeto: inscrição de 34 linhas, gravada pouco depois de 842 a.C.)",
+          "url": "https://collections.louvre.fr/en/ark:/53355/cl010120339"
+        },
+        {
+          "nivel": 2,
+          "descricao": "Rendsburg, G. A. (2007), \"bʿaw in Mesha Stele, Line 12\", Maarav 14.1, pp. 9–25 (transliteração e tradução das linhas 17–18 na p. 22)",
+          "url": "https://jewishstudies.rutgers.edu/images/documents/faculty/Rendsburg/Maarav_Mesha_Stele_line12.pdf"
+        }
+      ],
+      "o_que_derrubaria": "A ideia de que a Estela de Mesa já usa o nome YHWH cairia se uma nova leitura da pedra mostrasse que as letras das linhas 17 e 18 não formam esse nome, ou se a estela fosse de outra época ou uma falsificação.\n",
+      "notas": "A estela é do rei de Moabe, um vizinho e inimigo de Israel, e não de um israelita: é por isso que ela conta como testemunho de fora da Bíblia. O que ela comprova é que, no século IX a.C., o deus de Israel era conhecido pelo nome YHWH, a ponto de um rei estrangeiro se gabar de ter tomado os vasos do seu culto. Ela não diz nada sobre Gênesis 1 nem sobre a crença em si. Uma palavra dessa passagem, \"vasos\", está danificada na pedra e é uma restauração, aceita, segundo Rendsburg (2007), por quase todos os estudiosos.\n"
     },
     {
       "id": "guia-dos-perplexos-confirma-dias-de-genesis-nao-literais__0",
@@ -580,6 +693,18 @@
       "notas": "A semelhança é de imagem, não de texto: nos dois casos, o céu separa o mundo das águas que o cercam. Allen (1988) aproxima os textos egípcios justamente de Gênesis 1:6–7, mas essa fonte ainda não foi conferida num exemplar oficial. Heidel (1951) lembra que criar céu e terra dividindo ou separando alguma coisa é um traço comum a quase todas as cosmogonias antigas, o que enfraquece a ideia de um empréstimo direto. No Egito, além disso, o mundo surge de deuses gerados pelo deus Atum, e não da palavra de um deus único."
     },
     {
+      "id": "gen-01-01_01-31__cita__deus",
+      "origem": "gen-01-01_01-31",
+      "destino": "deus",
+      "tipo": "cita"
+    },
+    {
+      "id": "gen-01-01_01-31__cita__ser-humano",
+      "origem": "gen-01-01_01-31",
+      "destino": "ser-humano",
+      "tipo": "cita"
+    },
+    {
       "id": "gen-01-01_01-31__parte_de__genesis",
       "origem": "gen-01-01_01-31",
       "destino": "genesis",
@@ -613,6 +738,12 @@
       "id": "idade-do-universo__envolve__missao-planck",
       "origem": "idade-do-universo",
       "destino": "missao-planck",
+      "tipo": "envolve"
+    },
+    {
+      "id": "nome-yhwh-fora-da-biblia__envolve__deus",
+      "origem": "nome-yhwh-fora-da-biblia",
+      "destino": "deus",
       "tipo": "envolve"
     },
     {

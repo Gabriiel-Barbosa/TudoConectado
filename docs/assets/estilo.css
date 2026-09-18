@@ -2264,3 +2264,334 @@ a.citacao:hover {
     transition: none;
   }
 }
+
+/* --- Personagens e ficha técnica ---------------------------------------------- */
+
+.chips-personagens {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  margin: 1rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.chip-personagem {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.4rem 0.55rem 0.4rem 0.6rem;
+  border: 1px solid color-mix(in srgb, var(--cor-pessoa) 45%, transparent);
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--cor-pessoa) 10%, transparent);
+  color: var(--fg);
+  font: inherit;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.15s ease, transform 0.15s ease, border-color 0.15s ease;
+}
+
+.chip-personagem:hover,
+.chip-personagem.ativo {
+  background: color-mix(in srgb, var(--cor-pessoa) 22%, transparent);
+  border-color: var(--cor-pessoa);
+  transform: translateY(-1px);
+}
+
+.chip-personagem:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.chip-contagem {
+  min-width: 1.4rem;
+  padding: 0.05rem 0.35rem;
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.3);
+  font-size: 0.7rem;
+  text-align: center;
+}
+
+.versiculo.do-personagem {
+  background: color-mix(in srgb, var(--cor-pessoa) 12%, transparent);
+  box-shadow: inset 0 -2px 0 color-mix(in srgb, var(--cor-pessoa) 55%, transparent);
+}
+
+/* Gaveta da ficha: desliza da direita, por cima do índice, sem cobrir o
+   texto em telas largas. */
+.ficha-personagem {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 45;
+  width: min(440px, 100vw);
+  overflow-y: auto;
+  padding: 1.4rem 1.3rem 2rem;
+  border-left: 1px solid var(--borda-forte);
+  background: var(--bg);
+  box-shadow: -24px 0 60px -20px rgba(0, 0, 0, 0.8);
+  transform: translateX(100%);
+  transition: transform 0.22s ease-out;
+}
+
+.ficha-personagem.aberta {
+  transform: none;
+}
+
+.ficha-personagem[hidden] {
+  display: none;
+}
+
+.ficha-fechar {
+  position: absolute;
+  top: 0.9rem;
+  right: 0.9rem;
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  border: none;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--muted);
+  cursor: pointer;
+}
+
+.ficha-fechar:hover {
+  background: rgba(255, 255, 255, 0.12);
+  color: var(--fg);
+}
+
+.ficha-eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin: 0;
+  color: var(--cor-pessoa);
+  font-size: 0.74rem;
+  font-weight: 600;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+}
+
+.ficha-corpo h2 {
+  margin: 0.35rem 0 0.4rem;
+  font-family: "Source Serif 4", Georgia, serif;
+  font-size: 1.9rem;
+  line-height: 1.15;
+}
+
+.ficha-alias {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  margin: 0 0 0.7rem;
+}
+
+.ficha-alias span {
+  padding: 0.1rem 0.5rem;
+  border: 1px solid var(--borda);
+  border-radius: 999px;
+  color: var(--muted);
+  font-size: 0.78rem;
+}
+
+.ficha-descricao {
+  margin: 0;
+  color: rgba(237, 238, 243, 0.86);
+  line-height: 1.6;
+}
+
+.ficha-tecnica {
+  display: grid;
+  gap: 0.1rem;
+  margin: 1.1rem 0 0;
+  border: 1px solid var(--borda);
+  border-radius: var(--raio-pequeno);
+  overflow: hidden;
+}
+
+.ficha-tecnica > div {
+  display: grid;
+  grid-template-columns: 9.5rem 1fr;
+  gap: 0.6rem;
+  padding: 0.55rem 0.75rem;
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.ficha-tecnica dt {
+  color: var(--muted);
+  font-size: 0.78rem;
+}
+
+.ficha-tecnica dd {
+  margin: 0;
+  font-size: 0.86rem;
+}
+
+.ficha-realcar {
+  margin-left: 0.3rem;
+  padding: 0.1rem 0.5rem;
+  border: 1px solid color-mix(in srgb, var(--cor-pessoa) 50%, transparent);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--cor-pessoa);
+  font: inherit;
+  font-size: 0.74rem;
+  cursor: pointer;
+}
+
+.ficha-realcar[aria-pressed="true"] {
+  background: color-mix(in srgb, var(--cor-pessoa) 20%, transparent);
+}
+
+.ficha-secao {
+  margin-top: 1.3rem;
+}
+
+.ficha-secao h3 {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  margin: 0 0 0.6rem;
+  color: var(--muted);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+}
+
+.ficha-vazio {
+  margin: 0;
+  padding: 0.7rem 0.8rem;
+  border: 1px dashed var(--borda-forte);
+  border-radius: var(--raio-pequeno);
+  color: var(--muted);
+  font-size: 0.84rem;
+  line-height: 1.5;
+}
+
+.mini-grafo {
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--borda);
+  border-radius: var(--raio-pequeno);
+  background: radial-gradient(circle at center, rgba(224, 138, 75, 0.08), transparent 70%);
+}
+
+.mini-linha {
+  stroke: var(--ouro);
+  stroke-width: 1.5;
+  opacity: 0.6;
+}
+
+.mini-linha.estrutural {
+  stroke: var(--muted);
+  stroke-dasharray: 4 4;
+  opacity: 0.4;
+}
+
+.mini-centro {
+  fill: var(--cor-pessoa);
+  stroke: rgba(255, 255, 255, 0.6);
+  stroke-width: 2;
+}
+
+.mini-centro-rotulo {
+  fill: var(--fg);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.mini-no {
+  cursor: pointer;
+}
+
+.mini-no circle {
+  fill: var(--bg);
+  stroke-width: 2.5;
+  transition: r 0.15s ease;
+}
+
+.mini-no text {
+  fill: var(--muted);
+  font-size: 10.5px;
+}
+
+.mini-no:hover circle,
+.mini-no:focus circle {
+  r: 14;
+}
+
+.mini-no:hover text,
+.mini-no:focus text {
+  fill: var(--fg);
+}
+
+.mini-no:focus {
+  outline: none;
+}
+
+.ficha-objetos {
+  display: grid;
+  gap: 0.6rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.ficha-objetos li {
+  padding: 0.7rem 0.8rem;
+  border: 1px solid var(--borda);
+  border-left: 3px solid var(--cor-objeto);
+  border-radius: var(--raio-pequeno);
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.ficha-objetos p {
+  margin: 0.35rem 0 0;
+  color: rgba(237, 238, 243, 0.8);
+  font-size: 0.84rem;
+  line-height: 1.5;
+}
+
+.ficha-objeto {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.4rem;
+  width: 100%;
+  padding: 0;
+  border: none;
+  background: transparent;
+  color: var(--fg);
+  font: inherit;
+  font-weight: 600;
+  text-align: left;
+  cursor: pointer;
+}
+
+.ficha-objeto-nome {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.ficha-objeto:hover .ficha-objeto-nome {
+  text-decoration: underline;
+}
+
+.ficha-mapa {
+  margin-top: 1.3rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ficha-personagem,
+  .chip-personagem,
+  .mini-no circle {
+    transition: none;
+  }
+}
