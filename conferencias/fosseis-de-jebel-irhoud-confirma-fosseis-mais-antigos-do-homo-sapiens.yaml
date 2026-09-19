@@ -1,0 +1,50 @@
+# Gerado por .claude/skills/conferir/scripts/registrar.js — vereditos da
+# Contraprova para as fontes desta ligação. Edite à mão só 'revisao_humana'
+# (pendente -> feita) depois de conferir você mesmo.
+ligacao: fosseis-de-jebel-irhoud-confirma-fosseis-mais-antigos-do-homo-sapiens
+fontes:
+  - hash: 01e05a7a59fd
+    nivel: 2
+    descricao: >-
+      Hublin, J.-J. et al. (2017), "New fossils from Jebel Irhoud, Morocco and the pan-African
+      origin of Homo sapiens", Nature 546, pp. 289–292 (resumo, p. 289), doi:10.1038/nature22336
+    alegacao: >-
+      Hublin et al. (2017), resumo na p. 289, atesta que os fósseis humanos de Jebel Irhoud, no
+      Marrocos, são os mais antigos conhecidos da linhagem do Homo sapiens.
+    veredito: confirmada
+    parou_em: null
+    conferido_em: >-
+      NCBI PubMed (eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi, PMID 28593953) — registro
+      bibliográfico oficial com resumo integral do artigo
+    observacao: >-
+      O registro do PubMed confirma autores, título, periódico, volume 546, páginas 289–292 e DOI
+      10.1038/nature22336. O resumo (que começa na p. 289) diz: "this evidence makes Jebel Irhoud
+      the oldest and richest African Middle Stone Age hominin site that documents early stages of
+      the H. sapiens clade in which key features of modern morphology were established". Nature.com
+      exigiu login e o Europe PMC devolveu 403; a conferência foi feita no PubMed, que reproduz o
+      resumo publicado e os metadados de página e DOI.
+    data: '2026-09-19'
+    conferido_por: contraprova
+    revisao_humana: pendente
+  - hash: 312cf63e1ed9
+    nivel: 2
+    descricao: >-
+      Richter, D. et al. (2017), "The age of the hominin fossils from Jebel Irhoud, Morocco, and the
+      origins of the Middle Stone Age", Nature 546, pp. 293–296 (resumo, p. 293),
+      doi:10.1038/nature22335
+    alegacao: >-
+      Richter et al. (2017), resumo na p. 293, atesta que os fósseis de hominínios de Jebel Irhoud,
+      no Marrocos, têm cerca de 315 mil anos.
+    veredito: confirmada
+    parou_em: null
+    conferido_em: >-
+      NCBI PubMed (eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi, PMID 28593967) — registro
+      bibliográfico oficial com resumo integral do artigo
+    observacao: >-
+      O registro do PubMed confirma autores, título, periódico, volume 546, páginas 293–296 e DOI
+      10.1038/nature22335. O resumo (que começa na p. 293) diz: "A weighted average age places these
+      Middle Stone Age artefacts and fossils at 315 ± 34 thousand years ago" e "its associated human
+      remains are the oldest reported for H. sapiens".
+    data: '2026-09-19'
+    conferido_por: contraprova
+    revisao_humana: pendente

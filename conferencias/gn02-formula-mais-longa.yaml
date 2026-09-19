@@ -1,0 +1,26 @@
+# Gerado por .claude/skills/conferir/scripts/registrar.js — vereditos da
+# Contraprova para as fontes desta ligação. Edite à mão só 'revisao_humana'
+# (pendente -> feita) depois de conferir você mesmo.
+ligacao: gn02-formula-mais-longa
+fontes:
+  - hash: 13d12979fee9
+    nivel: 2
+    descricao: >-
+      Hendel, R. S. (1998), The Text of Genesis 1–11: Textual Studies and Critical Edition, Nova
+      York/Oxford: Oxford University Press, p. 34
+    alegacao: >-
+      Hendel (1998), p. 34, atesta que a Septuaginta traz em Gênesis 2:4 uma fórmula mais longa,
+      igual à de Gênesis 5:1 ("Este é o livro da origem…"), fruto de harmonização de copista, e que
+      a forma curta do hebraico é a original.
+    veredito: confirmada
+    parou_em: null
+    conferido_em: >-
+      Mesma cópia digitalizada de Hendel (1998), seção "Gen 2:4 [Toledot]" na p. 34 (entre os
+      cabeçalhos "34 Chapter Two" e "M and G in Genesis 1:1-2:4 35")
+    observacao: >-
+      Texto: "The G reading corresponds to the parallel phrase in Gen 5:1... It appears that a
+      harmonizing scribe in the proto-G tradition expanded the short Toledot formula in 2:4 to equal
+      the longer form in 5:1, and that M preserves the original variation."
+    data: '2026-09-19'
+    conferido_por: contraprova
+    revisao_humana: pendente

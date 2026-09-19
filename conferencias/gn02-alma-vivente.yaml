@@ -1,0 +1,25 @@
+# Gerado por .claude/skills/conferir/scripts/registrar.js — vereditos da
+# Contraprova para as fontes desta ligação. Edite à mão só 'revisao_humana'
+# (pendente -> feita) depois de conferir você mesmo.
+ligacao: gn02-alma-vivente
+fontes:
+  - hash: f4bdb57d34cd
+    nivel: 2
+    descricao: >-
+      Skinner, J. (1910), A Critical and Exegetical Commentary on Genesis (International Critical
+      Commentary), Nova York: Charles Scribner's Sons, p. 57
+    alegacao: >-
+      Skinner (1910), p. 57, atesta que nefesh hayyah designa o homem inteiro dotado de vida, e não
+      uma alma separada do corpo, e que a vitalidade vem de Deus pelo sopro.
+    veredito: confirmada
+    parou_em: null
+    conferido_em: >-
+      https://archive.org/download/criticalexegetic00skinuoft/criticalexegetic00skinuoft_djvu.txt
+      (logo após o marcador "II. 7, 8 57")
+    observacao: >-
+      Texto: "nefesh is not applied to a separate element of man's being, but to the whole man in
+      possession of vital powers... Vitality is communicated by God, and he is here represented as
+      communicating it by breathing into man's nostrils that breath which is the sign of life."
+    data: '2026-09-19'
+    conferido_por: contraprova
+    revisao_humana: pendente

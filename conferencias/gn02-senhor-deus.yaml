@@ -1,0 +1,46 @@
+# Gerado por .claude/skills/conferir/scripts/registrar.js — vereditos da
+# Contraprova para as fontes desta ligação. Edite à mão só 'revisao_humana'
+# (pendente -> feita) depois de conferir você mesmo.
+ligacao: gn02-senhor-deus
+fontes:
+  - hash: 5fdaa476f05c
+    nivel: 2
+    descricao: >-
+      Skinner, J. (1910), A Critical and Exegetical Commentary on Genesis (International Critical
+      Commentary), Nova York: Charles Scribner's Sons, p. 54
+    alegacao: >-
+      Skinner (1910), p. 54, atesta que o nome duplo YHWH Elohim ("o SENHOR Deus") é quase exclusivo
+      de Gênesis 2 e 3 e se deve ao trabalho de quem juntou os textos.
+    veredito: confirmada
+    parou_em: null
+    conferido_em: >-
+      https://archive.org/download/criticalexegetic00skinuoft/criticalexegetic00skinuoft_djvu.txt
+      (logo após o marcador "54 Paradise and the Fall (J)")
+    observacao: >-
+      Texto: "The double name YHWH Elohim, which is all but peculiar to Genesis 2 f., is probably to
+      be explained as a result of redactional operations."
+    data: '2026-09-19'
+    conferido_por: contraprova
+    revisao_humana: pendente
+  - hash: 4fc3b9bb5a14
+    nivel: 2
+    descricao: >-
+      Hendel, R. S. (1998), The Text of Genesis 1–11: Textual Studies and Critical Edition, Nova
+      York/Oxford: Oxford University Press, pp. 34–35
+    alegacao: >-
+      Hendel (1998), pp. 34–35, atesta que a passagem de Elohim para YHWH Elohim a partir de Gênesis
+      2:4b é surpreendente para qualquer leitor, e que os rabinos clássicos liam os dois nomes como
+      dois atributos de Deus.
+    veredito: confirmada
+    parou_em: null
+    conferido_em: >-
+      Mesma cópia digitalizada de Hendel (1998): "startling to any reader" na p. 34; discussão
+      rabínica no excurso 2.3 "Divine Names in G", p. 35
+    observacao: >-
+      p. 34: "the shift in Gen 2:4 to [YHWH Elohim] is startling to any reader." p. 35: "The
+      classical rabbis developed a different interpretation... for them [YHWH] and [Elohim]
+      represent the attributes of compassion and justice, respectively (e.g., Gen. Rab. 12.15 on Gen
+      2:4)."
+    data: '2026-09-19'
+    conferido_por: contraprova
+    revisao_humana: pendente

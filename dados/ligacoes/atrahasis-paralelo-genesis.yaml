@@ -1,0 +1,37 @@
+id: atrahasis-paralelo-genesis
+tipo: paralelo
+entre:
+  - registro: atrahasis
+  - registro: genesis
+evidencia:
+  tipo_de_apoio: texto
+  forca: bem_estabelecido
+  quem_sustenta:
+    - nome: A. R. Millard
+      ano: 1967
+    - nome: Alexander Heidel
+      ano: 1951
+fontes:
+  - nivel: 2
+    descricao: >-
+      Millard, A. R. (1967), "A New Babylonian 'Genesis' Story", Tyndale
+      Bulletin 18, pp. 9–10 e 15–16, doi:10.53751/001c.30683
+    url: >-
+      https://www.tyndalebulletin.org/article/30683-a-new-babylonian-genesis-story.pdf
+  - nivel: 2
+    descricao: >-
+      Heidel, A. (1951), The Babylonian Genesis: The Story of Creation, 2ª
+      ed., Chicago: University of Chicago Press, pp. 67 e 118–122
+    url: >-
+      https://isac.uchicago.edu/research/publications/misc/babylonian-genesis-story-creation
+o_que_derrubaria: >-
+  O paralelo entre o Atrahasis e Gênesis 2 cairia se uma nova leitura das
+  tabuinhas mostrasse que o ser humano não é formado de barro nesse poema.
+notas: >-
+  No Atrahasis, o ser humano é formado de barro misturado à carne e ao
+  sangue de um deus abatido. Em Gênesis 2, do pó da terra, com o sopro de
+  Deus. Millard (1967) observa que os dois relatos dão ao homem uma parte
+  terrena e uma parte divina, mas lembra que ideias parecidas não precisam
+  ter a mesma origem: a de que o homem é feito de terra podia surgir em
+  culturas diferentes, de forma independente. Paralelo, aqui, não quer dizer
+  cópia.

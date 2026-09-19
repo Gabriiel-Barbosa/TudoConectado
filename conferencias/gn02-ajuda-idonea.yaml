@@ -1,0 +1,26 @@
+# Gerado por .claude/skills/conferir/scripts/registrar.js — vereditos da
+# Contraprova para as fontes desta ligação. Edite à mão só 'revisao_humana'
+# (pendente -> feita) depois de conferir você mesmo.
+ligacao: gn02-ajuda-idonea
+fontes:
+  - hash: a24b51061f57
+    nivel: 2
+    descricao: >-
+      Skinner, J. (1910), A Critical and Exegetical Commentary on Genesis (International Critical
+      Commentary), Nova York: Charles Scribner's Sons, p. 67
+    alegacao: >-
+      Skinner (1910), p. 67, atesta que a expressão hebraica 'ezer kenegdo significa "uma ajuda
+      correspondente a ele" e que a palavra "ajuda" ('ezer) é usada no resto do Antigo Testamento
+      sobretudo para Deus como socorro de Israel.
+    veredito: confirmada
+    parou_em: null
+    conferido_em: >-
+      https://archive.org/download/criticalexegetic00skinuoft/criticalexegetic00skinuoft_djvu.txt
+      (entre os marcadores "66 Paradise and the Fall (J)" e "68 Paradise and the Fall (J)")
+    observacao: >-
+      Texto: "kenegdo (only here) lit. 'as in front of him,' i.e. corresponding to him"; na nota
+      filológica, "'ezer (usually 'succour') = 'helper'... is used elsewhere chiefly of God (Dt.
+      33:7, 26, Ps. 33:20, 115:9 etc.)".
+    data: '2026-09-19'
+    conferido_por: contraprova
+    revisao_humana: pendente

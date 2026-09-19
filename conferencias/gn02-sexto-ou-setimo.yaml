@@ -1,0 +1,75 @@
+# Gerado por .claude/skills/conferir/scripts/registrar.js — vereditos da
+# Contraprova para as fontes desta ligação. Edite à mão só 'revisao_humana'
+# (pendente -> feita) depois de conferir você mesmo.
+ligacao: gn02-sexto-ou-setimo
+fontes:
+  - hash: 3088fb935a4f
+    nivel: 2
+    descricao: >-
+      Skinner, J. (1910), A Critical and Exegetical Commentary on Genesis (International Critical
+      Commentary), Nova York: Charles Scribner's Sons, p. 37
+    alegacao: >-
+      Skinner (1910), p. 37, atesta que a Septuaginta, o Pentateuco Samaritano e a Peshitta leem "no
+      sexto dia" em Gênesis 2:2, e que "sexto" é a leitura mais fácil, razão pela qual ele hesita em
+      preferi-la.
+    veredito: confirmada
+    parou_em: null
+    conferido_em: >-
+      https://archive.org/download/criticalexegetic00skinuoft/criticalexegetic00skinuoft_djvu.txt
+      (p. 37, entre os marcadores "36 The Sabbath" e "38 The Sabbath"), cotejado com a transcrição
+      do Project Gutenberg da mesma edição (ebook 77363)
+    observacao: >-
+      Texto: "The Samaritan Recension of the Pentateuch, LXX, Peshitta read sixth day... which is
+      accepted as the original text by many commentaries... But sixth is so much the easier reading
+      that one must hesitate to give it the preference."
+    data: '2026-09-19'
+    conferido_por: contraprova
+    revisao_humana: pendente
+  - hash: fad0df067c44
+    nivel: 2
+    descricao: >-
+      Hendel, R. S. (1998), The Text of Genesis 1–11: Textual Studies and Critical Edition, Nova
+      York/Oxford: Oxford University Press, pp. 32–34
+    alegacao: >-
+      Hendel (1998), pp. 32–34, conclui que "no sexto dia" é a leitura original de Gênesis 2:2 e que
+      "no sétimo dia" nasceu de um erro de cópia, por antecipação de uma palavra da segunda metade
+      do versículo.
+    veredito: confirmada
+    parou_em: null
+    conferido_em: >-
+      Existência da obra: Oxford University Press / Oxford Academic (DOI
+      10.1093/oso/9780195119619.001.0001, ISBN 9780195119619). Conteúdo: texto integral digitalizado
+      no Internet Archive
+      (ronald-s.-hendel-the-text-of-genesis-1-11.-textual-studies-and-critical-edition), seção "Gen
+      2:2", pp. 32–34
+    observacao: >-
+      p. 34: "The weight of the respective arguments inclines toward the position that [ha-shishi /
+      'sexto'] is the archetypal reading and probably original... The reading [ha-shevii / 'sétimo']
+      is most plausibly a secondary change due to an accidental assimilation by anticipation." O
+      aparato, na p. 43, confirma o mecanismo: "An anticipation of ha-shevii v 2, note the similar
+      phraseology in both halves of v2." Alegação reescrita depois de um veredito 'contradiz' que
+      apontou a inversão entre as duas leituras.
+    data: '2026-09-19'
+    conferido_por: contraprova
+    revisao_humana: pendente
+  - hash: 2a2c6f5310a5
+    nivel: 2
+    descricao: >-
+      Hiebert, R. J. V. (trad.) (2007), "Genesis", em A. Pietersma e B. G. Wright (orgs.), A New
+      English Translation of the Septuagint, Oxford: Oxford University Press, p. 7
+    alegacao: >-
+      A tradução da Septuaginta em Hiebert (2007), p. 7, traz em Gênesis 2:2 a leitura "no sexto
+      dia" (e não "no sétimo dia").
+    veredito: confirmada
+    parou_em: null
+    conferido_em: >-
+      NETS Genesis, edição eletrônica oficial em PDF do CCAT/University of Pennsylvania
+      (IOSCS/Oxford University Press), https://ccat.sas.upenn.edu/nets/edition/01-gen-nets.pdf;
+      página confirmada pelo cabeçalho impresso "Genesis 1-3 7"
+    observacao: >-
+      Texto: "And on the sixth day God finished his works that he had made, and... he left off on
+      the seventh day from all his works." A edição eletrônica reproduz os masters da 2ª impressão
+      (2009) do livro da OUP de 2007 e a paginação impressa bate com a p. 7.
+    data: '2026-09-19'
+    conferido_por: contraprova
+    revisao_humana: pendente

@@ -5,5 +5,12 @@
     "capitulo": 1,
     "passagem": "gen-01-01_01-31",
     "titulo": "A criação do mundo em seis dias"
+  },
+  {
+    "id": "genesis-02",
+    "livro": "Gênesis",
+    "capitulo": 2,
+    "passagem": "gen-02-01_02-25",
+    "titulo": "O sétimo dia e o jardim do Éden"
   }
 ]

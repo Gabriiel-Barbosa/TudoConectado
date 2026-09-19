@@ -1,0 +1,44 @@
+id: gn02-sexto-ou-setimo
+tipo: variante
+passagem: gen-02-01_02-25
+versiculos:
+  - 2
+  - 2
+titulo: Deus terminou a obra no sétimo ou no sexto dia?
+descricao: >-
+  No hebraico padrão, o Texto Massorético, Deus termina a obra “no sétimo
+  dia”, o que soa estranho, já que o sétimo é o dia do descanso. A
+  Septuaginta grega, o Pentateuco Samaritano e a Peshitta siríaca dizem “no
+  sexto dia”. Skinner (1910) observa que “sexto” é a leitura mais fácil, e
+  por isso hesita em preferi-la. Hendel (1998) chega à conclusão oposta:
+  para ele “sexto” é a leitura original, e “sétimo” nasceu de um erro de
+  cópia, em que o escriba antecipou uma palavra da segunda metade do
+  versículo.
+leituras:
+  - leitura: “No sétimo dia”
+    quem: >-
+      Texto Massorético; Hendel (1998, p. 34) a considera secundária, fruto
+      de erro de cópia
+  - leitura: “No sexto dia”
+    quem: >-
+      Septuaginta, Pentateuco Samaritano e Peshitta (Skinner 1910, p. 37;
+      NETS, p. 7); Hendel (1998, p. 34) a considera a original
+fontes:
+  - nivel: 2
+    descricao: >-
+      Skinner, J. (1910), A Critical and Exegetical Commentary on Genesis
+      (International Critical Commentary), Nova York: Charles Scribner's
+      Sons, p. 37
+    url: https://archive.org/details/criticalexegetic00skinuoft
+  - nivel: 2
+    descricao: >-
+      Hendel, R. S. (1998), The Text of Genesis 1–11: Textual Studies and
+      Critical Edition, Nova York/Oxford: Oxford University Press, pp. 32–34
+  - nivel: 2
+    descricao: >-
+      Hiebert, R. J. V. (trad.) (2007), "Genesis", em A. Pietersma e B. G.
+      Wright (orgs.), A New English Translation of the Septuagint, Oxford:
+      Oxford University Press, p. 7
+    url: https://ccat.sas.upenn.edu/nets/edition/01-gen-nets.pdf
+notas: null
+trecho: E acabou Deus no dia sétimo

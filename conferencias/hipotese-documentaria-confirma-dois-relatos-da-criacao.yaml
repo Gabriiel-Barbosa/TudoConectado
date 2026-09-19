@@ -1,0 +1,30 @@
+# Gerado por .claude/skills/conferir/scripts/registrar.js — vereditos da
+# Contraprova para as fontes desta ligação. Edite à mão só 'revisao_humana'
+# (pendente -> feita) depois de conferir você mesmo.
+ligacao: hipotese-documentaria-confirma-dois-relatos-da-criacao
+fontes:
+  - hash: 4af4b3747cd2
+    nivel: 2
+    descricao: >-
+      Skinner, J. (1910), A Critical and Exegetical Commentary on Genesis (International Critical
+      Commentary), Nova York: Charles Scribner's Sons, pp. 40–41, 51 e 54
+    alegacao: >-
+      Skinner (1910), pp. 40–41, 51 e 54, atesta que Gênesis 1:1–2:4a e Gênesis 2:4b–25 são dois
+      relatos distintos da criação, vindos de fontes diferentes e com ordens diferentes dos atos da
+      criação.
+    veredito: confirmada
+    parou_em: null
+    conferido_em: >-
+      https://archive.org/download/criticalexegetic00skinuoft/criticalexegetic00skinuoft_djvu.txt
+      (texto integral), páginas conferidas pelos cabeçalhos impressos e pelo mapeamento oficial
+      folha→página (criticalexegetic00skinuoft_page_numbers.json)
+    observacao: >-
+      p. 41: a fórmula de 2:4a é tratada como inserção de "an editor who felt the need of sharply
+      separating the two accounts of the creation". p. 51, sob o título "II. 4b-III.24 — The
+      Creation and Fall of Man (J)": o relato "differs fundamentally both in its conception of the
+      primal condition of the world [...] and in the order of creative works: viz. Man, Trees,
+      Animals, Woman". p. 54: "the transition to the Yahwistic document takes place at the middle of
+      v.4b".
+    data: '2026-09-19'
+    conferido_por: contraprova
+    revisao_humana: pendente

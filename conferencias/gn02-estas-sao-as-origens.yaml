@@ -1,0 +1,24 @@
+# Gerado por .claude/skills/conferir/scripts/registrar.js — vereditos da
+# Contraprova para as fontes desta ligação. Edite à mão só 'revisao_humana'
+# (pendente -> feita) depois de conferir você mesmo.
+ligacao: gn02-estas-sao-as-origens
+fontes:
+  - hash: c2b115670719
+    nivel: 2
+    descricao: >-
+      Skinner, J. (1910), A Critical and Exegetical Commentary on Genesis (International Critical
+      Commentary), Nova York: Charles Scribner's Sons, pp. 39–40
+    alegacao: >-
+      Skinner (1910), pp. 39–40, atesta que a fórmula toledot de Gênesis 2:4a é desconcertante no
+      último grau e é, com toda a probabilidade, uma inserção de quem editou o livro.
+    veredito: confirmada
+    parou_em: null
+    conferido_em: >-
+      https://archive.org/download/criticalexegetic00skinuoft/criticalexegetic00skinuoft_djvu.txt (a
+      cavalo entre os marcadores "II. 3, 4a 39" e "40 The Sabbath")
+    observacao: >-
+      Texto: "the half-verse is in the last degree perplexing. It is in all probability a
+      redactional insertion."
+    data: '2026-09-19'
+    conferido_por: contraprova
+    revisao_humana: pendente

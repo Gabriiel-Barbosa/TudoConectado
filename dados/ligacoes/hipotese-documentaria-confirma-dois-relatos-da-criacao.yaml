@@ -1,0 +1,31 @@
+id: hipotese-documentaria-confirma-dois-relatos-da-criacao
+tipo: confirma
+entre:
+  - registro: hipotese-documentaria
+  - afirmacao: dois-relatos-da-criacao
+evidencia:
+  tipo_de_apoio: analise_linguistica
+  forca: aceito_maioria
+  quem_sustenta:
+    - nome: John Skinner
+      ano: 1910
+fontes:
+  - nivel: 2
+    descricao: >-
+      Skinner, J. (1910), A Critical and Exegetical Commentary on Genesis
+      (International Critical Commentary), Nova York: Charles Scribner's
+      Sons, pp. 40–41, 51 e 54
+    url: https://archive.org/details/criticalexegetic00skinuoft
+o_que_derrubaria: >-
+  A ideia de dois relatos distintos cairia se a análise da língua e do
+  estilo mostrasse que Gênesis 1 e 2 são um texto único, sem mudança de
+  autor no versículo 4.
+notas: >-
+  Para Skinner (1910), a passagem para o outro relato acontece no meio do
+  versículo 4, onde mudam de repente o estilo e a língua. O segundo relato
+  difere do primeiro na maneira de imaginar o mundo antes da criação, uma
+  terra seca e sem água, e na ordem das obras: primeiro o homem, depois as
+  árvores, os animais e, por fim, a mulher. Em Gênesis 1, o ser humano vem
+  por último. A força “aceito pela maioria” descreve os estudiosos da
+  crítica bíblica acadêmica, não as comunidades religiosas que leem os dois
+  capítulos como um relato só.

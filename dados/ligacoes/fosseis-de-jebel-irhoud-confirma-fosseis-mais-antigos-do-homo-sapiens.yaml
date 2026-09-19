@@ -1,0 +1,38 @@
+id: fosseis-de-jebel-irhoud-confirma-fosseis-mais-antigos-do-homo-sapiens
+tipo: confirma
+entre:
+  - registro: fosseis-de-jebel-irhoud
+  - afirmacao: fosseis-mais-antigos-do-homo-sapiens
+evidencia:
+  tipo_de_apoio: achado_arqueologico
+  forca: aceito_maioria
+  quem_sustenta:
+    - nome: Jean-Jacques Hublin
+      ano: 2017
+    - nome: Daniel Richter
+      ano: 2017
+fontes:
+  - nivel: 2
+    descricao: >-
+      Hublin, J.-J. et al. (2017), "New fossils from Jebel Irhoud, Morocco
+      and the pan-African origin of Homo sapiens", Nature 546, pp. 289–292
+      (resumo, p. 289), doi:10.1038/nature22336
+    url: https://doi.org/10.1038/nature22336
+  - nivel: 2
+    descricao: >-
+      Richter, D. et al. (2017), "The age of the hominin fossils from Jebel
+      Irhoud, Morocco, and the origins of the Middle Stone Age", Nature 546,
+      pp. 293–296 (resumo, p. 293), doi:10.1038/nature22335
+    url: https://doi.org/10.1038/nature22335
+o_que_derrubaria: >-
+  A idade de cerca de 315 mil anos cairia se novas datações dos fósseis e
+  das ferramentas de Jebel Irhoud dessem resultado muito diferente, ou se os
+  fósseis fossem reclassificados fora da linhagem do Homo sapiens.
+notas: >-
+  Os fósseis têm o rosto e a mandíbula já parecidos com os do ser humano
+  atual e o crânio mais arcaico; para os autores, documentam as primeiras
+  etapas da linhagem do Homo sapiens. Para Gênesis 2, que conta a formação
+  do primeiro homem a partir do pó da terra, a ciência oferece outra
+  história: a da espécie humana surgindo aos poucos, ao longo de centenas de
+  milhares de anos. Os artigos completos são pagos; foram lidos os resumos
+  publicados pela revista.

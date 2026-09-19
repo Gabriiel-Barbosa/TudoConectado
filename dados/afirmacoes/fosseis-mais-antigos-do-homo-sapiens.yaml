@@ -1,0 +1,15 @@
+id: fosseis-mais-antigos-do-homo-sapiens
+texto: >-
+  Os fósseis mais antigos conhecidos da linhagem do Homo sapiens têm cerca
+  de 315 mil anos e foram achados na África, no Marrocos.
+registros_envolvidos:
+  - ser-humano
+datacao:
+  - periodo:
+      - -349000
+      - -281000
+    segundo_quem: >-
+      Segundo Richter e colegas (2017), a datação por termoluminescência dá
+      aos fósseis e às ferramentas de Jebel Irhoud uma idade de 315 mil
+      anos, com margem de 34 mil anos para mais ou para menos. O intervalo
+      registrado aqui é essa margem, contada a partir de hoje.

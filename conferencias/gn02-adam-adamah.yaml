@@ -1,0 +1,28 @@
+# Gerado por .claude/skills/conferir/scripts/registrar.js — vereditos da
+# Contraprova para as fontes desta ligação. Edite à mão só 'revisao_humana'
+# (pendente -> feita) depois de conferir você mesmo.
+ligacao: gn02-adam-adamah
+fontes:
+  - hash: e69f4225ed56
+    nivel: 2
+    descricao: >-
+      Skinner, J. (1910), A Critical and Exegetical Commentary on Genesis (International Critical
+      Commentary), Nova York: Charles Scribner's Sons, p. 56
+    alegacao: >-
+      Skinner (1910), p. 56, atesta que o hebraico adam ("homem") e adamah ("terra") formam um jogo
+      de palavras — o homem é feito do solo, vive de cultivá-lo e volta a ele na morte — e que a
+      etimologia das duas palavras é incerta, tendo sido abandonada a derivação de uma raiz que
+      significa "ser vermelho".
+    veredito: confirmada
+    parou_em: null
+    conferido_em: >-
+      https://archive.org/download/criticalexegetic00skinuoft/criticalexegetic00skinuoft_djvu.txt
+      (nota ao v. 7, entre os marcadores "56 Paradise and the Fall (J)" e "II. 7, 8 57")
+    observacao: >-
+      Texto: "Both words are of uncertain etymology. The old derivation from the verb 'be red' ...
+      is generally abandoned... it is very near the thought of this passage: man is made from the
+      soil, lives by its cultivation, and returns to it at death." Skinner não usa a expressão "jogo
+      de palavras", mas descreve o conteúdo.
+    data: '2026-09-19'
+    conferido_por: contraprova
+    revisao_humana: pendente
