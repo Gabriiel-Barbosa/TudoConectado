@@ -1,0 +1,56 @@
+# Gerado por .claude/skills/conferir/scripts/registrar.js — vereditos da
+# Contraprova para as fontes desta ligação. Edite à mão só 'revisao_humana'
+# (pendente -> feita) depois de conferir você mesmo.
+ligacao: atrahasis-paralelo-genesis
+fontes:
+  - hash: 70cd6ba43d45
+    nivel: 2
+    descricao: >-
+      Millard, A. R. (1967), "A New Babylonian 'Genesis' Story", Tyndale Bulletin 18, pp. 9–10 e
+      15–16, doi:10.53751/001c.30683
+    alegacao: >-
+      Millard (1967), pp. 9–10 e 15–16, atesta que no poema babilônico Atrahasis o ser humano é
+      formado de barro misturado à carne e ao sangue de um deus abatido, e que isso configura um
+      paralelo com a formação do homem em Gênesis, em que o homem também recebe uma parte terrena e
+      uma parte divina.
+    veredito: confirmada
+    parou_em: null
+    conferido_em: >-
+      PDF oficial de
+      https://www.tyndalebulletin.org/article/30683-a-new-babylonian-genesis-story.pdf (doi
+      10.53751/001c.30683), lido integralmente
+    observacao: >-
+      pp. 9–10: "Let them slaughter one god... With his flesh and blood / Let Nintu mix clay" e "Man
+      was created from the flesh and blood of a slaughtered god mixed with clay", comparado a
+      Gênesis 2:7 — "Man's earthy constituency is emphasized by both Babylonian and Hebrew
+      narratives, and his divine part equally". pp. 15–16, seção "Man's constituency": "Both the
+      Bible and some Babylonian Creation accounts depict man as created from 'the dust of the earth'
+      or 'clay'. To this is added some divine component, 'breath' in Genesis, flesh and blood of a
+      god... in Babylonia."
+    data: '2026-09-19'
+    conferido_por: contraprova
+    revisao_humana: pendente
+  - hash: 070199e8004a
+    nivel: 2
+    descricao: >-
+      Heidel, A. (1951), The Babylonian Genesis: The Story of Creation, 2ª ed., Chicago: University
+      of Chicago Press, pp. 67 e 118–122
+    alegacao: >-
+      Heidel (1951), pp. 67 e 118–122, atesta que no Atrahasis o ser humano é formado de barro com
+      sangue de um deus, e compara essa formação do homem com a de Gênesis.
+    veredito: confirmada
+    parou_em: null
+    conferido_em: >-
+      PDF oficial do ISAC/Oriental Institute da Universidade de Chicago
+      (https://isac-assets.s3.amazonaws.com/isac-publications/misc_genesis.pdf); 2ª ed. de 1951
+      confirmada no catálogo do Internet Archive (babyloniangenesi0000heid_r9d0)
+    observacao: >-
+      p. 67: "Let them slay a god... With his flesh and his blood / Let Ninhursag mix clay. / God
+      and man / united(?) in the clay." pp. 118–119, seções "The creation of man" e "Old Testament
+      parallels": Heidel resume as versões e, na nota 102 da p. 118, liga o episódio à Epopeia de
+      Atrahasis, citando em seguida Gênesis 1:26-27 e 2:7 como comparação. A Contraprova não leu
+      literalmente as pp. 120–122 (só conferiu os cabeçalhos da seção); o núcleo da alegação está
+      sustentado pelas pp. 67 e 118–119.
+    data: '2026-09-19'
+    conferido_por: contraprova
+    revisao_humana: pendente

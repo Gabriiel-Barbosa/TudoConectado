@@ -1,0 +1,25 @@
+id: epopeia-de-gilgamesh-paralelo-genesis
+tipo: paralelo
+entre:
+  - registro: epopeia-de-gilgamesh
+  - registro: genesis
+evidencia:
+  tipo_de_apoio: texto
+  forca: aceito_maioria
+  quem_sustenta: []
+fontes:
+  - nivel: 2
+    descricao: >-
+      Pritchard, J. B. (org.) (1969), Ancient Near Eastern Texts Relating to
+      the Old Testament, 3ª ed., Princeton: Princeton University Press, p.
+      74 (Epopeia de Gilgamesh, tábua I, coluna ii, trad. E. A. Speiser)
+o_que_derrubaria: >-
+  O paralelo cairia se a leitura da primeira tábua mostrasse que Enkidu não
+  é formado de barro pela deusa Aruru.
+notas: >-
+  Na primeira tábua da Epopeia de Gilgamesh, a deusa Aruru lava as mãos,
+  belisca um pedaço de barro e o lança na estepe, onde nasce Enkidu. A
+  imagem do ser humano modelado com barro é parecida com a de Gênesis 2, mas
+  no poema não há sopro divino. A fonte consultada é a edição impressa da
+  Princeton University Press; a única cópia on-line encontrada não é
+  oficial.

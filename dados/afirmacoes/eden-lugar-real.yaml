@@ -1,0 +1,9 @@
+id: eden-lugar-real
+texto: >-
+  O jardim do Éden descrito em Gênesis 2 ficava num lugar real, que se pode
+  localizar no mapa.
+registros_envolvidos:
+  - eden
+  - rio-tigre
+  - rio-eufrates
+atemporal: true

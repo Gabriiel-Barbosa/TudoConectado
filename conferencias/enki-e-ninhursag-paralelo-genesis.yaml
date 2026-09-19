@@ -1,0 +1,35 @@
+# Gerado por .claude/skills/conferir/scripts/registrar.js — vereditos da
+# Contraprova para as fontes desta ligação. Edite à mão só 'revisao_humana'
+# (pendente -> feita) depois de conferir você mesmo.
+ligacao: enki-e-ninhursag-paralelo-genesis
+fontes:
+  - hash: 8de12120bcd8
+    nivel: 2
+    descricao: >-
+      Pritchard, J. B. (org.) (1969), Ancient Near Eastern Texts Relating to the Old Testament, 3ª
+      ed., Princeton: Princeton University Press, p. 37 (introdução de S. N. Kramer a Enki e
+      Ninhursag, nota 13) e linhas 265–266 do poema
+    alegacao: >-
+      Pritchard (1969), p. 37, nota 13, e linhas 265–266 do poema sumério "Enki e Ninhursag", atesta
+      que a deusa Ninti nasce para aliviar a dor da costela de Enki, e que Kramer diz, na
+      introdução, que o mito talvez ofereça paralelos com a história bíblica do paraíso de Gênesis 2
+      e 3.
+    veredito: confirmada
+    parou_em: null
+    conferido_em: >-
+      Texto integral do ANET, 3ª edição com suplemento (1969), em
+      https://archive.org/details/AncientNearEasternTextsRelatingToTheOldTestament — edição
+      conferida pela página de direitos autorais ("Third Edition with Supplement", "Copyright ©
+      1950, 1955, 1969, by Princeton University Press")
+    observacao: >-
+      Índice: "Enki and Ninhursag: a Paradise Myth 37". Introdução de Kramer: o mito "perhaps even
+      provides a number of interesting parallels to the motifs of the biblical paradise story as
+      told in the second and third chapters of Genesis". Nota 13: "the goddess born to alleviate the
+      pain of the rib, the Sumerian word for which is ti, is named Ninti". Linhas: contadas entre os
+      marcadores impressos (260) e (270), que fecham em exatamente 10 linhas — a 265 é "'My brother,
+      what hurts thee?' '[My] rib [hurts me].'" e a 266, "'Ninti I have caused to be [born] for
+      thee.'" Localização corrigida depois de um primeiro veredito 'contradiz' sobre o intervalo
+      266–268.
+    data: '2026-09-19'
+    conferido_por: contraprova
+    revisao_humana: pendente

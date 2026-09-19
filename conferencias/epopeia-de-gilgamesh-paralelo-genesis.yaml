@@ -1,0 +1,28 @@
+# Gerado por .claude/skills/conferir/scripts/registrar.js — vereditos da
+# Contraprova para as fontes desta ligação. Edite à mão só 'revisao_humana'
+# (pendente -> feita) depois de conferir você mesmo.
+ligacao: epopeia-de-gilgamesh-paralelo-genesis
+fontes:
+  - hash: fc1661f16982
+    nivel: 2
+    descricao: >-
+      Pritchard, J. B. (org.) (1969), Ancient Near Eastern Texts Relating to the Old Testament, 3ª
+      ed., Princeton: Princeton University Press, p. 74 (Epopeia de Gilgamesh, tábua I, coluna ii,
+      trad. E. A. Speiser)
+    alegacao: >-
+      Pritchard (1969), p. 74, traz na tábua I, coluna ii, da Epopeia de Gilgamesh, na tradução de
+      E. A. Speiser, a criação de Enkidu por Aruru a partir de barro/argila.
+    veredito: confirmada
+    parou_em: null
+    conferido_em: >-
+      Cópia digitalizada do ANET, 3ª ed. com suplemento (1969), conferida pela página de direitos
+      autorais ("Third edition with supplement, 1969"),
+      https://archive.org/details/AncientNearEasternTextsRelatingToTheOldTestament
+    observacao: >-
+      O índice traz "The Epic of Gilgamesh (E. A. Speiser) 72" e o cabeçalho "Translator: E. A.
+      Speiser"; a coluna vem marcada "(ii)" e o número de página 74 aparece no trecho. Texto: "Aruru
+      washed her hands, / Pinched off clay and cast it on the steppe. / [On the step]pe she created
+      valiant Enkidu, / Offspring of ..., essence of Ninurta."
+    data: '2026-09-19'
+    conferido_por: contraprova
+    revisao_humana: pendente

@@ -1,0 +1,27 @@
+# Gerado por .claude/skills/conferir/scripts/registrar.js — vereditos da
+# Contraprova para as fontes desta ligação. Edite à mão só 'revisao_humana'
+# (pendente -> feita) depois de conferir você mesmo.
+ligacao: gn02-esta-tres-vezes
+fontes:
+  - hash: 58ac3660214a
+    nivel: 2
+    descricao: >-
+      Hendel, R. S. (1998), The Text of Genesis 1–11: Textual Studies and Critical Edition, Nova
+      York/Oxford: Oxford University Press, p. 44
+    alegacao: >-
+      Hendel (1998), p. 44, atesta que em Gênesis 2:23 o pronome "esta" (zot) aparece três vezes no
+      Texto Massorético e só duas na Septuaginta e na Peshitta, e que a terceira ocorrência é um
+      acréscimo de copista para esclarecer o sujeito de "foi tomada".
+    veredito: confirmada
+    parou_em: null
+    conferido_em: >-
+      Cópia digitalizada do livro (Oxford University Press) via Internet Archive,
+      https://archive.org/details/ronald-s.-hendel-the-text-of-genesis-1-11.-textual-studies-and-critical-edition,
+      seção "Gen 2:23" na p. 44 (página confirmada pelo cabeçalho "44 Chapter Three")
+    observacao: >-
+      Texto: "the demonstrative pronoun [zot] occurs three times in M but only twice in G (and Syr).
+      The third [zot] is plausibly an explicating plus, specifying the subject of the passive verb
+      [luqoha / 'was taken']."
+    data: '2026-09-19'
+    conferido_por: contraprova
+    revisao_humana: pendente

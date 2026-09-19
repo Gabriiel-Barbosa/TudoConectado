@@ -1,0 +1,31 @@
+id: comentario-critico-de-skinner-contradiz-eden-lugar-real
+tipo: contradiz
+entre:
+  - registro: comentario-critico-de-skinner
+  - afirmacao: eden-lugar-real
+evidencia:
+  tipo_de_apoio: texto
+  forca: disputado
+  quem_sustenta:
+    - nome: John Skinner
+      ano: 1910
+fontes:
+  - nivel: 2
+    descricao: >-
+      Skinner, J. (1910), A Critical and Exegetical Commentary on Genesis
+      (International Critical Commentary), Nova York: Charles Scribner's
+      Sons, pp. 59–62 e 65–66
+    url: https://archive.org/details/criticalexegetic00skinuoft
+o_que_derrubaria: >-
+  A ideia de que o Éden não corresponde a um lugar real cairia se se
+  identificassem com segurança os rios Pisom e Giom e uma região onde os
+  quatro rios nascem juntos.
+notas: >-
+  Para Skinner (1910), a geografia de Gênesis 2:10–14 não corresponde a
+  nenhum lugar da Terra: o Tigre e o Eufrates nunca foram braços de um mesmo
+  rio, e a ideia de que outros dois grandes rios nasceram da mesma fonte põe
+  a descrição fora do conhecimento geográfico real. O que se pode dizer,
+  conclui ele, é que o relato situa o paraíso na região desconhecida, ao
+  norte, de onde vêm o Tigre e o Eufrates. Pisom e Giom continuam sem
+  identificação segura. É a posição de um comentário de 1910; a localização
+  do Éden segue discutida.

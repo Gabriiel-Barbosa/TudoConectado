@@ -1,0 +1,63 @@
+id: gen-02-01_02-25
+referencia: Gênesis 2:1–25
+titulo: O sétimo dia e o jardim do Éden
+texto: genesis-02
+afirma:
+  - Deus termina a obra da criação, descansa no sétimo dia e o abençoa.
+  - >-
+    Começa então outro relato: o SENHOR Deus forma o homem do pó da terra,
+    sopra nele o fôlego de vida e o põe num jardim no Éden, com a árvore da
+    vida e a árvore do conhecimento do bem e do mal, da qual o proíbe de
+    comer.
+  - >-
+    Do Éden sai um rio que se divide em quatro, entre eles o Tigre e o
+    Eufrates. Deus forma os animais, que o homem nomeia, e, de uma costela
+    do homem, a mulher.
+registros_citados:
+  - deus
+  - adao
+  - eva
+  - eden
+  - rio-tigre
+  - rio-eufrates
+paralelos_externos:
+  - ligacao: atrahasis-paralelo-genesis
+  - ligacao: epopeia-de-gilgamesh-paralelo-genesis
+  - ligacao: enki-e-ninhursag-paralelo-genesis
+conexoes:
+  - ligacao: hipotese-documentaria-confirma-dois-relatos-da-criacao
+    versiculos:
+      - 5
+      - 5
+    tema: contexto
+    trecho: E antes que toda planta do campo existisse na terra
+  - ligacao: atrahasis-paralelo-genesis
+    versiculos:
+      - 7
+      - 7
+    tema: paralelo
+    trecho: Formou, pois, o SENHOR Deus ao homem
+  - ligacao: epopeia-de-gilgamesh-paralelo-genesis
+    versiculos:
+      - 7
+      - 7
+    tema: paralelo
+    trecho: Formou, pois, o SENHOR Deus ao homem
+  - ligacao: fosseis-de-jebel-irhoud-confirma-fosseis-mais-antigos-do-homo-sapiens
+    versiculos:
+      - 7
+      - 7
+    tema: ciencia
+    trecho: e assoprou em seu nariz sopro de vida
+  - ligacao: comentario-critico-de-skinner-contradiz-eden-lugar-real
+    versiculos:
+      - 10
+      - 10
+    tema: contexto
+    trecho: E saía de Éden um rio para regar o jardim
+  - ligacao: enki-e-ninhursag-paralelo-genesis
+    versiculos:
+      - 21
+      - 21
+    tema: paralelo
+    trecho: tomou uma de suas costelas

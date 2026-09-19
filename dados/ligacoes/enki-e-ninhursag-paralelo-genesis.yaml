@@ -1,0 +1,31 @@
+id: enki-e-ninhursag-paralelo-genesis
+tipo: paralelo
+entre:
+  - registro: enki-e-ninhursag
+  - registro: genesis
+evidencia:
+  tipo_de_apoio: texto
+  forca: poucos
+  quem_sustenta:
+    - nome: Samuel Noah Kramer
+      ano: 1969
+fontes:
+  - nivel: 2
+    descricao: >-
+      Pritchard, J. B. (org.) (1969), Ancient Near Eastern Texts Relating to
+      the Old Testament, 3ª ed., Princeton: Princeton University Press, p.
+      37 (introdução de S. N. Kramer a Enki e Ninhursag, nota 13) e linhas
+      265–266 do poema
+o_que_derrubaria: >-
+  O paralelo cairia se a leitura do poema mostrasse que a deusa Ninti não
+  está ligada à costela doente de Enki, ou que Dilmun não é descrita como
+  uma terra pura.
+notas: >-
+  O poema sumério descreve Dilmun como uma terra pura e limpa. Mais adiante,
+  Enki adoece em várias partes do corpo, e para a costela nasce a deusa
+  Ninti. Kramer, na introdução à tradução, diz que o mito talvez ofereça
+  paralelos interessantes com a história bíblica do paraíso, nos capítulos 2
+  e 3 de Gênesis. É uma semelhança de motivos, não uma cópia. A explicação
+  de que o nome Ninti joga com duas palavras sumérias, “costela” e “fazer
+  viver”, ainda não foi conferida numa fonte lida, e a única cópia on-line
+  encontrada da ANET não é oficial.

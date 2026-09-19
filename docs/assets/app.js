@@ -1491,6 +1491,10 @@ function relacaoEstrutural(aresta, saindo) {
 // se leem em "4580000000 a.C.": viram "há 4,58 bilhões de anos".
 function formatarAno(ano) {
   const distancia = Math.abs(ano);
+  // Pré-história: "há 315 mil anos" em vez de "315000 a.C.".
+  if (ano < 0 && distancia >= 1e4 && distancia < 1e6) {
+    return `há ${Math.round(distancia / 1000).toLocaleString("pt-BR")} mil anos`;
+  }
   if (ano < 0 && distancia >= 1e6) {
     const [valor, unidade] = distancia >= 1e9 ? [distancia / 1e9, "bilhões"] : [distancia / 1e6, "milhões"];
     const numero = valor.toLocaleString("pt-BR", { maximumFractionDigits: 3 });
@@ -1502,7 +1506,13 @@ function formatarAno(ano) {
 function formatarPeriodo(periodo) {
   if (!Array.isArray(periodo) || periodo.length < 2) return "";
   const [inicio, fim] = periodo;
-  return inicio === fim ? formatarAno(inicio) : `${formatarAno(inicio)} – ${formatarAno(fim)}`;
+  if (inicio === fim) return formatarAno(inicio);
+  // "há 349 mil anos – há 281 mil anos" vira "há 349 a 281 mil anos".
+  const [a, b] = [formatarAno(inicio), formatarAno(fim)];
+  const mesmaEscala = /^há (.+?) (mil anos|milhões de anos|bilhões de anos)$/;
+  const [ma, mb] = [mesmaEscala.exec(a), mesmaEscala.exec(b)];
+  if (ma && mb && ma[2] === mb[2]) return `há ${ma[1]} a ${mb[1]} ${ma[2]}`;
+  return `${a} – ${b}`;
 }
 
 // A ligação tem sentido: origem é quem confirma/contradiz/foi copiado,
@@ -2554,6 +2564,21 @@ function htmlCardDeItem(item) {
     </article>`;
 }
 
+// Anterior e seguinte, na ordem do índice; o que ainda não existe some.
+function htmlNavCapitulos(capitulo) {
+  const i = indiceCapitulos.findIndex((c) => c.id === capitulo.id);
+  const anterior = indiceCapitulos[i - 1];
+  const seguinte = indiceCapitulos[i + 1];
+  if (!anterior && !seguinte) return "";
+  const botao = (c, lado) =>
+    c
+      ? `<button class="nav-capitulo ${lado}" data-capitulo="${escapar(c.id)}"><span class="etiqueta">${
+          lado === "anterior" ? "← Capítulo anterior" : "Próximo capítulo →"
+        }</span><strong>${escapar(`${c.livro} ${c.capitulo}`)}${c.titulo ? ` · ${escapar(c.titulo)}` : ""}</strong></button>`
+      : "<span></span>";
+  return `<nav class="navegacao-capitulos" aria-label="Capítulos vizinhos">${botao(anterior, "anterior")}${botao(seguinte, "seguinte")}</nav>`;
+}
+
 function htmlCreditos(capitulo) {
   const t = capitulo.traducao;
   const licenca = urlSegura(t.licenca_url);
@@ -2589,6 +2614,7 @@ async function abrirCapitulo(id, { atualizarHash = true } = {}) {
         <div class="biblia-progresso" aria-hidden="true"><span></span></div>
         ${htmlCabecalho(dados, itens)}
         ${htmlTexto(dados, itens)}
+        ${htmlNavCapitulos(dados)}
         ${htmlCreditos(dados)}
       </article>
       ${htmlIndice(dados, itens)}
@@ -2800,7 +2826,7 @@ function ligarBiblia(raiz) {
       aplicarTemasOcultosLeitura();
     })
   );
-  raiz.querySelectorAll(".cap[data-capitulo]").forEach((botao) =>
+  raiz.querySelectorAll(".cap[data-capitulo], .nav-capitulo").forEach((botao) =>
     botao.addEventListener("click", () => abrirCapitulo(botao.dataset.capitulo))
   );
   raiz.querySelectorAll(".lateral-bloco details").forEach((d) => d.addEventListener("toggle", posicionarNota));

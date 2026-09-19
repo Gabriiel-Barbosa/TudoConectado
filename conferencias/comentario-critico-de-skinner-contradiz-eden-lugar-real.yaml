@@ -1,0 +1,29 @@
+# Gerado por .claude/skills/conferir/scripts/registrar.js — vereditos da
+# Contraprova para as fontes desta ligação. Edite à mão só 'revisao_humana'
+# (pendente -> feita) depois de conferir você mesmo.
+ligacao: comentario-critico-de-skinner-contradiz-eden-lugar-real
+fontes:
+  - hash: 85c99a373ffb
+    nivel: 2
+    descricao: >-
+      Skinner, J. (1910), A Critical and Exegetical Commentary on Genesis (International Critical
+      Commentary), Nova York: Charles Scribner's Sons, pp. 59–62 e 65–66
+    alegacao: >-
+      Skinner (1910), pp. 59–62 e 65–66, sustenta que o jardim do Éden descrito em Gênesis 2 não
+      corresponde a um lugar real que se possa localizar no mapa, com base no exame da geografia dos
+      quatro rios.
+    veredito: confirmada
+    parou_em: null
+    conferido_em: >-
+      https://archive.org/download/criticalexegetic00skinuoft/criticalexegetic00skinuoft_djvu.txt
+      (texto integral), com os números de página impressos conferidos contra o mapeamento oficial
+      folha→página (criticalexegetic00skinuoft_page_numbers.json) e contra os cabeçalhos das páginas
+    observacao: >-
+      p. 62, sob o cabeçalho "The site of paradise": "it is obvious that a real locality answering
+      to the description of Eden exists and has existed nowhere on the face of the earth". As pp.
+      59–61 trazem a exegese dos quatro rios e as pp. 63–66 percorrem e refutam as teorias de
+      localização, concluindo na p. 66: "Gn. 2:10-14 is but one of many attempts to localise on
+      earth a representation which is essentially mythical".
+    data: '2026-09-19'
+    conferido_por: contraprova
+    revisao_humana: pendente

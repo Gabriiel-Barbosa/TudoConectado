@@ -1,0 +1,424 @@
+{
+  "id": "genesis-02",
+  "livro": "Gênesis",
+  "capitulo": 2,
+  "traducao": {
+    "sigla": "BLIVRE",
+    "nome": "Bíblia Livre",
+    "licenca": "Creative Commons Atribuição 3.0 Brasil (CC BY 3.0 BR)",
+    "atribuicao": "Todas as Escrituras em português citadas são da Bíblia Livre (BLIVRE), Copyright © Diego Santos, Mario Sérgio, e Marco Teles, http://sites.google.com/site/biblialivre/ - fevereiro de 2018. Licença Creative Commons Atribuição 3.0 Brasil (http://creativecommons.org/licenses/by/3.0/br/). Reprodução permitida desde que devidamente mencionados fonte e autores.",
+    "fonte": "https://github.com/blivre/BibliaLivre/releases/download/2018.2.0/bliv-n4_vpl.zip",
+    "licenca_url": "https://raw.githubusercontent.com/blivre/BibliaLivre/master/LICENCA.md"
+  },
+  "versiculos": [
+    {
+      "n": 1,
+      "texto": "E foram concluídos os céus e a terra, e tudo o que neles há."
+    },
+    {
+      "n": 2,
+      "texto": "E acabou Deus no dia sétimo sua obra que fez, e repousou o dia sétimo de toda sua obra que havia feito."
+    },
+    {
+      "n": 3,
+      "texto": "E abençoou Deus ao dia sétimo, e o santificou, porque nele repousou de toda sua obra que havia Deus criado e feito."
+    },
+    {
+      "n": 4,
+      "texto": "Estas são as origens dos céus e da terra quando foram criados, no dia que o SENHOR Deus fez a terra e os céus,"
+    },
+    {
+      "n": 5,
+      "texto": "E antes que toda planta do campo existisse na terra, e antes que toda erva do campo nascesse; porque ainda não havia o SENHOR Deus feito chover sobre a terra, nem havia homem para que lavrasse a terra;"
+    },
+    {
+      "n": 6,
+      "texto": "Mas subia da terra um vapor, que regava toda a face da terra."
+    },
+    {
+      "n": 7,
+      "texto": "Formou, pois, o SENHOR Deus ao homem do pó da terra, e assoprou em seu nariz sopro de vida; e foi o homem em alma vivente."
+    },
+    {
+      "n": 8,
+      "texto": "E havia o SENHOR Deus plantado um jardim em Éden ao oriente, e pôs ali ao homem que havia formado."
+    },
+    {
+      "n": 9,
+      "texto": "E havia o SENHOR Deus feito nascer da terra toda árvore agradável à vista, e boa para comer: também a árvore da vida em meio do jardim, e a árvore do conhecimento do bem e do mal."
+    },
+    {
+      "n": 10,
+      "texto": "E saía de Éden um rio para regar o jardim, e dali se repartia em quatro ramificações."
+    },
+    {
+      "n": 11,
+      "texto": "O nome de um era Pisom: este é o que cerca toda a terra de Havilá, onde há ouro:"
+    },
+    {
+      "n": 12,
+      "texto": "E o ouro daquela terra é bom; há ali também bdélio e pedra ônix."
+    },
+    {
+      "n": 13,
+      "texto": "O nome do segundo rio é Giom; este é o que rodeia toda a terra de Cuxe."
+    },
+    {
+      "n": 14,
+      "texto": "E o nome do terceiro rio é Tigre; este é o que vai diante da Assíria. E o quarto rio é o Eufrates."
+    },
+    {
+      "n": 15,
+      "texto": "Então o SENHOR Deus tomou o homem, e o pôs no jardim de Éden, para que o lavrasse e o guardasse."
+    },
+    {
+      "n": 16,
+      "texto": "E mandou o SENHOR Deus ao homem, dizendo: De toda árvore do jardim comerás;"
+    },
+    {
+      "n": 17,
+      "texto": "Mas da árvore do conhecimento do bem e do mal não comerás dela; porque no dia que dela comeres, morrerás."
+    },
+    {
+      "n": 18,
+      "texto": "E disse o SENHOR Deus: Não é bom que o homem esteja só; farei para ele ajuda idônea para ele."
+    },
+    {
+      "n": 19,
+      "texto": "Formou, pois, o SENHOR Deus da terra todo animal do campo, e toda ave dos céus, e trouxe-os a Adão, para que visse como lhes havia de chamar; e tudo o que Adão chamou aos animais viventes, esse é seu nome."
+    },
+    {
+      "n": 20,
+      "texto": "E pôs Adão nomes a todo animal e ave dos céus e a todo animal do campo: mas para Adão não achou ajuda que estivesse idônea para ele."
+    },
+    {
+      "n": 21,
+      "texto": "E o SENHOR Deus fez cair sonho sobre Adão, e ele adormeceu: então tomou uma de suas costelas, e fechou a carne em seu lugar;"
+    },
+    {
+      "n": 22,
+      "texto": "E da costela que o SENHOR Deus tomou do homem, fez uma mulher, e trouxe-a ao homem."
+    },
+    {
+      "n": 23,
+      "texto": "E disse Adão: Esta é agora osso de meus ossos, e carne de minha carne: esta será chamada Mulher, porque do homem foi tomada."
+    },
+    {
+      "n": 24,
+      "texto": "Portanto, deixará o homem a seu pai e a sua mãe, e se achegará à sua mulher, e serão uma só carne."
+    },
+    {
+      "n": 25,
+      "texto": "E estavam ambos nus, Adão e sua mulher, e não se envergonhavam."
+    }
+  ],
+  "passagem": {
+    "id": "gen-02-01_02-25",
+    "referencia": "Gênesis 2:1–25",
+    "titulo": "O sétimo dia e o jardim do Éden",
+    "afirma": [
+      "Deus termina a obra da criação, descansa no sétimo dia e o abençoa.",
+      "Começa então outro relato: o SENHOR Deus forma o homem do pó da terra, sopra nele o fôlego de vida e o põe num jardim no Éden, com a árvore da vida e a árvore do conhecimento do bem e do mal, da qual o proíbe de comer.",
+      "Do Éden sai um rio que se divide em quatro, entre eles o Tigre e o Eufrates. Deus forma os animais, que o homem nomeia, e, de uma costela do homem, a mulher."
+    ]
+  },
+  "notas": [
+    {
+      "id": "gn02-sexto-ou-setimo",
+      "tipo": "variante",
+      "passagem": "gen-02-01_02-25",
+      "versiculos": [
+        2,
+        2
+      ],
+      "titulo": "Deus terminou a obra no sétimo ou no sexto dia?",
+      "descricao": "No hebraico padrão, o Texto Massorético, Deus termina a obra “no sétimo dia”, o que soa estranho, já que o sétimo é o dia do descanso. A Septuaginta grega, o Pentateuco Samaritano e a Peshitta siríaca dizem “no sexto dia”. Skinner (1910) observa que “sexto” é a leitura mais fácil, e por isso hesita em preferi-la. Hendel (1998) chega à conclusão oposta: para ele “sexto” é a leitura original, e “sétimo” nasceu de um erro de cópia, em que o escriba antecipou uma palavra da segunda metade do versículo.",
+      "leituras": [
+        {
+          "leitura": "“No sétimo dia”",
+          "quem": "Texto Massorético; Hendel (1998, p. 34) a considera secundária, fruto de erro de cópia"
+        },
+        {
+          "leitura": "“No sexto dia”",
+          "quem": "Septuaginta, Pentateuco Samaritano e Peshitta (Skinner 1910, p. 37; NETS, p. 7); Hendel (1998, p. 34) a considera a original"
+        }
+      ],
+      "fontes": [
+        {
+          "nivel": 2,
+          "descricao": "Skinner, J. (1910), A Critical and Exegetical Commentary on Genesis (International Critical Commentary), Nova York: Charles Scribner's Sons, p. 37",
+          "url": "https://archive.org/details/criticalexegetic00skinuoft"
+        },
+        {
+          "nivel": 2,
+          "descricao": "Hendel, R. S. (1998), The Text of Genesis 1–11: Textual Studies and Critical Edition, Nova York/Oxford: Oxford University Press, pp. 32–34"
+        },
+        {
+          "nivel": 2,
+          "descricao": "Hiebert, R. J. V. (trad.) (2007), \"Genesis\", em A. Pietersma e B. G. Wright (orgs.), A New English Translation of the Septuagint, Oxford: Oxford University Press, p. 7",
+          "url": "https://ccat.sas.upenn.edu/nets/edition/01-gen-nets.pdf"
+        }
+      ],
+      "notas": null,
+      "trecho": "E acabou Deus no dia sétimo"
+    },
+    {
+      "id": "gn02-estas-sao-as-origens",
+      "tipo": "traducao",
+      "passagem": "gen-02-01_02-25",
+      "versiculos": [
+        4,
+        4
+      ],
+      "titulo": "“Estas são as origens”: fim de um relato ou começo de outro?",
+      "descricao": "A fórmula hebraica toledot, traduzida por “origens” ou “gerações”, costuma abrir uma nova seção de Gênesis. Aqui ela fica entre os dois relatos da criação, e não se encaixa bem em nenhum dos dois. Skinner (1910) acha a meia frase “desconcertante no último grau” e a considera, com toda a probabilidade, uma inserção de quem editou o livro.",
+      "fontes": [
+        {
+          "nivel": 2,
+          "descricao": "Skinner, J. (1910), A Critical and Exegetical Commentary on Genesis (International Critical Commentary), Nova York: Charles Scribner's Sons, pp. 39–40",
+          "url": "https://archive.org/details/criticalexegetic00skinuoft"
+        }
+      ],
+      "notas": null,
+      "trecho": "Estas são as origens"
+    },
+    {
+      "id": "gn02-formula-mais-longa",
+      "tipo": "variante",
+      "passagem": "gen-02-01_02-25",
+      "versiculos": [
+        4,
+        4
+      ],
+      "titulo": "A Septuaginta alonga a fórmula",
+      "descricao": "Na Septuaginta, a fórmula do versículo 4 fica mais longa, igual à que abre Gênesis 5 (“Este é o livro da origem…”). Para Hendel (1998), foi um copista da tradição grega que igualou as duas; o hebraico padrão guarda a forma curta, que é a original.",
+      "fontes": [
+        {
+          "nivel": 2,
+          "descricao": "Hendel, R. S. (1998), The Text of Genesis 1–11: Textual Studies and Critical Edition, Nova York/Oxford: Oxford University Press, p. 34"
+        }
+      ],
+      "notas": null,
+      "trecho": "dos céus e da terra quando foram criados"
+    },
+    {
+      "id": "gn02-senhor-deus",
+      "tipo": "traducao",
+      "passagem": "gen-02-01_02-25",
+      "versiculos": [
+        4,
+        4
+      ],
+      "titulo": "Por que agora “o SENHOR Deus”?",
+      "descricao": "Em Gênesis 1, o texto hebraico chama Deus só de Elohim, mais de 35 vezes. A partir daqui passa a usar o par YHWH Elohim, que as traduções vertem por “o SENHOR Deus”, e o usa 30 vezes até o fim do capítulo 3. Hendel (1998) chama a mudança de surpreendente para qualquer leitor. Para os estudiosos da crítica das fontes, ela é uma das marcas de que começa outro relato, e Skinner (1910) atribui o nome duplo, quase exclusivo de Gênesis 2 e 3, ao trabalho de quem juntou os textos. Os rabinos clássicos, segundo Hendel, liam os dois nomes como dois atributos de Deus.",
+      "fontes": [
+        {
+          "nivel": 2,
+          "descricao": "Skinner, J. (1910), A Critical and Exegetical Commentary on Genesis (International Critical Commentary), Nova York: Charles Scribner's Sons, p. 54",
+          "url": "https://archive.org/details/criticalexegetic00skinuoft"
+        },
+        {
+          "nivel": 2,
+          "descricao": "Hendel, R. S. (1998), The Text of Genesis 1–11: Textual Studies and Critical Edition, Nova York/Oxford: Oxford University Press, pp. 34–35"
+        }
+      ],
+      "notas": null,
+      "trecho": "o SENHOR Deus fez a terra e os céus"
+    },
+    {
+      "id": "gn02-vapor",
+      "tipo": "traducao",
+      "passagem": "gen-02-01_02-25",
+      "versiculos": [
+        6,
+        6
+      ],
+      "titulo": "Vapor, névoa ou cheia?",
+      "descricao": "A palavra hebraica traduzida por “vapor” só aparece mais uma vez em toda a Bíblia hebraica, e o sentido é incerto. A Vulgata entende “fonte” e o Targum, “nuvem”; muitos preferem “névoa”, um palpite natural, segundo Skinner (1910). Outra leitura, apoiada numa palavra assíria usada para a cheia anual de um rio, entende que a terra era regada por uma enchente, como nos campos irrigados da Mesopotâmia.",
+      "fontes": [
+        {
+          "nivel": 2,
+          "descricao": "Skinner, J. (1910), A Critical and Exegetical Commentary on Genesis (International Critical Commentary), Nova York: Charles Scribner's Sons, p. 55",
+          "url": "https://archive.org/details/criticalexegetic00skinuoft"
+        }
+      ],
+      "notas": null,
+      "trecho": "um vapor"
+    },
+    {
+      "id": "gn02-adam-adamah",
+      "tipo": "traducao",
+      "passagem": "gen-02-01_02-25",
+      "versiculos": [
+        7,
+        7
+      ],
+      "titulo": "Adam, feito da adamah",
+      "descricao": "Em hebraico, “homem” (adam) e “terra” (adamah) soam quase iguais, e o texto tira proveito disso: o homem é feito do solo, vive de cultivá-lo e volta a ele na morte, como resume Skinner (1910). A origem das duas palavras é incerta; a velha explicação por uma raiz que significa “ser vermelho” foi abandonada, mas nada melhor a substituiu.",
+      "fontes": [
+        {
+          "nivel": 2,
+          "descricao": "Skinner, J. (1910), A Critical and Exegetical Commentary on Genesis (International Critical Commentary), Nova York: Charles Scribner's Sons, p. 56",
+          "url": "https://archive.org/details/criticalexegetic00skinuoft"
+        }
+      ],
+      "notas": null,
+      "trecho": "do pó da terra"
+    },
+    {
+      "id": "gn02-alma-vivente",
+      "tipo": "traducao",
+      "passagem": "gen-02-01_02-25",
+      "versiculos": [
+        7,
+        7
+      ],
+      "titulo": "“Alma vivente”: uma alma à parte?",
+      "descricao": "A expressão hebraica nefesh hayyah, traduzida por “alma vivente”, não fala de uma alma separada do corpo. Para Skinner (1910), a palavra designa o homem inteiro, dotado de vida: a vitalidade vem de Deus, pelo sopro, mas o texto não divide o ser humano em corpo, alma e espírito, como fizeram leituras posteriores.",
+      "fontes": [
+        {
+          "nivel": 2,
+          "descricao": "Skinner, J. (1910), A Critical and Exegetical Commentary on Genesis (International Critical Commentary), Nova York: Charles Scribner's Sons, p. 57",
+          "url": "https://archive.org/details/criticalexegetic00skinuoft"
+        }
+      ],
+      "notas": null,
+      "trecho": "alma vivente"
+    },
+    {
+      "id": "gn02-eden",
+      "tipo": "traducao",
+      "passagem": "gen-02-01_02-25",
+      "versiculos": [
+        8,
+        8
+      ],
+      "titulo": "O que quer dizer “Éden”?",
+      "descricao": "Este é talvez o único trecho em que o Éden, como lugar, aparece distinto do jardim plantado nele. Friedrich Delitzsch e Schrader derivaram o nome do acádio edinu, “planície” ou “estepe”. Skinner (1910) aceita a comparação, mas acha precário concluir daí que o jardim fosse imaginado como um oásis no meio do deserto.",
+      "fontes": [
+        {
+          "nivel": 2,
+          "descricao": "Skinner, J. (1910), A Critical and Exegetical Commentary on Genesis (International Critical Commentary), Nova York: Charles Scribner's Sons, pp. 57–58",
+          "url": "https://archive.org/details/criticalexegetic00skinuoft"
+        }
+      ],
+      "notas": null,
+      "trecho": "um jardim em Éden ao oriente"
+    },
+    {
+      "id": "gn02-ajuda-idonea",
+      "tipo": "traducao",
+      "passagem": "gen-02-01_02-25",
+      "versiculos": [
+        18,
+        18
+      ],
+      "titulo": "“Ajuda idônea”: auxiliar ou contraparte?",
+      "descricao": "A expressão hebraica ‘ezer kenegdo diz, ao pé da letra, “uma ajuda como diante dele”, isto é, que lhe corresponda. Skinner (1910) observa que a palavra “ajuda” é usada no resto do Antigo Testamento sobretudo para o próprio Deus, como socorro de Israel. O termo, portanto, não traz em si a ideia de inferioridade.",
+      "fontes": [
+        {
+          "nivel": 2,
+          "descricao": "Skinner, J. (1910), A Critical and Exegetical Commentary on Genesis (International Critical Commentary), Nova York: Charles Scribner's Sons, p. 67",
+          "url": "https://archive.org/details/criticalexegetic00skinuoft"
+        }
+      ],
+      "notas": null,
+      "trecho": "ajuda idônea"
+    },
+    {
+      "id": "gn02-esta-tres-vezes",
+      "tipo": "variante",
+      "passagem": "gen-02-01_02-25",
+      "versiculos": [
+        23,
+        23
+      ],
+      "titulo": "Um “esta” a mais",
+      "descricao": "Na fala do homem sobre a mulher, o pronome “esta” aparece três vezes no hebraico padrão e só duas na Septuaginta e na Peshitta. Hendel (1998) vê o terceiro como um acréscimo de copista, feito para deixar claro quem é o sujeito de “foi tomada”.",
+      "fontes": [
+        {
+          "nivel": 2,
+          "descricao": "Hendel, R. S. (1998), The Text of Genesis 1–11: Textual Studies and Critical Edition, Nova York/Oxford: Oxford University Press, p. 44"
+        }
+      ],
+      "notas": null,
+      "trecho": "Esta é agora osso de meus ossos"
+    },
+    {
+      "id": "gn02-mulher-e-homem",
+      "tipo": "traducao",
+      "passagem": "gen-02-01_02-25",
+      "versiculos": [
+        23,
+        23
+      ],
+      "titulo": "Mulher e homem: um jogo de palavras",
+      "descricao": "Em hebraico, “mulher” (‘ishshah) e “homem” (‘ish) soam como se uma palavra viesse da outra, e o versículo se apoia nisso. Mas, segundo Skinner (1910), a comparação com outras línguas semíticas mostra que as duas palavras têm raízes diferentes: resta só uma assonância muito forte.",
+      "fontes": [
+        {
+          "nivel": 2,
+          "descricao": "Skinner, J. (1910), A Critical and Exegetical Commentary on Genesis (International Critical Commentary), Nova York: Charles Scribner's Sons, p. 69",
+          "url": "https://archive.org/details/criticalexegetic00skinuoft"
+        }
+      ],
+      "notas": null,
+      "trecho": "esta será chamada Mulher, porque do homem foi tomada"
+    }
+  ],
+  "conexoes": [
+    {
+      "ligacao": "hipotese-documentaria-confirma-dois-relatos-da-criacao",
+      "versiculos": [
+        5,
+        5
+      ],
+      "tema": "contexto",
+      "trecho": "E antes que toda planta do campo existisse na terra"
+    },
+    {
+      "ligacao": "atrahasis-paralelo-genesis",
+      "versiculos": [
+        7,
+        7
+      ],
+      "tema": "paralelo",
+      "trecho": "Formou, pois, o SENHOR Deus ao homem"
+    },
+    {
+      "ligacao": "epopeia-de-gilgamesh-paralelo-genesis",
+      "versiculos": [
+        7,
+        7
+      ],
+      "tema": "paralelo",
+      "trecho": "Formou, pois, o SENHOR Deus ao homem"
+    },
+    {
+      "ligacao": "fosseis-de-jebel-irhoud-confirma-fosseis-mais-antigos-do-homo-sapiens",
+      "versiculos": [
+        7,
+        7
+      ],
+      "tema": "ciencia",
+      "trecho": "e assoprou em seu nariz sopro de vida"
+    },
+    {
+      "ligacao": "comentario-critico-de-skinner-contradiz-eden-lugar-real",
+      "versiculos": [
+        10,
+        10
+      ],
+      "tema": "contexto",
+      "trecho": "E saía de Éden um rio para regar o jardim"
+    },
+    {
+      "ligacao": "enki-e-ninhursag-paralelo-genesis",
+      "versiculos": [
+        21,
+        21
+      ],
+      "tema": "paralelo",
+      "trecho": "tomou uma de suas costelas"
+    }
+  ]
+}

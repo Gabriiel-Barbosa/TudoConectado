@@ -1,0 +1,32 @@
+# Gerado por .claude/skills/conferir/scripts/registrar.js — vereditos da
+# Contraprova para as fontes desta ligação. Edite à mão só 'revisao_humana'
+# (pendente -> feita) depois de conferir você mesmo.
+ligacao: gn02-vapor
+fontes:
+  - hash: d78dbc2d9a7b
+    nivel: 2
+    descricao: >-
+      Skinner, J. (1910), A Critical and Exegetical Commentary on Genesis (International Critical
+      Commentary), Nova York: Charles Scribner's Sons, p. 55
+    alegacao: >-
+      Skinner (1910), p. 55, atesta que a palavra hebraica traduzida por "vapor" em Gênesis 2:6
+      aparece só mais uma vez na Bíblia hebraica e tem sentido incerto, que a Vulgata entende
+      "fonte" e o Targum, "nuvem", que "névoa" é um palpite natural, e que outra leitura, apoiada
+      numa palavra assíria usada para a cheia anual de um rio, entende que a terra era regada por
+      uma enchente.
+    veredito: confirmada
+    parou_em: null
+    conferido_em: >-
+      Texto OCR integral do exemplar digitalizado no Internet Archive (criticalexegetic01skin),
+      https://ia601409.us.archive.org/35/items/criticalexegetic01skin/criticalexegetic01skin_djvu.txt,
+      com o cabeçalho de página "II. 4- 55" imediatamente antes do trecho
+    observacao: >-
+      p. 55: o aparato traz a Vulgata como "fons" e o Targum com a palavra para "nuvem"; em seguida,
+      "The word has no etymol. in Heb., and the only other occurrence (Jb. 36:27) is even more
+      obscure than this. 'Cloud' (Targum) or 'mist' is a natural guess, and it is doubtful if it be
+      anything better. The meaning 'flood' comes from Ass. edû, applied to the annual overflow of a
+      river." Alegação reescrita depois de um veredito 'contradiz' que apontou a atribuição de
+      "nuvem" à Vulgata.
+    data: '2026-09-19'
+    conferido_por: contraprova
+    revisao_humana: pendente

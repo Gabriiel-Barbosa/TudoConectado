@@ -1,0 +1,26 @@
+# Gerado por .claude/skills/conferir/scripts/registrar.js — vereditos da
+# Contraprova para as fontes desta ligação. Edite à mão só 'revisao_humana'
+# (pendente -> feita) depois de conferir você mesmo.
+ligacao: gn02-mulher-e-homem
+fontes:
+  - hash: 41c0b3ed93eb
+    nivel: 2
+    descricao: >-
+      Skinner, J. (1910), A Critical and Exegetical Commentary on Genesis (International Critical
+      Commentary), Nova York: Charles Scribner's Sons, p. 69
+    alegacao: >-
+      Skinner (1910), p. 69, atesta que 'ishshah ("mulher") e 'ish ("homem"), apesar da forte
+      assonância, têm raízes diferentes, segundo a comparação com outras línguas semíticas.
+    veredito: confirmada
+    parou_em: null
+    conferido_em: >-
+      https://archive.org/download/criticalexegetic00skinuoft/criticalexegetic00skinuoft_djvu.txt
+      (entre os marcadores "II. 20-23 69" e "70 Paradise and the Fall (J)")
+    observacao: >-
+      Texto: "The old derivation of these words from a common root is generally abandoned... Arabic
+      and Aramaic show quite clearly that the root[s] ... are only apparently identical... The masc.
+      and fem. are therefore etymologically distinct, and nothing remains but a very strong
+      assonance."
+    data: '2026-09-19'
+    conferido_por: contraprova
+    revisao_humana: pendente

@@ -1,6 +1,16 @@
 {
   "nos": [
     {
+      "id": "adao",
+      "tipo": "registro",
+      "subtipo": "pessoa",
+      "nome": "Adão",
+      "alias": [
+        "homem"
+      ],
+      "descricao": "O primeiro homem, segundo Gênesis 2: Deus o forma do pó da terra, sopra nele o fôlego de vida e o põe no jardim do Éden para cultivá-lo e guardá-lo. No capítulo 2, o texto o chama primeiro de \"o homem\" e, a partir do versículo 19, de Adão. Em hebraico, adam também quer dizer \"ser humano\".\n"
+    },
+    {
       "id": "deus",
       "tipo": "registro",
       "subtipo": "pessoa",
@@ -10,6 +20,16 @@
         "YHWH"
       ],
       "descricao": "Em Gênesis 1, o criador de tudo o que existe, que faz o mundo pela palavra ao longo de seis dias. O texto hebraico deste capítulo o chama de Elohim. Em outros trechos da Bíblia hebraica, o deus de Israel também é chamado pelo nome próprio YHWH.\n"
+    },
+    {
+      "id": "eva",
+      "tipo": "registro",
+      "subtipo": "pessoa",
+      "nome": "Eva",
+      "alias": [
+        "mulher"
+      ],
+      "descricao": "A primeira mulher, segundo Gênesis 2, que Deus forma de uma costela de Adão. No capítulo 2 o texto a chama apenas de \"mulher\"; o nome Eva só aparece em Gênesis 3:20.\n"
     },
     {
       "id": "moises",
@@ -30,12 +50,50 @@
       "descricao": "Em Gênesis 1, a humanidade que Deus cria no sexto dia, homem e mulher, à sua imagem e semelhança, e a quem dá domínio sobre os peixes, as aves e os animais da terra. O texto não dá nome a ninguém: Adão e Eva só aparecem, com nome, nos capítulos seguintes.\n"
     },
     {
+      "id": "eden",
+      "tipo": "registro",
+      "subtipo": "lugar",
+      "nome": "Éden",
+      "alias": [],
+      "descricao": "A região onde, segundo Gênesis 2, Deus plantou um jardim \"ao oriente\" e pôs o primeiro homem. Dali saía um rio que se dividia em quatro, entre eles o Tigre e o Eufrates. Onde ficaria o Éden é uma questão discutida.\n"
+    },
+    {
+      "id": "rio-eufrates",
+      "tipo": "registro",
+      "subtipo": "lugar",
+      "nome": "Rio Eufrates",
+      "alias": [
+        "Eufrates"
+      ],
+      "descricao": "Um dos dois grandes rios da Mesopotâmia, ao lado do Tigre, no território das atuais Turquia, Síria e Iraque. Gênesis 2:14 o cita como o quarto dos rios que saíam do Éden.\n"
+    },
+    {
+      "id": "rio-tigre",
+      "tipo": "registro",
+      "subtipo": "lugar",
+      "nome": "Rio Tigre",
+      "alias": [
+        "Tigre"
+      ],
+      "descricao": "Um dos dois grandes rios da Mesopotâmia, ao lado do Eufrates, no território das atuais Turquia e Iraque. Gênesis 2:14 o cita como o terceiro dos quatro rios que saíam do Éden, o que \"vai diante da Assíria\".\n"
+    },
+    {
       "id": "missao-planck",
       "tipo": "registro",
       "subtipo": "acontecimento",
       "nome": "Missão Planck",
       "alias": [],
       "descricao": "Missão espacial de astronomia. A equipe responsável publicou os resultados finais em 2020, na revista Astronomy & Astrophysics, com uma estimativa da idade do universo."
+    },
+    {
+      "id": "atrahasis",
+      "tipo": "registro",
+      "subtipo": "texto",
+      "nome": "Atrahasis",
+      "alias": [
+        "Atra-hasis"
+      ],
+      "descricao": "Poema babilônico sobre a criação dos seres humanos e o dilúvio. Segundo Millard (1967), a cópia mais completa é do período paleobabilônico, do século XVII a.C.; não se sabe quando o texto foi composto."
     },
     {
       "id": "catecismo-da-igreja-catolica",
@@ -56,6 +114,14 @@
       "descricao": "Obra de Agostinho de Hipona, bispo e teólogo cristão da Antiguidade."
     },
     {
+      "id": "comentario-critico-de-skinner",
+      "tipo": "registro",
+      "subtipo": "texto",
+      "nome": "Comentário crítico a Gênesis (Skinner, 1910)",
+      "alias": [],
+      "descricao": "Comentário acadêmico ao livro de Gênesis publicado em 1910 por John Skinner na série International Critical Commentary. É uma referência clássica da crítica bíblica."
+    },
+    {
       "id": "declaracao-breve-sinodo-missouri",
       "tipo": "registro",
       "subtipo": "texto",
@@ -74,6 +140,14 @@
       "descricao": "Respostas oficiais da Pontifícia Comissão Bíblica, órgão do Vaticano para questões de interpretação da Bíblia, sobre o caráter histórico dos três primeiros capítulos de Gênesis. Foram publicadas em 1909 na Acta Apostolicae Sedis, o boletim oficial da Santa Sé."
     },
     {
+      "id": "enki-e-ninhursag",
+      "tipo": "registro",
+      "subtipo": "texto",
+      "nome": "Enki e Ninhursag",
+      "alias": [],
+      "descricao": "Mito sumério ambientado em Dilmun, uma terra pura, sem doença nem morte. Quando o deus Enki adoece depois de comer plantas proibidas, a deusa Ninhursag faz nascer uma divindade curadora para cada parte doente do corpo dele."
+    },
+    {
       "id": "enuma-elish",
       "tipo": "registro",
       "subtipo": "texto",
@@ -82,6 +156,16 @@
         "Enūma eliš"
       ],
       "descricao": "Poema babilônico sobre a origem do mundo, escrito em acádio em sete tabuletas de argila. Conta como o deus Marduk vence Tiamat, a personificação das águas primordiais, parte o corpo dela em dois e faz de uma das metades o céu. As cópias mais antigas conhecidas são de c. 1000 a.C.; a data em que o poema foi composto é discutida pelos estudiosos."
+    },
+    {
+      "id": "epopeia-de-gilgamesh",
+      "tipo": "registro",
+      "subtipo": "texto",
+      "nome": "Epopeia de Gilgamesh",
+      "alias": [
+        "Gilgamesh"
+      ],
+      "descricao": "Poema babilônico sobre Gilgamesh, rei de Uruk, e sua busca pela imortalidade. Na primeira tábua, a deusa Aruru forma de barro o companheiro dele, Enkidu."
     },
     {
       "id": "genesis",
@@ -159,6 +243,14 @@
       "descricao": "Estela de basalto do rei Mesa, de Moabe, achada em 1868 em Dhiban, na atual Jordânia. Traz uma inscrição de 34 linhas numa língua muito próxima do hebraico. Está no Museu do Louvre, com o número AO 5066.\n"
     },
     {
+      "id": "fosseis-de-jebel-irhoud",
+      "tipo": "registro",
+      "subtipo": "objeto",
+      "nome": "Fósseis de Jebel Irhoud",
+      "alias": [],
+      "descricao": "Fósseis humanos achados no sítio de Jebel Irhoud, no Marrocos: crânios, mandíbula, dentes e ossos de pelo menos cinco indivíduos, com o rosto já parecido com o do ser humano atual e o crânio mais arcaico."
+    },
+    {
       "id": "manuscrito-6qpaleogen",
       "tipo": "registro",
       "subtipo": "objeto",
@@ -196,6 +288,16 @@
       "texto": "Os seis dias de Gênesis 1 não precisam ser lidos como dias de 24 horas."
     },
     {
+      "id": "dois-relatos-da-criacao",
+      "tipo": "afirmacao",
+      "texto": "Gênesis 1:1–2:4a e Gênesis 2:4b–25 são dois relatos distintos da criação, com ordens diferentes, vindos de fontes diferentes."
+    },
+    {
+      "id": "eden-lugar-real",
+      "tipo": "afirmacao",
+      "texto": "O jardim do Éden descrito em Gênesis 2 ficava num lugar real, que se pode localizar no mapa."
+    },
+    {
       "id": "formacao-da-terra",
       "tipo": "afirmacao",
       "texto": "A Terra e o Sistema Solar se formaram há cerca de 4,54 bilhões de anos.",
@@ -206,6 +308,20 @@
             -4530000000
           ],
           "segundo_quem": "Segundo o Serviço Geológico dos Estados Unidos (USGS), a datação radiométrica mostra que os meteoritos, e portanto o Sistema Solar, se formaram entre 4,53 e 4,58 bilhões de anos atrás; o cálculo para a Terra dá 4,54 bilhões de anos, com incerteza menor que 1%."
+        }
+      ]
+    },
+    {
+      "id": "fosseis-mais-antigos-do-homo-sapiens",
+      "tipo": "afirmacao",
+      "texto": "Os fósseis mais antigos conhecidos da linhagem do Homo sapiens têm cerca de 315 mil anos e foram achados na África, no Marrocos.",
+      "datacao": [
+        {
+          "periodo": [
+            -349000,
+            -281000
+          ],
+          "segundo_quem": "Segundo Richter e colegas (2017), a datação por termoluminescência dá aos fósseis e às ferramentas de Jebel Irhoud uma idade de 315 mil anos, com margem de 34 mil anos para mais ou para menos. O intervalo registrado aqui é essa margem, contada a partir de hoje."
         }
       ]
     },
@@ -277,6 +393,19 @@
       "nenhum_paralelo_conhecido": false,
       "titulo": "A criação do mundo em seis dias",
       "texto": "genesis-01"
+    },
+    {
+      "id": "gen-02-01_02-25",
+      "tipo": "passagem",
+      "referencia": "Gênesis 2:1–25",
+      "afirma": [
+        "Deus termina a obra da criação, descansa no sétimo dia e o abençoa.",
+        "Começa então outro relato: o SENHOR Deus forma o homem do pó da terra, sopra nele o fôlego de vida e o põe num jardim no Éden, com a árvore da vida e a árvore do conhecimento do bem e do mal, da qual o proíbe de comer.",
+        "Do Éden sai um rio que se divide em quatro, entre eles o Tigre e o Eufrates. Deus forma os animais, que o homem nomeia, e, de uma costela do homem, a mulher."
+      ],
+      "nenhum_paralelo_conhecido": false,
+      "titulo": "O sétimo dia e o jardim do Éden",
+      "texto": "genesis-02"
     }
   ],
   "arestas": [
@@ -334,6 +463,39 @@
       "notas": "Os amuletos são pequenos objetos pessoais, enterrados com os mortos, e trazem uma forma abreviada da bênção sacerdotal de Números 6:24–26, com o nome YHWH repetido. Eles comprovam o uso do nome e dessa bênção, mas não dizem nada sobre Gênesis 1. A data é discutida: Waaler (2002) os põe entre 725 e 650 a.C., e outros estudiosos, mais tarde. O número de catálogo no Museu de Israel, onde estão expostos, ainda não foi conferido.\n"
     },
     {
+      "id": "atrahasis-paralelo-genesis__0",
+      "ligacao": "atrahasis-paralelo-genesis",
+      "origem": "atrahasis",
+      "destino": "genesis",
+      "tipo": "paralelo",
+      "forca": "bem_estabelecido",
+      "tipo_de_apoio": "texto",
+      "quem_sustenta": [
+        {
+          "nome": "A. R. Millard",
+          "ano": 1967
+        },
+        {
+          "nome": "Alexander Heidel",
+          "ano": 1951
+        }
+      ],
+      "fontes": [
+        {
+          "nivel": 2,
+          "descricao": "Millard, A. R. (1967), \"A New Babylonian 'Genesis' Story\", Tyndale Bulletin 18, pp. 9–10 e 15–16, doi:10.53751/001c.30683",
+          "url": "https://www.tyndalebulletin.org/article/30683-a-new-babylonian-genesis-story.pdf"
+        },
+        {
+          "nivel": 2,
+          "descricao": "Heidel, A. (1951), The Babylonian Genesis: The Story of Creation, 2ª ed., Chicago: University of Chicago Press, pp. 67 e 118–122",
+          "url": "https://isac.uchicago.edu/research/publications/misc/babylonian-genesis-story-creation"
+        }
+      ],
+      "o_que_derrubaria": "O paralelo entre o Atrahasis e Gênesis 2 cairia se uma nova leitura das tabuinhas mostrasse que o ser humano não é formado de barro nesse poema.",
+      "notas": "No Atrahasis, o ser humano é formado de barro misturado à carne e ao sangue de um deus abatido. Em Gênesis 2, do pó da terra, com o sopro de Deus. Millard (1967) observa que os dois relatos dão ao homem uma parte terrena e uma parte divina, mas lembra que ideias parecidas não precisam ter a mesma origem: a de que o homem é feito de terra podia surgir em culturas diferentes, de forma independente. Paralelo, aqui, não quer dizer cópia."
+    },
+    {
       "id": "catecismo-da-igreja-catolica-confirma-dias-de-genesis-nao-literais__0",
       "ligacao": "catecismo-da-igreja-catolica-confirma-dias-de-genesis-nao-literais",
       "origem": "catecismo-da-igreja-catolica",
@@ -372,6 +534,30 @@
       "notas": "Agostinho escreve que é extremamente difícil, talvez impossível, conceber que espécie de dias foram aqueles. No capítulo seguinte, lembra que o texto fala de tarde e manhã antes de existir o Sol. A dúvida sobre a natureza dos dias não é, portanto, uma invenção moderna: já estava num dos teólogos mais lidos do cristianismo antigo."
     },
     {
+      "id": "comentario-critico-de-skinner-contradiz-eden-lugar-real__0",
+      "ligacao": "comentario-critico-de-skinner-contradiz-eden-lugar-real",
+      "origem": "comentario-critico-de-skinner",
+      "destino": "eden-lugar-real",
+      "tipo": "contradiz",
+      "forca": "disputado",
+      "tipo_de_apoio": "texto",
+      "quem_sustenta": [
+        {
+          "nome": "John Skinner",
+          "ano": 1910
+        }
+      ],
+      "fontes": [
+        {
+          "nivel": 2,
+          "descricao": "Skinner, J. (1910), A Critical and Exegetical Commentary on Genesis (International Critical Commentary), Nova York: Charles Scribner's Sons, pp. 59–62 e 65–66",
+          "url": "https://archive.org/details/criticalexegetic00skinuoft"
+        }
+      ],
+      "o_que_derrubaria": "A ideia de que o Éden não corresponde a um lugar real cairia se se identificassem com segurança os rios Pisom e Giom e uma região onde os quatro rios nascem juntos.",
+      "notas": "Para Skinner (1910), a geografia de Gênesis 2:10–14 não corresponde a nenhum lugar da Terra: o Tigre e o Eufrates nunca foram braços de um mesmo rio, e a ideia de que outros dois grandes rios nasceram da mesma fonte põe a descrição fora do conhecimento geográfico real. O que se pode dizer, conclui ele, é que o relato situa o paraíso na região desconhecida, ao norte, de onde vêm o Tigre e o Eufrates. Pisom e Giom continuam sem identificação segura. É a posição de um comentário de 1910; a localização do Éden segue discutida."
+    },
+    {
       "id": "declaracao-breve-sinodo-missouri-contradiz-dias-de-genesis-nao-literais__0",
       "ligacao": "declaracao-breve-sinodo-missouri-contradiz-dias-de-genesis-nao-literais",
       "origem": "declaracao-breve-sinodo-missouri",
@@ -408,6 +594,29 @@
       ],
       "o_que_derrubaria": "A ideia de que o decreto admite dias não literais cairia se a resposta à questão VIII não permitisse ler a palavra yom (dia) como um período de tempo.",
       "notas": "Na questão VIII, a comissão respondeu que a palavra hebraica yom, “dia”, pode ser entendida como um dia natural ou como um período de tempo, e que os estudiosos podem discutir isso livremente. A questão VII parte do pressuposto de que o autor de Gênesis 1 não pretendia ensinar a ordem da criação de modo científico. O mesmo decreto, porém, defende nas questões I a III o sentido literal e histórico dos três primeiros capítulos: ele abre espaço para ler os dias como períodos, sem negar a historicidade do relato."
+    },
+    {
+      "id": "enki-e-ninhursag-paralelo-genesis__0",
+      "ligacao": "enki-e-ninhursag-paralelo-genesis",
+      "origem": "enki-e-ninhursag",
+      "destino": "genesis",
+      "tipo": "paralelo",
+      "forca": "poucos",
+      "tipo_de_apoio": "texto",
+      "quem_sustenta": [
+        {
+          "nome": "Samuel Noah Kramer",
+          "ano": 1969
+        }
+      ],
+      "fontes": [
+        {
+          "nivel": 2,
+          "descricao": "Pritchard, J. B. (org.) (1969), Ancient Near Eastern Texts Relating to the Old Testament, 3ª ed., Princeton: Princeton University Press, p. 37 (introdução de S. N. Kramer a Enki e Ninhursag, nota 13) e linhas 265–266 do poema"
+        }
+      ],
+      "o_que_derrubaria": "O paralelo cairia se a leitura do poema mostrasse que a deusa Ninti não está ligada à costela doente de Enki, ou que Dilmun não é descrita como uma terra pura.",
+      "notas": "O poema sumério descreve Dilmun como uma terra pura e limpa. Mais adiante, Enki adoece em várias partes do corpo, e para a costela nasce a deusa Ninti. Kramer, na introdução à tradução, diz que o mito talvez ofereça paralelos interessantes com a história bíblica do paraíso, nos capítulos 2 e 3 de Gênesis. É uma semelhança de motivos, não uma cópia. A explicação de que o nome Ninti joga com duas palavras sumérias, “costela” e “fazer viver”, ainda não foi conferida numa fonte lida, e a única cópia on-line encontrada da ANET não é oficial."
     },
     {
       "id": "enuma-elish-paralelo-genesis__0",
@@ -457,6 +666,24 @@
       "notas": "Paralelo não quer dizer cópia. Heidel (1951), que lista as semelhanças, vê pela ordem dos acontecimentos uma relação de parentesco entre as duas histórias, mas deixa em aberto se o relato bíblico depende do material babilônico. Para Routledge (2010), é amplamente reconhecido que nada indica dependência, e Millard (1967) diz que ainda não se mostrou empréstimo algum. A data em que o Enuma Elish foi composto também é discutida, o que impede dizer qual dos dois textos é mais antigo. Heidel observa ainda que as diferenças vão mais fundo que as semelhanças: no poema babilônico, o mundo nasce da luta de um deus contra outro."
     },
     {
+      "id": "epopeia-de-gilgamesh-paralelo-genesis__0",
+      "ligacao": "epopeia-de-gilgamesh-paralelo-genesis",
+      "origem": "epopeia-de-gilgamesh",
+      "destino": "genesis",
+      "tipo": "paralelo",
+      "forca": "aceito_maioria",
+      "tipo_de_apoio": "texto",
+      "quem_sustenta": [],
+      "fontes": [
+        {
+          "nivel": 2,
+          "descricao": "Pritchard, J. B. (org.) (1969), Ancient Near Eastern Texts Relating to the Old Testament, 3ª ed., Princeton: Princeton University Press, p. 74 (Epopeia de Gilgamesh, tábua I, coluna ii, trad. E. A. Speiser)"
+        }
+      ],
+      "o_que_derrubaria": "O paralelo cairia se a leitura da primeira tábua mostrasse que Enkidu não é formado de barro pela deusa Aruru.",
+      "notas": "Na primeira tábua da Epopeia de Gilgamesh, a deusa Aruru lava as mãos, belisca um pedaço de barro e o lança na estepe, onde nasce Enkidu. A imagem do ser humano modelado com barro é parecida com a de Gênesis 2, mas no poema não há sopro divino. A fonte consultada é a edição impressa da Princeton University Press; a única cópia on-line encontrada não é oficial."
+    },
+    {
       "id": "estela-de-mesa-confirma-nome-yhwh-fora-da-biblia__0",
       "ligacao": "estela-de-mesa-confirma-nome-yhwh-fora-da-biblia",
       "origem": "estela-de-mesa",
@@ -486,6 +713,39 @@
       "notas": "A estela é do rei de Moabe, um vizinho e inimigo de Israel, e não de um israelita: é por isso que ela conta como testemunho de fora da Bíblia. O que ela comprova é que, no século IX a.C., o deus de Israel era conhecido pelo nome YHWH, a ponto de um rei estrangeiro se gabar de ter tomado os vasos do seu culto. Ela não diz nada sobre Gênesis 1 nem sobre a crença em si. Uma palavra dessa passagem, \"vasos\", está danificada na pedra e é uma restauração, aceita, segundo Rendsburg (2007), por quase todos os estudiosos.\n"
     },
     {
+      "id": "fosseis-de-jebel-irhoud-confirma-fosseis-mais-antigos-do-homo-sapiens__0",
+      "ligacao": "fosseis-de-jebel-irhoud-confirma-fosseis-mais-antigos-do-homo-sapiens",
+      "origem": "fosseis-de-jebel-irhoud",
+      "destino": "fosseis-mais-antigos-do-homo-sapiens",
+      "tipo": "confirma",
+      "forca": "aceito_maioria",
+      "tipo_de_apoio": "achado_arqueologico",
+      "quem_sustenta": [
+        {
+          "nome": "Jean-Jacques Hublin",
+          "ano": 2017
+        },
+        {
+          "nome": "Daniel Richter",
+          "ano": 2017
+        }
+      ],
+      "fontes": [
+        {
+          "nivel": 2,
+          "descricao": "Hublin, J.-J. et al. (2017), \"New fossils from Jebel Irhoud, Morocco and the pan-African origin of Homo sapiens\", Nature 546, pp. 289–292 (resumo, p. 289), doi:10.1038/nature22336",
+          "url": "https://doi.org/10.1038/nature22336"
+        },
+        {
+          "nivel": 2,
+          "descricao": "Richter, D. et al. (2017), \"The age of the hominin fossils from Jebel Irhoud, Morocco, and the origins of the Middle Stone Age\", Nature 546, pp. 293–296 (resumo, p. 293), doi:10.1038/nature22335",
+          "url": "https://doi.org/10.1038/nature22335"
+        }
+      ],
+      "o_que_derrubaria": "A idade de cerca de 315 mil anos cairia se novas datações dos fósseis e das ferramentas de Jebel Irhoud dessem resultado muito diferente, ou se os fósseis fossem reclassificados fora da linhagem do Homo sapiens.",
+      "notas": "Os fósseis têm o rosto e a mandíbula já parecidos com os do ser humano atual e o crânio mais arcaico; para os autores, documentam as primeiras etapas da linhagem do Homo sapiens. Para Gênesis 2, que conta a formação do primeiro homem a partir do pó da terra, a ciência oferece outra história: a da espécie humana surgindo aos poucos, ao longo de centenas de milhares de anos. Os artigos completos são pagos; foram lidos os resumos publicados pela revista."
+    },
+    {
       "id": "guia-dos-perplexos-confirma-dias-de-genesis-nao-literais__0",
       "ligacao": "guia-dos-perplexos-confirma-dias-de-genesis-nao-literais",
       "origem": "guia-dos-perplexos",
@@ -503,6 +763,30 @@
       ],
       "o_que_derrubaria": "A ideia de que Maimônides lê os dias de forma não literal cairia se o capítulo II.30 tratasse os seis dias como seis atos de criação separados no tempo.",
       "notas": "Maimônides lê o começo de Gênesis como a criação de todas as coisas de uma vez, separadas depois, umas das outras, pouco a pouco. Para explicar, repete uma comparação dos sábios judeus: sementes de vários tipos semeadas no mesmo dia brotam em dias diferentes."
+    },
+    {
+      "id": "hipotese-documentaria-confirma-dois-relatos-da-criacao__0",
+      "ligacao": "hipotese-documentaria-confirma-dois-relatos-da-criacao",
+      "origem": "hipotese-documentaria",
+      "destino": "dois-relatos-da-criacao",
+      "tipo": "confirma",
+      "forca": "aceito_maioria",
+      "tipo_de_apoio": "analise_linguistica",
+      "quem_sustenta": [
+        {
+          "nome": "John Skinner",
+          "ano": 1910
+        }
+      ],
+      "fontes": [
+        {
+          "nivel": 2,
+          "descricao": "Skinner, J. (1910), A Critical and Exegetical Commentary on Genesis (International Critical Commentary), Nova York: Charles Scribner's Sons, pp. 40–41, 51 e 54",
+          "url": "https://archive.org/details/criticalexegetic00skinuoft"
+        }
+      ],
+      "o_que_derrubaria": "A ideia de dois relatos distintos cairia se a análise da língua e do estilo mostrasse que Gênesis 1 e 2 são um texto único, sem mudança de autor no versículo 4.",
+      "notas": "Para Skinner (1910), a passagem para o outro relato acontece no meio do versículo 4, onde mudam de repente o estilo e a língua. O segundo relato difere do primeiro na maneira de imaginar o mundo antes da criação, uma terra seca e sem água, e na ordem das obras: primeiro o homem, depois as árvores, os animais e, por fim, a mulher. Em Gênesis 1, o ser humano vem por último. A força “aceito pela maioria” descreve os estudiosos da crítica bíblica acadêmica, não as comunidades religiosas que leem os dois capítulos como um relato só."
     },
     {
       "id": "hipotese-documentaria-confirma-publicacao-pentateuco-periodo-persa__0",
@@ -705,8 +989,50 @@
       "tipo": "cita"
     },
     {
+      "id": "gen-02-01_02-25__cita__deus",
+      "origem": "gen-02-01_02-25",
+      "destino": "deus",
+      "tipo": "cita"
+    },
+    {
+      "id": "gen-02-01_02-25__cita__adao",
+      "origem": "gen-02-01_02-25",
+      "destino": "adao",
+      "tipo": "cita"
+    },
+    {
+      "id": "gen-02-01_02-25__cita__eva",
+      "origem": "gen-02-01_02-25",
+      "destino": "eva",
+      "tipo": "cita"
+    },
+    {
+      "id": "gen-02-01_02-25__cita__eden",
+      "origem": "gen-02-01_02-25",
+      "destino": "eden",
+      "tipo": "cita"
+    },
+    {
+      "id": "gen-02-01_02-25__cita__rio-tigre",
+      "origem": "gen-02-01_02-25",
+      "destino": "rio-tigre",
+      "tipo": "cita"
+    },
+    {
+      "id": "gen-02-01_02-25__cita__rio-eufrates",
+      "origem": "gen-02-01_02-25",
+      "destino": "rio-eufrates",
+      "tipo": "cita"
+    },
+    {
       "id": "gen-01-01_01-31__parte_de__genesis",
       "origem": "gen-01-01_01-31",
+      "destino": "genesis",
+      "tipo": "parte_de"
+    },
+    {
+      "id": "gen-02-01_02-25__parte_de__genesis",
+      "origem": "gen-02-01_02-25",
       "destino": "genesis",
       "tipo": "parte_de"
     },
@@ -729,9 +1055,45 @@
       "tipo": "envolve"
     },
     {
+      "id": "dois-relatos-da-criacao__envolve__genesis",
+      "origem": "dois-relatos-da-criacao",
+      "destino": "genesis",
+      "tipo": "envolve"
+    },
+    {
+      "id": "dois-relatos-da-criacao__envolve__hipotese-documentaria",
+      "origem": "dois-relatos-da-criacao",
+      "destino": "hipotese-documentaria",
+      "tipo": "envolve"
+    },
+    {
+      "id": "eden-lugar-real__envolve__eden",
+      "origem": "eden-lugar-real",
+      "destino": "eden",
+      "tipo": "envolve"
+    },
+    {
+      "id": "eden-lugar-real__envolve__rio-tigre",
+      "origem": "eden-lugar-real",
+      "destino": "rio-tigre",
+      "tipo": "envolve"
+    },
+    {
+      "id": "eden-lugar-real__envolve__rio-eufrates",
+      "origem": "eden-lugar-real",
+      "destino": "rio-eufrates",
+      "tipo": "envolve"
+    },
+    {
       "id": "formacao-da-terra__envolve__meteorito-canyon-diablo",
       "origem": "formacao-da-terra",
       "destino": "meteorito-canyon-diablo",
+      "tipo": "envolve"
+    },
+    {
+      "id": "fosseis-mais-antigos-do-homo-sapiens__envolve__ser-humano",
+      "origem": "fosseis-mais-antigos-do-homo-sapiens",
+      "destino": "ser-humano",
       "tipo": "envolve"
     },
     {

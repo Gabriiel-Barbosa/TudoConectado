@@ -1,0 +1,28 @@
+# Gerado por .claude/skills/conferir/scripts/registrar.js — vereditos da
+# Contraprova para as fontes desta ligação. Edite à mão só 'revisao_humana'
+# (pendente -> feita) depois de conferir você mesmo.
+ligacao: gn02-eden
+fontes:
+  - hash: 0cf0ce07bc3d
+    nivel: 2
+    descricao: >-
+      Skinner, J. (1910), A Critical and Exegetical Commentary on Genesis (International Critical
+      Commentary), Nova York: Charles Scribner's Sons, pp. 57–58
+    alegacao: >-
+      Skinner (1910), pp. 57–58, atesta que neste trecho o Éden aparece como lugar distinto do
+      jardim plantado nele, que Delitzsch e Schrader derivaram o nome do acádio edinu
+      ("planície"/"estepe"), e que é precário concluir daí que o jardim fosse imaginado como um
+      oásis no meio do deserto.
+    veredito: confirmada
+    parou_em: null
+    conferido_em: >-
+      https://archive.org/download/criticalexegetic00skinuoft/criticalexegetic00skinuoft_djvu.txt (a
+      cavalo entre os marcadores "II. 7, 8 57" e "58 Paradise and the Fall (J)")
+    observacao: >-
+      Texto: "This is perhaps the only place where Eden (as a geographical designation) is
+      distinguished from the garden... It is derived by the younger Delitzsch and Schrader from
+      Babylonian edinu, 'plain,' 'steppe,' or 'desert'... but it is a somewhat precarious inference
+      that the garden was conceived as an oasis in the midst of a desert."
+    data: '2026-09-19'
+    conferido_por: contraprova
+    revisao_humana: pendente
