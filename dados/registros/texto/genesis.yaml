@@ -2,6 +2,7 @@ id: genesis
 tipo: texto
 nome: Gênesis
 alias: [Bereshit, Bereshith]
+total_capitulos: 50
 descricao: >
   Primeiro livro da Bíblia, tanto na Bíblia judaica quanto na cristã.
   Abre a Torá, também chamada de Pentateuco: o conjunto dos cinco

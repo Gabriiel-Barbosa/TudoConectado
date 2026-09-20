@@ -10,7 +10,7 @@
   <!-- ?v= muda a cada deploy que toque em estilo.css/app.js — sem isso o
        navegador/CDN do GitHub Pages pode manter uma cópia antiga em cache
        e misturar HTML novo com JS/CSS velho. Bump manual por enquanto. -->
-  <link rel="stylesheet" href="assets/estilo.css?v=10" />
+  <link rel="stylesheet" href="assets/estilo.css?v=11" />
   <script defer src="https://cdn.jsdelivr.net/npm/cytoscape@3.34.3/dist/cytoscape.min.js"></script>
 </head>
 <body>
@@ -28,9 +28,9 @@
         <svg viewBox="0 0 24 24" class="icone"><rect x="16" y="16" width="6" height="6" rx="1" /><rect x="2" y="16" width="6" height="6" rx="1" /><rect x="9" y="2" width="6" height="6" rx="1" /><path d="M5 16v-3a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v3" /><path d="M12 12V8" /></svg>
         Mapa
       </button>
-      <button id="tab-timeline" data-view="timeline" role="tab" aria-selected="false" aria-controls="view-timeline">
-        <svg viewBox="0 0 24 24" class="icone"><circle cx="12" cy="12" r="10" /><path d="M12 6v6l4 2" /></svg>
-        Linha do tempo
+      <button id="tab-fio" data-view="fio" role="tab" aria-selected="false" aria-controls="view-fio">
+        <svg viewBox="0 0 24 24" class="icone"><circle cx="5" cy="12" r="2" /><circle cx="12" cy="12" r="2" /><circle cx="19" cy="12" r="2" /><path d="M7 12h3" /><path d="M14 12h3" /><path d="M12 10V6" /><path d="M5 14v4" /></svg>
+        Fio da narrativa
       </button>
       <button id="tab-passagens" data-view="passagens" role="tab" aria-selected="false" aria-controls="view-passagens">
         <svg viewBox="0 0 24 24" class="icone"><path d="M12 7v14" /><path d="M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z" /></svg>
@@ -153,10 +153,11 @@
       </div>
     </section>
 
-    <section id="view-timeline" data-view-panel hidden role="tabpanel" aria-labelledby="tab-timeline">
-      <div id="timeline-vazio" class="estado-vazio">
-        <svg viewBox="0 0 24 24" class="icone estado-vazio-icone" aria-hidden="true"><ellipse cx="12" cy="5" rx="9" ry="3" /><path d="M3 5V19A9 3 0 0 0 21 19V5" /><path d="M3 12A9 3 0 0 0 21 12" /></svg>
-        <p>Timeline ainda não gerada.</p>
+    <!-- Fio da narrativa (#fio, #fio=<capitulo>): montado por montarFio(). -->
+    <section id="view-fio" data-view-panel hidden role="tabpanel" aria-labelledby="tab-fio">
+      <div id="fio-vazio" class="estado-vazio">
+        <svg viewBox="0 0 24 24" class="icone estado-vazio-icone" aria-hidden="true"><circle cx="5" cy="12" r="2" /><circle cx="12" cy="12" r="2" /><circle cx="19" cy="12" r="2" /><path d="M7 12h3" /><path d="M14 12h3" /></svg>
+        <p>Fio ainda não gerado.</p>
         <code>npm run compilar</code>
       </div>
     </section>
@@ -174,6 +175,6 @@
 
   <div id="tooltip" class="tooltip" hidden></div>
 
-  <script defer src="assets/app.js?v=10"></script>
+  <script defer src="assets/app.js?v=11"></script>
 </body>
 </html>

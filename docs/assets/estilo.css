@@ -2631,3 +2631,511 @@ a.citacao:hover {
   outline: 2px solid var(--accent);
   outline-offset: 2px;
 }
+
+/* --- Fio da narrativa ------------------------------------------------------
+   Espinha horizontal com os capítulos e cards ramificando acima e abaixo.
+   A espinha é um grid de quatro linhas (ramo de cima / marco / título / ramo
+   de baixo) e cada capítulo é uma coluna. É o grid que mantém a linha reta:
+   como a altura de cada linha é compartilhada por todas as colunas, abrir um
+   card empurra TODOS os marcos juntos, em vez de afundar só o do capítulo
+   aberto. Com flex por coluna, o card aberto desalinhava a espinha. */
+
+.fio-topo {
+  max-width: 760px;
+  padding: 0.25rem 0 0.75rem;
+}
+
+.fio-topo h2 {
+  margin: 0 0 0.35rem;
+  font-size: 1.05rem;
+}
+
+.fio-aviso {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.85rem;
+  line-height: 1.45;
+}
+
+.fio-aviso .icone {
+  flex: 0 0 auto;
+  width: 16px;
+  height: 16px;
+  margin-top: 0.15rem;
+  color: var(--ouro);
+}
+
+.fio-aviso strong {
+  color: var(--fg);
+}
+
+.fio-rolagem {
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 0.5rem 0 1rem;
+  scrollbar-width: thin;
+}
+
+.fio-espinha {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: 250px;
+  grid-template-rows: 1fr auto auto 1fr;
+  justify-items: center;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  min-height: 420px;
+  width: max-content;
+}
+
+/* O <li> não desenha nada: quem vira coluna do grid são os quatro filhos. */
+.fio-no {
+  display: contents;
+}
+
+.fio-ramo {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  width: 100%;
+  padding: 0 0.4rem;
+}
+
+.fio-ramo-cima {
+  grid-row: 1;
+  align-self: end;
+  justify-content: flex-end;
+  padding-bottom: 0.75rem;
+}
+
+.fio-ramo-baixo {
+  grid-row: 4;
+  align-self: start;
+  justify-content: flex-start;
+  padding-top: 0.75rem;
+}
+
+.fio-marco-area {
+  grid-row: 2;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* A linha da espinha: atravessa o marco pelo centro e avança para os dois
+   lados até encostar na dos vizinhos. */
+.fio-marco-area::before {
+  content: "";
+  position: absolute;
+  top: 25px;
+  left: -125px;
+  right: -125px;
+  height: 2px;
+  background: var(--borda);
+  z-index: 0;
+}
+
+.fio-no:first-child .fio-marco-area::before {
+  left: 50%;
+}
+
+.fio-no:last-child .fio-marco-area::before {
+  right: 50%;
+}
+
+.fio-marco {
+  position: relative;
+  z-index: 1;
+  width: 52px;
+  height: 52px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  border: 2px solid var(--borda-forte);
+  background: var(--bg-cartao-no);
+  color: var(--fg);
+  font-weight: 700;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: transform 150ms, border-color 150ms, box-shadow 150ms;
+}
+
+.fio-marco:hover,
+.fio-marco:focus-visible {
+  border-color: var(--ouro);
+  box-shadow: 0 0 0 4px var(--ouro-fraco);
+  transform: scale(1.06);
+}
+
+.fio-marco .icone {
+  width: 22px;
+  height: 22px;
+  color: var(--cor-texto);
+}
+
+.marco-livro {
+  border-color: var(--cor-texto);
+  background: var(--bg-glass-forte);
+}
+
+.marco-resto {
+  border-style: dashed;
+  color: var(--muted);
+  font-size: 0.85rem;
+  cursor: default;
+}
+
+.fio-marco-titulo {
+  grid-row: 3;
+  margin: 0.45rem 0 0;
+  width: 100%;
+  height: 2.5em;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  text-align: center;
+  font-size: 0.76rem;
+  line-height: 1.25;
+  color: var(--muted);
+}
+
+/* --- Cards ramificados --- */
+
+.fio-card {
+  border: 1px solid var(--borda);
+  border-left: 3px solid var(--cor-card);
+  border-radius: var(--raio-pequeno);
+  background: var(--bg-glass);
+}
+
+.fio-card.aberto {
+  border-color: var(--cor-card);
+  box-shadow: var(--sombra);
+}
+
+.fio-card-botao {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  width: 100%;
+  padding: 0.5rem 0.6rem;
+  background: none;
+  border: 0;
+  text-align: left;
+  cursor: pointer;
+  color: var(--fg);
+  border-radius: inherit;
+}
+
+.fio-card-topo {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.fio-card-topo .icone {
+  width: 15px;
+  height: 15px;
+  color: var(--cor-card);
+  flex: 0 0 auto;
+}
+
+.fio-card-rotulo {
+  font-size: 0.78rem;
+  font-weight: 600;
+  flex: 1;
+  min-width: 0;
+}
+
+.fio-card-total {
+  font-variant-numeric: tabular-nums;
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 0.05rem 0.4rem;
+  border-radius: 999px;
+  background: var(--muted-fraco);
+  color: var(--fg);
+}
+
+.fio-card-previa {
+  font-size: 0.72rem;
+  line-height: 1.3;
+  color: var(--muted);
+}
+
+.fio-card-painel {
+  padding: 0 0.6rem 0.6rem;
+}
+
+.fio-card-acoes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-top: 0.5rem;
+}
+
+.fio-acao {
+  border: 1px solid var(--borda);
+  background: none;
+  color: var(--fg);
+  border-radius: 999px;
+  padding: 0.2rem 0.6rem;
+  font-size: 0.72rem;
+  cursor: pointer;
+}
+
+.fio-acao:hover,
+.fio-acao:focus-visible {
+  border-color: var(--ouro);
+  color: var(--ouro);
+}
+
+/* --- Mini-grafo dentro do card --- */
+
+.fio-mini-raiz {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin: 0 0 0.5rem;
+  font-size: 0.73rem;
+  font-weight: 600;
+  color: var(--muted);
+}
+
+.fio-mini-lista {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.fio-mini-item {
+  display: grid;
+  grid-template-columns: 22px 20px minmax(0, 1fr);
+  align-items: center;
+  gap: 0.35rem;
+}
+
+/* O traço do mapa, com as mesmas convenções: dourado para ligação com
+   evidência, violeta e sem seta para 'paralelo' (semelhança, não
+   dependência). A seta só aparece onde o mapa também a desenha. */
+.fio-mini-linha {
+  height: 2px;
+  background: var(--cor-item);
+  position: relative;
+}
+
+.fio-mini-linha.com-seta::after {
+  content: "";
+  position: absolute;
+  right: -1px;
+  top: 50%;
+  transform: translateY(-50%);
+  border-left: 5px solid var(--cor-item);
+  border-top: 3.5px solid transparent;
+  border-bottom: 3.5px solid transparent;
+}
+
+.fio-mini-no {
+  width: 20px;
+  height: 20px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  border: 1.5px solid var(--cor-no);
+  color: var(--cor-no);
+}
+
+.fio-mini-no .icone {
+  width: 11px;
+  height: 11px;
+}
+
+.fio-mini-no.raiz {
+  flex: 0 0 auto;
+}
+
+.fio-mini-texto {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  text-align: left;
+}
+
+.fio-mini-ir {
+  background: none;
+  border: 0;
+  padding: 0.15rem 0.2rem;
+  margin: -0.15rem -0.2rem;
+  border-radius: var(--raio-pequeno);
+  color: var(--fg);
+  cursor: pointer;
+}
+
+.fio-mini-ir:hover,
+.fio-mini-ir:focus-visible {
+  background: var(--muted-fraco);
+}
+
+.fio-mini-ir:hover .fio-mini-titulo,
+.fio-mini-ir:focus-visible .fio-mini-titulo {
+  color: var(--ouro);
+}
+
+.fio-mini-titulo {
+  font-size: 0.75rem;
+  line-height: 1.25;
+}
+
+.fio-mini-meta {
+  font-size: 0.66rem;
+  color: var(--muted);
+}
+
+/* --- Datações do livro e as que ainda não pendem de capítulo --- */
+
+.fio-datacao > summary,
+.fio-fora > summary {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  cursor: pointer;
+  font-size: 0.78rem;
+  font-weight: 600;
+  padding: 0.4rem 0.6rem;
+  border: 1px solid var(--borda);
+  border-radius: var(--raio-pequeno);
+  background: var(--bg-glass);
+  list-style: none;
+}
+
+.fio-datacao > summary .icone {
+  width: 15px;
+  height: 15px;
+  color: var(--ouro);
+}
+
+.fio-datacao[open] > summary,
+.fio-fora[open] > summary {
+  border-color: var(--ouro);
+}
+
+.fio-datacao .linha-tempo,
+.fio-fora .linha-tempo {
+  margin-top: 0.6rem;
+  font-size: 0.8rem;
+}
+
+.fio-fora {
+  max-width: 760px;
+  margin-top: 0.5rem;
+}
+
+.fio-fora .etiqueta {
+  margin: 0.6rem 0 0;
+}
+
+/* --- Celular: a espinha vira vertical -------------------------------------
+   Alternar cards à esquerda e à direita a 390px deixaria cerca de 170px por
+   card. Aqui a linha desce pela esquerda e os cards ocupam a largura toda. */
+
+@media (max-width: 860px) {
+  .fio-rolagem {
+    overflow-x: visible;
+  }
+
+  .fio-espinha {
+    display: flex;
+    flex-direction: column;
+    width: auto;
+    min-height: 0;
+    position: relative;
+  }
+
+  .fio-espinha::before {
+    content: "";
+    position: absolute;
+    left: 25px;
+    top: 26px;
+    bottom: 26px;
+    width: 2px;
+    background: var(--borda);
+  }
+
+  .fio-no {
+    width: auto;
+    display: grid;
+    grid-template-columns: 52px minmax(0, 1fr);
+    column-gap: 0.9rem;
+    align-items: start;
+    padding-bottom: 1.1rem;
+  }
+
+  .fio-marco-area {
+    grid-column: 1;
+    grid-row: 1 / span 3;
+    align-items: flex-start;
+  }
+
+  .fio-marco-area::before {
+    display: none;
+  }
+
+  .fio-ramo {
+    padding: 0;
+    flex: none;
+    align-self: stretch;
+  }
+
+  .fio-ramo-cima {
+    grid-column: 2;
+    grid-row: 2;
+    padding-bottom: 0;
+  }
+
+  .fio-ramo-baixo {
+    grid-column: 2;
+    grid-row: 3;
+    padding-top: 0.5rem;
+  }
+
+  .fio-ramo:empty {
+    display: none;
+  }
+
+  /* No celular o título sai de baixo do marco e vira cabeçalho da coluna de
+     cards — senão o capítulo apareceria só como um número solto. */
+  .fio-marco-titulo {
+    grid-column: 2;
+    grid-row: 1;
+    height: auto;
+    width: auto;
+    margin: 0.9rem 0 0.4rem;
+    text-align: left;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--fg);
+    -webkit-line-clamp: none;
+    display: block;
+  }
+
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fio-marco {
+    transition: none;
+  }
+
+  .fio-marco:hover,
+  .fio-marco:focus-visible {
+    transform: none;
+  }
+}

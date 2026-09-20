@@ -1,6 +1,6 @@
 import { test, describe } from "node:test";
 import assert from "node:assert/strict";
-import { compilarGrafo, compilarTimeline, compilarCapitulos } from "./compilar.js";
+import { compilarGrafo, compilarCapitulos, compilarFio } from "./compilar.js";
 
 describe("compilarGrafo", () => {
   const registros = [{ id: "moises", tipo: "pessoa", nome: "Moisés", descricao: "d" }];
@@ -136,30 +136,112 @@ describe("compilarGrafo", () => {
   });
 });
 
-describe("compilarTimeline", () => {
-  test("gera uma entrada por datação e ordena por início do período", () => {
-    const afirmacoes = [
-      { id: "a", texto: "depois", datacao: [{ periodo: [-500, -450], segundo_quem: "X" }] },
-      { id: "b", texto: "antes", datacao: [{ periodo: [-900, -800], segundo_quem: "Y" }] },
-    ];
-    const linha = compilarTimeline(afirmacoes);
-    assert.equal(linha.length, 2);
-    assert.equal(linha[0].afirmacao, "b");
-    assert.equal(linha[1].afirmacao, "a");
+describe("compilarFio", () => {
+  const registros = [
+    { id: "genesis", tipo: "texto", nome: "Gênesis", descricao: "d", total_capitulos: 50 },
+    { id: "planck", tipo: "acontecimento", nome: "Planck", descricao: "d" },
+  ];
+  const textos = [
+    { id: "genesis-01", livro: "Gênesis", capitulo: 1, versiculos: [] },
+    { id: "genesis-02", livro: "Gênesis", capitulo: 2, versiculos: [] },
+  ];
+  const passagens = [
+    {
+      id: "gen-02",
+      texto: "genesis-02",
+      referencia: "Gênesis 2:1",
+      titulo: "O jardim",
+      afirma: ["resumo do dois"],
+      conexoes: [],
+    },
+    {
+      id: "gen-01",
+      texto: "genesis-01",
+      referencia: "Gênesis 1:1",
+      titulo: "A criação",
+      afirma: ["resumo do um", "segunda frase"],
+      conexoes: [
+        { ligacao: "planck-confirma-idade", versiculos: [1, 1], tema: "ciencia" },
+        { ligacao: "enuma-paralelo", versiculos: [2, 2], tema: "paralelo" },
+        { ligacao: "catecismo-confirma", versiculos: [5, 5], tema: "leitura_nao_literal" },
+        { ligacao: "pca-confirma", versiculos: [5, 5], tema: "leitura_literal" },
+      ],
+    },
+  ];
+  const ligacoes = [
+    { id: "planck-confirma-idade", entre: [{ registro: "planck" }, { afirmacao: "idade-do-universo" }] },
+    { id: "enuma-paralelo", entre: [{ registro: "enuma" }, { registro: "genesis" }] },
+    { id: "catecismo-confirma", entre: [{ registro: "catecismo" }, { afirmacao: "dias-nao-literais" }] },
+    { id: "pca-confirma", entre: [{ registro: "pca" }, { afirmacao: "dias-nao-literais" }] },
+  ];
+  const afirmacoes = [
+    { id: "idade-do-universo", texto: "13,8 bilhões", registros_envolvidos: ["planck"], datacao: [{ periodo: [-13820000000, -13774000000], segundo_quem: "Planck" }] },
+    { id: "autoria-mosaica", texto: "Moisés escreveu", registros_envolvidos: ["genesis"], datacao: [{ periodo: [-1446, -1200], segundo_quem: "tradição" }] },
+    { id: "pentateuco-persa", texto: "período persa", registros_envolvidos: ["genesis"], datacao: [{ periodo: [-539, -332], segundo_quem: "Römer" }] },
+    { id: "yhwh-fora-da-biblia", texto: "YHWH em Mesa", registros_envolvidos: ["deus"], datacao: [{ periodo: [-842, -805], segundo_quem: "Louvre" }] },
+    { id: "dias-nao-literais", texto: "os dias não precisam ser de 24h", registros_envolvidos: ["genesis"], atemporal: true },
+  ];
+
+  const fio = () => compilarFio(passagens, textos, [], afirmacoes, ligacoes, registros);
+
+  test("a espinha sai em ordem de capítulo, não na ordem dos arquivos", () => {
+    assert.deepEqual(fio().capitulos.map((c) => c.capitulo), [1, 2]);
   });
 
-  test("afirmação com múltiplas datações concorrentes gera uma entrada por datação", () => {
-    const afirmacoes = [
-      {
-        id: "a",
-        texto: "t",
-        datacao: [
-          { periodo: [-700, -690], segundo_quem: "X" },
-          { periodo: [-705, -695], segundo_quem: "Y" },
-        ],
-      },
+  test("conta um grupo por tema e junta os dois temas de leitura num card só", () => {
+    const gn1 = fio().capitulos[0];
+    const total = (grupo) => gn1.grupos.find((g) => g.grupo === grupo).total;
+    assert.equal(total("ciencia"), 1);
+    assert.equal(total("paralelo"), 1);
+    assert.equal(total("leitura"), 2);
+  });
+
+  test("grupo sem conteúdo sai com total zero, para a tela poder omitir o card", () => {
+    const gn2 = fio().capitulos[1];
+    assert.ok(gn2.grupos.every((g) => g.total === 0));
+  });
+
+  test("conta as notas do texto da própria passagem, e só dela", () => {
+    const notas = [
+      { id: "n1", passagem: "gen-01", tipo: "traducao", versiculos: [3, 3], titulo: "b" },
+      { id: "n2", passagem: "gen-01", tipo: "variante", versiculos: [1, 1], titulo: "a" },
+      { id: "n3", passagem: "gen-02", tipo: "traducao", versiculos: [1, 1], titulo: "c" },
     ];
-    assert.equal(compilarTimeline(afirmacoes).length, 2);
+    const compilado = compilarFio(passagens, textos, notas, afirmacoes, ligacoes, registros);
+    const grupoNota = compilado.capitulos[0].grupos.find((g) => g.grupo === "nota");
+    assert.equal(grupoNota.total, 2);
+    assert.deepEqual(grupoNota.notas.map((n) => n.id), ["n2", "n1"]);
+  });
+
+  test("o resumo do capítulo é a primeira frase de 'afirma'", () => {
+    assert.equal(fio().capitulos[0].resumo, "resumo do um");
+  });
+
+  test("o nó do livro carrega as datações do próprio texto, em ordem", () => {
+    const { livro } = fio();
+    assert.equal(livro.registro, "genesis");
+    assert.equal(livro.total_capitulos, 50);
+    assert.deepEqual(livro.datacoes.map((d) => d.afirmacao), ["autoria-mosaica", "pentateuco-persa"]);
+  });
+
+  test("datação ancorada num capítulo não se repete no nó do livro", () => {
+    assert.ok(!fio().livro.datacoes.some((d) => d.afirmacao === "idade-do-universo"));
+  });
+
+  test("datação que não pende de capítulo nem do livro sai em fora_do_fio, sem se perder", () => {
+    const { fora_do_fio } = fio();
+    assert.deepEqual(fora_do_fio.map((d) => d.afirmacao), ["yhwh-fora-da-biblia"]);
+  });
+
+  test("afirmação atemporal não inventa entrada em lugar nenhum", () => {
+    const compilado = fio();
+    const todas = [...compilado.livro.datacoes, ...compilado.fora_do_fio];
+    assert.ok(!todas.some((d) => d.afirmacao === "dias-nao-literais"));
+  });
+
+  test("ignora passagem sem texto de leitura", () => {
+    const compilado = compilarFio([{ id: "solta", texto: undefined }], textos, [], afirmacoes, ligacoes, registros);
+    assert.equal(compilado.capitulos.length, 0);
   });
 });
 

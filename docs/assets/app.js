@@ -3169,23 +3169,301 @@ function sincronizarLeituraComHash() {
   else if (document.querySelector("#view-leitura") && !document.querySelector("#view-leitura").hidden) mudarView("mapa");
 }
 
-// --- Timeline -----------------------------------------------------------------
+// --- Fio da narrativa ---------------------------------------------------------
 
-async function montarTimeline() {
-  const timeline = await carregarJSON("timeline.json");
-  if (!timeline || timeline.length === 0) return;
-  const painel = document.querySelector("#view-timeline");
-  const itens = timeline
-    .map(
-      (e) => `
-      <li>
-        <span class="periodo">${escapar(formatarPeriodo(e.periodo))}</span>
-        <p class="texto">${comCitacoes(e.texto)}</p>
-        <p class="fonte">${comCitacoes(e.segundo_quem)}</p>
-      </li>`
-    )
+// A espinha é a ORDEM DO TEXTO, não uma linha do tempo. Gênesis 2 vem depois
+// de Gênesis 1 no livro, e isso não afirma nada sobre quando cada coisa
+// aconteceu — o projeto não tem fonte para isso e não vai insinuar por
+// layout o que não escreveria como afirmação. As datações ficam onde têm
+// fonte: dentro dos cards e no nó do livro. A tela diz isso ao visitante.
+
+let fio = null;
+let cardDoFioAberto = null; // "<capitulo>::<grupo>"
+
+const GRUPOS_FIO = {
+  paralelo: { rotulo: "Paralelos", icone: "paralelo", cor: "var(--violeta)" },
+  ciencia: { rotulo: "O que a ciência diz", icone: "ciencia", cor: "var(--cor-lugar)" },
+  leitura: { rotulo: "Leituras", icone: "leitura", cor: "var(--cor-pessoa)" },
+  contexto: { rotulo: "Contexto", icone: "conexoes", cor: "var(--muted)" },
+  nota: { rotulo: "Notas do texto", icone: "traducao", cor: "var(--teal)" },
+};
+
+function lerCapituloDoFioNoHash() {
+  const achado = /^#fio(?:=(.+))?$/.exec(location.hash);
+  if (!achado) return undefined; // não está no fio
+  return achado[1] ? decodeURIComponent(achado[1]) : null; // no fio, sem capítulo
+}
+
+// O conteúdo de um card sai do grafo.json que já está em memória: o fio.json
+// carrega só o id da ligação. Uma ligação que não esteja no grafo é descartada
+// em silêncio — dado inconsistente não vira card inventado.
+function itensDoGrupo(capitulo, grupo) {
+  if (grupo.grupo === "nota") {
+    return grupo.notas.map((nota) => ({
+      titulo: nota.titulo,
+      versiculos: nota.versiculos,
+      tema: nota.tipo,
+      aresta: null,
+      destino: null,
+    }));
+  }
+  return grupo.ligacoes
+    .map((conexao) => {
+      const aresta = grafo.arestas.find((a) => a.ligacao === conexao.ligacao);
+      if (!aresta) return null;
+      // A ponta que interessa é a que NÃO é a passagem nem o livro: é o que
+      // o capítulo puxa junto (o Enuma Elish, a missão Planck, o Catecismo).
+      const origem = noPorId(aresta.origem);
+      const destino = noPorId(aresta.destino);
+      const externo =
+        [origem, destino].find((n) => n && n.id !== capitulo.passagem && categoriaDoNo(n) !== "livro") || origem;
+      return {
+        titulo: externo ? rotuloDoNo(externo) : rotuloLigacao(aresta),
+        versiculos: conexao.versiculos,
+        tema: conexao.tema,
+        aresta,
+        destino: externo,
+      };
+    })
+    .filter(Boolean);
+}
+
+function referenciaCurta(capitulo, [inicio, fim]) {
+  return inicio === fim ? `v. ${inicio}` : `v. ${inicio}–${fim}`;
+}
+
+// O mini-grafo: a passagem no centro e o que ela puxa ao redor, com as MESMAS
+// convenções do mapa — dourado para ligação com evidência, violeta e sem seta
+// para 'paralelo' (que afirma semelhança, não dependência), tracejado para as
+// estruturais. Desenhado em SVG e não numa segunda instância de Cytoscape:
+// aqui não há layout de força nem navegação, e um grafo de 2 a 6 nós numa
+// disclosure não justifica subir um motor inteiro por card aberto.
+function miniGrafo(capitulo, itens) {
+  const linhas = itens
+    .map((item, i) => {
+      const cor = item.aresta?.tipo === "paralelo" ? "var(--violeta)" : item.aresta ? "var(--ouro)" : "var(--teal)";
+      const semSeta = !item.aresta || item.aresta.tipo === "paralelo";
+      const categoria = item.destino ? categoriaDoNo(item.destino) : "afirmacao";
+      return `
+      <li class="fio-mini-item" style="--cor-item:${cor}">
+        <span class="fio-mini-linha${semSeta ? "" : " com-seta"}" aria-hidden="true"></span>
+        <span class="fio-mini-no" style="--cor-no:${corDaCategoria(categoria)}" aria-hidden="true">${iconeInline(
+          categoria,
+          "currentColor"
+        )}</span>
+        ${
+          // O item inteiro é o controle. Um botão "Ver no mapa" por linha
+          // dobrava a altura do card aberto e empurrava a espinha para fora
+          // da tela num grupo de seis leituras.
+          item.destino
+            ? `<button type="button" class="fio-mini-texto fio-mini-ir" data-ir-no="${escapar(item.destino.id)}"
+                 title="Ver no mapa">`
+            : `<span class="fio-mini-texto">`
+        }
+          <span class="fio-mini-titulo">${escapar(item.titulo)}</span>
+          <span class="fio-mini-meta">${escapar(referenciaCurta(capitulo, item.versiculos))}${
+            item.aresta ? ` · ${escapar(rotuloTipoLigacao(item.aresta.tipo))}` : ""
+          }${item.aresta?.forca ? ` · ${escapar(rotuloForca(item.aresta.forca))}` : ""}</span>
+        ${item.destino ? "</button>" : "</span>"}
+      </li>`;
+    })
     .join("");
-  painel.innerHTML = `<ol class="linha-tempo">${itens}</ol>`;
+  return `
+    <div class="fio-mini">
+      <p class="fio-mini-raiz"><span class="fio-mini-no raiz" style="--cor-no:${corDaCategoria(
+        "passagem"
+      )}" aria-hidden="true">${iconeInline("passagem", "currentColor")}</span>${escapar(capitulo.referencia)}</p>
+      <ul class="fio-mini-lista">${linhas}</ul>
+    </div>`;
+}
+
+function cardDoFio(capitulo, grupo) {
+  const meta = GRUPOS_FIO[grupo.grupo];
+  const itens = itensDoGrupo(capitulo, grupo);
+  if (itens.length === 0) return "";
+  const chave = `${capitulo.id}::${grupo.grupo}`;
+  const aberto = cardDoFioAberto === chave;
+  const previa = itens
+    .slice(0, 2)
+    .map((i) => escapar(truncar(i.titulo, 42)))
+    .join(" · ");
+  return `
+    <div class="fio-card${aberto ? " aberto" : ""}" style="--cor-card:${meta.cor}">
+      <button type="button" class="fio-card-botao" data-card="${escapar(chave)}"
+              aria-expanded="${aberto}" aria-controls="painel-${escapar(chave.replace("::", "-"))}">
+        <span class="fio-card-topo">${iconeUI(meta.icone)}<span class="fio-card-rotulo">${escapar(
+          meta.rotulo
+        )}</span><span class="fio-card-total">${itens.length}</span></span>
+        <span class="fio-card-previa">${previa}</span>
+      </button>
+      <div class="fio-card-painel" id="painel-${escapar(chave.replace("::", "-"))}"${aberto ? "" : " hidden"}>
+        ${aberto ? miniGrafo(capitulo, itens) : ""}
+        <div class="fio-card-acoes">
+          <button type="button" class="fio-acao" data-ler="${escapar(capitulo.id)}">Ler o capítulo</button>
+          <button type="button" class="fio-acao" data-ir-no="${escapar(capitulo.passagem)}">Ver no mapa</button>
+        </div>
+      </div>
+    </div>`;
+}
+
+function noDoCapitulo(capitulo) {
+  const comConteudo = capitulo.grupos.filter((g) => g.total > 0);
+  // Alternância: o primeiro card vai para cima, o segundo para baixo, e assim
+  // por diante — é o que dá o desenho de espinha em vez de uma lista.
+  const cima = comConteudo.filter((_, i) => i % 2 === 0);
+  const baixo = comConteudo.filter((_, i) => i % 2 === 1);
+  const cards = (grupos) => grupos.map((g) => cardDoFio(capitulo, g)).join("");
+  return `
+    <li class="fio-no" data-capitulo="${escapar(capitulo.id)}">
+      <div class="fio-ramo fio-ramo-cima">${cards(cima)}</div>
+      <div class="fio-marco-area">
+        <button type="button" class="fio-marco" data-ler="${escapar(capitulo.id)}"
+                aria-label="${escapar(`${capitulo.referencia} — ${capitulo.titulo || ""}. Abrir a leitura.`)}">
+          <span class="fio-marco-num">${capitulo.capitulo}</span>
+        </button>
+      </div>
+      <p class="fio-marco-titulo">${escapar(capitulo.titulo || "")}</p>
+      <div class="fio-ramo fio-ramo-baixo">${cards(baixo)}</div>
+    </li>`;
+}
+
+function datacaoEmLinha(d) {
+  return `<li><span class="periodo">${escapar(formatarPeriodo(d.periodo))}</span>
+    <p class="texto">${comCitacoes(d.texto)}</p>
+    <p class="fonte">${comCitacoes(d.segundo_quem)}</p></li>`;
+}
+
+function noDoLivro(livro) {
+  if (!livro) return "";
+  return `
+    <li class="fio-no fio-no-livro">
+      <div class="fio-ramo fio-ramo-cima"></div>
+      <div class="fio-marco-area">
+        <button type="button" class="fio-marco marco-livro" data-ir-no="${escapar(livro.registro)}"
+                aria-label="${escapar(`${livro.nome}: abrir a ficha do livro no mapa.`)}">
+          ${iconeInline("livro", "currentColor")}
+        </button>
+      </div>
+      <p class="fio-marco-titulo">${escapar(livro.nome)}</p>
+      <div class="fio-ramo fio-ramo-baixo">
+        ${
+          livro.datacoes.length
+            ? `<details class="fio-datacao">
+                 <summary>${iconeUI("datacao")}Quando o texto foi escrito<span class="fio-card-total">${
+                   livro.datacoes.length
+                 }</span></summary>
+                 <ol class="linha-tempo">${livro.datacoes.map(datacaoEmLinha).join("")}</ol>
+               </details>`
+            : ""
+        }
+      </div>
+    </li>`;
+}
+
+function montarFio() {
+  const painel = document.querySelector("#view-fio");
+  if (!painel || !fio) return;
+  const capitulos = fio.capitulos;
+  const total = fio.livro?.total_capitulos;
+  const faltam = total ? total - capitulos.length : 0;
+
+  painel.innerHTML = `
+    <div class="fio-topo">
+      <h2>Fio da narrativa</h2>
+      <p class="fio-aviso">${iconeUI("limites")}<span>A posição na linha é a <strong>ordem do texto</strong>, não a
+        ordem dos acontecimentos. As datações, com fonte, estão nos cards e no nó do livro.</span></p>
+    </div>
+    <div class="fio-rolagem">
+      <ol class="fio-espinha">
+        ${noDoLivro(fio.livro)}
+        ${capitulos.map(noDoCapitulo).join("")}
+        ${
+          faltam > 0
+            ? `<li class="fio-no fio-no-resto">
+                 <div class="fio-ramo fio-ramo-cima"></div>
+                 <div class="fio-marco-area">
+                   <span class="fio-marco marco-resto" aria-hidden="true">+${faltam}</span>
+                 </div>
+                 <p class="fio-marco-titulo">${escapar(
+                   plural(faltam, "capítulo por mapear", "capítulos por mapear")
+                 )}</p>
+                 <div class="fio-ramo fio-ramo-baixo"></div>
+               </li>`
+            : ""
+        }
+      </ol>
+    </div>
+    ${
+      fio.fora_do_fio.length
+        ? `<details class="fio-fora">
+             <summary>Datações ainda fora do fio<span class="fio-card-total">${fio.fora_do_fio.length}</span></summary>
+             <p class="etiqueta">Têm fonte e estão no mapa, mas ainda não foram ancoradas em nenhum capítulo.</p>
+             <ol class="linha-tempo">${fio.fora_do_fio.map(datacaoEmLinha).join("")}</ol>
+           </details>`
+        : ""
+    }`;
+
+  ligarAcoesDoFio(painel);
+}
+
+function ligarAcoesDoFio(raiz) {
+  raiz.querySelectorAll("[data-card]").forEach((botao) => {
+    botao.addEventListener("click", () => {
+      const chave = botao.dataset.card;
+      cardDoFioAberto = cardDoFioAberto === chave ? null : chave;
+      montarFio();
+      // Remontar troca o nó sob o foco: devolver o foco ao mesmo card é o que
+      // mantém o teclado no lugar em vez de jogá-lo para o topo da página.
+      raiz.querySelector(`[data-card="${CSS.escape(chave)}"]`)?.focus({ preventScroll: true });
+    });
+  });
+  raiz.querySelectorAll("[data-ler]").forEach((botao) => {
+    botao.addEventListener("click", () => abrirCapitulo(botao.dataset.ler));
+  });
+  raiz.querySelectorAll("[data-ir-no]").forEach((botao) => {
+    botao.addEventListener("click", () => {
+      mudarView("mapa");
+      centralizarEm(botao.dataset.irNo);
+      abrirDossie(botao.dataset.irNo);
+    });
+  });
+  // ← → andam de capítulo em capítulo pela espinha.
+  raiz.querySelectorAll(".fio-marco").forEach((marco, i, todos) => {
+    marco.addEventListener("keydown", (e) => {
+      const passo = e.key === "ArrowRight" ? 1 : e.key === "ArrowLeft" ? -1 : 0;
+      if (!passo) return;
+      e.preventDefault();
+      todos[i + passo]?.focus();
+      todos[i + passo]?.scrollIntoView({ inline: "center", block: "nearest", behavior: animacoesOk() ? "smooth" : "auto" });
+    });
+  });
+}
+
+async function carregarFio() {
+  fio = await carregarJSON("fio.json");
+  if (!fio) return;
+  // Esc fecha o card aberto sem sair da aba. Registrado aqui, e não em
+  // ligarAcoesDoFio: #view-fio sobrevive às remontagens, e um listener por
+  // remontagem viraria uma pilha que dispara montarFio N vezes por Esc.
+  document.querySelector("#view-fio")?.addEventListener("keydown", (e) => {
+    if (e.key !== "Escape" || !cardDoFioAberto) return;
+    e.stopPropagation();
+    cardDoFioAberto = null;
+    montarFio();
+  });
+  montarFio();
+}
+
+function sincronizarFioComHash() {
+  const capitulo = lerCapituloDoFioNoHash();
+  if (capitulo === undefined) return false;
+  mudarView("fio");
+  if (capitulo) {
+    const alvo = document.querySelector(`[data-capitulo="${CSS.escape(capitulo)}"] .fio-marco`);
+    alvo?.scrollIntoView({ inline: "center", block: "nearest" });
+    alvo?.focus({ preventScroll: true });
+  }
+  return true;
 }
 
 // --- Início ---------------------------------------------------------------
@@ -3196,10 +3474,11 @@ async function iniciar() {
     const grafoData = (await carregarJSON("grafo.json")) || { nos: [], arestas: [] };
     iniciarGrafo(grafoData);
     montarPassagens();
-    await montarTimeline();
     await carregarIndiceCapitulos();
+    await carregarFio();
     window.addEventListener("hashchange", sincronizarLeituraComHash);
     window.addEventListener("popstate", sincronizarLeituraComHash);
+    window.addEventListener("hashchange", sincronizarFioComHash);
     configurarBiblia();
     window.addEventListener("resize", () => {
       if (!cy) return;
@@ -3210,6 +3489,7 @@ async function iniciar() {
     // e um com #capitulo=<id> abre direto a leitura.
     sincronizarDossieComHash();
     sincronizarLeituraComHash();
+    sincronizarFioComHash();
   } catch (erro) {
     // Rede de segurança final: qualquer falha inesperada aqui não pode
     // deixar a tela travada em "carregando" para sempre.
