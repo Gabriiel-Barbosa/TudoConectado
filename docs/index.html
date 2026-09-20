@@ -10,7 +10,7 @@
   <!-- ?v= muda a cada deploy que toque em estilo.css/app.js — sem isso o
        navegador/CDN do GitHub Pages pode manter uma cópia antiga em cache
        e misturar HTML novo com JS/CSS velho. Bump manual por enquanto. -->
-  <link rel="stylesheet" href="assets/estilo.css?v=11" />
+  <link rel="stylesheet" href="assets/estilo.css?v=12" />
   <script defer src="https://cdn.jsdelivr.net/npm/cytoscape@3.34.3/dist/cytoscape.min.js"></script>
 </head>
 <body>
@@ -142,14 +142,6 @@
           </button>
         </div>
 
-        <div id="dossie" class="dossie" hidden role="dialog" aria-modal="true" aria-labelledby="dossie-titulo">
-          <div class="dossie-cartao painel-flutuante">
-            <button class="fechar-painel fechar-dossie" aria-label="Fechar ficha completa">
-              <svg viewBox="0 0 24 24" class="icone"><path d="M18 6 6 18" /><path d="m6 6 12 12" /></svg>
-            </button>
-            <div id="dossie-corpo"></div>
-          </div>
-        </div>
       </div>
     </section>
 
@@ -173,8 +165,20 @@
     </section>
   </main>
 
+  <!-- A ficha completa fica FORA das views: ela abre por cima da tela em que
+       a pessoa está (mapa, fio ou leitura). Enquanto vivia dentro de
+       #view-mapa, mostrá-la obrigava a trocar de aba antes. -->
+  <div id="dossie" class="dossie" hidden role="dialog" aria-modal="true" aria-labelledby="dossie-titulo">
+    <div class="dossie-cartao painel-flutuante">
+      <button class="fechar-painel fechar-dossie" aria-label="Fechar ficha completa">
+        <svg viewBox="0 0 24 24" class="icone"><path d="M18 6 6 18" /><path d="m6 6 12 12" /></svg>
+      </button>
+      <div id="dossie-corpo"></div>
+    </div>
+  </div>
+
   <div id="tooltip" class="tooltip" hidden></div>
 
-  <script defer src="assets/app.js?v=11"></script>
+  <script defer src="assets/app.js?v=12"></script>
 </body>
 </html>

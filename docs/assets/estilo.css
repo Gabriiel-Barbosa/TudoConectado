@@ -1330,7 +1330,10 @@ details.mais[open] > summary::before {
 /* --- Dossiê (nível 3) --- */
 
 .dossie {
-  position: absolute;
+  /* fixed, e não absolute: o dossiê vive fora das views para poder abrir por
+     cima de qualquer uma delas, então não tem mais um ancestral posicionado
+     de quem herdar as bordas. */
+  position: fixed;
   inset: 0;
   z-index: 40;
   display: flex;
