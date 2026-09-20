@@ -3256,8 +3256,8 @@ function miniGrafo(capitulo, itens) {
           // dobrava a altura do card aberto e empurrava a espinha para fora
           // da tela num grupo de seis leituras.
           item.destino
-            ? `<button type="button" class="fio-mini-texto fio-mini-ir" data-ir-no="${escapar(item.destino.id)}"
-                 title="Ver no mapa">`
+            ? `<button type="button" class="fio-mini-texto fio-mini-ir" data-ficha="${escapar(item.destino.id)}"
+                 title="Abrir a ficha">`
             : `<span class="fio-mini-texto">`
         }
           <span class="fio-mini-titulo">${escapar(item.titulo)}</span>
@@ -3419,6 +3419,12 @@ function ligarAcoesDoFio(raiz) {
   });
   raiz.querySelectorAll("[data-ler]").forEach((botao) => {
     botao.addEventListener("click", () => abrirCapitulo(botao.dataset.ler));
+  });
+  // A ficha abre POR CIMA do fio: quem clicou num item quer ler sobre aquele
+  // item, não perder o lugar na espinha. Fechar a ficha devolve o foco ao
+  // mesmo item. Só o botão rotulado "Ver no mapa" troca de tela.
+  raiz.querySelectorAll("[data-ficha]").forEach((botao) => {
+    botao.addEventListener("click", () => abrirDossie(botao.dataset.ficha));
   });
   raiz.querySelectorAll("[data-ir-no]").forEach((botao) => {
     botao.addEventListener("click", () => {
