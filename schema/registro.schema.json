@@ -27,6 +27,11 @@
     "descricao": {
       "type": "string",
       "minLength": 1
+    },
+    "total_capitulos": {
+      "type": "integer",
+      "minimum": 1,
+      "description": "Só para tipo=texto: quantos capítulos o livro tem ao todo. A espinha do fio usa para mostrar quanto ainda falta mapear."
     }
   }
 }

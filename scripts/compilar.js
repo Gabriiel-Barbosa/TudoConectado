@@ -1,9 +1,9 @@
 #!/usr/bin/env node
-// Lê todo YAML válido em dados/ e gera docs/grafo.json, docs/timeline.json e
+// Lê todo YAML válido em dados/ e gera docs/grafo.json, docs/fio.json e
 // docs/capitulos/*.json. São artefato de build — nunca editados à mão (seção 6).
 // Rodar scripts/validar.js antes; este script não revalida.
 
-import { existsSync, mkdirSync, readFileSync, readdirSync, writeFileSync } from "node:fs";
+import { existsSync, mkdirSync, readFileSync, readdirSync, rmSync, writeFileSync } from "node:fs";
 import path from "node:path";
 import { fileURLToPath, pathToFileURL } from "node:url";
 import yaml from "js-yaml";
@@ -132,20 +132,115 @@ function compilarGrafo(registros, afirmacoes, passagens, ligacoes, textos = []) 
   return { nos, arestas };
 }
 
-function compilarTimeline(afirmacoes) {
-  const linha = [];
-  for (const afirmacao of afirmacoes) {
-    for (const datacao of afirmacao.datacao || []) {
-      linha.push({
-        afirmacao: afirmacao.id,
-        texto: afirmacao.texto,
-        periodo: datacao.periodo,
-        segundo_quem: datacao.segundo_quem,
-      });
-    }
+function datacoesDe(afirmacao) {
+  return (afirmacao.datacao || []).map((datacao) => ({
+    afirmacao: afirmacao.id,
+    texto: afirmacao.texto,
+    periodo: datacao.periodo,
+    segundo_quem: datacao.segundo_quem,
+  }));
+}
+
+// Os cinco grupos de card da tela do fio, na ordem em que aparecem ao redor
+// da espinha. 'leitura' junta os dois temas de leitura porque na tela eles são
+// um card só ("Leituras"), que mostra literal e não literal lado a lado.
+const GRUPOS_DO_FIO = [
+  { grupo: "paralelo", temas: ["paralelo"] },
+  { grupo: "ciencia", temas: ["ciencia"] },
+  { grupo: "leitura", temas: ["leitura_literal", "leitura_nao_literal"] },
+  { grupo: "contexto", temas: ["contexto"] },
+];
+
+// docs/fio.json: o que a tela "Fio da narrativa" precisa para desenhar a
+// espinha e os cards sem baixar capítulo nenhum. Os capitulos/*.json trazem o
+// texto bíblico inteiro; contar cards com eles custaria Gênesis inteiro a cada
+// abertura da aba. Aqui vão só contadores e ids — o conteúdo de cada card sai
+// do grafo.json, que a página já tem em memória.
+function compilarFio(passagens, textos, notas, afirmacoes, ligacoes, registros) {
+  const textosPorId = new Map(textos.map((t) => [t.id, t]));
+  const notasPorPassagem = new Map();
+  for (const nota of notas) {
+    if (!notasPorPassagem.has(nota.passagem)) notasPorPassagem.set(nota.passagem, []);
+    notasPorPassagem.get(nota.passagem).push(nota);
   }
-  linha.sort((a, b) => a.periodo[0] - b.periodo[0]);
-  return linha;
+  const ligacoesPorId = new Map(ligacoes.map((l) => [l.id, l]));
+
+  const capitulos = [];
+  // Uma afirmação datada está "no fio" quando alguma ligação citada por algum
+  // capítulo a tem numa das pontas — é assim que ela vira card de ciência.
+  const afirmacoesAncoradas = new Set();
+
+  for (const passagem of passagens) {
+    const texto = textosPorId.get(passagem.texto);
+    if (!texto) continue;
+    const conexoes = passagem.conexoes || [];
+
+    for (const conexao of conexoes) {
+      for (const ponta of ligacoesPorId.get(conexao.ligacao)?.entre || []) {
+        const [tipo, id] = Object.entries(ponta)[0];
+        if (tipo === "afirmacao") afirmacoesAncoradas.add(id);
+      }
+    }
+
+    const grupos = GRUPOS_DO_FIO.map(({ grupo, temas }) => {
+      const doGrupo = conexoes.filter((c) => temas.includes(c.tema));
+      return {
+        grupo,
+        total: doGrupo.length,
+        ligacoes: doGrupo.map((c) => ({ ligacao: c.ligacao, versiculos: c.versiculos, tema: c.tema })),
+      };
+    });
+
+    const doTexto = (notasPorPassagem.get(passagem.id) || [])
+      .slice()
+      .sort((a, b) => a.versiculos[0] - b.versiculos[0]);
+    grupos.push({
+      grupo: "nota",
+      total: doTexto.length,
+      notas: doTexto.map((n) => ({ id: n.id, tipo: n.tipo, versiculos: n.versiculos, titulo: n.titulo })),
+    });
+
+    capitulos.push({
+      id: texto.id,
+      livro: texto.livro,
+      capitulo: texto.capitulo,
+      passagem: passagem.id,
+      referencia: passagem.referencia,
+      titulo: passagem.titulo ?? null,
+      resumo: (passagem.afirma || [])[0] ?? null,
+      // Grupo vazio não vira card na tela, mas sai no JSON: é ele que diz
+      // "este capítulo não tem paralelo nenhum mapeado", que é informação.
+      grupos,
+    });
+  }
+  capitulos.sort((a, b) => a.livro.localeCompare(b.livro) || a.capitulo - b.capitulo);
+
+  // O nó de abertura da espinha. Ele carrega a datação do próprio texto —
+  // as afirmações que falam do livro e não de nenhum capítulo em particular.
+  const nomeDoLivro = capitulos[0]?.livro;
+  const registroDoLivro = nomeDoLivro && registros.find((r) => r.tipo === "texto" && r.nome === nomeDoLivro);
+  const livro = registroDoLivro
+    ? {
+        registro: registroDoLivro.id,
+        nome: registroDoLivro.nome,
+        total_capitulos: registroDoLivro.total_capitulos ?? null,
+        datacoes: afirmacoes
+          .filter((a) => (a.registros_envolvidos || []).includes(registroDoLivro.id))
+          .flatMap(datacoesDe)
+          .sort((a, b) => a.periodo[0] - b.periodo[0]),
+      }
+    : null;
+
+  const noLivro = new Set(livro?.datacoes.map((d) => d.afirmacao) || []);
+  // Datações que não pendem de capítulo nem do livro. Não somem: a tela as
+  // mostra numa faixa de fecho, porque uma datação órfã é uma lacuna visível
+  // ("isto ainda não foi ancorado em nenhum capítulo"), não lixo.
+  const foraDoFio = afirmacoes
+    .filter((a) => !afirmacoesAncoradas.has(a.id) && !noLivro.has(a.id))
+    .flatMap(datacoesDe)
+    .sort((a, b) => a.periodo[0] - b.periodo[0]);
+
+  return { livro, capitulos, fora_do_fio: foraDoFio };
 }
 
 // Um arquivo por capítulo com tela de leitura (docs/capitulos/<texto>.json):
@@ -202,11 +297,17 @@ function main() {
   const grafo = compilarGrafo(registros, afirmacoes, passagens, ligacoes, textos);
   writeFileSync(path.join(DOCS, "grafo.json"), JSON.stringify(grafo, null, 2), "utf-8");
 
-  const timeline = compilarTimeline(afirmacoes);
-  writeFileSync(path.join(DOCS, "timeline.json"), JSON.stringify(timeline, null, 2), "utf-8");
-
   const notas = carregarYaml(path.join(DADOS, "notas"));
   const { capitulos, indice } = compilarCapitulos(passagens, textos, notas);
+
+  const fio = compilarFio(passagens, textos, notas, afirmacoes, ligacoes, registros);
+  writeFileSync(path.join(DOCS, "fio.json"), JSON.stringify(fio, null, 2), "utf-8");
+  // timeline.json saiu: as datações agora vivem no fio (issue #5, decisão 3).
+  // Apagado aqui, e não só deixado de gerar, para não ficar uma cópia velha
+  // servida pelo GitHub Pages depois que a aba antiga sumir.
+  const timelineAntigo = path.join(DOCS, "timeline.json");
+  if (existsSync(timelineAntigo)) rmSync(timelineAntigo);
+
   const pastaCapitulos = path.join(DOCS, "capitulos");
   mkdirSync(pastaCapitulos, { recursive: true });
   for (const capitulo of capitulos) {
@@ -216,13 +317,14 @@ function main() {
 
   console.log(
     `docs/grafo.json: ${grafo.nos.length} nó(s), ${grafo.arestas.length} aresta(s)\n` +
-      `docs/timeline.json: ${timeline.length} entrada(s)
-` +
-      `docs/capitulos/: ${capitulos.length} capítulo(s)`
+      `docs/capitulos/: ${capitulos.length} capítulo(s)\n` +
+      `docs/fio.json: ${fio.capitulos.length} capítulo(s) na espinha, ` +
+      `${fio.livro?.datacoes.length ?? 0} datação(ões) do livro, ` +
+      `${fio.fora_do_fio.length} fora do fio`
   );
 }
 
-export { compilarGrafo, compilarTimeline, compilarCapitulos };
+export { compilarGrafo, compilarCapitulos, compilarFio };
 
 if (import.meta.url === pathToFileURL(process.argv[1] || "").href) {
   main();

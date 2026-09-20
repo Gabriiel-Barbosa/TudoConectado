@@ -1,0 +1,482 @@
+{
+  "livro": {
+    "registro": "genesis",
+    "nome": "Gênesis",
+    "total_capitulos": 50,
+    "datacoes": [
+      {
+        "afirmacao": "autoria-mosaica-genesis",
+        "texto": "Gênesis foi escrito por Moisés.",
+        "periodo": [
+          -1446,
+          -1200
+        ],
+        "segundo_quem": "Pela cronologia tradicional, Moisés teria escrito Gênesis entre c. 1446 e 1200 a.C. O intervalo é largo porque a própria tradição se divide entre duas datações. A \"alta\", por volta do século XV a.C., vem de uma leitura literal de 1 Reis 6:1. A \"baixa\", por volta do século XIII a.C., associa o Êxodo (a saída dos israelitas do Egito) ao reinado do faraó Ramessés II.\n"
+      },
+      {
+        "afirmacao": "publicacao-pentateuco-periodo-persa",
+        "texto": "O Pentateuco, do qual Gênesis faz parte, foi publicado pela primeira vez depois do exílio na Babilônia, no período persa.",
+        "periodo": [
+          -539,
+          -332
+        ],
+        "segundo_quem": "Segundo Thomas Römer (2008), há amplo acordo entre os estudiosos de que o Pentateuco, ou uma primeira versão dele, foi publicado pela primeira vez em meados do período persa. Gênesis, o primeiro dos cinco livros, entra nessa datação por fazer parte do conjunto. O intervalo registrado aqui é o do período persa inteiro, de 539 a 332 a.C., porque o autor não dá anos.\n"
+      },
+      {
+        "afirmacao": "publicacao-pentateuco-periodo-persa",
+        "texto": "O Pentateuco, do qual Gênesis faz parte, foi publicado pela primeira vez depois do exílio na Babilônia, no período persa.",
+        "periodo": [
+          -458,
+          -444
+        ],
+        "segundo_quem": "Segundo Julius Wellhausen (1885), o Pentateuco só se tornou conhecido como lei de Moisés em 444 a.C., quando Esdras o publicou em Jerusalém, cerca de um século depois do exílio na Babilônia. Esdras havia chegado à cidade em 458 a.C. Gênesis, o primeiro dos cinco livros, entra nessa datação por fazer parte do conjunto.\n"
+      }
+    ]
+  },
+  "capitulos": [
+    {
+      "id": "genesis-01",
+      "livro": "Gênesis",
+      "capitulo": 1,
+      "passagem": "gen-01-01_01-31",
+      "referencia": "Gênesis 1:1–31",
+      "titulo": "A criação do mundo em seis dias",
+      "resumo": "No princípio, Deus cria os céus e a terra. A terra está sem forma e vazia, as trevas cobrem o abismo, e o Espírito de Deus se move sobre as águas.",
+      "grupos": [
+        {
+          "grupo": "paralelo",
+          "total": 2,
+          "ligacoes": [
+            {
+              "ligacao": "textos-das-piramides-e-dos-sarcofagos-paralelo-genesis",
+              "versiculos": [
+                6,
+                7
+              ],
+              "tema": "paralelo"
+            },
+            {
+              "ligacao": "enuma-elish-paralelo-genesis",
+              "versiculos": [
+                6,
+                8
+              ],
+              "tema": "paralelo"
+            }
+          ]
+        },
+        {
+          "grupo": "ciencia",
+          "total": 2,
+          "ligacoes": [
+            {
+              "ligacao": "missao-planck-confirma-idade-do-universo",
+              "versiculos": [
+                1,
+                1
+              ],
+              "tema": "ciencia"
+            },
+            {
+              "ligacao": "meteorito-canyon-diablo-confirma-formacao-da-terra",
+              "versiculos": [
+                10,
+                10
+              ],
+              "tema": "ciencia"
+            }
+          ]
+        },
+        {
+          "grupo": "leitura",
+          "total": 6,
+          "ligacoes": [
+            {
+              "ligacao": "declaracao-breve-sinodo-missouri-contradiz-dias-de-genesis-nao-literais",
+              "versiculos": [
+                5,
+                5
+              ],
+              "tema": "leitura_literal"
+            },
+            {
+              "ligacao": "catecismo-da-igreja-catolica-confirma-dias-de-genesis-nao-literais",
+              "versiculos": [
+                5,
+                5
+              ],
+              "tema": "leitura_nao_literal"
+            },
+            {
+              "ligacao": "decreto-comissao-biblica-1909-confirma-dias-de-genesis-nao-literais",
+              "versiculos": [
+                5,
+                5
+              ],
+              "tema": "leitura_nao_literal"
+            },
+            {
+              "ligacao": "relatorio-criacao-pca-2000-confirma-dias-de-genesis-nao-literais",
+              "versiculos": [
+                5,
+                5
+              ],
+              "tema": "leitura_nao_literal"
+            },
+            {
+              "ligacao": "guia-dos-perplexos-confirma-dias-de-genesis-nao-literais",
+              "versiculos": [
+                5,
+                5
+              ],
+              "tema": "leitura_nao_literal"
+            },
+            {
+              "ligacao": "cidade-de-deus-confirma-dias-de-genesis-nao-literais",
+              "versiculos": [
+                5,
+                5
+              ],
+              "tema": "leitura_nao_literal"
+            }
+          ]
+        },
+        {
+          "grupo": "contexto",
+          "total": 0,
+          "ligacoes": []
+        },
+        {
+          "grupo": "nota",
+          "total": 13,
+          "notas": [
+            {
+              "id": "gn01-no-principio",
+              "tipo": "traducao",
+              "versiculos": [
+                1,
+                3
+              ],
+              "titulo": "“No princípio criou” ou “Quando Deus começou a criar”?"
+            },
+            {
+              "id": "gn01-espirito-ou-vento",
+              "tipo": "traducao",
+              "versiculos": [
+                2,
+                2
+              ],
+              "titulo": "“Espírito de Deus” ou “vento de Deus”?"
+            },
+            {
+              "id": "gn01-tehom",
+              "tipo": "traducao",
+              "versiculos": [
+                2,
+                2
+              ],
+              "titulo": "Tehom, “o abismo”, e a Tiamat babilônica"
+            },
+            {
+              "id": "gn01-tohu-wabohu",
+              "tipo": "traducao",
+              "versiculos": [
+                2,
+                2
+              ],
+              "titulo": "O que é “tohu wabohu”?"
+            },
+            {
+              "id": "gn01-e-assim-foi",
+              "tipo": "variante",
+              "versiculos": [
+                6,
+                7
+              ],
+              "titulo": "Onde fica o “e assim foi”?"
+            },
+            {
+              "id": "gn01-firmamento",
+              "tipo": "traducao",
+              "versiculos": [
+                6,
+                8
+              ],
+              "titulo": "“Firmamento” ou “expansão”?"
+            },
+            {
+              "id": "gn01-quem-separou",
+              "tipo": "variante",
+              "versiculos": [
+                7,
+                7
+              ],
+              "titulo": "Quem separou as águas?"
+            },
+            {
+              "id": "gn01-segundo-dia-sem-aprovacao",
+              "tipo": "variante",
+              "versiculos": [
+                8,
+                8
+              ],
+              "titulo": "O segundo dia sem “e viu Deus que era bom”"
+            },
+            {
+              "id": "gn01-aguas-frase-a-mais",
+              "tipo": "variante",
+              "versiculos": [
+                9,
+                9
+              ],
+              "titulo": "Uma frase a mais sobre as águas"
+            },
+            {
+              "id": "gn01-lugar-ou-ajuntamento",
+              "tipo": "variante",
+              "versiculos": [
+                9,
+                9
+              ],
+              "titulo": "As águas se juntam “em um lugar” ou “em um ajuntamento”?"
+            },
+            {
+              "id": "gn01-tanninim",
+              "tipo": "traducao",
+              "versiculos": [
+                21,
+                21
+              ],
+              "titulo": "Grandes animais marinhos ou monstros do mar?"
+            },
+            {
+              "id": "gn01-facamos",
+              "tipo": "traducao",
+              "versiculos": [
+                26,
+                26
+              ],
+              "titulo": "“Façamos”: com quem Deus fala?"
+            },
+            {
+              "id": "gn01-toda-a-terra",
+              "tipo": "variante",
+              "versiculos": [
+                26,
+                26
+              ],
+              "titulo": "“Toda a terra” numa lista de animais"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "genesis-02",
+      "livro": "Gênesis",
+      "capitulo": 2,
+      "passagem": "gen-02-01_02-25",
+      "referencia": "Gênesis 2:1–25",
+      "titulo": "O sétimo dia e o jardim do Éden",
+      "resumo": "Deus termina a obra da criação, descansa no sétimo dia e o abençoa.",
+      "grupos": [
+        {
+          "grupo": "paralelo",
+          "total": 3,
+          "ligacoes": [
+            {
+              "ligacao": "atrahasis-paralelo-genesis",
+              "versiculos": [
+                7,
+                7
+              ],
+              "tema": "paralelo"
+            },
+            {
+              "ligacao": "epopeia-de-gilgamesh-paralelo-genesis",
+              "versiculos": [
+                7,
+                7
+              ],
+              "tema": "paralelo"
+            },
+            {
+              "ligacao": "enki-e-ninhursag-paralelo-genesis",
+              "versiculos": [
+                21,
+                21
+              ],
+              "tema": "paralelo"
+            }
+          ]
+        },
+        {
+          "grupo": "ciencia",
+          "total": 1,
+          "ligacoes": [
+            {
+              "ligacao": "fosseis-de-jebel-irhoud-confirma-fosseis-mais-antigos-do-homo-sapiens",
+              "versiculos": [
+                7,
+                7
+              ],
+              "tema": "ciencia"
+            }
+          ]
+        },
+        {
+          "grupo": "leitura",
+          "total": 0,
+          "ligacoes": []
+        },
+        {
+          "grupo": "contexto",
+          "total": 2,
+          "ligacoes": [
+            {
+              "ligacao": "hipotese-documentaria-confirma-dois-relatos-da-criacao",
+              "versiculos": [
+                5,
+                5
+              ],
+              "tema": "contexto"
+            },
+            {
+              "ligacao": "comentario-critico-de-skinner-contradiz-eden-lugar-real",
+              "versiculos": [
+                10,
+                10
+              ],
+              "tema": "contexto"
+            }
+          ]
+        },
+        {
+          "grupo": "nota",
+          "total": 11,
+          "notas": [
+            {
+              "id": "gn02-sexto-ou-setimo",
+              "tipo": "variante",
+              "versiculos": [
+                2,
+                2
+              ],
+              "titulo": "Deus terminou a obra no sétimo ou no sexto dia?"
+            },
+            {
+              "id": "gn02-estas-sao-as-origens",
+              "tipo": "traducao",
+              "versiculos": [
+                4,
+                4
+              ],
+              "titulo": "“Estas são as origens”: fim de um relato ou começo de outro?"
+            },
+            {
+              "id": "gn02-formula-mais-longa",
+              "tipo": "variante",
+              "versiculos": [
+                4,
+                4
+              ],
+              "titulo": "A Septuaginta alonga a fórmula"
+            },
+            {
+              "id": "gn02-senhor-deus",
+              "tipo": "traducao",
+              "versiculos": [
+                4,
+                4
+              ],
+              "titulo": "Por que agora “o SENHOR Deus”?"
+            },
+            {
+              "id": "gn02-vapor",
+              "tipo": "traducao",
+              "versiculos": [
+                6,
+                6
+              ],
+              "titulo": "Vapor, névoa ou cheia?"
+            },
+            {
+              "id": "gn02-adam-adamah",
+              "tipo": "traducao",
+              "versiculos": [
+                7,
+                7
+              ],
+              "titulo": "Adam, feito da adamah"
+            },
+            {
+              "id": "gn02-alma-vivente",
+              "tipo": "traducao",
+              "versiculos": [
+                7,
+                7
+              ],
+              "titulo": "“Alma vivente”: uma alma à parte?"
+            },
+            {
+              "id": "gn02-eden",
+              "tipo": "traducao",
+              "versiculos": [
+                8,
+                8
+              ],
+              "titulo": "O que quer dizer “Éden”?"
+            },
+            {
+              "id": "gn02-ajuda-idonea",
+              "tipo": "traducao",
+              "versiculos": [
+                18,
+                18
+              ],
+              "titulo": "“Ajuda idônea”: auxiliar ou contraparte?"
+            },
+            {
+              "id": "gn02-esta-tres-vezes",
+              "tipo": "variante",
+              "versiculos": [
+                23,
+                23
+              ],
+              "titulo": "Um “esta” a mais"
+            },
+            {
+              "id": "gn02-mulher-e-homem",
+              "tipo": "traducao",
+              "versiculos": [
+                23,
+                23
+              ],
+              "titulo": "Mulher e homem: um jogo de palavras"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "fora_do_fio": [
+    {
+      "afirmacao": "nome-yhwh-fora-da-biblia",
+      "texto": "O deus de Israel já era chamado pelo nome YHWH na Antiguidade, em textos de fora da Bíblia.",
+      "periodo": [
+        -842,
+        -805
+      ],
+      "segundo_quem": "Segundo o catálogo do Museu do Louvre, a Estela de Mesa foi gravada pouco depois de 842 a.C., no reinado de Mesa, rei de Moabe (c. 830–805 a.C.). Nas linhas 17 e 18, o rei conta que tomou os vasos de YHWH e os levou diante de Camós, o deus de Moabe.\n"
+    },
+    {
+      "afirmacao": "nome-yhwh-fora-da-biblia",
+      "texto": "O deus de Israel já era chamado pelo nome YHWH na Antiguidade, em textos de fora da Bíblia.",
+      "periodo": [
+        -725,
+        -650
+      ],
+      "segundo_quem": "Segundo Erik Waaler (2002), os amuletos de prata de Ketef Hinnom, que trazem o nome YHWH, são de entre 725 e 650 a.C. A datação é discutida: outros estudiosos situam os amuletos mais tarde, no fim do século VII ou no começo do século VI a.C.\n"
+    }
+  ]
+}
