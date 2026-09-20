@@ -1,0 +1,28 @@
+# Gerado por .claude/skills/conferir/scripts/registrar.js — vereditos da
+# Contraprova para as fontes desta ligação. Edite à mão só 'revisao_humana'
+# (pendente -> feita) depois de conferir você mesmo.
+ligacao: gn03-como-um-de-nos
+fontes:
+  - hash: 7c1d7798cd3b
+    nivel: 2
+    descricao: >-
+      Skinner, J. (1910), A Critical and Exegetical Commentary on Genesis (International Critical
+      Commentary), Nova York: Charles Scribner's Sons, pp. 87–88
+    alegacao: >-
+      Skinner sustenta que "eis que o homem é como um de nós", em Gênesis 3:22, não é ironia mas
+      admissão séria de que o ser humano tomou para si uma prerrogativa divina que não lhe era
+      destinada, atribuindo a leitura irônica a Calvino e outros, e afirma que a semelhança com Deus
+      se limita ao conhecer o bem e o mal.
+    veredito: confirmada
+    parou_em: null
+    conferido_em: >-
+      mesma digitalização de Skinner (1910), ICC Genesis, pp. 87–88 (confirmada pelo cabeçalho
+      impresso "88 PARADISE AND THE FALL (J)" na virada de página)
+    observacao: >-
+      Texto na íntegra: "22. Behold ... one of us] This is no 'ironica exprobatio' (Calv. al.), but
+      a serious admission that man has snatched a divine prerogative not meant for him" (p. 87), e
+      na p. 88: "Man has not attained complete equality with God, but only God-likeness in this one
+      respect." Corresponde exatamente à alegação.
+    data: '2026-09-20'
+    conferido_por: contraprova
+    revisao_humana: pendente

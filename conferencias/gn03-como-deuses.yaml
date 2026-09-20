@@ -1,0 +1,26 @@
+# Gerado por .claude/skills/conferir/scripts/registrar.js — vereditos da
+# Contraprova para as fontes desta ligação. Edite à mão só 'revisao_humana'
+# (pendente -> feita) depois de conferir você mesmo.
+ligacao: gn03-como-deuses
+fontes:
+  - hash: 24aadb5f3239
+    nivel: 2
+    descricao: >-
+      Skinner, J. (1910), A Critical and Exegetical Commentary on Genesis (International Critical
+      Commentary), Nova York: Charles Scribner's Sons, p. 75
+    alegacao: >-
+      Skinner sustenta que a expressão hebraica em Gênesis 3:5 deve ser vertida por "deuses" ou
+      "seres divinos", e não por "como Deus" no singular, aceita "como anjos" (Ibn Ezra) como
+      aproximação razoável, e observa que a semelhança divina obtida não é igualdade com Javé.
+    veredito: confirmada
+    parou_em: null
+    conferido_em: >-
+      mesma digitalização de Skinner (1910), ICC Genesis, p. 75 (confirmada pelo cabeçalho impresso
+      "III. 2-6 75" que abre a página)
+    observacao: >-
+      Texto na íntegra: "as gods] or 'divine beings,' rather than 'as God': the rendering 'as
+      angels' (IEz.) expresses the idea with substantial accuracy. The likeness to divinity actually
+      acquired is not equality with Yahwe (see Gu. on v.22)." Corresponde exatamente à alegação.
+    data: '2026-09-20'
+    conferido_por: contraprova
+    revisao_humana: pendente

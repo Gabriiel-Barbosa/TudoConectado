@@ -1,0 +1,63 @@
+# Gerado por .claude/skills/conferir/scripts/registrar.js — vereditos da
+# Contraprova para as fontes desta ligação. Edite à mão só 'revisao_humana'
+# (pendente -> feita) depois de conferir você mesmo.
+ligacao: gn03-serpente-e-o-diabo
+fontes:
+  - hash: f8781582c2c7
+    nivel: 2
+    descricao: >-
+      Skinner, J. (1910), A Critical and Exegetical Commentary on Genesis (International Critical
+      Commentary), Nova York: Charles Scribner's Sons, p. 73
+    alegacao: >-
+      Skinner sustenta que identificar a serpente de Gênesis 3 com o diabo é estranho ao pensamento
+      de quem escreveu o capítulo, que essa identificação aparece primeiro no judaísmo alexandrino
+      na Sabedoria de Salomão 2:24, com possível alusão anterior em 1 Enoque 69:6, e que o Satanás
+      como personagem só surge no Antigo Testamento depois do exílio.
+    veredito: confirmada
+    parou_em: null
+    conferido_em: >-
+      texto integral de Skinner (1910), ICC Genesis, digitalização de
+      biblicalstudies.org.uk/pdf/e-books/skinner_john/genesis-icc_skinner.pdf, p. 73 (confirmada
+      pelo cabeçalho impresso "74 PARADISE AND THE FALL (J)" que abre a página seguinte)
+    observacao: >-
+      Texto na íntegra: "the doctrine that the serpent of Eden was the mouthpiece or impersonation
+      of the devil. The idea appears first in Alexandrian Judaism in Wisd. 2^24 ... possibly earlier
+      is the allusion in En. lxix.6, where the seduction of Eve is ascribed to a Satan called
+      Gadreel ... it is foreign to the thought of the writer ... The personality of the Satan (the
+      Adversary) does not appear in the OT till after the Exile." Corresponde exatamente à alegação.
+    data: '2026-09-20'
+    conferido_por: contraprova
+    revisao_humana: pendente
+  - hash: 227592ac1fdf
+    nivel: 2
+    descricao: >-
+      Lagunov, S. V. (2019), Following the Traces of the Serpent in the Old and New Testaments and
+      the Early Jewish Interpretation: Genesis 3:1–15 in Light of Its Reception History, tese de
+      doutorado, Protestantse Theologische Universiteit, Amsterdã/Groningen, pp. 94 e 211–212
+    alegacao: >-
+      Lagunov sustenta que o texto de Gênesis 3 não identifica a serpente com Satanás, que essa
+      identificação aparece pela primeira vez em escrita judaica do século II a.C., que se torna
+      explícita em textos posteriores ao fim do século I d.C., e que se consolida como leitura
+      padrão com os Padres da Igreja.
+    veredito: confirmada
+    parou_em: null
+    conferido_em: >-
+      cópia oficial baixada de
+      https://theoluniv.ub.rug.nl/146/1/Lagunov_S_Following%20the%20traces%20of%20the%20serpent_14febr2019.pdf
+      (repositório institucional da PThU/Universidade de Groningen), texto extraído com pdftotext
+      -layout. Numeração de página conferida pelos rodapés impressos (marcador de fim de página do
+      pdftotext coincide exatamente com o número impresso no rodapé de cada página).
+    observacao: >-
+      A tese existe (defendida em 14/02/2019, promotores K. Spronk e J.T.A.G.M. van Ruiten). Página
+      94 (§3.2, "Wisdom of Solomon") traz contexto de apoio: discute como os Padres da Igreja leram
+      Sabedoria 2:23-24 junto com Gênesis 3 para identificar a serpente com o Diabo. As páginas
+      211-212 (Capítulo 5, "Summary and Conclusion") contêm, quase literalmente, as quatro
+      afirmações da alegação: "Genesis 3:15 has nothing to do with either Satan or the devil" (p.
+      212); "It can be found first with Jewish writing in the second century BCE" (p. 211); a
+      interpretação satânica foi "gradually read into both these texts over time (from the end of
+      the first century CE onward)"; e a transformação "continued, aided by a dualistic
+      argumentation around the time of the early Church Fathers, until he was generally understood
+      as Satan himself" (pp. 212-213).
+    data: '2026-09-20'
+    conferido_por: contraprova
+    revisao_humana: pendente

@@ -457,6 +457,114 @@
           ]
         }
       ]
+    },
+    {
+      "id": "genesis-03",
+      "livro": "Gênesis",
+      "capitulo": 3,
+      "passagem": "gen-03-01_03-24",
+      "referencia": "Gênesis 3:1–24",
+      "titulo": "A serpente, a árvore e a expulsão do jardim",
+      "resumo": "A serpente convence a mulher de que comer da árvore proibida não traz morte, e sim conhecimento. Ela come, o homem come com ela, e os dois percebem que estão nus e se cobrem com folhas de figueira.",
+      "grupos": [
+        {
+          "grupo": "paralelo",
+          "total": 2,
+          "ligacoes": [
+            {
+              "ligacao": "mito-de-adapa-paralelo-genesis",
+              "versiculos": [
+                3,
+                3
+              ],
+              "tema": "paralelo"
+            },
+            {
+              "ligacao": "epopeia-de-gilgamesh-tabua-11-paralelo-genesis",
+              "versiculos": [
+                22,
+                22
+              ],
+              "tema": "paralelo"
+            }
+          ]
+        },
+        {
+          "grupo": "ciencia",
+          "total": 0,
+          "ligacoes": []
+        },
+        {
+          "grupo": "leitura",
+          "total": 0,
+          "ligacoes": []
+        },
+        {
+          "grupo": "contexto",
+          "total": 0,
+          "ligacoes": []
+        },
+        {
+          "grupo": "nota",
+          "total": 6,
+          "notas": [
+            {
+              "id": "gn03-serpente-e-o-diabo",
+              "tipo": "traducao",
+              "versiculos": [
+                1,
+                1
+              ],
+              "titulo": "A serpente do jardim não é o diabo"
+            },
+            {
+              "id": "gn03-como-deuses",
+              "tipo": "traducao",
+              "versiculos": [
+                5,
+                5
+              ],
+              "titulo": "“Como Deus” ou “como deuses”?"
+            },
+            {
+              "id": "gn03-conhecimento-do-bem-e-do-mal",
+              "tipo": "traducao",
+              "versiculos": [
+                5,
+                5
+              ],
+              "titulo": "Que conhecimento é “o bem e o mal”?"
+            },
+            {
+              "id": "gn03-quem-fere-a-cabeca",
+              "tipo": "traducao",
+              "versiculos": [
+                15,
+                15
+              ],
+              "titulo": "Quem fere a cabeça da serpente?"
+            },
+            {
+              "id": "gn03-teshuqah",
+              "tipo": "traducao",
+              "versiculos": [
+                16,
+                16
+              ],
+              "titulo": "O “desejo” da mulher, uma palavra rara"
+            },
+            {
+              "id": "gn03-como-um-de-nos",
+              "tipo": "traducao",
+              "versiculos": [
+                22,
+                22
+              ],
+              "titulo": "“Como um de nós”: quem é “nós”?"
+            }
+          ]
+        }
+      ]
     }
   ],
   "fora_do_fio": [

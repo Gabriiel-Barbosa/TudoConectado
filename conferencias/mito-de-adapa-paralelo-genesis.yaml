@@ -1,0 +1,92 @@
+# Gerado por .claude/skills/conferir/scripts/registrar.js — vereditos da
+# Contraprova para as fontes desta ligação. Edite à mão só 'revisao_humana'
+# (pendente -> feita) depois de conferir você mesmo.
+ligacao: mito-de-adapa-paralelo-genesis
+fontes:
+  - hash: e52403c3c47d
+    nivel: 2
+    descricao: >-
+      Skinner, J. (1910), A Critical and Exegetical Commentary on Genesis (International Critical
+      Commentary), Nova York: Charles Scribner's Sons, pp. 92–93
+    alegacao: >-
+      Skinner registra semelhanças marcantes entre o mito de Adapa e Gênesis 3 — sabedoria e
+      imortalidade juntas como aquilo que equivaleria à divindade, o homem obtendo a primeira e
+      perdendo a segunda, e vozes sobrenaturais aconselhando em sentidos opostos — e trata a
+      transmissão do mito da Babilônia a Israel como conjetura plausível, não como fato demonstrado.
+    veredito: confirmada
+    parou_em: null
+    conferido_em: >-
+      cópia baixada do scan original do Internet Archive,
+      https://archive.org/details/acriticalandexeg00skinuoft (arquivo
+      acriticalandexeg00skinuoft_djvu.txt), texto extraído e conferido com marcadores de página
+      nativos "92 THE PARADISE" e "LEGEND 93"
+    observacao: >-
+      Texto na p. 92 traz literalmente: "in both we have the idea that wisdom and immortality
+      combined constitute equality with deity; in both we have a man securing the first and missing
+      the second; and in both the man is counselled in opposite directions by supernatural voices".
+      Na p. 93: "it is a plausible conjecture that the myth has travelled from Babylonia, and
+      reached Israel through the Phoenicians or the Canaanites". Corresponde exatamente à alegação.
+    data: '2026-09-20'
+    conferido_por: contraprova
+    revisao_humana: pendente
+  - hash: bee34b77547d
+    nivel: 2
+    descricao: >-
+      Speiser, E. A. (1964), Genesis: Introduction, Translation, and Notes (The Anchor Bible, vol.
+      1), Garden City, NY: Doubleday, p. 27
+    alegacao: >-
+      Speiser registra que o mito de Adapa é um análogo sugestivo do motivo de Gênesis sobre a
+      imortalidade negada ao ser humano, e afirma que a fonte específica e o canal preciso de
+      transmissão permanecem incertos.
+    veredito: confirmada
+    parou_em: null
+    conferido_em: >-
+      (1) registro bibliográfico da obra — Open Library/WorldCat, Doubleday, Garden City, 1964,
+      lxxvi+378 p., OCLC 637802915 (https://openlibrary.org/books/OL32347526M/Genesis); (2) o
+      próprio volume, em cópia digitalizada, 459 pp., folha de rosto "THE ANCHOR BIBLE / GENESIS /
+      E. A. SPEISER / Doubleday & Company, Inc. / Garden City, New York", ISBN 0-385-00854-6,
+      Library of Congress Catalog Card Number 64-21724; página extraída com pdftotext, cabeçalho
+      corrente do próprio livro "ii 25-iii 24 27", ou seja, a p. 27 impressa
+    observacao: >-
+      VEREDITO EM DIVERGÊNCIA: primeira rodada (Sonnet) deu 'contradiz'; a reconferência em Opus,
+      exigida pela skill, deu 'confirmada', e é esta que fica gravada. As duas rodadas concordam no
+      fato textual: a frase sobre a incerteza do canal de transmissão ('In any event, the specific
+      source and the precise channel of transmission would remain uncertain') está no parágrafo
+      IMEDIATAMENTE ANTERIOR, que trata do motivo da árvore do conhecimento, e não no parágrafo
+      sobre Adapa, que começa sinalizando terreno mais firme. Elas divergem só na consequência: a
+      primeira rodada julgou que a alegação atribui a Adapa uma ressalva que não é dele; a segunda
+      julgou a junção defensável, por ambas tratarem do mesmo problema da transmissão mesopotâmica,
+      mas registrou que não é a ordem exata do texto. Sobre Adapa, a p. 27 diz: 'the center of
+      dissemination is Mesopotamia, which provides us this time with at least two suggestive
+      analogues: the tale of Adapa (ANET, pp. 101 ff.) and, once more, the Epic of Gilgamesh'.
+      RESSALVA DE EDIÇÃO: o exemplar conferido é a 'Third Edition, Fifth Printing, 1982', com o
+      mesmo copyright de 1964 (LCCN 64-21724) e sem novo copyright; a paginação confere, mas a
+      tiragem de 1964 não foi fisicamente conferida.
+    data: '2026-09-20'
+    conferido_por: contraprova
+    revisao_humana: pendente
+  - hash: cbdb289c1ac8
+    nivel: 2
+    descricao: >-
+      Buccellati, G. (1973), "Adapa, Genesis, and the Notion of Faith", Ugarit-Forschungen 5, pp.
+      64–65
+    alegacao: >-
+      Buccellati registra semelhanças específicas entre Adapa e Adão, entre elas a proibição de
+      comer certo alimento sob pena de morte, formulada de modo próximo ao de Gênesis, e apresenta
+      isso como comparação, apontando também diferenças.
+    veredito: confirmada
+    parou_em: null
+    conferido_em: >-
+      PDF do artigo hospedado no arquivo institucional do autor (IIMAS/Urkesh),
+      https://urkesh.org/EL2/Buccellati_1973_Adapa,_Genesis,_and_the_Notion_of_Faith%20-%20UF_5.pdf,
+      extraído com pdftotext; cabeçalhos de página "64 Giorgio Buccellati" e "Adapa, Genesis, and
+      the Notion of Faith 65" localizados no texto
+    observacao: >-
+      Texto exato, a cavaleiro das pp. 64–65: "(1) A first similarity is in the situation of the two
+      men, since both are faced with the prohibition to partake of a certain food. The formulation
+      of Ea's command is close to that of Genesis." O artigo também lista diferenças explícitas logo
+      a seguir (ex.: "Admittedly, the sequence of events and the nature of the details is
+      different"). Corresponde à alegação.
+    data: '2026-09-20'
+    conferido_por: contraprova
+    revisao_humana: pendente
