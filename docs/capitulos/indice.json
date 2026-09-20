@@ -12,5 +12,12 @@
     "capitulo": 2,
     "passagem": "gen-02-01_02-25",
     "titulo": "O sétimo dia e o jardim do Éden"
+  },
+  {
+    "id": "genesis-03",
+    "livro": "Gênesis",
+    "capitulo": 3,
+    "passagem": "gen-03-01_03-24",
+    "titulo": "A serpente, a árvore e a expulsão do jardim"
   }
 ]

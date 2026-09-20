@@ -1,0 +1,41 @@
+# Gerado por .claude/skills/conferir/scripts/registrar.js — vereditos da
+# Contraprova para as fontes desta ligação. Edite à mão só 'revisao_humana'
+# (pendente -> feita) depois de conferir você mesmo.
+ligacao: gn03-quem-fere-a-cabeca
+fontes:
+  - hash: f46ad3c0cf46
+    nivel: 2
+    descricao: >-
+      Skinner, J. (1910), A Critical and Exegetical Commentary on Genesis (International Critical
+      Commentary), Nova York: Charles Scribner's Sons, pp. 79–81
+    alegacao: >-
+      Skinner sustenta que o sujeito de "ferirá a cabeça" em Gênesis 3:15 é a descendência da
+      mulher, com pronome masculino que pode valer coletiva ou individualmente, e que a gramática
+      não justifica sozinha a aplicação messiânica a um indivíduo; que a leitura ipsa da Vulgata não
+      se acha nos Padres antes de Ambrósio e Agostinho e que Jerônimo sabia que se devia ler ipse;
+      que a aplicação do versículo à Virgem Maria é medieval e se apoia nesse ipsa; que a referência
+      a Cristo foi ensinada por Irineu; que Lutero recusou a aplicação mariana mas reconheceu alusão
+      ao nascimento virginal, e Calvino leu a vitória como da humanidade unida a Cristo; e que, pela
+      exegese histórica estrita, é duvidoso que a passagem seja em algum sentido um protoevangelho.
+    veredito: confirmada
+    parou_em: null
+    conferido_em: >-
+      texto completo digitalizado por Internet Archive, cópia "criticalexegetic00skinuoft" (baixada
+      e extraída de
+      https://archive.org/stream/criticalexegetic00skinuoft/criticalexegetic00skinuoft_djvu.txt),
+      páginas 79–81 (marcadores de página "III. 13-15 79", "80 PARADISE AND THE FALL (J)", "III. 15
+      81" presentes no texto)
+    observacao: >-
+      Todos os elementos da alegação batem literalmente com o texto: "the 'seed' of the woman
+      individualised (or collectively)"; "The Messianic application therefore is not justified in
+      grammar"; "the rendering ipsa ... is said not to be found in the Fathers before Ambrose and
+      Augustine ... Jer. at all events knew that [ipse] should be read"; "Mediæval exegetes, relying
+      on the ipsa of the Vulg., applied the expression directly to the Virgin Mary"; "The reference
+      to the person of Christ was taught by Irenæus"; "even Luther, while rejecting this reference,
+      recognised an allusion to the virgin birth of Christ"; "the more reasonable view of Calvin,
+      that the passage is a promise of victory over the devil to mankind, united in Christ its
+      divine Head"; "it is doubtful if, from the standpoint of strict historical exegesis, the
+      passage can be regarded as in any sense a Protevangelium".
+    data: '2026-09-20'
+    conferido_por: contraprova
+    revisao_humana: pendente

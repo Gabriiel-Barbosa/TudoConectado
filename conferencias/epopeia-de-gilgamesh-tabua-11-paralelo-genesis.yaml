@@ -1,0 +1,53 @@
+# Gerado por .claude/skills/conferir/scripts/registrar.js — vereditos da
+# Contraprova para as fontes desta ligação. Edite à mão só 'revisao_humana'
+# (pendente -> feita) depois de conferir você mesmo.
+ligacao: epopeia-de-gilgamesh-tabua-11-paralelo-genesis
+fontes:
+  - hash: 829743a9e009
+    nivel: 2
+    descricao: >-
+      Speiser, E. A. (1964), Genesis: Introduction, Translation, and Notes (The Anchor Bible, vol.
+      1), Garden City, NY: Doubleday, p. 28
+    alegacao: >-
+      Speiser registra que na tábua XI da Epopeia de Gilgamesh o herói obtém uma planta que oferece
+      rejuvenescimento, e não imortalidade, e logo a perde para uma serpente, tratando o episódio
+      como análogo mesopotâmico do motivo de Gênesis.
+    veredito: confirmada
+    parou_em: null
+    conferido_em: >-
+      mesma cópia digitalizada de Speiser, Genesis (Anchor Bible), extraída com pdftotext; marcador
+      de página nativo "28 GENESIS § 3" localizado no texto
+    observacao: >-
+      Texto na p. 28: "he is permitted to take back with him a magic plant which offers the sop of
+      rejuvenation (Tablet XI, line 282), if not the boon of immortality. But he is soon to be
+      robbed of it - by a serpent." Corresponde exatamente à alegação. Mesma ressalva de edição da
+      outra fonte de Speiser: exemplar conferido é a 3ª ed., 5ª tiragem, 1982, com copyright de
+      1964.
+    data: '2026-09-20'
+    conferido_por: contraprova
+    revisao_humana: pendente
+  - hash: 95144a84fdf5
+    nivel: 3
+    descricao: >-
+      Frazer, J. G. (1918), Folk-lore in the Old Testament: Studies in Comparative Religion, Legend
+      and Law, vol. 1, Londres: Macmillan, pp. 50–52
+    alegacao: >-
+      Frazer registra que a ideia de uma serpente que priva o ser humano de uma planta que dá vida
+      ou renova a juventude aparece na Epopeia de Gilgamesh, descrevendo o roubo da planta enquanto
+      Gilgamesh se banha, e afirma que esses paralelos sugerem, sem poder provar, a forma original
+      da história.
+    veredito: confirmada
+    parou_em: null
+    conferido_em: >-
+      cópia do scan original do Internet Archive,
+      https://archive.org/details/FolkLoreInTheTestamentVolI (arquivo
+      FolkLoreInTheTestamentVolI_djvu.txt), texto extraído e conferido com marcadores de página
+      nativos nas pp. 50–52
+    observacao: >-
+      Texto nas pp. 50–51: "how, before he could do so, a serpent stole the magic plant from him,
+      while he was bathing in the cool water of a well or brook". Segue: "These parallels further
+      suggest, though they cannot prove, that in the original of the story ... the serpent was the
+      messenger sent by God to bear the glad tidings of immortality". Corresponde à alegação.
+    data: '2026-09-20'
+    conferido_por: contraprova
+    revisao_humana: pendente

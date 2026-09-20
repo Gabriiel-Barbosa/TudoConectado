@@ -1,0 +1,50 @@
+id: mito-de-adapa-paralelo-genesis
+tipo: paralelo
+entre:
+  - registro: mito-de-adapa
+  - registro: genesis
+evidencia:
+  tipo_de_apoio: texto
+  forca: aceito_maioria
+  quem_sustenta:
+    - nome: John Skinner
+      ano: 1910
+    - nome: E. A. Speiser
+      ano: 1964
+    - nome: Giorgio Buccellati
+      ano: 1973
+fontes:
+  - nivel: 2
+    descricao: >-
+      Skinner, J. (1910), A Critical and Exegetical Commentary on Genesis
+      (International Critical Commentary), Nova York: Charles Scribner's
+      Sons, pp. 92–93
+    url: https://archive.org/details/criticalexegetic00skinuoft
+  - nivel: 2
+    descricao: >-
+      Speiser, E. A. (1964), Genesis: Introduction, Translation, and Notes
+      (The Anchor Bible, vol. 1), Garden City, NY: Doubleday, p. 27
+  - nivel: 2
+    descricao: >-
+      Buccellati, G. (1973), "Adapa, Genesis, and the Notion of Faith",
+      Ugarit-Forschungen 5, pp. 64–65
+    url: https://urkesh.org/EL2/Buccellati_1973_Adapa,_Genesis,_and_the_Notion_of_Faith%20-%20UF_5.pdf
+o_que_derrubaria: >-
+  O paralelo cairia se a leitura das tabuinhas mostrasse que Adapa não
+  recebe proibição de comer sob pena de morte, ou que o alimento recusado
+  não tem relação com a vida sem fim.
+notas: >-
+  O que as fontes afirmam é semelhança, não dependência. Skinner acha os
+  traços comuns muito marcantes — sabedoria e imortalidade como aquilo que
+  faria do homem um igual dos deuses, o homem obtendo a primeira e perdendo
+  a segunda, e vozes sobrenaturais aconselhando em sentidos opostos — mas
+  chama o conjunto de quase uma paródia de Gênesis 3, e trata a viagem do
+  mito da Babilônia a Israel como conjetura plausível, não como fato.
+  Speiser chama Adapa e Gilgamesh de análogos sugestivos e considera este
+  terreno mais firme que o de outros motivos do capítulo — a ressalva dele
+  de que a fonte específica e o caminho de transmissão permanecem incertos
+  está no parágrafo anterior e é sobre outro motivo, não sobre Adapa.
+  Buccellati propõe uma
+  comparação e lista as semelhanças, apontando ele mesmo as diferenças na
+  ordem dos acontecimentos e na natureza da desobediência. Nenhuma das três
+  sustenta cópia, e por isso a ligação é de tipo paralelo.

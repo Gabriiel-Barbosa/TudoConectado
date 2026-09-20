@@ -50,6 +50,16 @@
       "descricao": "Em Gênesis 1, a humanidade que Deus cria no sexto dia, homem e mulher, à sua imagem e semelhança, e a quem dá domínio sobre os peixes, as aves e os animais da terra. O texto não dá nome a ninguém: Adão e Eva só aparecem, com nome, nos capítulos seguintes.\n"
     },
     {
+      "id": "serpente",
+      "tipo": "registro",
+      "subtipo": "pessoa",
+      "nome": "Serpente",
+      "alias": [
+        "nachash"
+      ],
+      "descricao": "O animal que, em Gênesis 3, convence a mulher a comer da árvore proibida. O texto a apresenta como \"astuta, mais que todos os animais do campo que o SENHOR Deus havia feito\" — isto é, como uma criatura entre as outras, e não como um ser sobrenatural. Gênesis 3 não a identifica com Satanás: essa leitura aparece depois, fora do capítulo.\n"
+    },
+    {
       "id": "eden",
       "tipo": "registro",
       "subtipo": "lugar",
@@ -197,6 +207,16 @@
         "Documentary Hypothesis"
       ],
       "descricao": "Explicação acadêmica de como foram escritos os cinco primeiros livros da Bíblia (o Pentateuco, de Gênesis a Deuteronômio). Segundo ela, esses livros não saíram das mãos de um único autor. Eles nasceram de quatro textos distintos, reunidos e editados ao longo de séculos. Os estudiosos chamam esses textos de \"fontes\" e dão a cada um um nome e uma letra: Javista (J), Eloísta (E), Sacerdotal (P, do inglês Priestly) e Deuteronomista (D), daí a sigla JEDP. O estudioso Julius Wellhausen formalizou a hipótese num livro de 1878, que reeditou em 1883. Estudiosos posteriores a revisaram, entre eles Joel S. Baden (2012).\n"
+    },
+    {
+      "id": "mito-de-adapa",
+      "tipo": "registro",
+      "subtipo": "texto",
+      "nome": "Mito de Adapa",
+      "alias": [
+        "Adapa e o vento sul"
+      ],
+      "descricao": "Relato acadiano, conhecido por tabuinhas de argila achadas em Amarna, no Egito, e na biblioteca de Assurbanípal, em Nínive. Conta como Adapa, sábio e sacerdote de Ea, quebra a asa do vento sul e é chamado à presença do deus Anu. Ea o instrui a recusar a comida e a bebida que lhe forem oferecidas, dizendo que são de morte; Adapa obedece, e assim perde o que lhe era oferecido — a vida sem fim.\n"
     },
     {
       "id": "relatorio-criacao-pca-2000",
@@ -406,6 +426,19 @@
       "nenhum_paralelo_conhecido": false,
       "titulo": "O sétimo dia e o jardim do Éden",
       "texto": "genesis-02"
+    },
+    {
+      "id": "gen-03-01_03-24",
+      "tipo": "passagem",
+      "referencia": "Gênesis 3:1–24",
+      "afirma": [
+        "A serpente convence a mulher de que comer da árvore proibida não traz morte, e sim conhecimento. Ela come, o homem come com ela, e os dois percebem que estão nus e se cobrem com folhas de figueira.",
+        "Deus os interroga no jardim, e cada um atribui a culpa a outro. Vêm então as sentenças: à serpente, rastejar e viver em inimizade com a descendência da mulher; à mulher, a dor de dar à luz; ao homem, arrancar o sustento de uma terra amaldiçoada até voltar ao pó de onde foi tirado.",
+        "O homem dá à mulher o nome de Eva. Deus os veste com túnicas de peles e os expulsa do jardim, para que não comam também da árvore da vida, e põe querubins e uma espada de fogo a guardar o caminho de volta."
+      ],
+      "nenhum_paralelo_conhecido": false,
+      "titulo": "A serpente, a árvore e a expulsão do jardim",
+      "texto": "genesis-03"
     }
   ],
   "arestas": [
@@ -684,6 +717,38 @@
       "notas": "Na primeira tábua da Epopeia de Gilgamesh, a deusa Aruru lava as mãos, belisca um pedaço de barro e o lança na estepe, onde nasce Enkidu. A imagem do ser humano modelado com barro é parecida com a de Gênesis 2, mas no poema não há sopro divino. A fonte consultada é a edição impressa da Princeton University Press; a única cópia on-line encontrada não é oficial."
     },
     {
+      "id": "epopeia-de-gilgamesh-tabua-11-paralelo-genesis__0",
+      "ligacao": "epopeia-de-gilgamesh-tabua-11-paralelo-genesis",
+      "origem": "epopeia-de-gilgamesh",
+      "destino": "genesis",
+      "tipo": "paralelo",
+      "forca": "aceito_maioria",
+      "tipo_de_apoio": "texto",
+      "quem_sustenta": [
+        {
+          "nome": "James George Frazer",
+          "ano": 1918
+        },
+        {
+          "nome": "E. A. Speiser",
+          "ano": 1964
+        }
+      ],
+      "fontes": [
+        {
+          "nivel": 2,
+          "descricao": "Speiser, E. A. (1964), Genesis: Introduction, Translation, and Notes (The Anchor Bible, vol. 1), Garden City, NY: Doubleday, p. 28"
+        },
+        {
+          "nivel": 3,
+          "descricao": "Frazer, J. G. (1918), Folk-lore in the Old Testament: Studies in Comparative Religion, Legend and Law, vol. 1, Londres: Macmillan, pp. 50–52",
+          "url": "https://archive.org/details/folkloreinoldtes01fraz_1"
+        }
+      ],
+      "o_que_derrubaria": "O paralelo cairia se a tábua XI mostrasse que não é uma serpente que leva a planta de Gilgamesh, ou que a planta nada tem a ver com prolongar a vida.",
+      "notas": "Na tábua XI, Gilgamesh consegue uma planta que devolve a juventude e a perde para uma serpente enquanto se banha. A imagem de uma serpente que tira do ser humano o que prolongaria a vida é parecida com a de Gênesis 3, mas a diferença importa: a planta do poema rejuvenesce, não torna imortal, e Speiser faz questão dessa distinção. Ele também diz que a fonte específica e o caminho de transmissão permanecem incertos. Frazer descreve o episódio em detalhe, mas a reconstrução que ele propõe do mito original é hipótese declarada — ele mesmo escreve que os paralelos sugerem, sem poder provar. Por isso a ligação é de tipo paralelo, e a fonte de Frazer entra em nível 3: é obra de 1918, de método comparativo hoje superado, e serve para descrever o episódio, não para sustentar dependência."
+    },
+    {
       "id": "estela-de-mesa-confirma-nome-yhwh-fora-da-biblia__0",
       "ligacao": "estela-de-mesa-confirma-nome-yhwh-fora-da-biblia",
       "origem": "estela-de-mesa",
@@ -908,6 +973,47 @@
       "notas": "O valor vale dentro do modelo cosmológico padrão, em que a equipe fez o cálculo. Para Gênesis 1, que narra a criação dos céus e da terra ao longo de seis dias, o dado importa porque, somado à idade da Terra (cerca de 4,54 bilhões de anos, pela datação radiométrica), deixa quase nove bilhões de anos entre o começo do universo e a formação da Terra. Essa diferença é uma conta feita a partir das duas medições, e não uma frase das fontes."
     },
     {
+      "id": "mito-de-adapa-paralelo-genesis__0",
+      "ligacao": "mito-de-adapa-paralelo-genesis",
+      "origem": "mito-de-adapa",
+      "destino": "genesis",
+      "tipo": "paralelo",
+      "forca": "aceito_maioria",
+      "tipo_de_apoio": "texto",
+      "quem_sustenta": [
+        {
+          "nome": "John Skinner",
+          "ano": 1910
+        },
+        {
+          "nome": "E. A. Speiser",
+          "ano": 1964
+        },
+        {
+          "nome": "Giorgio Buccellati",
+          "ano": 1973
+        }
+      ],
+      "fontes": [
+        {
+          "nivel": 2,
+          "descricao": "Skinner, J. (1910), A Critical and Exegetical Commentary on Genesis (International Critical Commentary), Nova York: Charles Scribner's Sons, pp. 92–93",
+          "url": "https://archive.org/details/criticalexegetic00skinuoft"
+        },
+        {
+          "nivel": 2,
+          "descricao": "Speiser, E. A. (1964), Genesis: Introduction, Translation, and Notes (The Anchor Bible, vol. 1), Garden City, NY: Doubleday, p. 27"
+        },
+        {
+          "nivel": 2,
+          "descricao": "Buccellati, G. (1973), \"Adapa, Genesis, and the Notion of Faith\", Ugarit-Forschungen 5, pp. 64–65",
+          "url": "https://urkesh.org/EL2/Buccellati_1973_Adapa,_Genesis,_and_the_Notion_of_Faith%20-%20UF_5.pdf"
+        }
+      ],
+      "o_que_derrubaria": "O paralelo cairia se a leitura das tabuinhas mostrasse que Adapa não recebe proibição de comer sob pena de morte, ou que o alimento recusado não tem relação com a vida sem fim.",
+      "notas": "O que as fontes afirmam é semelhança, não dependência. Skinner acha os traços comuns muito marcantes — sabedoria e imortalidade como aquilo que faria do homem um igual dos deuses, o homem obtendo a primeira e perdendo a segunda, e vozes sobrenaturais aconselhando em sentidos opostos — mas chama o conjunto de quase uma paródia de Gênesis 3, e trata a viagem do mito da Babilônia a Israel como conjetura plausível, não como fato. Speiser chama Adapa e Gilgamesh de análogos sugestivos e considera este terreno mais firme que o de outros motivos do capítulo — a ressalva dele de que a fonte específica e o caminho de transmissão permanecem incertos está no parágrafo anterior e é sobre outro motivo, não sobre Adapa. Buccellati propõe uma comparação e lista as semelhanças, apontando ele mesmo as diferenças na ordem dos acontecimentos e na natureza da desobediência. Nenhuma das três sustenta cópia, e por isso a ligação é de tipo paralelo."
+    },
+    {
       "id": "relatorio-criacao-pca-2000-confirma-dias-de-genesis-nao-literais__0",
       "ligacao": "relatorio-criacao-pca-2000-confirma-dias-de-genesis-nao-literais",
       "origem": "relatorio-criacao-pca-2000",
@@ -1025,6 +1131,36 @@
       "tipo": "cita"
     },
     {
+      "id": "gen-03-01_03-24__cita__deus",
+      "origem": "gen-03-01_03-24",
+      "destino": "deus",
+      "tipo": "cita"
+    },
+    {
+      "id": "gen-03-01_03-24__cita__adao",
+      "origem": "gen-03-01_03-24",
+      "destino": "adao",
+      "tipo": "cita"
+    },
+    {
+      "id": "gen-03-01_03-24__cita__eva",
+      "origem": "gen-03-01_03-24",
+      "destino": "eva",
+      "tipo": "cita"
+    },
+    {
+      "id": "gen-03-01_03-24__cita__serpente",
+      "origem": "gen-03-01_03-24",
+      "destino": "serpente",
+      "tipo": "cita"
+    },
+    {
+      "id": "gen-03-01_03-24__cita__eden",
+      "origem": "gen-03-01_03-24",
+      "destino": "eden",
+      "tipo": "cita"
+    },
+    {
       "id": "gen-01-01_01-31__parte_de__genesis",
       "origem": "gen-01-01_01-31",
       "destino": "genesis",
@@ -1033,6 +1169,12 @@
     {
       "id": "gen-02-01_02-25__parte_de__genesis",
       "origem": "gen-02-01_02-25",
+      "destino": "genesis",
+      "tipo": "parte_de"
+    },
+    {
+      "id": "gen-03-01_03-24__parte_de__genesis",
+      "origem": "gen-03-01_03-24",
       "destino": "genesis",
       "tipo": "parte_de"
     },

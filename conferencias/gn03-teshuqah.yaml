@@ -1,0 +1,62 @@
+# Gerado por .claude/skills/conferir/scripts/registrar.js — vereditos da
+# Contraprova para as fontes desta ligação. Edite à mão só 'revisao_humana'
+# (pendente -> feita) depois de conferir você mesmo.
+ligacao: gn03-teshuqah
+fontes:
+  - hash: de017626dd78
+    nivel: 2
+    descricao: >-
+      Skinner, J. (1910), A Critical and Exegetical Commentary on Genesis (International Critical
+      Commentary), Nova York: Charles Scribner's Sons, pp. 82–83
+    alegacao: >-
+      Skinner sustenta que teshuqah, em Gênesis 3:16, é palavra rara, provavelmente aparentada a um
+      termo árabe que significa desejo ardente, que a Septuaginta traz um termo mais fraco que levou
+      parte da crítica a propor emendar o hebraico, que ele recusa essa emenda, e que o versículo
+      não implica ser o desejo da mulher mais forte que o do homem, mas um vínculo que a prende à
+      condição descrita.
+    veredito: confirmada
+    parou_em: null
+    conferido_em: >-
+      mesma cópia digitalizada do Internet Archive (criticalexegetic00skinuoft), páginas 82–83
+      (marcadores "82 PARADISE AND THE FALL (J)" e "III. 16, 17 83")
+    observacao: >-
+      Texto: teshuqah "Probably connected with Ar. šauk, 'ardent desire' ... it is found in NH and
+      should not be suspected" (rara, aparentada ao árabe); "It is quite unnecessary to give up the
+      rare but expressive תשוקה of the Heb. for the weaker ἀποστροφή of G [LXX], etc." combinado com
+      o aparato crítico ("preferred by many, and defended by Nestle") confirma a proposta de emenda
+      a partir do termo mais fraco da LXX e a recusa de Skinner; "It is not, however, implied that
+      the woman's sexual desire is stronger than the man's (Kn. Gu.); the point rather is that by
+      the instincts of her nature she shall be bound to the hard conditions of her lot" bate
+      exatamente com "vínculo que a prende à condição descrita".
+    data: '2026-09-20'
+    conferido_por: contraprova
+    revisao_humana: pendente
+  - hash: bd41b69ffcfa
+    nivel: 2
+    descricao: >-
+      Foh, S. T. (1975), "What Is the Woman's Desire?", Westminster Theological Journal 37(3), pp.
+      376–377
+    alegacao: >-
+      Foh registra que a tradução de teshuqah está no centro da dificuldade de interpretar Gênesis
+      3:16, e apresenta leituras concorrentes existentes na bibliografia, entre elas desejo sexual
+      intenso, dependência psicológica e um desejo que Keil e Delitzsch caracterizam como mórbido.
+    veredito: confirmada
+    parou_em: null
+    conferido_em: >-
+      índice de BiblicalStudies.org.uk, "Westminster Theological Journal Vols. 21–40 (1959–1978)"
+      (https://biblicalstudies.org.uk/articles_wtj_02.php), que confirma "Susan T. Foh, 'What is the
+      woman's desire?' Westminster Theological Journal 37.3 (Spring 1975): 376–383"; conteúdo
+      conferido via prévia do arquivo digital oficial da revista em Galaxie Software
+      (https://www.galaxie.com/article/wtj37-3-04)
+    observacao: >-
+      A prévia do Galaxie (distribuidor digital oficial do periódico) traz as três leituras
+      exatamente como alegado: desejo sexual ("thy desire, thy appetite, shall be to thy husband"),
+      dependência psicológica ("immense, clinging, psychological dependence on man" / "the desire
+      that makes her the willing slave of man") e a leitura de Keil e Delitzsch como "a desire
+      bordering upon disease" — que corresponde a "mórbido". A obra e o intervalo de páginas
+      (376–383) também batem; a Contraprova não conseguiu isolar se cada elemento está exatamente na
+      p. 376 ou na 377 dentro da prévia, mas o conteúdo alegado está todo na abertura do artigo,
+      dentro do intervalo citado.
+    data: '2026-09-20'
+    conferido_por: contraprova
+    revisao_humana: pendente

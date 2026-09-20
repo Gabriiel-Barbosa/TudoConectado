@@ -1,0 +1,36 @@
+# Gerado por .claude/skills/conferir/scripts/registrar.js — vereditos da
+# Contraprova para as fontes desta ligação. Edite à mão só 'revisao_humana'
+# (pendente -> feita) depois de conferir você mesmo.
+ligacao: gn03-conhecimento-do-bem-e-do-mal
+fontes:
+  - hash: 3f565934eea6
+    nivel: 2
+    descricao: >-
+      Skinner, J. (1910), A Critical and Exegetical Commentary on Genesis (International Critical
+      Commentary), Nova York: Charles Scribner's Sons, pp. 94–97 (as quatro leituras na p. 96; o uso
+      da expressão no Antigo Testamento em nota de rodapé na p. 95)
+    alegacao: >-
+      Skinner apresenta quatro leituras propostas para "conhecimento do bem e do mal" — conhecimento
+      mágico, que ele descarta; discernimento moral, defendida por Budde; domínio prático sobre a
+      natureza, defendida por Wellhausen; e amadurecimento próprio da idade adulta, defendida por
+      Gunkel — e registra que no uso do Antigo Testamento a expressão marca a diferença entre a
+      infância e a vida adulta e também o discernimento de quem julga.
+    veredito: confirmada
+    parou_em: null
+    conferido_em: >-
+      mesma digitalização de Skinner (1910), ICC Genesis, pp. 94–97, com a nota de rodapé na p. 95 e
+      as quatro leituras na p. 96 (paginação confirmada pelos cabeçalhos impressos "LEGEND 95" ao
+      final da p.94→95 e "LEGEND 97" ao final da p.96→97)
+    observacao: >-
+      Na nota de rodapé da p. 95: "In OT usage, knowledge of good and evil marks the difference
+      between adulthood and childhood ... it also denotes ... judicial discernment of right and
+      wrong." Na p. 96, as quatro leituras: "i. The suggestion that magical knowledge is meant may
+      be set aside as inadequate..."; "ii. ... identifies the knowledge of good and evil with the
+      moral sense ... ably defended by Bu. [Budde]"; "iii. We. [Wellhausen] ... holds that the
+      knowledge in question is insight into the secrets of nature, and intelligence to manipulate
+      them for human ends"; "iv. ... Gu. [Gunkel] ... Knowledge of good and evil is simply the
+      enlargement of capacity and experience which belongs to mature age." Corresponde exatamente à
+      alegação, inclusive a atribuição de cada leitura ao autor citado.
+    data: '2026-09-20'
+    conferido_por: contraprova
+    revisao_humana: pendente

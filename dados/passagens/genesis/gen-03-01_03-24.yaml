@@ -1,0 +1,40 @@
+id: gen-03-01_03-24
+referencia: Gênesis 3:1–24
+titulo: A serpente, a árvore e a expulsão do jardim
+texto: genesis-03
+afirma:
+  - >-
+    A serpente convence a mulher de que comer da árvore proibida não traz
+    morte, e sim conhecimento. Ela come, o homem come com ela, e os dois
+    percebem que estão nus e se cobrem com folhas de figueira.
+  - >-
+    Deus os interroga no jardim, e cada um atribui a culpa a outro. Vêm
+    então as sentenças: à serpente, rastejar e viver em inimizade com a
+    descendência da mulher; à mulher, a dor de dar à luz; ao homem, arrancar
+    o sustento de uma terra amaldiçoada até voltar ao pó de onde foi tirado.
+  - >-
+    O homem dá à mulher o nome de Eva. Deus os veste com túnicas de peles e
+    os expulsa do jardim, para que não comam também da árvore da vida, e põe
+    querubins e uma espada de fogo a guardar o caminho de volta.
+registros_citados:
+  - deus
+  - adao
+  - eva
+  - serpente
+  - eden
+paralelos_externos:
+  - ligacao: mito-de-adapa-paralelo-genesis
+  - ligacao: epopeia-de-gilgamesh-tabua-11-paralelo-genesis
+conexoes:
+  - ligacao: mito-de-adapa-paralelo-genesis
+    versiculos:
+      - 3
+      - 3
+    tema: paralelo
+    trecho: Não comereis dele, nem o tocareis, para que não morrais
+  - ligacao: epopeia-de-gilgamesh-tabua-11-paralelo-genesis
+    versiculos:
+      - 22
+      - 22
+    tema: paralelo
+    trecho: tome também da árvore da vida
