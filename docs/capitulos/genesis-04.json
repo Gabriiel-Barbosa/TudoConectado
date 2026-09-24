@@ -1,0 +1,429 @@
+{
+  "id": "genesis-04",
+  "livro": "Gênesis",
+  "capitulo": 4,
+  "traducao": {
+    "sigla": "BLIVRE",
+    "nome": "Bíblia Livre",
+    "licenca": "Creative Commons Atribuição 3.0 Brasil (CC BY 3.0 BR)",
+    "atribuicao": "Todas as Escrituras em português citadas são da Bíblia Livre (BLIVRE), Copyright © Diego Santos, Mario Sérgio, e Marco Teles, http://sites.google.com/site/biblialivre/ - fevereiro de 2018. Licença Creative Commons Atribuição 3.0 Brasil (http://creativecommons.org/licenses/by/3.0/br/). Reprodução permitida desde que devidamente mencionados fonte e autores.",
+    "fonte": "https://github.com/blivre/BibliaLivre/releases/download/2018.2.0/bliv-n4_vpl.zip",
+    "licenca_url": "https://raw.githubusercontent.com/blivre/BibliaLivre/master/LICENCA.md"
+  },
+  "versiculos": [
+    {
+      "n": 1,
+      "texto": "E Adão conheceu a sua mulher Eva, a qual concebeu e deu à luz a Caim, e disse: Obtive um homem pelo SENHOR."
+    },
+    {
+      "n": 2,
+      "texto": "E depois deu à luz a seu irmão Abel. E foi Abel pastor de ovelhas, e Caim foi lavrador da terra."
+    },
+    {
+      "n": 3,
+      "texto": "E aconteceu, decorrendo o tempo, que Caim trouxe do fruto da terra uma oferta ao SENHOR."
+    },
+    {
+      "n": 4,
+      "texto": "E Abel trouxe também dos primogênitos de suas ovelhas, e de sua gordura. E olhou o SENHOR com agrado a Abel e à sua oferta;"
+    },
+    {
+      "n": 5,
+      "texto": "mas não olhou com bons olhos a Caim e à sua oferta. Caim irritou-se muito, e descaiu-lhe o semblante."
+    },
+    {
+      "n": 6,
+      "texto": "Então o SENHOR disse a Caim: Por que te irritaste, e por que o teu semblante descaiu?"
+    },
+    {
+      "n": 7,
+      "texto": "Se bem fizeres, não serás aceito? E se não fizeres bem, o pecado está à porta; contra ti será o seu desejo, porém tu deves dominá-lo."
+    },
+    {
+      "n": 8,
+      "texto": "Depois Caim falou a seu irmão Abel; e aconteceu que, estando eles no campo, Caim se levantou contra seu irmão Abel, e o matou."
+    },
+    {
+      "n": 9,
+      "texto": "E o SENHOR disse a Caim: Onde está teu irmão Abel? E ele respondeu: Não sei; sou eu guarda do meu irmão?"
+    },
+    {
+      "n": 10,
+      "texto": "E ele lhe disse: Que fizeste? A voz do sangue do teu irmão clama a mim desde a terra."
+    },
+    {
+      "n": 11,
+      "texto": "Agora, pois, maldito sejas tu da terra que abriu sua boca para receber o sangue de teu irmão de tua mão:"
+    },
+    {
+      "n": 12,
+      "texto": "Quando lavrares a terra, não te voltará a dar sua força: errante e fugitivo serás na terra."
+    },
+    {
+      "n": 13,
+      "texto": "E disse Caim ao SENHOR: Grande é minha iniquidade para ser perdoada."
+    },
+    {
+      "n": 14,
+      "texto": "Eis que me expulsas hoje da face da terra, e de tua presença me esconderei; e serei errante e fugitivo na terra; e sucederá que qualquer um que me achar, me matará."
+    },
+    {
+      "n": 15,
+      "texto": "E respondeu-lhe o SENHOR: Certo que qualquer um que matar a Caim, sete vezes será castigado. Então o SENHOR pôs sinal em Caim, para que não o ferisse qualquer um que o achasse."
+    },
+    {
+      "n": 16,
+      "texto": "E saiu Caim de diante do SENHOR, e habitou na terra de Node, ao oriente de Éden."
+    },
+    {
+      "n": 17,
+      "texto": "E conheceu Caim a sua mulher, a qual concebeu e deu à luz a Enoque: e edificou uma cidade, e chamou o nome da cidade do nome de seu filho, Enoque."
+    },
+    {
+      "n": 18,
+      "texto": "E a Enoque nasceu Irade, e Irade gerou a Meujael, e Meujael gerou a Metusael, e Metusael gerou a Lameque."
+    },
+    {
+      "n": 19,
+      "texto": "E tomou para si Lameque duas mulheres; o nome de uma foi Ada, e o nome da outra Zilá."
+    },
+    {
+      "n": 20,
+      "texto": "E Ada deu à luz a Jabal, o qual foi pai dos que habitam em tendas, e criam gados."
+    },
+    {
+      "n": 21,
+      "texto": "E o nome de seu irmão foi Jubal, o qual foi pai de todos os que manejam harpa e flauta."
+    },
+    {
+      "n": 22,
+      "texto": "E Zilá também deu à luz a Tubalcaim, feitor de toda obra de bronze e de ferro: e a irmã de Tubalcaim foi Naamá."
+    },
+    {
+      "n": 23,
+      "texto": "E disse Lameque a suas mulheres: Ada e Zilá, ouvi minha voz; Mulheres de Lameque, escutai meu dito: Que matei um homem por ter me ferido, E um rapaz por ter me golpeado:"
+    },
+    {
+      "n": 24,
+      "texto": "Se sete vezes será vingado Caim, Lameque em verdade setenta vezes sete o será."
+    },
+    {
+      "n": 25,
+      "texto": "E conheceu de novo Adão à sua mulher, a qual deu à luz um filho, e chamou seu nome Sete: Porque Deus (disse ela) me substituiu outra descendência em lugar de Abel, a quem matou Caim."
+    },
+    {
+      "n": 26,
+      "texto": "E a Sete também lhe nasceu um filho, e chamou seu nome Enos. Então os homens começaram a invocar o nome do SENHOR."
+    }
+  ],
+  "passagem": {
+    "id": "gen-04-01_04-26",
+    "referencia": "Gênesis 4:1–26",
+    "titulo": "Caim e Abel, e a primeira linhagem fora do jardim",
+    "afirma": [
+      "Eva dá à luz Caim e depois Abel. Abel se torna pastor de ovelhas e Caim, lavrador da terra. Os dois trazem ofertas: Deus olha com agrado para a de Abel e não para a de Caim. O texto não explica a recusa.",
+      "Caim mata o irmão no campo e, interrogado, responde que não sabe onde ele está. É amaldiçoado a não mais colher força da terra e a viver errante, mas recebe de Deus um sinal que o protege de ser morto, e vai habitar na terra de Node, ao oriente de Éden.",
+      "A linhagem de Caim chega a Lameque, o primeiro homem com duas mulheres, que canta às duas ter matado um homem por tê-lo ferido e promete uma vingança muito maior que a de Caim. Os três filhos de Lameque aparecem como origem de três ofícios: o pastoreio em tendas, a música e a metalurgia.",
+      "Eva dá à luz Sete no lugar de Abel, e a Sete nasce Enos. É nesse ponto que o capítulo diz que os homens começaram a invocar o nome do SENHOR."
+    ]
+  },
+  "notas": [
+    {
+      "id": "gn04-obtive-um-homem",
+      "tipo": "traducao",
+      "passagem": "gen-04-01_04-26",
+      "versiculos": [
+        1,
+        1
+      ],
+      "titulo": "A primeira frase de Eva não tem tradução pacífica",
+      "descricao": "A fala de Eva ao dar à luz Caim são três palavras em hebraico, e nenhuma tradução delas é consenso. O problema é duplo. O verbo qanah tem dois sentidos, \"criar ou produzir\" e \"adquirir\", e Skinner (1910) diz que não é fácil decidir qual está em jogo. E a partícula eth, que em hebraico costuma marcar o objeto direto, aparece aqui antes do nome de Deus, onde seria preciso que significasse outra coisa. Das saídas propostas, Skinner recusa duas. Traduzir eth por \"com a ajuda de\", como fazem muitas versões, é para ele contrário a toda analogia, porque a partícula não tem esse sentido em lugar nenhum. E ler eth como marca de objeto, o que daria \"obtive um homem, o SENHOR\", ele descarta como exegese dogmática antiquada. Restam duas leituras que ele leva a sério: corrigir o texto para min, \"do SENHOR\", acompanhando a Septuaginta; ou tomar qanah como \"criar\" e eth no sentido de companhia, o que daria \"produzi um homem com a cooperação do SENHOR\" — a leitura que ele prefere, e que já estava em Rashi.",
+      "leituras": [
+        {
+          "leitura": "Produzi um homem com a cooperação do SENHOR",
+          "quem": "Skinner (1910, p. 102), que prefere esta e a encontra já em Rashi"
+        },
+        {
+          "leitura": "Obtive um homem do SENHOR, corrigindo o texto para min",
+          "quem": "Leitura que Skinner (1910, p. 102) registra como emenda apoiada na Septuaginta"
+        },
+        {
+          "leitura": "Obtive um homem com a ajuda do SENHOR",
+          "quem": "Leitura da maioria das traduções, que Skinner (1910, p. 102) recusa por ser contrária a toda analogia"
+        },
+        {
+          "leitura": "Obtive um homem, a saber, o SENHOR",
+          "quem": "Leitura associada a Lutero, que Skinner (1910, p. 102) descarta como exegese dogmática antiquada"
+        }
+      ],
+      "fontes": [
+        {
+          "nivel": 2,
+          "descricao": "Skinner, J. (1910), A Critical and Exegetical Commentary on Genesis (International Critical Commentary), Nova York: Charles Scribner's Sons, pp. 102-103",
+          "url": "https://archive.org/details/criticalexegetic00skinuoft"
+        }
+      ],
+      "notas": "O capítulo parece explicar o nome Caim (Qayin) pelo verbo da fala de Eva (qaniti). Skinner não chama isso de etimologia popular nem a rejeita, mas observa (p. 103) que a etimologia caberia melhor ao nome de Sete, em 4:25, do que ao de Caim — ou seja, trata a ligação entre as duas palavras como imperfeita, sem resolver a questão. Fica registrado assim, e não como trocadilho estabelecido, porque nenhuma fonte consultada foi além disso.",
+      "trecho": "Obtive um homem pelo SENHOR"
+    },
+    {
+      "id": "gn04-o-pecado-a-porta",
+      "tipo": "traducao",
+      "passagem": "gen-04-01_04-26",
+      "versiculos": [
+        7,
+        7
+      ],
+      "titulo": "O versículo mais obscuro do capítulo",
+      "descricao": "O aviso que Deus dá a Caim antes do crime é, no hebraico, quase intraduzível. Skinner (1910) reúne três problemas. A primeira expressão do versículo é curta e ambígua. A palavra \"pecado\" (chattat) é feminina, mas o que vem depois dela está no masculino, uma discordância de gênero que o hebraico não costuma admitir. E a segunda metade do versículo repete, quase palavra por palavra, a sentença dada à mulher em 3:16. A conclusão de Skinner é dura: toda tentativa de extrair um sentido do versículo é mais ou menos um tour de force, e é quase certo que a obscuridade venha de uma corrupção profunda do texto. Ou seja, a dificuldade não estaria em entender o que o autor quis dizer, e sim no fato de o texto ter chegado danificado.",
+      "leituras": [
+        {
+          "leitura": "O texto chegou corrompido, e o sentido original não é recuperável",
+          "quem": "Skinner (1910, pp. 106-107), para quem qualquer sentido extraído do versículo é um tour de force"
+        },
+        {
+          "leitura": "\"Robets\" é o particípio de um verbo, e a imagem é a do pecado como fera acocorada à porta",
+          "quem": "Leitura que Skinner (1910, p. 107) descreve como corrente, mas considera uma metáfora forçada, sem dizer à porta de quê"
+        },
+        {
+          "leitura": "\"Robets\" é um substantivo: \"o pecado está à porta, um espreitador\"",
+          "quem": "Leitura de Ewald e outros, que Skinner (1910, p. 107) registra como tentativa de resolver a discordância de gênero, mas não aceita"
+        }
+      ],
+      "fontes": [
+        {
+          "nivel": 2,
+          "descricao": "Skinner, J. (1910), A Critical and Exegetical Commentary on Genesis (International Critical Commentary), Nova York: Charles Scribner's Sons, pp. 106-107, citando Olshausen (1870)",
+          "url": "https://archive.org/details/criticalexegetic00skinuoft"
+        },
+        {
+          "nivel": 2,
+          "descricao": "Barré, M. L. (1999), \"Rabisu\", em K. van der Toorn, B. Becking e P. W. van der Horst (orgs.), Dictionary of Deities and Demons in the Bible, 2ª ed. revista, Leiden/Boston: Brill; Grand Rapids: Eerdmans, p. 681"
+        }
+      ],
+      "notas": "Dois cuidados. Primeiro: é comum ouvir que \"robets\" seria um empréstimo do acádio \"rabisu\", o demônio que espreita, e que o versículo mostraria o pecado como um demônio à espera de Caim. Barré (1999) confirma que essa é de fato uma posição comum entre comentaristas, mas a qualifica — a passagem é problemática demais para uma solução satisfatória, e o rabisu das fontes acádias é um ser que ataca a vítima, não um que a tenta a pecar. Skinner não menciona o rabisu em nenhum ponto. Segundo: a repetição de 3:16 aqui é tentadora de ler como eco literário deliberado, o desejo e o domínio voltando num novo contexto. Skinner sustenta o contrário, e com todas as letras: acha a semelhança verbal suspeita, diz que uma paródia da linguagem de um predecessor não se atribui a um autor antigo, e propõe que o olho de um copista tenha vagado para 3:16 na coluna ao lado, com as palavras erradas ajustadas depois ao contexto atual. Ele observa ainda que no Pentateuco Samaritano os sufixos aparecem invertidos. A nota registra a posição dele, não a leitura literária.",
+      "trecho": "o pecado está à porta"
+    },
+    {
+      "id": "gn04-vamos-ao-campo",
+      "tipo": "variante",
+      "passagem": "gen-04-01_04-26",
+      "versiculos": [
+        8,
+        8
+      ],
+      "titulo": "A frase que falta no hebraico e aparece nas versões antigas",
+      "descricao": "No texto hebraico massorético, este versículo tem um buraco. Ele diz \"e Caim disse a Abel, seu irmão\" e para ali: o verbo de dizer fica sem o que foi dito, e a frase segue direto para \"e aconteceu que, estando eles no campo\". Skinner (1910) explica por que isso é um problema: o verbo usado aqui nunca é exatamente sinônimo do verbo de falar, e por isso a sentença fica incompleta. Várias testemunhas antigas não têm esse buraco — trazem a fala de Caim, \"vamos ao campo\". Estão entre elas o Pentateuco Samaritano, a Septuaginta, a Peshitta síriaca e a Vulgata. A Bíblia Livre, reproduzida aqui, segue o hebraico massorético e traduz o verbo por \"falou\", o que dissimula a lacuna em português: onde se lê \"Depois Caim falou a seu irmão Abel\", o hebraico tem um \"disse\" à espera de um complemento que não vem.",
+      "leituras": [
+        {
+          "leitura": "A fala é original e caiu do texto hebraico por acidente de cópia, e deve ser restituída a partir das versões antigas",
+          "quem": "Posição que Skinner (1910, p. 107) adota e atribui a Ewald, Dillmann e Driver"
+        },
+        {
+          "leitura": "A fala é acréscimo posterior, feito para consertar a frase truncada",
+          "quem": "Efrati (2023), para quem a adição secundária parece provável"
+        },
+        {
+          "leitura": "Não há lacuna nenhuma: o verbo não exige discurso citado, e a frase significa que Caim falou contra o irmão, ou tramou contra ele",
+          "quem": "Posição de Reis (2002) e de Jacobson (2005), como German (2014, p. 135, nota 20) as cita"
+        }
+      ],
+      "fontes": [
+        {
+          "nivel": 2,
+          "descricao": "Skinner, J. (1910), A Critical and Exegetical Commentary on Genesis (International Critical Commentary), Nova York: Charles Scribner's Sons, p. 107, com a chave das siglas das versões na lista de abreviaturas, p. xiii",
+          "url": "https://archive.org/details/criticalexegetic00skinuoft"
+        },
+        {
+          "nivel": 1,
+          "descricao": "Swete, H. B. (org.) (1887), The Old Testament in Greek according to the Septuagint, vol. I: Genesis-IV Kings, Cambridge: Cambridge University Press, p. 6 (Gênesis 4:8, texto do Codex Vaticanus)",
+          "url": "https://archive.org/details/oldtestamentingr01swet"
+        },
+        {
+          "nivel": 2,
+          "descricao": "German, I. (2014), The Textual Unity of Genesis 2-4 against the Backdrop of the History of Exegesis, tese de doutorado, University of St. Michael's College / Toronto School of Theology, pp. 134-135",
+          "url": "https://utoronto.scholaris.ca/server/api/core/bitstreams/93ecab45-3f4a-4966-856f-f9c6f019a4f8/content"
+        },
+        {
+          "nivel": 2,
+          "descricao": "Efrati, S. (2023), \"The Many Quarrels of Cain and Abel: A Targumic Expansion Reconsidered\", Aramaic Studies 21.2, pp. 141-165, seções 2 e 4",
+          "url": "https://lirias.kuleuven.be/retrieve/cd700cc6-83fd-46c0-a474-6c9ab892b39d"
+        }
+      ],
+      "notas": "O que cada testemunha traz, ao certo. A Septuaginta, no texto fixado por Swete a partir do Codex Vaticanus, traz \"dielthomen eis to pedion\", vamos ao campo. Do Pentateuco Samaritano, três fontes independentes confirmam que ele traz a frase — Skinner, que o inclui entre as versões que a suprem, German e Efrati —, mas a redação hebraica exata não foi lida em edição crítica: a digitalização aberta da edição de von Gall tem o texto hebraico ilegível por OCR, e por isso ela não entra como fonte. Da Peshitta, as mesmas três fontes confirmam o acréscimo, sem que a redação em siríaco tenha sido lida. Da Vulgata, o acréscimo está confirmado por Skinner, que a inclui entre as versões que suprem a frase; a redação da Vulgata antiga não foi conferida em edição crítica. Um cuidado que vale registrar: não se pode dizer \"os Targumim\" como bloco. Efrati colacionou cerca de 135 testemunhos do Targum Onkelos para este versículo e só 16 trazem versão interpolada — o Onkelos em geral acompanha o texto massorético. Já os Targumim palestinenses, como o Neofiti, trazem não a frase curta, mas uma expansão bem maior, um debate inteiro entre os dois irmãos sobre a justiça divina. Uma ressalva de conferência: a cópia de Efrati consultada é o manuscrito aceito pelo autor, depositado no repositório da KU Leuven, que não reproduz a paginação da revista — por isso a fonte indica as seções e o intervalo de páginas da publicação, não a página exata de cada trecho. As posições de Reis e de Jacobson entram como German as cita; os artigos originais não foram lidos. Uma armadilha para quem for reconferir Skinner: o volume tem duas páginas numeradas xiii, uma na Introdução e outra na lista de abreviaturas. A citada aqui é a das abreviaturas, a folha 27 do escaneamento. E a nomeação das quatro versões não está no corpo do comentário, que diz apenas \"from Vns.\", mas na nota filológica ao pé da mesma página 107, para onde o próprio texto remete.",
+      "trecho": "Depois Caim falou a seu irmão Abel"
+    },
+    {
+      "id": "gn04-o-sinal-de-caim",
+      "tipo": "traducao",
+      "passagem": "gen-04-01_04-26",
+      "versiculos": [
+        15,
+        15
+      ],
+      "titulo": "O sinal de Caim protege, não condena",
+      "descricao": "O texto diz que Deus pôs um sinal em Caim, e não diz que sinal era. O hebraico não o descreve em ponto nenhum, e a expressão admite duas construções: que Deus estabeleceu um sinal para Caim, ou que o marcou. O que o capítulo deixa claro é a finalidade, e ela é o oposto do que a expressão \"marca de Caim\" sugere no uso comum. Skinner (1910) diz com todas as letras que o propósito do sinal é proteger, não punir, e que tomá-lo como algo que marca Caim publicamente como assassino é uma ideia natural, porém equivocada. O sinal existe para que quem encontrasse Caim não o matasse — é salvo-conduto, não estigma.",
+      "leituras": [
+        {
+          "leitura": "Algo visível no próprio Caim, que avisa a terceiros que matá-lo seria vingado sete vezes",
+          "quem": "Skinner (1910, p. 110), que considera esta a leitura exigida pelo contexto"
+        },
+        {
+          "leitura": "Um sinal dado a Caim como penhor da promessa de Deus, à maneira dos sinais proféticos, e não algo gravado nele",
+          "quem": "Skinner (1910, p. 110) registra a leitura como coerente e a atribui a autoridades do Bereshit Rabbá e a Ibn Ezra"
+        },
+        {
+          "leitura": "A marca tribal que cada homem trazia no corpo, sem a qual a vingança de sangue antiga não teria como funcionar",
+          "quem": "Leitura de W. Robertson Smith, relatada por Skinner (1910, p. 112) no excurso sobre a origem da lenda de Caim"
+        }
+      ],
+      "fontes": [
+        {
+          "nivel": 2,
+          "descricao": "Skinner, J. (1910), A Critical and Exegetical Commentary on Genesis (International Critical Commentary), Nova York: Charles Scribner's Sons, pp. 110 e 112-114",
+          "url": "https://archive.org/details/criticalexegetic00skinuoft"
+        }
+      ],
+      "notas": "A terceira leitura vem junto de uma tese maior, que Skinner relata e examina no excurso das pp. 112-114: a de que a história de Caim guardaria memória dos queneus, clã que a Bíblia Hebraica retrata como nômade pastoril ao sul de Judá. Skinner aponta ele mesmo a dificuldade dessa leitura: os queneus aparecem quase sempre em boas relações com Israel e muito apegados ao culto de Javé, o que torna quase incrível, nas palavras dele, supô-los concebidos sob maldição especial. Fica pendente de conferência uma segunda fonte moderna para este versículo: Lohr, J. N. (2009), em Zeitschrift für die Alttestamentliche Wissenschaft 121, pp. 101-103, que pela indexação trataria justamente da leitura do sinal como algo não gravado no corpo — não foi possível abrir o artigo nem na cópia aberta nem na do editor, então ele não entra como fonte.",
+      "trecho": "pôs sinal em Caim"
+    },
+    {
+      "id": "gn04-canto-de-lameque",
+      "tipo": "traducao",
+      "passagem": "gen-04-01_04-26",
+      "versiculos": [
+        23,
+        24
+      ],
+      "titulo": "Lameque matou, ou está prometendo matar?",
+      "descricao": "A fala de Lameque é um poema encaixado no meio de uma genealogia em prosa: Skinner (1910) o descreve como poema completo em três dísticos, que respira o espírito feroz e implacável de vingança do código de honra beduíno. E o verbo central é ambíguo. \"Matei\" está no perfeito hebraico, que não corresponde direto ao passado do português. Skinner, seguindo Davidson e Driver, lê aqui um perfeito de experiência — algo como \"eu mato\", um traço permanente de caráter, e não um crime determinado que já ocorreu. Ele registra que outros gramáticos leem o mesmo perfeito como de certeza, o que abre caminho para sentido futuro. A leitura que ele rejeita é justamente a mais intuitiva: a de que Lameque estaria confessando, com remorso, um assassinato isolado. Skinner diz que alguns Padres antigos entenderam assim e que o sentido da passagem foi por eles estranhamente mal concebido, e cita Wellhausen, para quem se trata de uma jactância de uma tribo contra outra, que não precisa de ocasião nenhuma.",
+      "leituras": [
+        {
+          "leitura": "\"Eu mato um homem por uma ferida\" — jactância sobre o que Lameque é capaz de fazer, não relato de um crime",
+          "quem": "Skinner (1910, pp. 121-122), lendo um perfeito de experiência com Davidson e Driver, e citando Wellhausen"
+        },
+        {
+          "leitura": "\"Matarei\" — ameaça sobre o que ele fará",
+          "quem": "Leitura que Skinner (1910, p. 121) atribui a Ibn Ezra, Dillmann e Budde como perfeito de certeza, e que Levine (2006, p. 131) registra em Ibn Ezra e Radak"
+        },
+        {
+          "leitura": "\"Matei\" — confissão de um assassinato já cometido",
+          "quem": "Leitura de Padres antigos, que Skinner (1910, p. 122) considera um mal-entendido do sentido da passagem"
+        }
+      ],
+      "fontes": [
+        {
+          "nivel": 2,
+          "descricao": "Skinner, J. (1910), A Critical and Exegetical Commentary on Genesis (International Critical Commentary), Nova York: Charles Scribner's Sons, pp. 120-122",
+          "url": "https://archive.org/details/criticalexegetic00skinuoft"
+        },
+        {
+          "nivel": 3,
+          "descricao": "Levine, N. (2006), \"Lemekh's Song: Narrative Context and the Poetry of Violence\", Milin Havivin 2, p. 131, nota 13",
+          "url": "https://library.yctorah.org/files/2016/09/Lemekhs-Song-Narrative-Context-and-the-Poetry-of-Violence.pdf"
+        }
+      ],
+      "notas": "Corre com frequência a afirmação de que este canto seria um dos pedaços mais antigos de hebraico preservados no Pentateuco. Ela não entra na nota porque não foi encontrada em fonte acadêmica: Skinner considera o poema mais antigo que a genealogia em que está encaixado, mas reserva o superlativo de peça mais antiga do repertório a Gênesis 49, a bênção de Jacó, e não a este trecho. Levine entra como fonte de nível mais baixo e só para o ponto do tempo verbal: Milin Havivin é ligado a uma instituição de ensino, mas não foi possível confirmar que siga revisão formal por pares.",
+      "trecho": "matei um homem por ter me ferido"
+    },
+    {
+      "id": "gn04-setenta-e-sete",
+      "tipo": "traducao",
+      "passagem": "gen-04-01_04-26",
+      "versiculos": [
+        24,
+        24
+      ],
+      "titulo": "Setenta e sete, não setenta vezes sete",
+      "descricao": "A Bíblia Livre traz \"setenta vezes sete\", o que em português se lê como uma multiplicação: 490. O hebraico não diz isso. A expressão do versículo é \"shiv'im weshiv'ah\", literalmente \"setenta e sete\", e a gramática de Gesenius, Kautzsch e Cowley a classifica como o numeral cardinal 77, empregado com o sentido de setenta e sete vezes. A conta do versículo, portanto, é uma soma, não um produto. O contraste que o texto arma é com o número dado a Caim em 4:15, sete, e a escalada vai de sete para setenta e sete. A própria tradução de Skinner traz \"setenta vezes e sete\", que é a leitura aditiva. Levine (2006) observa que setenta e sete é onze vezes sete, bem mais que sete vezes sete, e insiste que o número é figura literária e exagero, não cálculo.",
+      "leituras": [
+        {
+          "leitura": "Setenta e sete (70 + 7)",
+          "quem": "Gesenius, Kautzsch e Cowley (1910, § 134r, p. 436), que classificam a expressão do versículo como o cardinal 77; Skinner (1910, p. 121) traduz do mesmo modo; Levine (2006, p. 131) a trata como soma"
+        },
+        {
+          "leitura": "Setenta vezes sete (70 × 7 = 490)",
+          "quem": "Leitura adotada pela Bíblia Livre no texto reproduzido aqui, que as fontes consultadas não sustentam"
+        }
+      ],
+      "fontes": [
+        {
+          "nivel": 2,
+          "descricao": "Gesenius, W. (1910), Gesenius' Hebrew Grammar, ed. E. Kautzsch, trad. rev. A. E. Cowley, 2ª ed. inglesa, Oxford: Clarendon Press, § 134r, p. 436",
+          "url": "https://archive.org/details/geseniushebrewgr00geseuoft"
+        },
+        {
+          "nivel": 2,
+          "descricao": "Skinner, J. (1910), A Critical and Exegetical Commentary on Genesis (International Critical Commentary), Nova York: Charles Scribner's Sons, p. 121",
+          "url": "https://archive.org/details/criticalexegetic00skinuoft"
+        },
+        {
+          "nivel": 3,
+          "descricao": "Levine, N. (2006), \"Lemekh's Song: Narrative Context and the Poetry of Violence\", Milin Havivin 2, p. 131",
+          "url": "https://library.yctorah.org/files/2016/09/Lemekhs-Song-Narrative-Context-and-the-Poetry-of-Violence.pdf"
+        }
+      ],
+      "notas": "Esta é uma nota sobre a tradução reproduzida no próprio projeto, e não sobre o hebraico apenas. O texto da Bíblia Livre fica como está, sem correção — a regra é transcrever a edição oficial sem alterar. A nota existe para que quem lê saiba que, neste ponto, a tradução escolhida segue uma leitura que as fontes consultadas não sustentam.",
+      "trecho": "setenta vezes sete"
+    },
+    {
+      "id": "gn04-invocar-o-nome",
+      "tipo": "traducao",
+      "passagem": "gen-04-01_04-26",
+      "versiculos": [
+        26,
+        26
+      ],
+      "titulo": "O nome de Deus já é invocado aqui, e Êxodo diz o contrário",
+      "descricao": "A última frase do capítulo registra que, no tempo de Enos, os homens começaram a invocar o nome do SENHOR — isto é, o nome YHWH já estaria em uso no começo da humanidade. Êxodo 6:3 afirma o oposto: que Deus apareceu a Abraão, Isaque e Jacó como Deus Todo-Poderoso, mas por seu nome YHWH não se deu a conhecer a eles. As duas frases não podem valer ao mesmo tempo. É um dos pontos de partida clássicos da Hipótese Documentária, que explica a contradição atribuindo as passagens a fontes diferentes: para a fonte J, a de Gênesis 4:26, o nome é conhecido desde o princípio; para E, em Êxodo 3:13-15, e para P, em Êxodo 6:3, o nome depende de uma revelação expressa, ligada à fundação do povo hebreu. Skinner (1910) registra a diferença assim mesmo e chama a concepção de J de mais ingênua que a de E e P.",
+      "leituras": [
+        {
+          "leitura": "As passagens vêm de fontes diferentes: J põe o nome no princípio, E e P o reservam para a revelação a Moisés",
+          "quem": "Skinner (1910, pp. 126-127); explicação que Glisson (1985/86, p. 137) resume como a leitura documentária corrente"
+        },
+        {
+          "leitura": "Êxodo 3 pressupõe que os israelitas já conheciam o nome, e não é uma primeira revelação",
+          "quem": "Mowinckel (1937, p. 55), como Glisson (1985/86, p. 139) o cita"
+        },
+        {
+          "leitura": "\"Eu sou YHWH\" é fórmula de autoapresentação, não revelação de um nome inédito, e Êxodo 6:3 não contradiz Gênesis 4:26",
+          "quem": "Cassuto (1967, pp. 76-77), como Glisson (1985/86, pp. 139-140) o resume"
+        }
+      ],
+      "fontes": [
+        {
+          "nivel": 2,
+          "descricao": "Skinner, J. (1910), A Critical and Exegetical Commentary on Genesis (International Critical Commentary), Nova York: Charles Scribner's Sons, pp. 126-127",
+          "url": "https://archive.org/details/criticalexegetic00skinuoft"
+        },
+        {
+          "nivel": 2,
+          "descricao": "Glisson, S. D. (1985/86), \"Exodus 6:3 in Pentateuchal Criticism\", Restoration Quarterly 28.3, pp. 137 e 139-140",
+          "url": "https://biblicalelearning.org/wp-content/uploads/2022/01/Glisson-Ex6_3-ResQ.pdf"
+        }
+      ],
+      "notas": "As posições de Mowinckel e de Cassuto entram como Glisson as cita e resume, na página indicada; os originais dos dois não foram lidos diretamente, e ficam pendentes de conferência nas edições próprias. Vale distinguir as duas: Mowinckel discute dentro da crítica das fontes e contesta apenas que Êxodo 3 seja a primeira revelação do nome; Cassuto rejeita a divisão documentária como um todo.",
+      "trecho": "começaram a invocar o nome do SENHOR"
+    }
+  ],
+  "conexoes": [
+    {
+      "ligacao": "dumuzid-e-enkimdu-paralelo-genesis",
+      "versiculos": [
+        2,
+        2
+      ],
+      "tema": "paralelo",
+      "trecho": "E foi Abel pastor de ovelhas, e Caim foi lavrador da terra"
+    },
+    {
+      "ligacao": "historia-fenicia-de-filo-de-biblos-paralelo-genesis",
+      "versiculos": [
+        20,
+        20
+      ],
+      "tema": "paralelo",
+      "trecho": "pai dos que habitam em tendas"
+    }
+  ]
+}

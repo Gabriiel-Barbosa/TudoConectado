@@ -1,0 +1,58 @@
+id: dumuzid-e-enkimdu-paralelo-genesis
+tipo: paralelo
+entre:
+  - registro: dumuzid-e-enkimdu
+  - registro: genesis
+evidencia:
+  tipo_de_apoio: texto
+  forca: disputado
+  quem_sustenta:
+    - nome: Giorgio Raffaele Castellino
+      ano: 1957
+    - nome: Samuel Noah Kramer
+      ano: 1959
+    - nome: Emmanuele Testa
+      ano: 1966
+    - nome: Thorkild Jacobsen
+      ano: 1967
+fontes:
+  - nivel: 2
+    descricao: >-
+      Westermann, C. (1984), Genesis 1-11: A Commentary, trad. John J.
+      Scullion, Minneapolis: Augsburg; Londres: SPCK, p. 315 (comentário a
+      Gênesis 4:1-16)
+  - nivel: 1
+    descricao: >-
+      "Dumuzid and Enkimdu", composição nº c.4.08.33, The Electronic Text
+      Corpus of Sumerian Literature, Universidade de Oxford (tradução e
+      bibliografia das quatro tabuinhas-fonte: Ni 2431, CBS 8320, UM
+      29-16-435, CBS 8313)
+    url: https://etcsl.orinst.ox.ac.uk/section4/tr40833.htm
+o_que_derrubaria: >-
+  O paralelo cairia de vez se a leitura do poema sumério mostrasse que a
+  disputa entre Dumuzid e Enkimdu não opõe pastor e lavrador, ou que o pastor
+  não leva vantagem nenhuma no desfecho.
+notas: >-
+  Esta ligação está registrada com a força mais baixa de propósito, e o
+  leitor precisa saber por quê. A comparação existe na literatura: Westermann
+  registra que Castellino, Kramer e Jacobsen associaram a rivalidade de
+  ofícios entre Caim e Abel aos poemas sumérios de disputa entre pastor e
+  lavrador. Mas o próprio Westermann a recusa como paralelo estrutural. Ele
+  diz que Testa, ao querer traçar um paralelo estrutural exato entre essas
+  disputas e Gênesis 4, "vai longe demais", porque falta a Gênesis 4 o que é
+  essencial no gênero: a disputa falada entre os dois. Para ele, o que resta
+  é apenas um motivo subordinado, a diferença de ofícios que dá ocasião ao
+  ódio de Caim. E há uma diferença que nenhuma fonte contorna: o poema
+  sumério termina em reconciliação, Gênesis 4 termina em assassinato. Sobre o
+  fratricídio em si, Westermann afirma que não se encontra paralelo no
+  ambiente imediato de Israel — as narrativas que correspondem a esse motivo
+  estão centradas em culturas que ele chama de primitivas, fora do Crescente
+  Fértil. Castellino, Kramer, Jacobsen e Testa entram em "quem sustenta" como
+  Westermann os cita, na página indicada; os originais dos quatro não foram
+  lidos diretamente. Uma precisão que a conferência das fontes levantou:
+  Westermann não cita nominalmente esta composição, a c.4.08.33 do corpus de
+  Oxford. O que ele discute é o motivo da rivalidade entre pastor e lavrador
+  no material sumério, mencionando Dumuzi e Enkimdu disputando a mão de
+  Inanna a partir do cortejo de Inanna, segundo Jacobsen. A ligação aponta
+  para esta composição por ser onde o motivo se lê em edição acadêmica
+  aberta, e não porque Westermann a tenha indicado.

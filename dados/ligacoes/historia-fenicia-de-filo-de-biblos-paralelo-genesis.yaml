@@ -1,0 +1,65 @@
+id: historia-fenicia-de-filo-de-biblos-paralelo-genesis
+tipo: paralelo
+entre:
+  - registro: historia-fenicia-de-filo-de-biblos
+  - registro: genesis
+evidencia:
+  tipo_de_apoio: texto
+  forca: aceito_maioria
+  quem_sustenta:
+    - nome: Hermann Gunkel
+      ano: 1922
+    - nome: Claus Westermann
+      ano: 1984
+fontes:
+  - nivel: 2
+    descricao: >-
+      Gunkel, H. (1922), Genesis, übersetzt und erklärt, 5ª edição
+      inalterada, com registros de Paul Schorlemmer (Göttinger
+      Handkommentar zum Alten Testament I/1), Göttingen: Vandenhoeck &
+      Ruprecht, p. 51 (seção "Qains Stammbaum", comentário a Gênesis
+      4:17-24). Reimpressão sem alterações da 3ª edição de 1910, cujo
+      prefácio o volume reproduz
+    url: https://archive.org/details/genesisbersetz01gunk
+  - nivel: 2
+    descricao: >-
+      Westermann, C. (1984), Genesis 1-11: A Commentary, trad. John J.
+      Scullion, Minneapolis: Augsburg; Londres: SPCK, pp. 328-329
+      (comentário a Gênesis 4:17-26)
+  - nivel: 1
+    descricao: >-
+      Eusébio de Cesareia, Preparação Evangélica, livro I, cap. 10, onde os
+      trechos de Filo de Biblos são citados; trad. inglesa de E. H. Gifford
+      (1903)
+    url: https://www.tertullian.org/fathers/eusebius_pe_01_book1.htm
+o_que_derrubaria: >-
+  O paralelo cairia se a leitura dos trechos preservados por Eusébio
+  mostrasse que a genealogia fenícia não atribui a origem de ofícios a
+  descendentes sucessivos, ou que o formato de lista genealógica ligada à
+  origem da civilização não é o mesmo de Gênesis 4:20-22.
+notas: >-
+  O que as duas fontes afirmam é semelhança de gênero, não dependência.
+  Gunkel compara a árvore genealógica de inventores de Gênesis 4:19-22 com
+  os sistemas fenícios de história da cultura em forma de genealogia, e
+  conclui que Israel não parece ter chegado a um sistema tão completo quanto
+  o fenício. O volume consultado é a quinta impressão, de 1922, que a folha
+  de rosto declara inalterada e que reproduz o prefácio da terceira edição,
+  de 1910 — ou seja, o texto é o de 1910, e a paginação é a mesma. A
+  referência foi corrigida na conferência: o catálogo do Internet Archive
+  data o exemplar de 1902, o que levaria a citar a primeira edição, mas a
+  folha de rosto do próprio volume desmente a data. Westermann é mais entusiasmado — diz que quase
+  toda frase de Gênesis 1-11 que tenha a ver com a origem da civilização tem
+  contrapartida no texto de Sanchuniathon — mas fala em contrapartidas e
+  pontos de contato, nunca em cópia, e pondera ele mesmo que ali é provável
+  que se combinem duas tradições diferentes. Há uma razão cronológica decisiva
+  para o tipo ser paralelo e jamais foi_copiado_de: o texto fenício só existe
+  na forma em que Filo de Biblos o escreveu, por volta do ano 100, citado por
+  Eusébio no início do século IV — muito posterior a Gênesis. A anterioridade
+  que a metodologia exige não existe nessa direção, e a semelhança é de
+  estrutura e de gênero, não de palavras. Westermann aponta ainda um segundo
+  ponto de contato, com as listas mesopotâmicas dos sete apkallu, os sábios
+  anteriores ao dilúvio (p. 324), inclusive em detalhe: de um desses apkallu
+  se diz que teria inventado a lira, ao lado de Jubal como pai dos que manejam
+  harpa e flauta. Esse segundo ponto fica registrado aqui na nota, e não como
+  ligação própria, porque as listas de apkallu não foram lidas em edição
+  acadêmica — só através de Westermann.

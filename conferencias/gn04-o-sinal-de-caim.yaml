@@ -1,0 +1,26 @@
+# Gerado por .claude/skills/conferir/scripts/registrar.js — vereditos da
+# Contraprova para as fontes desta ligação. Edite à mão só 'revisao_humana'
+# (pendente -> feita) depois de conferir você mesmo.
+ligacao: gn04-o-sinal-de-caim
+fontes:
+  - hash: 6f0fea4d3648
+    nivel: 2
+    descricao: >-
+      Skinner, J. (1910), A Critical and Exegetical Commentary on Genesis (International Critical
+      Commentary), Nova York: Charles Scribner's Sons, pp. 110 e 112-114
+    alegacao: >-
+      Skinner afirma que o propósito do sinal posto em Caim é protetor e não penal, e que tomá-lo
+      como marca que o denuncia como assassino é ideia natural porém equivocada; nas pp. 112-114
+      relata a leitura do sinal como marca tribal e discute os queneus.
+    veredito: confirmada
+    parou_em: null
+    conferido_em: >-
+      https://archive.org/stream/criticalexegetic00skinuoft/criticalexegetic00skinuoft_djvu.txt
+      (cabeçalho '110 CAIN AND ABEL (J)' e seguintes), cruzado com Project Gutenberg #77363
+    observacao: >-
+      p. 110, literal: 'Its purpose is protective and not penal: that it brands him as a murderer is
+      a natural but mistaken idea'. Discussão dos queneus nas pp. 112-114, incluindo a proposta de
+      Stade e a crítica de Skinner a ela.
+    data: '2026-09-24'
+    conferido_por: contraprova
+    revisao_humana: pendente

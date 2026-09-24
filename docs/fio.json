@@ -565,6 +565,123 @@
           ]
         }
       ]
+    },
+    {
+      "id": "genesis-04",
+      "livro": "Gênesis",
+      "capitulo": 4,
+      "passagem": "gen-04-01_04-26",
+      "referencia": "Gênesis 4:1–26",
+      "titulo": "Caim e Abel, e a primeira linhagem fora do jardim",
+      "resumo": "Eva dá à luz Caim e depois Abel. Abel se torna pastor de ovelhas e Caim, lavrador da terra. Os dois trazem ofertas: Deus olha com agrado para a de Abel e não para a de Caim. O texto não explica a recusa.",
+      "grupos": [
+        {
+          "grupo": "paralelo",
+          "total": 2,
+          "ligacoes": [
+            {
+              "ligacao": "dumuzid-e-enkimdu-paralelo-genesis",
+              "versiculos": [
+                2,
+                2
+              ],
+              "tema": "paralelo"
+            },
+            {
+              "ligacao": "historia-fenicia-de-filo-de-biblos-paralelo-genesis",
+              "versiculos": [
+                20,
+                20
+              ],
+              "tema": "paralelo"
+            }
+          ]
+        },
+        {
+          "grupo": "ciencia",
+          "total": 0,
+          "ligacoes": []
+        },
+        {
+          "grupo": "leitura",
+          "total": 0,
+          "ligacoes": []
+        },
+        {
+          "grupo": "contexto",
+          "total": 0,
+          "ligacoes": []
+        },
+        {
+          "grupo": "nota",
+          "total": 7,
+          "notas": [
+            {
+              "id": "gn04-obtive-um-homem",
+              "tipo": "traducao",
+              "versiculos": [
+                1,
+                1
+              ],
+              "titulo": "A primeira frase de Eva não tem tradução pacífica"
+            },
+            {
+              "id": "gn04-o-pecado-a-porta",
+              "tipo": "traducao",
+              "versiculos": [
+                7,
+                7
+              ],
+              "titulo": "O versículo mais obscuro do capítulo"
+            },
+            {
+              "id": "gn04-vamos-ao-campo",
+              "tipo": "variante",
+              "versiculos": [
+                8,
+                8
+              ],
+              "titulo": "A frase que falta no hebraico e aparece nas versões antigas"
+            },
+            {
+              "id": "gn04-o-sinal-de-caim",
+              "tipo": "traducao",
+              "versiculos": [
+                15,
+                15
+              ],
+              "titulo": "O sinal de Caim protege, não condena"
+            },
+            {
+              "id": "gn04-canto-de-lameque",
+              "tipo": "traducao",
+              "versiculos": [
+                23,
+                24
+              ],
+              "titulo": "Lameque matou, ou está prometendo matar?"
+            },
+            {
+              "id": "gn04-setenta-e-sete",
+              "tipo": "traducao",
+              "versiculos": [
+                24,
+                24
+              ],
+              "titulo": "Setenta e sete, não setenta vezes sete"
+            },
+            {
+              "id": "gn04-invocar-o-nome",
+              "tipo": "traducao",
+              "versiculos": [
+                26,
+                26
+              ],
+              "titulo": "O nome de Deus já é invocado aqui, e Êxodo diz o contrário"
+            }
+          ]
+        }
+      ]
     }
   ],
   "fora_do_fio": [

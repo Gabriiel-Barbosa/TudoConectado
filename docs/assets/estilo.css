@@ -2675,9 +2675,14 @@ a.citacao:hover {
   color: var(--fg);
 }
 
+/* `clip` e não `hidden`: os dois recortam igual, mas `hidden` faz do elemento
+   um contêiner de rolagem no eixo Y que o usuário não pode rolar — a roda do
+   mouse parava aqui em vez de passar para a página, e quem estivesse sobre a
+   espinha ficava preso sem conseguir sair da tela. `clip` não cria contêiner
+   de rolagem nenhum, então a roda segue para o <main>. */
 .fio-rolagem {
   overflow-x: auto;
-  overflow-y: hidden;
+  overflow-y: clip;
   padding: 0.5rem 0 1rem;
   scrollbar-width: thin;
 }
@@ -3035,6 +3040,21 @@ a.citacao:hover {
 .fio-fora .linha-tempo {
   margin-top: 0.6rem;
   font-size: 0.8rem;
+}
+
+/* A espinha do desktop é um grid cujas linhas 1 e 4 (ramo de cima e ramo de
+   baixo) são ambas `1fr`. Num grid de altura indefinida, duas trilhas `1fr`
+   resolvem para o MESMO tamanho: o maior dos dois conteúdos. Esta lista mora
+   no ramo de baixo, numa coluna de 250px, e três datações de prosa larga
+   passavam de mil pixels — inchavam a linha 4, arrastavam a linha 1 junto e
+   empurravam o marco e todos os cards para fora da tela, deixando à vista só
+   o ramo de cima vazio. Presa a uma altura máxima e rolando por dentro, a
+   lista não tem mais como estourar a espinha. */
+.fio-datacao .linha-tempo {
+  max-height: min(240px, 32vh);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding-right: 0.4rem;
 }
 
 .fio-fora {

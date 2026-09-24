@@ -1,0 +1,48 @@
+# Gerado por .claude/skills/conferir/scripts/registrar.js — vereditos da
+# Contraprova para as fontes desta ligação. Edite à mão só 'revisao_humana'
+# (pendente -> feita) depois de conferir você mesmo.
+ligacao: gn04-canto-de-lameque
+fontes:
+  - hash: c92625e7b40a
+    nivel: 2
+    descricao: >-
+      Skinner, J. (1910), A Critical and Exegetical Commentary on Genesis (International Critical
+      Commentary), Nova York: Charles Scribner's Sons, pp. 120-122
+    alegacao: >-
+      Skinner descreve Gênesis 4:23-24 como poema completo em três dísticos e lê o verbo "matei"
+      como perfeito de experiência, registrando outras leituras e rejeitando a de confissão de um
+      assassinato isolado.
+    veredito: confirmada
+    parou_em: null
+    conferido_em: >-
+      https://archive.org/stream/criticalexegetic00skinuoft/criticalexegetic00skinuoft_djvu.txt,
+      cabeçalhos '120 CAINITE GENEALOGY (J)', 'IV. 23, 24 121' e '122 CAINITE GENEALOGY (J)',
+      cruzado com Project Gutenberg #77363
+    observacao: >-
+      p. 122: Skinner diz que o sentido da passagem foi estranhamente mal concebido por alguns
+      Padres antigos, que a tomaram por remorso de um assassinato isolado.
+    data: '2026-09-24'
+    conferido_por: contraprova
+    revisao_humana: pendente
+  - hash: 04535fa9ccf4
+    nivel: 3
+    descricao: >-
+      Levine, N. (2006), "Lemekh's Song: Narrative Context and the Poetry of Violence", Milin
+      Havivin 2, p. 131, nota 13
+    alegacao: >-
+      Levine registra a possibilidade de ler "matei" em Gênesis 4:23 com sentido de "matarei",
+      atribuindo essa leitura a Ibn Ezra e a Radak.
+    veredito: confirmada
+    parou_em: null
+    conferido_em: >-
+      https://library.yctorah.org/files/2016/09/Lemekhs-Song-Narrative-Context-and-the-Poetry-of-Violence.pdf
+      (acervo da biblioteca da Yeshivat Chovevei Torah, instituição que publica o periódico), página
+      confirmada por anteceder o cabeçalho corrente '132 Milin Havivin'
+    observacao: >-
+      Correção de uma citação anterior que dava a p. 132 e recebeu veredito contradiz em duas
+      rodadas independentes. Com a página corrigida para 131 e a remissão à nota 13, texto e nota
+      batem: 'It is even possible that in poetic form haragti ("I killed") here means "I will
+      kill"', com a nota 13 remetendo a 'Ibn Ezra, R. David Kimhi (RaDaK), 4:23'.
+    data: '2026-09-24'
+    conferido_por: contraprova
+    revisao_humana: pendente

@@ -1,0 +1,58 @@
+# Gerado por .claude/skills/conferir/scripts/registrar.js — vereditos da
+# Contraprova para as fontes desta ligação. Edite à mão só 'revisao_humana'
+# (pendente -> feita) depois de conferir você mesmo.
+ligacao: gn04-setenta-e-sete
+fontes:
+  - hash: 4193233ad6fa
+    nivel: 2
+    descricao: >-
+      Gesenius, W. (1910), Gesenius' Hebrew Grammar, ed. E. Kautzsch, trad. rev. A. E. Cowley, 2ª
+      ed. inglesa, Oxford: Clarendon Press, § 134r, p. 436
+    alegacao: >-
+      A gramática classifica a expressão numérica de Gênesis 4:24 como o numeral cardinal 77,
+      empregado com o sentido de setenta e sete vezes.
+    veredito: confirmada
+    parou_em: null
+    conferido_em: >-
+      https://archive.org/stream/geseniushebrewgr00geseuoft/geseniushebrewgr00geseuoft_djvu.txt,
+      cabeçalho de página '436 The Parts of Speech [§ 134 q, r'
+    observacao: >-
+      O parágrafo r diz: 'or by the dual of the numeral, thus shiv'atayim Gn 4:15 (in verse 24 along
+      with the cardinal 77 for 77 times)'.
+    data: '2026-09-24'
+    conferido_por: contraprova
+    revisao_humana: pendente
+  - hash: ae056cb9dc01
+    nivel: 2
+    descricao: >-
+      Skinner, J. (1910), A Critical and Exegetical Commentary on Genesis (International Critical
+      Commentary), Nova York: Charles Scribner's Sons, p. 121
+    alegacao: >-
+      Skinner traduz o número de Gênesis 4:24 de forma aditiva, como setenta e sete, e não como
+      setenta vezes sete.
+    veredito: confirmada
+    parou_em: null
+    conferido_em: >-
+      https://archive.org/stream/criticalexegetic00skinuoft/criticalexegetic00skinuoft_djvu.txt, p.
+      121 (cabeçalho 'IV. 23, 24 121'), cruzado com Project Gutenberg #77363
+    observacao: 'Tradução de Skinner: ''But Lamech seventy times and seven!'' — leitura aditiva, 77, e não 490.'
+    data: '2026-09-24'
+    conferido_por: contraprova
+    revisao_humana: pendente
+  - hash: 8e5ff7db1c65
+    nivel: 3
+    descricao: >-
+      Levine, N. (2006), "Lemekh's Song: Narrative Context and the Poetry of Violence", Milin
+      Havivin 2, p. 131
+    alegacao: >-
+      Levine trata o número de Gênesis 4:24 como setenta e sete, isto é, onze vezes sete, e o
+      classifica como figura literária e exagero, não como cálculo matemático.
+    veredito: confirmada
+    parou_em: null
+    conferido_em: >-
+      https://library.yctorah.org/files/2016/09/Lemekhs-Song-Narrative-Context-and-the-Poetry-of-Violence.pdf,
+      p. 131 marcada no rodapé 'Nachman Levine 131'
+    observacao: Trecho literal, correspondendo exatamente à alegação.
+    data: '2026-09-24'
+    conferido_por: contraprova
+    revisao_humana: pendente

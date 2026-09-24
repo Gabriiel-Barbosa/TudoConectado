@@ -1,0 +1,86 @@
+id: gn04-vamos-ao-campo
+tipo: variante
+passagem: gen-04-01_04-26
+versiculos:
+  - 8
+  - 8
+titulo: A frase que falta no hebraico e aparece nas versões antigas
+descricao: >-
+  No texto hebraico massorético, este versículo tem um buraco. Ele diz "e
+  Caim disse a Abel, seu irmão" e para ali: o verbo de dizer fica sem o que
+  foi dito, e a frase segue direto para "e aconteceu que, estando eles no
+  campo". Skinner (1910) explica por que isso é um problema: o verbo usado
+  aqui nunca é exatamente sinônimo do verbo de falar, e por isso a sentença
+  fica incompleta. Várias testemunhas antigas não têm esse buraco — trazem a
+  fala de Caim, "vamos ao campo". Estão entre elas o Pentateuco Samaritano, a
+  Septuaginta, a Peshitta síriaca e a Vulgata. A Bíblia Livre, reproduzida
+  aqui, segue o hebraico massorético e traduz o verbo por "falou", o que
+  dissimula a lacuna em português: onde se lê "Depois Caim falou a seu irmão
+  Abel", o hebraico tem um "disse" à espera de um complemento que não vem.
+leituras:
+  - leitura: >-
+      A fala é original e caiu do texto hebraico por acidente de cópia, e deve
+      ser restituída a partir das versões antigas
+    quem: Posição que Skinner (1910, p. 107) adota e atribui a Ewald, Dillmann e Driver
+  - leitura: >-
+      A fala é acréscimo posterior, feito para consertar a frase truncada
+    quem: Efrati (2023), para quem a adição secundária parece provável
+  - leitura: >-
+      Não há lacuna nenhuma: o verbo não exige discurso citado, e a frase
+      significa que Caim falou contra o irmão, ou tramou contra ele
+    quem: Posição de Reis (2002) e de Jacobson (2005), como German (2014, p. 135, nota 20) as cita
+fontes:
+  - nivel: 2
+    descricao: >-
+      Skinner, J. (1910), A Critical and Exegetical Commentary on Genesis
+      (International Critical Commentary), Nova York: Charles Scribner's
+      Sons, p. 107, com a chave das siglas das versões na lista de
+      abreviaturas, p. xiii
+    url: https://archive.org/details/criticalexegetic00skinuoft
+  - nivel: 1
+    descricao: >-
+      Swete, H. B. (org.) (1887), The Old Testament in Greek according to the
+      Septuagint, vol. I: Genesis-IV Kings, Cambridge: Cambridge University
+      Press, p. 6 (Gênesis 4:8, texto do Codex Vaticanus)
+    url: https://archive.org/details/oldtestamentingr01swet
+  - nivel: 2
+    descricao: >-
+      German, I. (2014), The Textual Unity of Genesis 2-4 against the
+      Backdrop of the History of Exegesis, tese de doutorado, University of
+      St. Michael's College / Toronto School of Theology, pp. 134-135
+    url: https://utoronto.scholaris.ca/server/api/core/bitstreams/93ecab45-3f4a-4966-856f-f9c6f019a4f8/content
+  - nivel: 2
+    descricao: >-
+      Efrati, S. (2023), "The Many Quarrels of Cain and Abel: A Targumic
+      Expansion Reconsidered", Aramaic Studies 21.2, pp. 141-165, seções 2 e 4
+    url: https://lirias.kuleuven.be/retrieve/cd700cc6-83fd-46c0-a474-6c9ab892b39d
+notas: >-
+  O que cada testemunha traz, ao certo. A Septuaginta, no texto fixado por
+  Swete a partir do Codex Vaticanus, traz "dielthomen eis to pedion", vamos ao
+  campo. Do Pentateuco Samaritano, três fontes independentes confirmam que
+  ele traz a frase — Skinner, que o inclui entre as versões que a suprem,
+  German e Efrati —, mas a redação hebraica exata não foi lida em edição
+  crítica: a digitalização aberta da edição de von Gall tem o texto hebraico
+  ilegível por OCR, e por isso ela não entra como fonte. Da Peshitta, as
+  mesmas três fontes confirmam o acréscimo, sem que a redação em siríaco
+  tenha sido lida. Da Vulgata, o
+  acréscimo está confirmado por Skinner, que a inclui entre as versões que
+  suprem a frase; a redação da Vulgata antiga não foi conferida em edição
+  crítica. Um cuidado que vale registrar: não se pode dizer "os Targumim"
+  como bloco. Efrati colacionou cerca de 135 testemunhos do Targum Onkelos
+  para este versículo e só 16 trazem versão interpolada — o Onkelos em geral
+  acompanha o texto massorético. Já os Targumim palestinenses, como o Neofiti,
+  trazem não a frase curta, mas uma expansão bem maior, um debate inteiro
+  entre os dois irmãos sobre a justiça divina. Uma ressalva de conferência:
+  a cópia de Efrati consultada é o manuscrito aceito
+  pelo autor, depositado no repositório da KU Leuven, que não reproduz a
+  paginação da revista — por isso a fonte indica as seções e o intervalo de
+  páginas da publicação, não a página exata de cada trecho. As posições de
+  Reis e de Jacobson entram como German as cita; os artigos originais não
+  foram lidos. Uma armadilha para quem for reconferir Skinner: o volume tem
+  duas páginas numeradas xiii, uma na Introdução e outra na lista de
+  abreviaturas. A citada aqui é a das abreviaturas, a folha 27 do
+  escaneamento. E a nomeação das quatro versões não está no corpo do
+  comentário, que diz apenas "from Vns.", mas na nota filológica ao pé da
+  mesma página 107, para onde o próprio texto remete.
+trecho: Depois Caim falou a seu irmão Abel

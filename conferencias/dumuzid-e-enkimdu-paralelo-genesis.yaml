@@ -1,0 +1,48 @@
+# Gerado por .claude/skills/conferir/scripts/registrar.js — vereditos da
+# Contraprova para as fontes desta ligação. Edite à mão só 'revisao_humana'
+# (pendente -> feita) depois de conferir você mesmo.
+ligacao: dumuzid-e-enkimdu-paralelo-genesis
+fontes:
+  - hash: d2bc1d4673fc
+    nivel: 2
+    descricao: >-
+      Westermann, C. (1984), Genesis 1-11: A Commentary, trad. John J. Scullion, Minneapolis:
+      Augsburg; Londres: SPCK, p. 315 (comentário a Gênesis 4:1-16)
+    alegacao: >-
+      Westermann registra que estudiosos associaram a rivalidade de ofícios entre Caim e Abel aos
+      mitos sumérios de disputa entre pastor e lavrador, e recusa o paralelo estrutural exato,
+      tratando a semelhança apenas como motivo subordinado.
+    veredito: confirmada
+    parou_em: null
+    conferido_em: >-
+      https://archive.org/details/westermann_genesis202508 (arquivo Claus_djvu.txt), p. 315
+      delimitada pelos marcadores de página 314/315/316 e pelo cabeçalho 'Gen 4:1-16 Cain and Abel'
+    observacao: >-
+      Texto confere quase literalmente. Ressalva de precisão: Westermann não cita nominalmente a
+      composição c.4.08.33; ele discute o motivo a partir do cortejo de Inanna segundo Jacobsen,
+      nomeando Dumuzi e Enkimdu. A ligação aponta para c.4.08.33 por ser onde o motivo se lê em
+      edição aberta. Registrado no campo notas da ligação.
+    data: '2026-09-24'
+    conferido_por: contraprova
+    revisao_humana: pendente
+  - hash: fb4ace0e34a6
+    nivel: 1
+    descricao: >-
+      "Dumuzid and Enkimdu", composição nº c.4.08.33, The Electronic Text Corpus of Sumerian
+      Literature, Universidade de Oxford (tradução e bibliografia das quatro tabuinhas-fonte: Ni
+      2431, CBS 8320, UM 29-16-435, CBS 8313)
+    alegacao: >-
+      O corpus de Oxford traz, sob a composição c.4.08.33, o poema em que o deus pastor Dumuzid
+      disputa com o deus lavrador Enkimdu, e lista como tabuinhas-fonte Ni 2431, CBS 8320, UM
+      29-16-435 e CBS 8313.
+    veredito: confirmada
+    parou_em: null
+    conferido_em: >-
+      https://etcsl.orinst.ox.ac.uk/section4/b40833.htm e
+      https://etcsl.orinst.ox.ac.uk/cgi-bin/etcsl.cgi?text=c.4.08.33
+    observacao: >-
+      As quatro tabuinhas batem: Ni 2431 = SRT 3; CBS 8320 = SEM 92; UM 29-16-435; CBS 8313 = SEM
+      93.
+    data: '2026-09-24'
+    conferido_por: contraprova
+    revisao_humana: pendente

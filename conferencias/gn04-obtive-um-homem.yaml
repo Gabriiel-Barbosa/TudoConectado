@@ -1,0 +1,24 @@
+# Gerado por .claude/skills/conferir/scripts/registrar.js — vereditos da
+# Contraprova para as fontes desta ligação. Edite à mão só 'revisao_humana'
+# (pendente -> feita) depois de conferir você mesmo.
+ligacao: gn04-obtive-um-homem
+fontes:
+  - hash: 9a76d03549ea
+    nivel: 2
+    descricao: >-
+      Skinner, J. (1910), A Critical and Exegetical Commentary on Genesis (International Critical
+      Commentary), Nova York: Charles Scribner's Sons, pp. 102-103
+    alegacao: >-
+      Skinner trata a frase hebraica de Gênesis 4:1 como de tradução disputada, lista leituras
+      concorrentes e recusa "com a ajuda de" como contrária a toda analogia.
+    veredito: confirmada
+    parou_em: null
+    conferido_em: >-
+      https://archive.org/stream/criticalexegetic00skinuoft/criticalexegetic00skinuoft_djvu.txt
+      (cabeçalho '102 CAIN AND ABEL (J)'), cruzado com a transcrição do Project Gutenberg #77363
+    observacao: >-
+      Texto literal na p. 102: 'To render eth "with the help of" (Di. and most) is against all
+      analogy'. As leituras concorrentes seguem até o topo da p. 103.
+    data: '2026-09-24'
+    conferido_por: contraprova
+    revisao_humana: pendente
