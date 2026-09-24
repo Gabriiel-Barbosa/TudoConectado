@@ -1,0 +1,46 @@
+id: gn04-obtive-um-homem
+tipo: traducao
+passagem: gen-04-01_04-26
+versiculos:
+  - 1
+  - 1
+titulo: A primeira frase de Eva não tem tradução pacífica
+descricao: >-
+  A fala de Eva ao dar à luz Caim são três palavras em hebraico, e nenhuma
+  tradução delas é consenso. O problema é duplo. O verbo qanah tem dois
+  sentidos, "criar ou produzir" e "adquirir", e Skinner (1910) diz que não é
+  fácil decidir qual está em jogo. E a partícula eth, que em hebraico costuma
+  marcar o objeto direto, aparece aqui antes do nome de Deus, onde seria
+  preciso que significasse outra coisa. Das saídas propostas, Skinner recusa
+  duas. Traduzir eth por "com a ajuda de", como fazem muitas versões, é para
+  ele contrário a toda analogia, porque a partícula não tem esse sentido em
+  lugar nenhum. E ler eth como marca de objeto, o que daria "obtive um homem,
+  o SENHOR", ele descarta como exegese dogmática antiquada. Restam duas
+  leituras que ele leva a sério: corrigir o texto para min, "do SENHOR",
+  acompanhando a Septuaginta; ou tomar qanah como "criar" e eth no sentido de
+  companhia, o que daria "produzi um homem com a cooperação do SENHOR" — a
+  leitura que ele prefere, e que já estava em Rashi.
+leituras:
+  - leitura: Produzi um homem com a cooperação do SENHOR
+    quem: Skinner (1910, p. 102), que prefere esta e a encontra já em Rashi
+  - leitura: Obtive um homem do SENHOR, corrigindo o texto para min
+    quem: Leitura que Skinner (1910, p. 102) registra como emenda apoiada na Septuaginta
+  - leitura: Obtive um homem com a ajuda do SENHOR
+    quem: Leitura da maioria das traduções, que Skinner (1910, p. 102) recusa por ser contrária a toda analogia
+  - leitura: Obtive um homem, a saber, o SENHOR
+    quem: Leitura associada a Lutero, que Skinner (1910, p. 102) descarta como exegese dogmática antiquada
+fontes:
+  - nivel: 2
+    descricao: >-
+      Skinner, J. (1910), A Critical and Exegetical Commentary on Genesis
+      (International Critical Commentary), Nova York: Charles Scribner's
+      Sons, pp. 102-103
+    url: https://archive.org/details/criticalexegetic00skinuoft
+notas: >-
+  O capítulo parece explicar o nome Caim (Qayin) pelo verbo da fala de Eva
+  (qaniti). Skinner não chama isso de etimologia popular nem a rejeita, mas
+  observa (p. 103) que a etimologia caberia melhor ao nome de Sete, em 4:25,
+  do que ao de Caim — ou seja, trata a ligação entre as duas palavras como
+  imperfeita, sem resolver a questão. Fica registrado assim, e não como
+  trocadilho estabelecido, porque nenhuma fonte consultada foi além disso.
+trecho: Obtive um homem pelo SENHOR

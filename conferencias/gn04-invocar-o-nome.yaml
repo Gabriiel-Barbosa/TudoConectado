@@ -1,0 +1,51 @@
+# Gerado por .claude/skills/conferir/scripts/registrar.js — vereditos da
+# Contraprova para as fontes desta ligação. Edite à mão só 'revisao_humana'
+# (pendente -> feita) depois de conferir você mesmo.
+ligacao: gn04-invocar-o-nome
+fontes:
+  - hash: 194ba6467891
+    nivel: 2
+    descricao: >-
+      Skinner, J. (1910), A Critical and Exegetical Commentary on Genesis (International Critical
+      Commentary), Nova York: Charles Scribner's Sons, pp. 126-127
+    alegacao: >-
+      Skinner registra que Gênesis 4:26 situa a primeira invocação do nome YHWH no tempo de Enos, ao
+      passo que E (Êxodo 3:14) e P (Êxodo 6:3) baseiam o nome em revelação expressa.
+    veredito: confirmada
+    parou_em: null
+    conferido_em: >-
+      https://archive.org/stream/criticalexegetic00skinuoft/criticalexegetic00skinuoft_djvu.txt,
+      cabeçalhos '126 SETHITE GENEALOGY (J)' e 'IV. 25—V 127', cruzado com Project Gutenberg #77363
+    observacao: >-
+      Skinner cita E como Êxodo 3:13-15, faixa que contém o 3:14 da alegação, e não o versículo
+      isolado. A prosa da nota foi corrigida para 3:13-15.
+    data: '2026-09-24'
+    conferido_por: contraprova
+    revisao_humana: pendente
+  - hash: f4b77982c361
+    nivel: 2
+    descricao: >-
+      Glisson, S. D. (1985/86), "Exodus 6:3 in Pentateuchal Criticism", Restoration Quarterly 28.3,
+      pp. 137 e 139-140
+    alegacao: >-
+      Glisson resume, na p. 137, a explicação documentária de que a fonte J faz o culto a YHWH
+      existir desde o princípio enquanto E e P reservam o nome à revelação a Moisés, e registra nas
+      pp. 139-140 o dissenso de Mowinckel e de Cassuto a essa leitura.
+    veredito: confirmada
+    parou_em: null
+    conferido_em: >-
+      Fascículo confirmado no repositório oficial do periódico,
+      https://digitalcommons.acu.edu/restorationquarterly/vol28/iss3/1/; texto integral em
+      reprodução autorizada ('cited with permission') em
+      https://biblicalelearning.org/wp-content/uploads/2022/01/Glisson-Ex6_3-ResQ.pdf, páginas
+      delimitadas pelos cabeçalhos correntes
+    observacao: >-
+      As duas rodadas divergiram e fica gravado o veredito do Opus, conforme a regra. O Sonnet deu
+      não confirmável parando no conteúdo, por a formulação sobre P estar na p. 136 e não na 137. O
+      Opus confirmou: a p. 137 traz a explicação de J e prossegue com E e P, e as pp. 139-140 trazem
+      Mowinckel e Cassuto. Para precisão máxima a citação seria pp. 136-137. Ressalva do Opus já
+      refletida na nota: o dissenso de Mowinckel é interno à hipótese documentária, não uma rejeição
+      dela.
+    data: '2026-09-24'
+    conferido_por: contraprova
+    revisao_humana: pendente

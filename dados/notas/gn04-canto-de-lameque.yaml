@@ -1,0 +1,53 @@
+id: gn04-canto-de-lameque
+tipo: traducao
+passagem: gen-04-01_04-26
+versiculos:
+  - 23
+  - 24
+titulo: Lameque matou, ou está prometendo matar?
+descricao: >-
+  A fala de Lameque é um poema encaixado no meio de uma genealogia em prosa:
+  Skinner (1910) o descreve como poema completo em três dísticos, que respira
+  o espírito feroz e implacável de vingança do código de honra beduíno. E o
+  verbo central é ambíguo. "Matei" está no perfeito hebraico, que não
+  corresponde direto ao passado do português. Skinner, seguindo Davidson e
+  Driver, lê aqui um perfeito de experiência — algo como "eu mato", um traço
+  permanente de caráter, e não um crime determinado que já ocorreu. Ele
+  registra que outros gramáticos leem o mesmo perfeito como de certeza, o que
+  abre caminho para sentido futuro. A leitura que ele rejeita é justamente a
+  mais intuitiva: a de que Lameque estaria confessando, com remorso, um
+  assassinato isolado. Skinner diz que alguns Padres antigos entenderam assim
+  e que o sentido da passagem foi por eles estranhamente mal concebido, e cita
+  Wellhausen, para quem se trata de uma jactância de uma tribo contra outra,
+  que não precisa de ocasião nenhuma.
+leituras:
+  - leitura: >-
+      "Eu mato um homem por uma ferida" — jactância sobre o que Lameque é
+      capaz de fazer, não relato de um crime
+    quem: Skinner (1910, pp. 121-122), lendo um perfeito de experiência com Davidson e Driver, e citando Wellhausen
+  - leitura: '"Matarei" — ameaça sobre o que ele fará'
+    quem: Leitura que Skinner (1910, p. 121) atribui a Ibn Ezra, Dillmann e Budde como perfeito de certeza, e que Levine (2006, p. 131) registra em Ibn Ezra e Radak
+  - leitura: '"Matei" — confissão de um assassinato já cometido'
+    quem: Leitura de Padres antigos, que Skinner (1910, p. 122) considera um mal-entendido do sentido da passagem
+fontes:
+  - nivel: 2
+    descricao: >-
+      Skinner, J. (1910), A Critical and Exegetical Commentary on Genesis
+      (International Critical Commentary), Nova York: Charles Scribner's
+      Sons, pp. 120-122
+    url: https://archive.org/details/criticalexegetic00skinuoft
+  - nivel: 3
+    descricao: >-
+      Levine, N. (2006), "Lemekh's Song: Narrative Context and the Poetry of
+      Violence", Milin Havivin 2, p. 131, nota 13
+    url: https://library.yctorah.org/files/2016/09/Lemekhs-Song-Narrative-Context-and-the-Poetry-of-Violence.pdf
+notas: >-
+  Corre com frequência a afirmação de que este canto seria um dos pedaços
+  mais antigos de hebraico preservados no Pentateuco. Ela não entra na nota
+  porque não foi encontrada em fonte acadêmica: Skinner considera o poema
+  mais antigo que a genealogia em que está encaixado, mas reserva o
+  superlativo de peça mais antiga do repertório a Gênesis 49, a bênção de
+  Jacó, e não a este trecho. Levine entra como fonte de nível mais baixo e só
+  para o ponto do tempo verbal: Milin Havivin é ligado a uma instituição de
+  ensino, mas não foi possível confirmar que siga revisão formal por pares.
+trecho: matei um homem por ter me ferido

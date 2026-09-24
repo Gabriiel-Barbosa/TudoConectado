@@ -1,0 +1,49 @@
+id: gn04-setenta-e-sete
+tipo: traducao
+passagem: gen-04-01_04-26
+versiculos:
+  - 24
+  - 24
+titulo: Setenta e sete, não setenta vezes sete
+descricao: >-
+  A Bíblia Livre traz "setenta vezes sete", o que em português se lê como uma
+  multiplicação: 490. O hebraico não diz isso. A expressão do versículo é
+  "shiv'im weshiv'ah", literalmente "setenta e sete", e a gramática de
+  Gesenius, Kautzsch e Cowley a classifica como o numeral cardinal 77,
+  empregado com o sentido de setenta e sete vezes. A conta do versículo,
+  portanto, é uma soma, não um produto. O contraste que o texto arma é com o
+  número dado a Caim em 4:15, sete, e a escalada vai de sete para setenta e
+  sete. A própria tradução de Skinner traz "setenta vezes e sete", que é a
+  leitura aditiva. Levine (2006) observa que setenta e sete é onze vezes
+  sete, bem mais que sete vezes sete, e insiste que o número é figura
+  literária e exagero, não cálculo.
+leituras:
+  - leitura: Setenta e sete (70 + 7)
+    quem: Gesenius, Kautzsch e Cowley (1910, § 134r, p. 436), que classificam a expressão do versículo como o cardinal 77; Skinner (1910, p. 121) traduz do mesmo modo; Levine (2006, p. 131) a trata como soma
+  - leitura: Setenta vezes sete (70 × 7 = 490)
+    quem: Leitura adotada pela Bíblia Livre no texto reproduzido aqui, que as fontes consultadas não sustentam
+fontes:
+  - nivel: 2
+    descricao: >-
+      Gesenius, W. (1910), Gesenius' Hebrew Grammar, ed. E. Kautzsch, trad.
+      rev. A. E. Cowley, 2ª ed. inglesa, Oxford: Clarendon Press, § 134r, p.
+      436
+    url: https://archive.org/details/geseniushebrewgr00geseuoft
+  - nivel: 2
+    descricao: >-
+      Skinner, J. (1910), A Critical and Exegetical Commentary on Genesis
+      (International Critical Commentary), Nova York: Charles Scribner's
+      Sons, p. 121
+    url: https://archive.org/details/criticalexegetic00skinuoft
+  - nivel: 3
+    descricao: >-
+      Levine, N. (2006), "Lemekh's Song: Narrative Context and the Poetry of
+      Violence", Milin Havivin 2, p. 131
+    url: https://library.yctorah.org/files/2016/09/Lemekhs-Song-Narrative-Context-and-the-Poetry-of-Violence.pdf
+notas: >-
+  Esta é uma nota sobre a tradução reproduzida no próprio projeto, e não
+  sobre o hebraico apenas. O texto da Bíblia Livre fica como está, sem
+  correção — a regra é transcrever a edição oficial sem alterar. A nota
+  existe para que quem lê saiba que, neste ponto, a tradução escolhida segue
+  uma leitura que as fontes consultadas não sustentam.
+trecho: setenta vezes sete

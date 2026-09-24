@@ -1,6 +1,16 @@
 {
   "nos": [
     {
+      "id": "abel",
+      "tipo": "registro",
+      "subtipo": "pessoa",
+      "nome": "Abel",
+      "alias": [
+        "Hevel"
+      ],
+      "descricao": "O segundo filho de Adão e Eva, segundo Gênesis 4, e pastor de ovelhas. Sua oferta dos primogênitos do rebanho é aceita, e ele é morto pelo irmão Caim no campo. O texto não lhe dá nenhuma fala.\n"
+    },
+    {
       "id": "adao",
       "tipo": "registro",
       "subtipo": "pessoa",
@@ -9,6 +19,16 @@
         "homem"
       ],
       "descricao": "O primeiro homem, segundo Gênesis 2: Deus o forma do pó da terra, sopra nele o fôlego de vida e o põe no jardim do Éden para cultivá-lo e guardá-lo. No capítulo 2, o texto o chama primeiro de \"o homem\" e, a partir do versículo 19, de Adão. Em hebraico, adam também quer dizer \"ser humano\".\n"
+    },
+    {
+      "id": "caim",
+      "tipo": "registro",
+      "subtipo": "pessoa",
+      "nome": "Caim",
+      "alias": [
+        "Qayin"
+      ],
+      "descricao": "O primeiro filho de Adão e Eva, segundo Gênesis 4, e lavrador da terra. Sua oferta do fruto da terra não é aceita, a do irmão Abel é, e ele mata o irmão no campo. Condenado a ser \"errante e fugitivo na terra\", recebe de Deus um sinal que o protege de ser morto, vai habitar na terra de Node e edifica a primeira cidade que o texto menciona.\n"
     },
     {
       "id": "deus",
@@ -22,6 +42,27 @@
       "descricao": "Em Gênesis 1, o criador de tudo o que existe, que faz o mundo pela palavra ao longo de seis dias. O texto hebraico deste capítulo o chama de Elohim. Em outros trechos da Bíblia hebraica, o deus de Israel também é chamado pelo nome próprio YHWH.\n"
     },
     {
+      "id": "enoque-cainita",
+      "tipo": "registro",
+      "subtipo": "pessoa",
+      "nome": "Enoque (filho de Caim)",
+      "alias": [
+        "Enoque",
+        "Hanoch"
+      ],
+      "descricao": "Filho de Caim, segundo Gênesis 4:17, e nome da primeira cidade que o texto registra, edificada pelo pai. Não é o Enoque de Gênesis 5:24, da linhagem de Sete, que \"andou com Deus\" — as duas linhagens repetem vários nomes parecidos, e este registro é o da linhagem de Caim.\n"
+    },
+    {
+      "id": "enos",
+      "tipo": "registro",
+      "subtipo": "pessoa",
+      "nome": "Enos",
+      "alias": [
+        "Enosh"
+      ],
+      "descricao": "Filho de Sete, segundo Gênesis 4:26. O versículo que anuncia seu nascimento acrescenta que \"então os homens começaram a invocar o nome do SENHOR\" — a frase que põe o uso do nome YHWH já no início da humanidade.\n"
+    },
+    {
       "id": "eva",
       "tipo": "registro",
       "subtipo": "pessoa",
@@ -30,6 +71,33 @@
         "mulher"
       ],
       "descricao": "A primeira mulher, segundo Gênesis 2, que Deus forma de uma costela de Adão. No capítulo 2 o texto a chama apenas de \"mulher\"; o nome Eva só aparece em Gênesis 3:20.\n"
+    },
+    {
+      "id": "jabal",
+      "tipo": "registro",
+      "subtipo": "pessoa",
+      "nome": "Jabal",
+      "alias": [],
+      "descricao": "Filho de Lameque e Ada, apresentado em Gênesis 4:20 como \"pai dos que habitam em tendas, e criam gados\" — isto é, como origem do pastoreio nômade.\n"
+    },
+    {
+      "id": "jubal",
+      "tipo": "registro",
+      "subtipo": "pessoa",
+      "nome": "Jubal",
+      "alias": [],
+      "descricao": "Irmão de Jabal, apresentado em Gênesis 4:21 como \"pai de todos os que manejam harpa e flauta\" — isto é, como origem da música.\n"
+    },
+    {
+      "id": "lameque-cainita",
+      "tipo": "registro",
+      "subtipo": "pessoa",
+      "nome": "Lameque (da linhagem de Caim)",
+      "alias": [
+        "Lameque",
+        "Lemech"
+      ],
+      "descricao": "Quinto descendente de Caim, segundo Gênesis 4:18-24. É o primeiro homem que o texto apresenta com duas mulheres, Ada e Zilá, e o autor do canto em que se gaba de ter matado um homem que o feriu e promete uma vingança muito maior que a de Caim. Não é o Lameque de Gênesis 5:28, pai de Noé, da linhagem de Sete.\n"
     },
     {
       "id": "moises",
@@ -60,12 +128,40 @@
       "descricao": "O animal que, em Gênesis 3, convence a mulher a comer da árvore proibida. O texto a apresenta como \"astuta, mais que todos os animais do campo que o SENHOR Deus havia feito\" — isto é, como uma criatura entre as outras, e não como um ser sobrenatural. Gênesis 3 não a identifica com Satanás: essa leitura aparece depois, fora do capítulo.\n"
     },
     {
+      "id": "sete",
+      "tipo": "registro",
+      "subtipo": "pessoa",
+      "nome": "Sete",
+      "alias": [
+        "Shet"
+      ],
+      "descricao": "O terceiro filho de Adão e Eva nomeado em Gênesis 4, nascido depois da morte de Abel. O texto explica o nome pela fala da mãe: Deus lhe \"substituiu outra descendência em lugar de Abel\". É por ele que segue a linhagem retomada em Gênesis 5.\n"
+    },
+    {
+      "id": "tubalcaim",
+      "tipo": "registro",
+      "subtipo": "pessoa",
+      "nome": "Tubalcaim",
+      "alias": [
+        "Tubal-Caim"
+      ],
+      "descricao": "Filho de Lameque e Zilá, apresentado em Gênesis 4:22 como \"feitor de toda obra de bronze e de ferro\" — isto é, como origem da metalurgia. Ao lado de Jabal e Jubal, forma o trio a quem o capítulo atribui a origem de três ofícios.\n"
+    },
+    {
       "id": "eden",
       "tipo": "registro",
       "subtipo": "lugar",
       "nome": "Éden",
       "alias": [],
       "descricao": "A região onde, segundo Gênesis 2, Deus plantou um jardim \"ao oriente\" e pôs o primeiro homem. Dali saía um rio que se dividia em quatro, entre eles o Tigre e o Eufrates. Onde ficaria o Éden é uma questão discutida.\n"
+    },
+    {
+      "id": "node",
+      "tipo": "registro",
+      "subtipo": "lugar",
+      "nome": "Node",
+      "alias": [],
+      "descricao": "A terra \"ao oriente de Éden\" onde Caim passa a habitar depois de ser expulso, segundo Gênesis 4:16. O texto não diz onde ficaria, e não volta a mencionar o lugar.\n"
     },
     {
       "id": "rio-eufrates",
@@ -150,6 +246,16 @@
       "descricao": "Respostas oficiais da Pontifícia Comissão Bíblica, órgão do Vaticano para questões de interpretação da Bíblia, sobre o caráter histórico dos três primeiros capítulos de Gênesis. Foram publicadas em 1909 na Acta Apostolicae Sedis, o boletim oficial da Santa Sé."
     },
     {
+      "id": "dumuzid-e-enkimdu",
+      "tipo": "registro",
+      "subtipo": "texto",
+      "nome": "Dumuzid e Enkimdu",
+      "alias": [
+        "Inanna prefere o fazendeiro"
+      ],
+      "descricao": "Poema sumério de disputa em que Dumuzid, o deus pastor, e Enkimdu, o deus lavrador, competem pelo favor da deusa Inanna. Dumuzid é quem provoca a briga, perguntando em que o lavrador lhe seria superior. O poema termina em reconciliação, sem que nenhum dos dois morra. O corpus de literatura suméria a que pertence é datado, de modo geral, do fim do terceiro e início do segundo milênio a.C.; a edição de Oxford não dá data própria para este poema.\n"
+    },
+    {
       "id": "enki-e-ninhursag",
       "tipo": "registro",
       "subtipo": "texto",
@@ -207,6 +313,17 @@
         "Documentary Hypothesis"
       ],
       "descricao": "Explicação acadêmica de como foram escritos os cinco primeiros livros da Bíblia (o Pentateuco, de Gênesis a Deuteronômio). Segundo ela, esses livros não saíram das mãos de um único autor. Eles nasceram de quatro textos distintos, reunidos e editados ao longo de séculos. Os estudiosos chamam esses textos de \"fontes\" e dão a cada um um nome e uma letra: Javista (J), Eloísta (E), Sacerdotal (P, do inglês Priestly) e Deuteronomista (D), daí a sigla JEDP. O estudioso Julius Wellhausen formalizou a hipótese num livro de 1878, que reeditou em 1883. Estudiosos posteriores a revisaram, entre eles Joel S. Baden (2012).\n"
+    },
+    {
+      "id": "historia-fenicia-de-filo-de-biblos",
+      "tipo": "registro",
+      "subtipo": "texto",
+      "nome": "História Fenícia de Filo de Biblos",
+      "alias": [
+        "Sanchuniathon",
+        "Sanchuniáton"
+      ],
+      "descricao": "Obra de Filo de Biblos, por volta do ano 100, que se apresenta como tradução de um autor fenício muito mais antigo, Sanchuniathon. O original se perdeu: o que existe são trechos citados por Eusébio de Cesareia na \"Preparação Evangélica\", do início do século IV. Entre esses trechos há uma genealogia que atribui a origem de ofícios e invenções a descendentes sucessivos, no mesmo formato da lista de Gênesis 4:20-22.\n"
     },
     {
       "id": "mito-de-adapa",
@@ -439,6 +556,20 @@
       "nenhum_paralelo_conhecido": false,
       "titulo": "A serpente, a árvore e a expulsão do jardim",
       "texto": "genesis-03"
+    },
+    {
+      "id": "gen-04-01_04-26",
+      "tipo": "passagem",
+      "referencia": "Gênesis 4:1–26",
+      "afirma": [
+        "Eva dá à luz Caim e depois Abel. Abel se torna pastor de ovelhas e Caim, lavrador da terra. Os dois trazem ofertas: Deus olha com agrado para a de Abel e não para a de Caim. O texto não explica a recusa.",
+        "Caim mata o irmão no campo e, interrogado, responde que não sabe onde ele está. É amaldiçoado a não mais colher força da terra e a viver errante, mas recebe de Deus um sinal que o protege de ser morto, e vai habitar na terra de Node, ao oriente de Éden.",
+        "A linhagem de Caim chega a Lameque, o primeiro homem com duas mulheres, que canta às duas ter matado um homem por tê-lo ferido e promete uma vingança muito maior que a de Caim. Os três filhos de Lameque aparecem como origem de três ofícios: o pastoreio em tendas, a música e a metalurgia.",
+        "Eva dá à luz Sete no lugar de Abel, e a Sete nasce Enos. É nesse ponto que o capítulo diz que os homens começaram a invocar o nome do SENHOR."
+      ],
+      "nenhum_paralelo_conhecido": false,
+      "titulo": "Caim e Abel, e a primeira linhagem fora do jardim",
+      "texto": "genesis-04"
     }
   ],
   "arestas": [
@@ -627,6 +758,46 @@
       ],
       "o_que_derrubaria": "A ideia de que o decreto admite dias não literais cairia se a resposta à questão VIII não permitisse ler a palavra yom (dia) como um período de tempo.",
       "notas": "Na questão VIII, a comissão respondeu que a palavra hebraica yom, “dia”, pode ser entendida como um dia natural ou como um período de tempo, e que os estudiosos podem discutir isso livremente. A questão VII parte do pressuposto de que o autor de Gênesis 1 não pretendia ensinar a ordem da criação de modo científico. O mesmo decreto, porém, defende nas questões I a III o sentido literal e histórico dos três primeiros capítulos: ele abre espaço para ler os dias como períodos, sem negar a historicidade do relato."
+    },
+    {
+      "id": "dumuzid-e-enkimdu-paralelo-genesis__0",
+      "ligacao": "dumuzid-e-enkimdu-paralelo-genesis",
+      "origem": "dumuzid-e-enkimdu",
+      "destino": "genesis",
+      "tipo": "paralelo",
+      "forca": "disputado",
+      "tipo_de_apoio": "texto",
+      "quem_sustenta": [
+        {
+          "nome": "Giorgio Raffaele Castellino",
+          "ano": 1957
+        },
+        {
+          "nome": "Samuel Noah Kramer",
+          "ano": 1959
+        },
+        {
+          "nome": "Emmanuele Testa",
+          "ano": 1966
+        },
+        {
+          "nome": "Thorkild Jacobsen",
+          "ano": 1967
+        }
+      ],
+      "fontes": [
+        {
+          "nivel": 2,
+          "descricao": "Westermann, C. (1984), Genesis 1-11: A Commentary, trad. John J. Scullion, Minneapolis: Augsburg; Londres: SPCK, p. 315 (comentário a Gênesis 4:1-16)"
+        },
+        {
+          "nivel": 1,
+          "descricao": "\"Dumuzid and Enkimdu\", composição nº c.4.08.33, The Electronic Text Corpus of Sumerian Literature, Universidade de Oxford (tradução e bibliografia das quatro tabuinhas-fonte: Ni 2431, CBS 8320, UM 29-16-435, CBS 8313)",
+          "url": "https://etcsl.orinst.ox.ac.uk/section4/tr40833.htm"
+        }
+      ],
+      "o_que_derrubaria": "O paralelo cairia de vez se a leitura do poema sumério mostrasse que a disputa entre Dumuzid e Enkimdu não opõe pastor e lavrador, ou que o pastor não leva vantagem nenhuma no desfecho.",
+      "notas": "Esta ligação está registrada com a força mais baixa de propósito, e o leitor precisa saber por quê. A comparação existe na literatura: Westermann registra que Castellino, Kramer e Jacobsen associaram a rivalidade de ofícios entre Caim e Abel aos poemas sumérios de disputa entre pastor e lavrador. Mas o próprio Westermann a recusa como paralelo estrutural. Ele diz que Testa, ao querer traçar um paralelo estrutural exato entre essas disputas e Gênesis 4, \"vai longe demais\", porque falta a Gênesis 4 o que é essencial no gênero: a disputa falada entre os dois. Para ele, o que resta é apenas um motivo subordinado, a diferença de ofícios que dá ocasião ao ódio de Caim. E há uma diferença que nenhuma fonte contorna: o poema sumério termina em reconciliação, Gênesis 4 termina em assassinato. Sobre o fratricídio em si, Westermann afirma que não se encontra paralelo no ambiente imediato de Israel — as narrativas que correspondem a esse motivo estão centradas em culturas que ele chama de primitivas, fora do Crescente Fértil. Castellino, Kramer, Jacobsen e Testa entram em \"quem sustenta\" como Westermann os cita, na página indicada; os originais dos quatro não foram lidos diretamente. Uma precisão que a conferência das fontes levantou: Westermann não cita nominalmente esta composição, a c.4.08.33 do corpus de Oxford. O que ele discute é o motivo da rivalidade entre pastor e lavrador no material sumério, mencionando Dumuzi e Enkimdu disputando a mão de Inanna a partir do cortejo de Inanna, segundo Jacobsen. A ligação aponta para esta composição por ser onde o motivo se lê em edição acadêmica aberta, e não porque Westermann a tenha indicado."
     },
     {
       "id": "enki-e-ninhursag-paralelo-genesis__0",
@@ -920,6 +1091,43 @@
       "notas": "Julius Wellhausen (1883) e, mais tarde, Joel S. Baden (2012) sustentaram a Hipótese Documentária. Segundo ela, o Pentateuco (os cinco primeiros livros da Bíblia) junta quatro fontes, chamadas J, E, P e D, em vez de ter um único autor, o que contradiz a atribuição a Moisés. Essa contestação aparece aqui como aceita pela maioria. A maioria, no caso, é a dos estudiosos da crítica bíblica acadêmica, que examinam os textos bíblicos com métodos históricos. Isso não quer dizer que haja o mesmo acordo nas comunidades religiosas que seguem a tradição de atribuir o texto a Moisés.\n"
     },
     {
+      "id": "historia-fenicia-de-filo-de-biblos-paralelo-genesis__0",
+      "ligacao": "historia-fenicia-de-filo-de-biblos-paralelo-genesis",
+      "origem": "historia-fenicia-de-filo-de-biblos",
+      "destino": "genesis",
+      "tipo": "paralelo",
+      "forca": "aceito_maioria",
+      "tipo_de_apoio": "texto",
+      "quem_sustenta": [
+        {
+          "nome": "Hermann Gunkel",
+          "ano": 1922
+        },
+        {
+          "nome": "Claus Westermann",
+          "ano": 1984
+        }
+      ],
+      "fontes": [
+        {
+          "nivel": 2,
+          "descricao": "Gunkel, H. (1922), Genesis, übersetzt und erklärt, 5ª edição inalterada, com registros de Paul Schorlemmer (Göttinger Handkommentar zum Alten Testament I/1), Göttingen: Vandenhoeck & Ruprecht, p. 51 (seção \"Qains Stammbaum\", comentário a Gênesis 4:17-24). Reimpressão sem alterações da 3ª edição de 1910, cujo prefácio o volume reproduz",
+          "url": "https://archive.org/details/genesisbersetz01gunk"
+        },
+        {
+          "nivel": 2,
+          "descricao": "Westermann, C. (1984), Genesis 1-11: A Commentary, trad. John J. Scullion, Minneapolis: Augsburg; Londres: SPCK, pp. 328-329 (comentário a Gênesis 4:17-26)"
+        },
+        {
+          "nivel": 1,
+          "descricao": "Eusébio de Cesareia, Preparação Evangélica, livro I, cap. 10, onde os trechos de Filo de Biblos são citados; trad. inglesa de E. H. Gifford (1903)",
+          "url": "https://www.tertullian.org/fathers/eusebius_pe_01_book1.htm"
+        }
+      ],
+      "o_que_derrubaria": "O paralelo cairia se a leitura dos trechos preservados por Eusébio mostrasse que a genealogia fenícia não atribui a origem de ofícios a descendentes sucessivos, ou que o formato de lista genealógica ligada à origem da civilização não é o mesmo de Gênesis 4:20-22.",
+      "notas": "O que as duas fontes afirmam é semelhança de gênero, não dependência. Gunkel compara a árvore genealógica de inventores de Gênesis 4:19-22 com os sistemas fenícios de história da cultura em forma de genealogia, e conclui que Israel não parece ter chegado a um sistema tão completo quanto o fenício. O volume consultado é a quinta impressão, de 1922, que a folha de rosto declara inalterada e que reproduz o prefácio da terceira edição, de 1910 — ou seja, o texto é o de 1910, e a paginação é a mesma. A referência foi corrigida na conferência: o catálogo do Internet Archive data o exemplar de 1902, o que levaria a citar a primeira edição, mas a folha de rosto do próprio volume desmente a data. Westermann é mais entusiasmado — diz que quase toda frase de Gênesis 1-11 que tenha a ver com a origem da civilização tem contrapartida no texto de Sanchuniathon — mas fala em contrapartidas e pontos de contato, nunca em cópia, e pondera ele mesmo que ali é provável que se combinem duas tradições diferentes. Há uma razão cronológica decisiva para o tipo ser paralelo e jamais foi_copiado_de: o texto fenício só existe na forma em que Filo de Biblos o escreveu, por volta do ano 100, citado por Eusébio no início do século IV — muito posterior a Gênesis. A anterioridade que a metodologia exige não existe nessa direção, e a semelhança é de estrutura e de gênero, não de palavras. Westermann aponta ainda um segundo ponto de contato, com as listas mesopotâmicas dos sete apkallu, os sábios anteriores ao dilúvio (p. 324), inclusive em detalhe: de um desses apkallu se diz que teria inventado a lira, ao lado de Jubal como pai dos que manejam harpa e flauta. Esse segundo ponto fica registrado aqui na nota, e não como ligação própria, porque as listas de apkallu não foram lidas em edição acadêmica — só através de Westermann."
+    },
+    {
       "id": "meteorito-canyon-diablo-confirma-formacao-da-terra__0",
       "ligacao": "meteorito-canyon-diablo-confirma-formacao-da-terra",
       "origem": "meteorito-canyon-diablo",
@@ -1161,6 +1369,90 @@
       "tipo": "cita"
     },
     {
+      "id": "gen-04-01_04-26__cita__deus",
+      "origem": "gen-04-01_04-26",
+      "destino": "deus",
+      "tipo": "cita"
+    },
+    {
+      "id": "gen-04-01_04-26__cita__adao",
+      "origem": "gen-04-01_04-26",
+      "destino": "adao",
+      "tipo": "cita"
+    },
+    {
+      "id": "gen-04-01_04-26__cita__eva",
+      "origem": "gen-04-01_04-26",
+      "destino": "eva",
+      "tipo": "cita"
+    },
+    {
+      "id": "gen-04-01_04-26__cita__caim",
+      "origem": "gen-04-01_04-26",
+      "destino": "caim",
+      "tipo": "cita"
+    },
+    {
+      "id": "gen-04-01_04-26__cita__abel",
+      "origem": "gen-04-01_04-26",
+      "destino": "abel",
+      "tipo": "cita"
+    },
+    {
+      "id": "gen-04-01_04-26__cita__sete",
+      "origem": "gen-04-01_04-26",
+      "destino": "sete",
+      "tipo": "cita"
+    },
+    {
+      "id": "gen-04-01_04-26__cita__enos",
+      "origem": "gen-04-01_04-26",
+      "destino": "enos",
+      "tipo": "cita"
+    },
+    {
+      "id": "gen-04-01_04-26__cita__enoque-cainita",
+      "origem": "gen-04-01_04-26",
+      "destino": "enoque-cainita",
+      "tipo": "cita"
+    },
+    {
+      "id": "gen-04-01_04-26__cita__lameque-cainita",
+      "origem": "gen-04-01_04-26",
+      "destino": "lameque-cainita",
+      "tipo": "cita"
+    },
+    {
+      "id": "gen-04-01_04-26__cita__jabal",
+      "origem": "gen-04-01_04-26",
+      "destino": "jabal",
+      "tipo": "cita"
+    },
+    {
+      "id": "gen-04-01_04-26__cita__jubal",
+      "origem": "gen-04-01_04-26",
+      "destino": "jubal",
+      "tipo": "cita"
+    },
+    {
+      "id": "gen-04-01_04-26__cita__tubalcaim",
+      "origem": "gen-04-01_04-26",
+      "destino": "tubalcaim",
+      "tipo": "cita"
+    },
+    {
+      "id": "gen-04-01_04-26__cita__node",
+      "origem": "gen-04-01_04-26",
+      "destino": "node",
+      "tipo": "cita"
+    },
+    {
+      "id": "gen-04-01_04-26__cita__eden",
+      "origem": "gen-04-01_04-26",
+      "destino": "eden",
+      "tipo": "cita"
+    },
+    {
       "id": "gen-01-01_01-31__parte_de__genesis",
       "origem": "gen-01-01_01-31",
       "destino": "genesis",
@@ -1175,6 +1467,12 @@
     {
       "id": "gen-03-01_03-24__parte_de__genesis",
       "origem": "gen-03-01_03-24",
+      "destino": "genesis",
+      "tipo": "parte_de"
+    },
+    {
+      "id": "gen-04-01_04-26__parte_de__genesis",
+      "origem": "gen-04-01_04-26",
       "destino": "genesis",
       "tipo": "parte_de"
     },

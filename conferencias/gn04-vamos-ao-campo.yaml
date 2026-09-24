@@ -1,0 +1,110 @@
+# Gerado por .claude/skills/conferir/scripts/registrar.js — vereditos da
+# Contraprova para as fontes desta ligação. Edite à mão só 'revisao_humana'
+# (pendente -> feita) depois de conferir você mesmo.
+ligacao: gn04-vamos-ao-campo
+fontes:
+  - hash: 3bfdc4b7c0ee
+    nivel: 2
+    descricao: >-
+      Skinner, J. (1910), A Critical and Exegetical Commentary on Genesis (International Critical
+      Commentary), Nova York: Charles Scribner's Sons, p. 107, com a chave das siglas das versões na
+      lista de abreviaturas, p. xiii
+    alegacao: >-
+      Skinner afirma que a sentença de Gênesis 4:8 no hebraico é incompleta porque o verbo empregado
+      nunca é inteiramente sinônimo do verbo de falar, e que as palavras que faltam, "vamos ao
+      campo", devem ser supridas a partir do Pentateuco Samaritano, da Septuaginta, da Peshitta e da
+      Vulgata.
+    veredito: confirmada
+    parou_em: null
+    conferido_em: >-
+      Exemplar digitalizado da Trinity College Library / Universidade de Toronto em
+      https://archive.org/details/criticalexegetic00skinuoft, com as imagens das páginas lidas
+      diretamente, sem OCR: p. 107 em
+      https://archive.org/download/criticalexegetic00skinuoft/page/leaf209_w1600.jpg e a lista de
+      abreviaturas, p. xiii, em
+      https://archive.org/download/criticalexegetic00skinuoft/page/leaf27_w1600.jpg. Folha de rosto
+      (leaf 12) confirma 'NEW YORK / CHARLES SCRIBNER'S SONS / 1910'
+    observacao: >-
+      Uma rodada anterior, sobre a mesma alegação com outro selo editorial, ficou em não confirmável
+      parando no conteúdo, porque o OCR corrompeu as siglas em três extrações diferentes. A
+      conferência foi refeita na imagem da página. O corpo do texto diz apenas 'must be supplied
+      from Vns.; see below', e a nomeação das versões está na nota filológica ao pé da mesma p. 107,
+      para onde o 'see below' remete: 'Hence nelkhah ha-sadeh is to be supplied with [quatro
+      siglas], but not Aq.' A linha foi ampliada cerca de doze vezes e os quatro caracteres lidos um
+      a um, e a chave da p. xiii dá Septuaginta, Peshitta, Recensão Samaritana do Pentateuco e
+      Vulgata. As quatro versões conferem, sem sobras nem faltas. Armadilha registrada para quem
+      reconferir: o volume tem duas páginas numeradas xiii, uma na Introdução (leaf 47) e outra na
+      lista de abreviaturas (leaf 27), que é a citada aqui.
+    data: '2026-09-24'
+    conferido_por: contraprova
+    revisao_humana: pendente
+  - hash: 79ed6301d5c9
+    nivel: 1
+    descricao: >-
+      Swete, H. B. (org.) (1887), The Old Testament in Greek according to the Septuagint, vol. I:
+      Genesis-IV Kings, Cambridge: Cambridge University Press, p. 6 (Gênesis 4:8, texto do Codex
+      Vaticanus)
+    alegacao: >-
+      O texto grego de Gênesis 4:8 nessa edição traz a fala de Caim "dielthomen eis to pedion",
+      vamos ao campo, ausente do hebraico massorético.
+    veredito: confirmada
+    parou_em: null
+    conferido_em: >-
+      https://archive.org/download/oldtestamenting01swet/oldtestamenting01swet_djvu.txt (Swete, vol.
+      I, Cambridge University Press, 1887), página confirmada pelos números de rodapé: o bloco que
+      cobre Gênesis 3:24b a 4:17, onde está o v. 8, termina na p. 6
+    observacao: >-
+      Texto literal: 'και είπεν Κάιν προς Αβελ τον αδελφόν αυτού Διέλθωμεν εις το πεδίον'. O OCR
+      grafa Δ como Α, mas a leitura é inequívoca.
+    data: '2026-09-24'
+    conferido_por: contraprova
+    revisao_humana: pendente
+  - hash: 66e33aeaf5f3
+    nivel: 2
+    descricao: >-
+      German, I. (2014), The Textual Unity of Genesis 2-4 against the Backdrop of the History of
+      Exegesis, tese de doutorado, University of St. Michael's College / Toronto School of Theology,
+      pp. 134-135
+    alegacao: >-
+      German registra que as principais versões antigas — Pentateuco Samaritano, Septuaginta,
+      Vulgata e a síriaca — preenchem a lacuna textual do hebraico massorético em Gênesis 4:8
+      acrescentando "vamos ao campo", e documenta que o Targum Neofiti traz uma expansão maior que
+      começa por esse convite.
+    veredito: confirmada
+    parou_em: null
+    conferido_em: >-
+      https://utoronto.scholaris.ca/bitstream/1807/67425/1/German_Igal_201411_PhD_thesis.pdf
+      (repositório institucional da Universidade de Toronto), marcadores de página impressos 134 e
+      135 no texto extraído
+    observacao: >-
+      p. 134, literal: 'The major ancient versions fill the textual lacuna in the Hebrew reading of
+      MT Gen 4:8... (so the Samaritan Pentateuch, LXX, Vulgate, Syriac). These versions add to Gen
+      4:8: Let us go out to the field'. A nota 21, que começa na p. 134 e segue na 135, traz o
+      Targum Neofiti citado a partir de McNamara (1992), pp. 65-67.
+    data: '2026-09-24'
+    conferido_por: contraprova
+    revisao_humana: pendente
+  - hash: 6ef6cd461175
+    nivel: 2
+    descricao: >-
+      Efrati, S. (2023), "The Many Quarrels of Cain and Abel: A Targumic Expansion Reconsidered",
+      Aramaic Studies 21.2, pp. 141-165, seções 2 e 4
+    alegacao: >-
+      Efrati registra que a tradição textual que põe "vamos ao campo" na boca de Caim está atestada
+      na Septuaginta, no Pentateuco Samaritano e na Peshitta, considera provável que a cláusula seja
+      adição secundária para resolver a dificuldade do hebraico, e relata que numa colação de cerca
+      de 135 testemunhos do Targum Onkelos para este versículo apenas 16 trazem versão expandida ou
+      interpolada.
+    veredito: confirmada
+    parou_em: null
+    conferido_em: >-
+      https://lirias.kuleuven.be/retrieve/cd700cc6-83fd-46c0-a474-6c9ab892b39d (repositório Lirias
+      da KU Leuven), volume e páginas confirmados como Aramaic Studies 21.2, pp. 141-165, DOI
+      10.1163/17455227-bja10046
+    observacao: >-
+      Os três elementos da alegação batem literalmente. A cópia é o manuscrito aceito pelo autor e
+      não reproduz a paginação da revista, por isso a fonte indica seções e o intervalo de páginas
+      da publicação, não a página de cada trecho.
+    data: '2026-09-24'
+    conferido_por: contraprova
+    revisao_humana: pendente

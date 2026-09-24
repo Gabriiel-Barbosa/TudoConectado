@@ -1,0 +1,48 @@
+# Gerado por .claude/skills/conferir/scripts/registrar.js — vereditos da
+# Contraprova para as fontes desta ligação. Edite à mão só 'revisao_humana'
+# (pendente -> feita) depois de conferir você mesmo.
+ligacao: gn04-o-pecado-a-porta
+fontes:
+  - hash: 82f099ba2df4
+    nivel: 2
+    descricao: >-
+      Skinner, J. (1910), A Critical and Exegetical Commentary on Genesis (International Critical
+      Commentary), Nova York: Charles Scribner's Sons, pp. 106-107, citando Olshausen (1870)
+    alegacao: >-
+      Skinner trata Gênesis 4:7 como obscuro por corrupção textual profundamente arraigada,
+      apontando a discordância de gênero de "chattat" e a semelhança verbal com 3:16, que ele
+      atribui a erro de copista.
+    veredito: confirmada
+    parou_em: null
+    conferido_em: >-
+      https://archive.org/stream/criticalexegetic00skinuoft/criticalexegetic00skinuoft_djvu.txt, pp.
+      106-107, cruzado com Project Gutenberg #77363
+    observacao: >-
+      p. 107: 'it is nearly certain that the obscurity is due to deep-seated textual corruption' e a
+      atribuição explícita ao olho de um copista que vagou para a coluna adjacente.
+    data: '2026-09-24'
+    conferido_por: contraprova
+    revisao_humana: pendente
+  - hash: 2e7dbe41fd21
+    nivel: 2
+    descricao: >-
+      Barré, M. L. (1999), "Rabisu", em K. van der Toorn, B. Becking e P. W. van der Horst (orgs.),
+      Dictionary of Deities and Demons in the Bible, 2ª ed. revista, Leiden/Boston: Brill; Grand
+      Rapids: Eerdmans, p. 681
+    alegacao: >-
+      Barré registra ser posição comum entre comentaristas ligar o "robes" de Gênesis 4:7 ao acádio
+      "rabisu", qualifica a hipótese como complicada pela natureza problemática da passagem, e
+      observa que nas fontes acádias o rabisu ataca suas vítimas em vez de tentá-las ao pecado.
+    veredito: confirmada
+    parou_em: null
+    conferido_em: >-
+      Verbete 'RABISU' assinado por M. L. Barré, texto integral do Dictionary of Deities and Demons
+      in the Bible (2ª ed.), p. 681, consultado em
+      https://archive.org/stream/DeitiesAndDemonsInTheBible/Deities%20and%20Demons%20in%20the%20Bible_djvu.txt
+    observacao: >-
+      As três partes da alegação batem literalmente. A cópia consultada é upload de usuário de obra
+      da Brill ainda sob direitos, por isso a fonte entra no projeto só pela referência impressa,
+      sem URL.
+    data: '2026-09-24'
+    conferido_por: contraprova
+    revisao_humana: pendente

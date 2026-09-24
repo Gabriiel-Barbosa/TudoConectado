@@ -2923,7 +2923,12 @@ function personagensDoCapitulo(capitulo) {
 // como palavra inteira, sem diferenciar maiúsculas.
 function versiculosDoPersonagem(capitulo, pessoa) {
   const nomes = [pessoa.nome, ...(pessoa.alias || [])].filter(Boolean);
-  const padroes = nomes.map((n) => new RegExp(`(^|[^\\p{L}])${n.replace(/[.*+?^${}()|[\]\\]/g, "\\// A aba Passagens é a Bíblia: abre o capítulo em leitura (ou o primeiro).")}(?=$|[^\\p{L}])`, "iu"));
+  // "\\$&" escapa o caractere encontrado. Sem isso, um nome com parêntese ou
+  // ponto — "Enoque (filho de Caim)" — vira um padrão inválido e o
+  // personagem aparece com zero versículos.
+  const padroes = nomes.map(
+    (n) => new RegExp(`(^|[^\\p{L}])${n.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}(?=$|[^\\p{L}])`, "iu")
+  );
   return capitulo.versiculos.filter((v) => padroes.some((p) => p.test(v.texto))).map((v) => v.n);
 }
 

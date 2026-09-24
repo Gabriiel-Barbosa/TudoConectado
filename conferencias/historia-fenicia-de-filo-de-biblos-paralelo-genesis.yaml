@@ -1,0 +1,67 @@
+# Gerado por .claude/skills/conferir/scripts/registrar.js — vereditos da
+# Contraprova para as fontes desta ligação. Edite à mão só 'revisao_humana'
+# (pendente -> feita) depois de conferir você mesmo.
+ligacao: historia-fenicia-de-filo-de-biblos-paralelo-genesis
+fontes:
+  - hash: d48c69e56f90
+    nivel: 2
+    descricao: >-
+      Gunkel, H. (1922), Genesis, übersetzt und erklärt, 5ª edição inalterada, com registros de Paul
+      Schorlemmer (Göttinger Handkommentar zum Alten Testament I/1), Göttingen: Vandenhoeck &
+      Ruprecht, p. 51 (seção "Qains Stammbaum", comentário a Gênesis 4:17-24). Reimpressão sem
+      alterações da 3ª edição de 1910, cujo prefácio o volume reproduz
+    alegacao: >-
+      Gunkel compara a genealogia de inventores de ofícios de Gênesis 4:19-22 ao sistema fenício de
+      história da cultura em forma de árvore genealógica preservado por Eusébio a partir de Filo de
+      Biblos, e conclui que Israel não chegou a um sistema tão completo.
+    veredito: confirmada
+    parou_em: null
+    conferido_em: >-
+      https://archive.org/details/genesisbersetz01gunk (djvu.txt): folha de rosto 'Fünfte
+      unveränderte Auflage ... 1922', prefácio da 3ª edição datado de fevereiro de 1910, e cabeçalho
+      corrente '3. Qains Stammbaum 4,17-24. 51'
+    observacao: >-
+      A citação anterior dizia 3ª edição de 1910 e foi conferida como não confirmável na
+      localização, porque os metadados do Internet Archive datam o item de 1902 e sugerem a primeira
+      edição. A folha de rosto do volume desmente a data: é a quinta impressão inalterada, de 1922,
+      que reproduz o texto e a paginação da terceira. A citação foi corrigida e reconferida com este
+      hash novo.
+    data: '2026-09-24'
+    conferido_por: contraprova
+    revisao_humana: pendente
+  - hash: 7a5ba2e01273
+    nivel: 2
+    descricao: >-
+      Westermann, C. (1984), Genesis 1-11: A Commentary, trad. John J. Scullion, Minneapolis:
+      Augsburg; Londres: SPCK, pp. 328-329 (comentário a Gênesis 4:17-26)
+    alegacao: >-
+      Westermann afirma que quase toda frase de Gênesis 1-11 relacionada à origem da civilização tem
+      contrapartida no texto de Sanchuniathon preservado por Filo de Biblos via Eusébio.
+    veredito: confirmada
+    parou_em: null
+    conferido_em: >-
+      https://archive.org/details/westermann_genesis202508 (arquivo Claus_djvu.txt), fim da p. 328 e
+      p. 329 sob o cabeçalho 'Gen 4:17-26 The Cainites'
+    observacao: Frase praticamente idêntica à alegação.
+    data: '2026-09-24'
+    conferido_por: contraprova
+    revisao_humana: pendente
+  - hash: 3283069b3757
+    nivel: 1
+    descricao: >-
+      Eusébio de Cesareia, Preparação Evangélica, livro I, cap. 10, onde os trechos de Filo de
+      Biblos são citados; trad. inglesa de E. H. Gifford (1903)
+    alegacao: >-
+      O livro I, capítulo 10 da Preparação Evangélica de Eusébio cita trechos de Filo de Biblos que
+      trazem uma genealogia atribuindo a origem de ofícios e invenções a descendentes sucessivos.
+    veredito: confirmada
+    parou_em: null
+    conferido_em: >-
+      https://www.tertullian.org/fathers/eusebius_pe_01_book1.htm (livro I, cap. X, 'Theology of the
+      Phoenicians', trad. E. H. Gifford, 1903)
+    observacao: >-
+      A genealogia atribui sucessivamente a descendentes a descoberta do fogo, do ferro e do modo de
+      trabalhá-lo, da oratória e adivinhação, e do alfabeto escrito.
+    data: '2026-09-24'
+    conferido_por: contraprova
+    revisao_humana: pendente

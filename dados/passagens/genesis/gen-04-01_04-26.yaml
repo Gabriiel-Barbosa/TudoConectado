@@ -1,0 +1,54 @@
+id: gen-04-01_04-26
+referencia: Gênesis 4:1–26
+titulo: Caim e Abel, e a primeira linhagem fora do jardim
+texto: genesis-04
+afirma:
+  - >-
+    Eva dá à luz Caim e depois Abel. Abel se torna pastor de ovelhas e Caim,
+    lavrador da terra. Os dois trazem ofertas: Deus olha com agrado para a de
+    Abel e não para a de Caim. O texto não explica a recusa.
+  - >-
+    Caim mata o irmão no campo e, interrogado, responde que não sabe onde ele
+    está. É amaldiçoado a não mais colher força da terra e a viver errante,
+    mas recebe de Deus um sinal que o protege de ser morto, e vai habitar na
+    terra de Node, ao oriente de Éden.
+  - >-
+    A linhagem de Caim chega a Lameque, o primeiro homem com duas mulheres,
+    que canta às duas ter matado um homem por tê-lo ferido e promete uma
+    vingança muito maior que a de Caim. Os três filhos de Lameque aparecem
+    como origem de três ofícios: o pastoreio em tendas, a música e a
+    metalurgia.
+  - >-
+    Eva dá à luz Sete no lugar de Abel, e a Sete nasce Enos. É nesse ponto que
+    o capítulo diz que os homens começaram a invocar o nome do SENHOR.
+paralelos_externos:
+  - ligacao: dumuzid-e-enkimdu-paralelo-genesis
+  - ligacao: historia-fenicia-de-filo-de-biblos-paralelo-genesis
+conexoes:
+  - ligacao: dumuzid-e-enkimdu-paralelo-genesis
+    versiculos:
+      - 2
+      - 2
+    tema: paralelo
+    trecho: E foi Abel pastor de ovelhas, e Caim foi lavrador da terra
+  - ligacao: historia-fenicia-de-filo-de-biblos-paralelo-genesis
+    versiculos:
+      - 20
+      - 20
+    tema: paralelo
+    trecho: pai dos que habitam em tendas
+registros_citados:
+  - deus
+  - adao
+  - eva
+  - caim
+  - abel
+  - sete
+  - enos
+  - enoque-cainita
+  - lameque-cainita
+  - jabal
+  - jubal
+  - tubalcaim
+  - node
+  - eden
